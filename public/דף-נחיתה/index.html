@@ -3,493 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>אלישבע מייער | אסטרטגית סושיאל</title>
+<title>אלישבע מייער | אדריכלית סושייאל</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Heebo',sans-serif; direction:rtl; background:#fff; color:#1A1A1A; }
-
-  /* ── HEADER ── */
-  header {
-    padding: 20px 32px;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #f0f0f0;
-    position: sticky;
-    top: 0;
-    background: #fff;
-    z-index: 100;
-  }
-  .logo-em { font-size: 24px; font-weight: 900; color: #1A1A1A; letter-spacing: -0.5px; }
-  .logo-sub { font-size: 9px; font-weight: 500; letter-spacing: 3px; color: #aaa; text-transform: uppercase; text-align: center; }
-
-  /* ── HERO ── */
-  .hero {
-    background: #1A1A1A;
-    padding: 64px 24px 56px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    background: rgba(240,122,87,0.06);
-    top: -80px; left: -80px;
-  }
-  .hero::after {
-    content: "";
-    position: absolute;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(240,122,87,0.05);
-    bottom: -60px; right: -40px;
-  }
-
-  .hero-photo {
-    width: 110px; height: 110px;
-    border-radius: 50%;
-    border: 3px solid #F07A57;
-    background: #FDF0EC;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 36px; font-weight: 900; color: #F07A57;
-    margin: 0 auto 20px;
-    overflow: hidden;
-    position: relative; z-index: 1;
-  }
-  .hero-photo img { width:100%; height:100%; object-fit:cover; }
-
-  .hero-name { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px; position:relative;z-index:1; }
-  .hero-role { font-size: 13px; color: #F07A57; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 18px; position:relative;z-index:1; }
-  .hero-bio {
-    font-size: 16px; color: rgba(255,255,255,0.6);
-    max-width: 420px; margin: 0 auto 32px;
-    line-height: 1.75; font-weight: 300;
-    position:relative;z-index:1;
-  }
-  .hero-bio strong { color: rgba(255,255,255,0.9); font-weight: 700; }
-
-  .hero-cta {
-    display: inline-block;
-    background: #F07A57;
-    color: #fff;
+  body {
     font-family: 'Heebo', sans-serif;
-    font-size: 17px; font-weight: 700;
-    padding: 16px 44px;
-    border-radius: 50px;
-    text-decoration: none;
-    border: none; cursor: pointer;
-    transition: opacity 0.2s, transform 0.15s;
-    position:relative;z-index:1;
-  }
-  .hero-cta:hover { opacity: 0.9; transform: translateY(-2px); }
-  .hero-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 12px; position:relative;z-index:1; }
-
-  /* ── SECTIONS ── */
-  .section { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
-  .section-alt { background: #FAFAFA; }
-  .section-alt .inner { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
-
-  .s-tag {
-    display: inline-block;
-    background: #FDF0EC; color: #F07A57;
-    font-size: 12px; font-weight: 700;
-    padding: 5px 16px; border-radius: 20px; margin-bottom: 12px;
-  }
-  .s-tag.dark {
-    background: rgba(240,122,87,0.15); color: #F07A57;
-  }
-  .section h2, .inner h2 {
-    font-size: 28px; font-weight: 900; color: #1A1A1A;
-    margin-bottom: 8px; line-height: 1.3;
-  }
-  .section .sub, .inner .sub {
-    font-size: 15px; color: #888; margin-bottom: 32px; line-height: 1.6;
+    direction: rtl;
+    background: #f7f7f7;
+    color: #1A1A1A;
+    min-height: 100vh;
   }
 
-  /* ── ABOUT ── */
-  .big-greeting {
-    font-size: 36px; font-weight: 900; color: #1A1A1A;
-    margin-bottom: 28px; line-height: 1.2;
+  .page-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
   }
-  .about-para {
-    font-size: 15px; color: #444; line-height: 1.85;
-    margin-bottom: 18px;
-  }
-  .about-para:last-child { margin-bottom: 0; }
 
-  /* ── FREE PRODUCT ── */
-  .free-card {
-    background: #1A1A1A;
-    border-radius: 20px;
-    padding: 36px 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .free-card::before {
-    content: "";
-    position: absolute;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: rgba(240,122,87,0.08);
-    bottom: -50px; left: -50px;
-  }
-  .free-badge {
-    display: inline-block;
-    background: #F07A57; color: #fff;
-    font-size: 12px; font-weight: 700;
-    padding: 4px 14px; border-radius: 20px;
-    margin-bottom: 16px;
-  }
-  .free-card h3 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.3; }
-  .free-card h3 span { color: #F07A57; }
-  .free-card p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 24px; line-height: 1.7; font-weight: 300; }
-
-  .checklist-steps {
-    display: flex; flex-direction: column; gap: 8px;
+  /* PROFILE */
+  .profile {
+    text-align: center;
     margin-bottom: 28px;
   }
-  .checklist-step {
-    display: flex; gap: 10px; align-items: center;
-    font-size: 13px; color: rgba(255,255,255,0.75);
-  }
-  .step-num {
-    width: 24px; height: 24px;
-    background: rgba(240,122,87,0.2);
-    color: #F07A57; font-size: 12px; font-weight: 700;
+  .profile-photo {
+    width: 96px; height: 96px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F07A57;
+    margin-bottom: 14px;
+  }
+  .profile-name {
+    font-size: 22px; font-weight: 900; color: #1A1A1A;
+    margin-bottom: 4px;
+  }
+  .profile-title {
+    font-size: 14px; color: #888; font-weight: 400;
+    margin-bottom: 14px;
+  }
+  .profile-about {
+    font-size: 14px; color: #555; line-height: 1.7;
+    max-width: 340px; margin: 0 auto;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: #bbb; text-transform: uppercase;
+    text-align: center; margin: 28px 0 14px;
+  }
+
+  /* LINK CARDS */
+  .link-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #1A1A1A;
+    border: 1.5px solid #f0f0f0;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    cursor: pointer;
+  }
+  .link-card:hover {
+    border-color: #F07A57;
+    box-shadow: 0 4px 16px rgba(240,122,87,0.12);
+    transform: translateY(-1px);
+  }
+  .card-icon {
+    font-size: 26px; flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: #FDF0EC; border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
+  }
+  .card-body { flex: 1; }
+  .card-title { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .card-desc { font-size: 12px; color: #999; line-height: 1.5; }
+  .card-price {
+    font-size: 14px; font-weight: 700; color: #F07A57;
+    flex-shrink: 0;
+  }
+  .card-arrow {
+    font-size: 18px; color: #ddd; flex-shrink: 0;
+  }
+  .card-free {
+    background: #F07A57; color: #fff;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
     flex-shrink: 0;
   }
 
-  .email-form { display: flex; gap: 10px; flex-direction: column; }
-  .email-input {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.08);
-    color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 15px; outline: none;
-    direction: rtl;
-    transition: border 0.2s;
-  }
-  .email-input::placeholder { color: rgba(255,255,255,0.3); }
-  .email-input:focus { border-color: #F07A57; }
-  .email-submit {
-    width: 100%;
-    background: #F07A57; color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 16px; font-weight: 700;
-    padding: 14px; border-radius: 50px;
-    border: none; cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .email-submit:hover { opacity: 0.9; }
-  .email-note { font-size: 11px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 8px; }
-
-  /* ── PRODUCTS ── */
-  .products-grid { display: flex; flex-direction: column; gap: 16px; }
-
-  .product-card {
-    background: #fff;
-    border: 1px solid #f0f0f0;
+  /* FREE OPT-IN CARD */
+  .optin-card {
+    background: #1A1A1A;
     border-radius: 16px;
-    padding: 24px 20px;
-    display: flex; gap: 16px; align-items: flex-start;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .product-card:hover {
-    border-color: #F07A57;
-    box-shadow: 0 4px 20px rgba(240,122,87,0.1);
-  }
-  .product-icon {
-    width: 50px; height: 50px;
-    border-radius: 12px;
-    background: #FDF0EC;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; flex-shrink: 0;
-  }
-  .product-info { flex: 1; }
-  .product-tag {
-    display: inline-block;
-    background: #FDF0EC; color: #F07A57;
-    font-size: 11px; font-weight: 700;
-    padding: 3px 10px; border-radius: 20px; margin-bottom: 6px;
-  }
-  .product-tag.new-tag { background: #1A1A1A; color: #F07A57; }
-  .product-name { font-size: 16px; font-weight: 700; color: #1A1A1A; margin-bottom: 4px; }
-  .product-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 12px; }
-  .product-btn {
-    display: inline-block;
-    font-family: 'Heebo', sans-serif;
-    font-size: 13px; font-weight: 700;
-    padding: 8px 20px; border-radius: 50px;
-    border: 1.5px solid #F07A57; color: #F07A57;
-    background: transparent;
-    text-decoration: none; cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
-  .product-btn:hover { background: #F07A57; color: #fff; }
-
-  .coming-soon {
-    display: inline-block;
-    font-size: 12px; color: #aaa;
-    border: 1.5px solid #eee;
-    padding: 7px 18px; border-radius: 50px;
-    font-weight: 600;
-  }
-
-  /* ── SERVICES ── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .service-card {
-    display: flex; flex-direction: column;
-    background: #FAFAFA;
-    border: 1px solid #f0f0f0;
-    border-radius: 20px;
-    padding: 28px 22px 22px;
-    text-decoration: none; color: #1A1A1A;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
-  }
-  .service-card:hover {
-    border-color: #F07A57;
-    box-shadow: 0 6px 24px rgba(240,122,87,0.12);
-    transform: translateY(-2px);
-  }
-  .service-card.main-service {
-    background: #1A1A1A; border-color: #1A1A1A; color: #fff;
-    grid-column: span 2;
-    flex-direction: row; align-items: center; gap: 20px;
-  }
-  .service-card.main-service:hover { background: #222; transform: none; box-shadow: none; }
-
-  .service-icon {
-    font-size: 36px; margin-bottom: 16px;
-    display: block;
-  }
-  .main-service .service-icon { font-size: 32px; margin-bottom: 0; flex-shrink: 0; }
-
-  .service-tag {
-    display: inline-block;
-    background: #FDF0EC; color: #F07A57;
-    font-size: 11px; font-weight: 700;
-    padding: 4px 12px; border-radius: 20px;
+    padding: 20px;
     margin-bottom: 10px;
   }
-  .main-service .service-tag { background: rgba(240,122,87,0.2); }
-
-  .service-info { flex: 1; }
-  .service-name { font-size: 17px; font-weight: 900; margin-bottom: 6px; color: #1A1A1A; }
-  .main-service .service-name { color: #fff; font-size: 19px; }
-  .service-sub { font-size: 13px; color: #888; line-height: 1.6; }
-  .main-service .service-sub { color: rgba(255,255,255,0.55); }
-
-  .service-arrow {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 13px; font-weight: 700;
-    color: #F07A57;
+  .optin-top {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
   }
-  .main-service .service-arrow { color: rgba(255,255,255,0.5); margin-top: 0; margin-right: auto; flex-shrink: 0; font-size: 20px; }
-
-  @media (max-width: 480px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card.main-service { grid-column: span 1; }
+  .optin-icon {
+    font-size: 24px;
+    width: 44px; height: 44px;
+    background: rgba(240,122,87,0.15); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
+  .optin-title { font-size: 16px; font-weight: 700; color: #fff; }
+  .optin-desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top:2px; }
+  .optin-form { display: flex; gap: 8px; }
+  .optin-input {
+    flex: 1; padding: 12px 14px;
+    border: none; border-radius: 10px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px; direction: rtl;
+    background: rgba(255,255,255,0.1); color: #fff;
+  }
+  .optin-input::placeholder { color: rgba(255,255,255,0.35); }
+  .optin-input:focus { outline: none; background: rgba(255,255,255,0.15); }
+  .optin-btn {
+    background: #F07A57; color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px; font-weight: 700;
+    padding: 12px 18px; border-radius: 10px;
+    border: none; cursor: pointer; white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .optin-btn:hover { opacity: 0.9; }
+  .optin-note { font-size: 11px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 8px; }
 
-  /* ── FOOTER ── */
   footer {
-    background: #1A1A1A;
-    padding: 28px 24px;
     text-align: center;
-    font-size: 12px; color: rgba(255,255,255,0.3);
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 480px) {
-    .hero { padding: 48px 20px 44px; }
-    .section, .inner { padding: 48px 20px; }
-    .free-card { padding: 28px 20px; }
-    .about-grid { grid-template-columns: 80px 1fr; gap: 16px; }
-    .about-photo { width: 80px; height: 80px; font-size: 24px; }
+    font-size: 12px; color: #ccc;
+    margin-top: 40px;
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div>
-    <div class="logo-em">EM</div>
-    <div class="logo-sub">Elisheva Meyer</div>
+<div class="page-wrap">
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <img src="elisheva.jpeg" alt="אלישבע מייער" class="profile-photo">
+    <div class="profile-name">אלישבע מייער</div>
+    <div class="profile-title">אדריכלית סושייאל | מודיעין</div>
+    <p class="profile-about">
+      עוזרת לבעלות עסקים להפוך את האינסטגרם לכלי שמביא פניות ולקוחות — עם אסטרטגיה ברורה, מסר חד ותוכן שמוכר.
+    </p>
   </div>
-</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-photo">
-    <img src="elisheva.jpeg" alt="אלישבע מייער">
-  </div>
-  <div class="hero-name">אלישבע מייער</div>
-  <div class="hero-role">אסטרטגית סושיאל | אינסטגרם לעסקים</div>
-  <p class="hero-bio">
-    עוזרת לבעלות עסקים להפוך את האינסטגרם<br>
-    ל<strong>כלי שמביא פניות ולקוחות</strong> —<br>
-    עם מסר ברור, אסטרטגיה חדה ותוכן שמוכר.
-  </p>
-  <a href="reset.html" class="hero-cta">קביעת פגישת RESET 👉</a>
-  <p class="hero-note">מספר מקומות מוגבל בחודש</p>
-</section>
+  <!-- FREE PRODUCT -->
+  <div class="section-label">מתנה חינמית</div>
 
-<!-- ABOUT -->
-<div class="section">
-  <div class="s-tag">קצת עליי</div>
-  <h2 class="big-greeting">נעים מאוד, אלישבע.</h2>
-  <p class="about-para">
-    אני מנהלת סושיאל ואסטרטגית תוכן, אבל לפני הכל — אני מאמינה בבני אדם ובחיבור אמיתי.
-    הרבה פעמים שואלים אותי: "אלישבע, למה אי אפשר פשוט להעלות תמונה ונגמר?"
-    והתשובה שלי תמיד זהה: <strong>כי בלי יסודות, הבית לא יחזיק.</strong>
-  </p>
-  <p class="about-para">
-    אני מאמינה שכל עסק טוב חייב קודם כל <strong>אסטרטגיה חזקה</strong> — לשבת ולהגדיר מה החזון,
-    מה המטרות הריאליות, ורק אז לבנות את הקו השיווקי שמביא תוצאות.
-  </p>
-  <p class="about-para">
-    אני כאן כדי לדבר אלייך ואל הלקוחות שלך <strong>בגובה העיניים.</strong>
-    המטרה שלי היא להפוך אותך למספר 1 בתחומך —
-    כי התוצאה שלך היא השם שלי.
-  </p>
-</div>
-
-<!-- FREE PRODUCT -->
-<div class="section-alt">
-  <div class="inner">
-    <div class="s-tag dark">מתנה ממני</div>
-    <h2>צ'קליסט חינמי</h2>
-    <p class="sub">ביו שמוכר — 5 שלבים פשוטים שכל עסק צריך לדעת</p>
-
-    <div class="free-card">
-      <div class="free-badge">חינם לגמרי</div>
-      <h3>ביו <span>שמביא לקוחות</span><br>ב-5 שלבים</h3>
-      <p>150 תווים שאנשים קוראים ומייד יודעים מה לעשות — לא עוד ביו שלא מספר כלום</p>
-
-      <div class="checklist-steps">
-        <div class="checklist-step"><div class="step-num">1</div>מה את עושה (לא מי את)</div>
-        <div class="checklist-step"><div class="step-num">2</div>למי את עוזרת בדיוק</div>
-        <div class="checklist-step"><div class="step-num">3</div>התוצאה שהלקוחה מקבלת</div>
-        <div class="checklist-step"><div class="step-num">4</div>הוכחה / ייחוד שלך</div>
-        <div class="checklist-step"><div class="step-num">5</div>CTA ברור עם חץ לקישור</div>
-      </div>
-
-      <form class="email-form" onsubmit="handleFree(event)">
-        <input class="email-input" type="email" id="freeEmail" placeholder="המייל שלך — ואשלח לך עכשיו" required>
-        <button type="submit" class="email-submit">שלחי לי את הצ'קליסט 📩</button>
-      </form>
-      <p class="email-note">ללא ספאם. רק תוכן שעובד.</p>
-    </div>
-  </div>
-</div>
-
-<!-- PRODUCTS -->
-<div class="section">
-  <div class="s-tag">מוצרים דיגיטליים</div>
-  <h2>כלים שיעזרו לך להתקדם</h2>
-  <p class="sub">גם בלי ליווי — יש לי כלים שיתנו לך כיוון מיידי</p>
-
-  <div class="products-grid">
-
-    <!-- Paid product -->
-    <div class="product-card">
-      <div class="product-icon">📘</div>
-      <div class="product-info">
-        <div class="product-tag">מדריך דיגיטלי</div>
-        <div class="product-name">אינסטגרם מושלם</div>
-        <div class="product-desc">המדריך המלא לבניית אינסטגרם שמוכר — אסטרטגיה, תוכן, פרופיל וכל מה שבניהם. <strong style="color:#F07A57;">59 ₪</strong></div>
-        <a href="instagram-mushlam.html" class="product-btn">לרכישה →</a>
+  <div class="optin-card">
+    <div class="optin-top">
+      <div class="optin-icon">📋</div>
+      <div>
+        <div class="optin-title">הביו המושלם</div>
+        <div class="optin-desc">צ'קליסט חינמי — 5 דברים שכל ביו חזק חייב לכלול</div>
       </div>
     </div>
-
-    <!-- Gantt product -->
-    <div class="product-card">
-      <div class="product-icon">📅</div>
-      <div class="product-info">
-        <div class="product-tag">שירות מותאם אישית</div>
-        <div class="product-name">גאנט תוכן חודשי</div>
-        <div class="product-desc">תכנון תוכן חודשי מותאם לעסק שלך — יודעת בדיוק מה לפרסם כל יום, בלי לנחש</div>
-        <a href="gantt-questionnaire.html" class="product-btn">לשאלון חינמי →</a>
-      </div>
-    </div>
-
+    <form class="optin-form" onsubmit="handleFree(event)">
+      <input class="optin-input" type="email" id="freeEmail" placeholder="המייל שלך" required>
+      <button type="submit" class="optin-btn" id="freeBtn">שלחי לי 📩</button>
+    </form>
+    <p class="optin-note">ללא ספאם · גישה מיידית</p>
   </div>
-</div>
 
-<!-- SERVICES -->
-<div class="section-alt">
-  <div class="inner">
-    <div class="s-tag">השירותים שלי</div>
-    <h2>עבודה ישירה איתי</h2>
-    <p class="sub">מהצעד הראשון ועד ניהול מלא — יש מסלול מתאים לכל שלב</p>
+  <!-- PAID PRODUCTS -->
+  <div class="section-label">מוצרים דיגיטליים</div>
 
-    <div class="services-grid">
-
-      <!-- RESET — main CTA -->
-      <a href="reset.html" class="service-card main-service">
-        <span class="service-icon">🎯</span>
-        <div class="service-info">
-          <div class="service-tag">אבחון מיידי</div>
-          <div class="service-name">RESET — פגישת 1:1</div>
-          <div class="service-sub">שעה שבה סודרים את העסק והאינסטגרם, נזהה מה לא עובד ונצא עם כיוון ברור ופוסטים ליישם מיד.</div>
-        </div>
-        <span class="service-arrow">←</span>
-      </a>
-
-      <a href="buildup.html" class="service-card">
-        <span class="service-icon">🏗️</span>
-        <div class="service-tag">בניית יסודות</div>
-        <div class="service-name">BUILD UP</div>
-        <div class="service-sub">4 פגישות לבניית תשתית שיווקית מלאה, מגדירים קהל עד עומק, יוצרים מיצוב ובונים תכנית פעולה ישימה.</div>
-        <span class="service-arrow">לפרטים ←</span>
-      </a>
-
-      <a href="letsgrow.html" class="service-card">
-        <span class="service-icon">📈</span>
-        <div class="service-tag">ליווי חודשי</div>
-        <div class="service-name">LET'S GROW</div>
-        <div class="service-sub">כבר יש לך כיוון? אני לצדך כל חודש — תכנון תוכן, פידבק ודיוק מסרים כדי שזה יביא תוצאות.</div>
-        <span class="service-arrow">לפרטים ←</span>
-      </a>
-
-      <a href="doneforyou.html" class="service-card">
-        <span class="service-icon">✨</span>
-        <div class="service-tag">ניהול מלא</div>
-        <div class="service-name">DONE FOR YOU</div>
-        <div class="service-sub">את מתמקדת בעסק, אני מנהלת את האינסטגרם — אסטרטגיה, כתיבה, תוכן והעלאה.</div>
-        <span class="service-arrow">לפרטים ←</span>
-      </a>
-
+  <a href="instagram-mushlam.html" class="link-card">
+    <div class="card-icon">📘</div>
+    <div class="card-body">
+      <div class="card-title">אינסטגרם מושלם</div>
+      <div class="card-desc">המדריך המלא לאינסטגרם שמביא לקוחות</div>
     </div>
-  </div>
-</div>
+    <div class="card-price">59 ₪</div>
+    <div class="card-arrow">›</div>
+  </a>
 
-<!-- FOOTER -->
-<footer>
-  © 2025 אלישבע מייער | אדריכלית סושייאל
-</footer>
+  <a href="gantt-questionnaire.html" class="link-card">
+    <div class="card-icon">📅</div>
+    <div class="card-body">
+      <div class="card-title">גאנט תוכן חודשי</div>
+      <div class="card-desc">תוכנית תוכן אישית — מותאמת לעסק שלך</div>
+    </div>
+    <div class="card-price">200 ₪</div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- SERVICES -->
+  <div class="section-label">שירותים</div>
+
+  <a href="reset.html" class="link-card">
+    <div class="card-icon">⚡</div>
+    <div class="card-body">
+      <div class="card-title">פגישת RESET</div>
+      <div class="card-desc">שיחת 1:1 לסדר המסר, האסטרטגיה והתוכן — שעה אחת</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="buildup.html" class="link-card">
+    <div class="card-icon">🏗️</div>
+    <div class="card-body">
+      <div class="card-title">BUILD UP</div>
+      <div class="card-desc">4 פגישות לבניית תשתית שיווקית מלאה</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="letsgrow.html" class="link-card">
+    <div class="card-icon">🌱</div>
+    <div class="card-body">
+      <div class="card-title">LET'S GROW</div>
+      <div class="card-desc">ליווי חודשי לתוצאות — 2 פגישות + תוכן</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="doneforyou.html" class="link-card">
+    <div class="card-icon">✅</div>
+    <div class="card-body">
+      <div class="card-title">DONE FOR YOU</div>
+      <div class="card-desc">ניהול מקצועי מלא של האינסטגרם שלך</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
+
+</div>
 
 <script>
 function handleFree(e) {
   e.preventDefault();
   const email = document.getElementById('freeEmail').value;
-  const btn = e.target.querySelector('.email-submit');
-  btn.textContent = '...שולחת';
+  const btn = document.getElementById('freeBtn');
+  btn.textContent = '...';
   btn.disabled = true;
 
   fetch('https://cp.responder.live/api/v1.0/subscribers', {
@@ -504,5 +261,6 @@ function handleFree(e) {
   });
 }
 </script>
+
 </body>
 </html>
