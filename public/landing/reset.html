@@ -59,11 +59,11 @@
   .price-note { font-size:12px; color:rgba(255,255,255,0.3); text-align:center; margin-top:12px; }
 
   /* ABOUT */
-  .about { padding:56px 0; display:flex; gap:24px; align-items:center; border-bottom:1px solid #f3f3f3; }
-  .about-photo { width:72px; height:72px; border-radius:50%; object-fit:cover; flex-shrink:0; }
-  .about-name { font-size:17px; font-weight:900; margin-bottom:4px; }
-  .about-title { font-size:12px; color:#F07A57; font-weight:600; margin-bottom:10px; }
-  .about-text { font-size:14px; color:#666; line-height:1.7; }
+  .about { padding:56px 0; border-bottom:1px solid #f3f3f3; }
+  .about-photo { width:100%; max-width:320px; height:340px; border-radius:16px; object-fit:cover; object-position:top; display:block; margin:0 auto 28px; }
+  .about-name { font-size:22px; font-weight:900; margin-bottom:4px; }
+  .about-title { font-size:12px; color:#F07A57; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:18px; }
+  .about-text { font-size:15px; color:#555; line-height:1.9; }
 
   /* FAQ */
   .faq-item { padding:20px 0; border-bottom:1px solid #f0f0f0; }
@@ -183,12 +183,17 @@
 
   <!-- ABOUT -->
   <div class="about">
+    <div class="section-label">מי אני</div>
     <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/elisheva.jpeg" alt="אלישבע מייער" class="about-photo">
-    <div>
-      <div class="about-name">אלישבע מייער</div>
-      <div class="about-title">אדריכלית סושייאל</div>
-      <p class="about-text">עוזרת לנותנות שירות להפוך תוכן ללקוחות משלמים — עם סדר, אסטרטגיה ומסר ברור.</p>
-    </div>
+    <div class="about-name">אלישבע מייער</div>
+    <div class="about-title">אדריכלית סושייאל</div>
+    <p class="about-text">
+      אני אלישבע — אסטרטגיסטית תוכן ומנהלת מדיה חברתית, ועוזרת לבעלות עסקים שיודעות מה הן שוות — אבל מתקשות להעביר את זה דרך האינסטגרם.
+      <br><br>
+      עבדתי עם עשרות נותנות שירות שפרסמו בקביעות, ראו מעט מאוד תוצאות — עד שהבנו יחד מה חסר: מסר ברור, אסטרטגיה מכוונת לקוח, ותוכן שמוכר בלי להרגיש כמו מכירה.
+      <br><br>
+      פגישת RESET היא המקום שבו אנחנו מסדרות את הבלגן ומתחילות לנוע בכיוון הנכון.
+    </p>
   </div>
 
   <!-- FAQ -->
