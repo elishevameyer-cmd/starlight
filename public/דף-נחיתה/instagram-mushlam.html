@@ -120,23 +120,24 @@
 
   /* MODULES */
   .modules-grid {
-    display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    display: flex; flex-direction: column; gap: 10px;
   }
   .module-card {
-    background:#fff; border:1px solid #f0f0f0; border-radius:16px;
-    padding:22px 20px;
-    transition:border-color 0.2s, box-shadow 0.2s;
+    background:#fff; border:1.5px solid #f0f0f0; border-radius:16px;
+    padding:18px 20px;
+    display: flex; align-items: flex-start; gap: 16px;
+    transition:border-color 0.2s;
   }
-  .module-card:hover { border-color:#F07A57; box-shadow:0 4px 20px rgba(240,122,87,0.1); }
+  .module-card:hover { border-color:#F07A57; }
   .module-num {
-    display:inline-block;
-    background:#FDF0EC; color:#F07A57;
-    font-size:13px; font-weight:900;
-    width:36px; height:36px; border-radius:50%;
+    width:42px; height:42px; border-radius:12px;
+    background:#F07A57; color:#fff;
+    font-size:17px; font-weight:900;
     display:flex; align-items:center; justify-content:center;
-    margin-bottom:12px;
+    flex-shrink: 0;
   }
-  .module-title { font-size:16px; font-weight:700; color:#1A1A1A; margin-bottom:6px; }
+  .module-content { flex: 1; }
+  .module-title { font-size:16px; font-weight:700; color:#1A1A1A; margin-bottom:4px; }
   .module-desc { font-size:13px; color:#888; line-height:1.6; }
 
   .bonus-card {
@@ -342,33 +343,45 @@
     <div class="modules-grid">
       <div class="module-card">
         <div class="module-num">1</div>
-        <div class="module-title">הפרופיל המנצח</div>
-        <div class="module-desc">ביו, תמונת פרופיל, הייליטס — כל מה שגורם לה להישאר ולעקוב</div>
+        <div class="module-content">
+          <div class="module-title">הפרופיל המנצח</div>
+          <div class="module-desc">ביו, תמונת פרופיל, הייליטס — כל מה שגורם לה להישאר ולעקוב</div>
+        </div>
       </div>
       <div class="module-card">
         <div class="module-num">2</div>
-        <div class="module-title">אסטרטגיית תוכן</div>
-        <div class="module-desc">5 עמודי תוכן שיוצרים אמון, סמכות ורצון לקנות ממך</div>
+        <div class="module-content">
+          <div class="module-title">אסטרטגיית תוכן</div>
+          <div class="module-desc">5 עמודי תוכן שיוצרים אמון, סמכות ורצון לקנות ממך</div>
+        </div>
       </div>
       <div class="module-card">
         <div class="module-num">3</div>
-        <div class="module-title">כיתובים שמוכרים</div>
-        <div class="module-desc">הנוסחה לכיתוב שגורם לאנשים לקרוא, לשמור ולכתוב לך</div>
+        <div class="module-content">
+          <div class="module-title">כיתובים שמוכרים</div>
+          <div class="module-desc">הנוסחה לכיתוב שגורם לאנשים לקרוא, לשמור ולכתוב לך</div>
+        </div>
       </div>
       <div class="module-card">
         <div class="module-num">4</div>
-        <div class="module-title">סטוריז שמניעות לפעולה</div>
-        <div class="module-desc">מה לפרסם בסטוריז כדי שיפנו אלייך — לא רק יצפו</div>
+        <div class="module-content">
+          <div class="module-title">סטוריז שמניעות לפעולה</div>
+          <div class="module-desc">מה לפרסם בסטוריז כדי שיפנו אלייך — לא רק יצפו</div>
+        </div>
       </div>
       <div class="module-card">
         <div class="module-num">5</div>
-        <div class="module-title">לוח תוכן חודשי</div>
-        <div class="module-desc">גאנט מסודר שיגיד לך בדיוק מה לפרסם כל יום — בלי לנחש</div>
+        <div class="module-content">
+          <div class="module-title">לוח תוכן חודשי</div>
+          <div class="module-desc">גאנט מסודר שיגיד לך בדיוק מה לפרסם כל יום — בלי לנחש</div>
+        </div>
       </div>
       <div class="module-card">
         <div class="module-num">6</div>
-        <div class="module-title">האשטגים + תזמון</div>
-        <div class="module-desc">מתי לפרסם, איך לבחור האשטגים ואיך לשמור על עקביות</div>
+        <div class="module-content">
+          <div class="module-title">האשטגים + תזמון</div>
+          <div class="module-desc">מתי לפרסם, איך לבחור האשטגים ואיך לשמור על עקביות</div>
+        </div>
       </div>
     </div>
 
