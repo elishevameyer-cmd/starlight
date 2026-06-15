@@ -522,8 +522,7 @@
         </div>
         <p class="price-note">מחיר מבצע · תשלום חד-פעמי</p>
 
-        <!-- TODO: החליפי את href="#" בקישור GROW שלך -->
-        <a href="#" class="pay-btn" id="payBtn">לתשלום מאובטח 👉</a>
+        <a href="https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ" class="pay-btn" id="payBtn">לתשלום מאובטח 👉</a>
         <div class="pay-secure">תשלום מאובטח | פרטים נשמרים מוצפנים</div>
       </div>
 
@@ -637,9 +636,7 @@ function buildPaymentLink() {
   const phone = document.getElementById('contactPhone').value.trim();
   const business = document.getElementById('businessName').value.trim();
 
-  // TODO: Replace # with your GROW payment link
-  // Example: https://grow.me/your-link?name=NAME&phone=PHONE
-  const base = '#'; // ← החליפי בקישור GROW שלך
+  const base = 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ';
   const url = base + (base.includes('?') ? '&' : '?') +
     `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&business=${encodeURIComponent(business)}`;
 
