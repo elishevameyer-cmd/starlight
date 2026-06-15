@@ -1,0 +1,39 @@
+---
+title: ברוכים הבאים ל-Starlight
+description: התחילו לבנות את אתר התיעוד שלכם עם Starlight.
+template: splash
+hero:
+  tagline: ברכות על הקמת פרויקט Starlight חדש!
+  image:
+    file: ../../../assets/houston.webp
+  actions:
+    - text: מדריך לדוגמה
+      link: /he/guides/example/
+      icon: right-arrow
+    - text: קרא את תיעוד Starlight
+      link: https://starlight.astro.build
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## צעדים הבאים
+
+<CardGrid stagger>
+	<Card title="עדכון תוכן" icon="pencil">
+		ערוך את `src/content/docs/he/index.mdx` כדי לראות את השינויים בדף.
+	</Card>
+	<Card title="שינוי פריסת הדף" icon="document">
+		מחק את `template: splash` כדי להציג סרגל צד בדף זה.
+	</Card>
+	<Card title="הוספת תוכן חדש" icon="add-document">
+		הוסף קבצי Markdown או MDX לתיקייה `src/content/docs/he` ליצירת דפים חדשים.
+	</Card>
+	<Card title="הגדרת האתר" icon="setting">
+		ערוך את `sidebar` והגדרות אחרות בקובץ `astro.config.mjs`.
+	</Card>
+	<Card title="קרא את התיעוד" icon="open-book">
+		למד עוד ב[תיעוד Starlight](https://starlight.astro.build/).
+	</Card>
+</CardGrid>
