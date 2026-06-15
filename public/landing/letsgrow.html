@@ -8,185 +8,221 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Heebo',sans-serif; direction:rtl; background:#fff; color:#1A1A1A; }
-  header { padding:24px 40px; display:flex; justify-content:center; border-bottom:1px solid #f0f0f0; }
-  .logo-wrap { text-align:center; }
-  .logo-em { font-size:28px; font-weight:900; color:#1A1A1A; }
-  .logo-sub { font-size:10px; font-weight:500; letter-spacing:3px; color:#aaa; text-transform:uppercase; }
-
-  .hero { background:#1A1A1A; padding:72px 32px; text-align:center; position:relative; overflow:hidden; }
-  .hero::before { content:""; position:absolute; width:300px; height:300px; border-radius:50%; background:rgba(240,122,87,0.07); bottom:-100px; right:-80px; }
-  .tag { display:inline-block; background:rgba(240,122,87,0.15); color:#F07A57; font-size:13px; font-weight:700; padding:6px 20px; border-radius:20px; margin-bottom:24px; }
-  .hero h1 { font-size:52px; font-weight:900; color:#fff; line-height:1.15; margin-bottom:20px; }
+  .container { max-width:640px; margin:0 auto; padding:0 24px; }
+  header { padding:20px 24px; text-align:center; border-bottom:1px solid #f0f0f0; }
+  .back-link { font-size:13px; color:#999; text-decoration:none; }
+  .back-link:hover { color:#1A1A1A; }
+  .hero { background:#1A1A1A; padding:64px 24px 56px; text-align:center; }
+  .hero-label { font-size:11px; font-weight:700; letter-spacing:3px; color:#F07A57; text-transform:uppercase; margin-bottom:20px; }
+  .hero h1 { font-size:40px; font-weight:900; color:#fff; line-height:1.2; margin-bottom:20px; }
   .hero h1 span { color:#F07A57; }
-  .hero-sub { font-size:17px; color:rgba(255,255,255,0.6); max-width:540px; margin:0 auto; line-height:1.8; font-weight:300; }
-  .hero-note { font-size:13px; color:#F07A57; margin-top:24px; font-weight:600; }
-
-  .section { max-width:860px; margin:0 auto; padding:64px 32px; }
-  .section-alt { background:#FAFAFA; }
-  .section-alt .si { max-width:860px; margin:0 auto; padding:64px 32px; }
-  .stag { display:inline-block; background:#FDF0EC; color:#F07A57; font-size:13px; font-weight:700; padding:6px 18px; border-radius:20px; margin-bottom:14px; }
-  .section h2, .si h2 { font-size:32px; font-weight:900; color:#1A1A1A; margin-bottom:32px; }
-
-  .for-who-text { font-size:18px; color:#333; line-height:1.8; background:#FDF0EC; border-right:4px solid #F07A57; padding:22px 26px; border-radius:4px; }
-
-  .get-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
-  .get-list li { display:flex; align-items:flex-start; gap:12px; font-size:16px; color:#333; line-height:1.6; padding:14px 18px; background:#fff; border-radius:10px; border:1px solid #f0f0f0; }
-  .get-list li::before { content:"✓"; color:#F07A57; font-weight:900; font-size:18px; flex-shrink:0; margin-top:1px; }
-
-  .meetings-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:32px; }
-  .meeting-card { background:#1A1A1A; border-radius:14px; padding:24px; }
-  .meeting-num { font-size:12px; color:#F07A57; font-weight:700; letter-spacing:1px; margin-bottom:10px; text-transform:uppercase; }
-  .meeting-title { font-size:17px; font-weight:700; color:#fff; margin-bottom:8px; }
-  .meeting-desc { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6; }
-
-  .fw-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .fw-item { background:#fff; border-radius:12px; padding:18px; border:1px solid #f0f0f0; display:flex; gap:12px; }
-  .fw-icon { font-size:22px; flex-shrink:0; }
-  .fw-title { font-size:14px; font-weight:700; color:#1A1A1A; margin-bottom:3px; }
-  .fw-desc { font-size:13px; color:#888; line-height:1.5; }
-
-  .note-box { background:#FDF0EC; border-radius:12px; padding:22px 26px; border-right:4px solid #F07A57; }
-  .note-title { font-size:15px; font-weight:700; color:#1A1A1A; margin-bottom:10px; }
-  .note-list { list-style:none; }
-  .note-list li { font-size:14px; color:#555; padding:4px 0; display:flex; gap:8px; }
-  .note-list li::before { content:"•"; color:#F07A57; font-weight:900; }
-
-  .outcomes-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .outcome { background:#1A1A1A; border-radius:12px; padding:20px; }
-  .outcome-icon { font-size:24px; margin-bottom:10px; }
-  .outcome-text { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.6; }
-
-  .contact { background:#1A1A1A; padding:72px 32px; }
-  .contact-inner { max-width:540px; margin:0 auto; text-align:center; }
-  .contact-tag { display:inline-block; background:rgba(240,122,87,0.15); color:#F07A57; font-size:13px; font-weight:700; padding:6px 20px; border-radius:20px; margin-bottom:20px; }
-  .contact-inner h2 { font-size:32px; font-weight:900; color:#fff; margin-bottom:12px; line-height:1.3; }
-  .contact-inner h2 span { color:#F07A57; }
-  .contact-sub { font-size:16px; color:rgba(255,255,255,0.5); margin-bottom:36px; font-weight:300; line-height:1.7; }
-  .cf-form { text-align:right; }
-  .cf-group { margin-bottom:14px; }
-  .cf-group label { display:block; font-size:13px; color:rgba(255,255,255,0.6); font-weight:500; margin-bottom:5px; }
-  .cf-group input, .cf-group textarea { width:100%; padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.07); color:#fff; font-family:'Heebo',sans-serif; font-size:15px; outline:none; direction:rtl; transition:border 0.2s; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.5); line-height:1.9; max-width:480px; margin:0 auto 36px; font-weight:300; }
+  .hero-btn { display:inline-block; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px 36px; border-radius:12px; text-decoration:none; }
+  .section { padding:56px 0; border-bottom:1px solid #f3f3f3; }
+  .section:last-of-type { border-bottom:none; }
+  .section-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#ccc; text-transform:uppercase; margin-bottom:14px; }
+  .section h2 { font-size:28px; font-weight:900; line-height:1.3; margin-bottom:32px; }
+  .lead-text { font-size:15px; color:#444; line-height:1.9; }
+  .clean-list { list-style:none; }
+  .clean-list li { font-size:15px; color:#444; line-height:1.7; padding:14px 0; border-bottom:1px solid #f3f3f3; padding-right:20px; position:relative; }
+  .clean-list li:last-child { border-bottom:none; }
+  .clean-list li::before { content:"—"; position:absolute; right:0; color:#F07A57; font-weight:700; }
+  .num-list { list-style:none; }
+  .num-list li { display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #f3f3f3; align-items:flex-start; }
+  .num-list li:last-child { border-bottom:none; }
+  .num { font-size:13px; font-weight:900; color:#F07A57; letter-spacing:1px; flex-shrink:0; padding-top:3px; min-width:28px; }
+  .num-body strong { display:block; font-size:16px; font-weight:700; margin-bottom:6px; }
+  .num-body p { font-size:14px; color:#777; line-height:1.7; }
+  .note-box { background:#faf7f5; border-radius:14px; padding:24px 22px; border-right:3px solid #F07A57; }
+  .note-box strong { display:block; font-size:15px; font-weight:700; margin-bottom:14px; }
+  .note-box ul { list-style:none; }
+  .note-box ul li { font-size:14px; color:#555; padding:6px 0; display:flex; gap:10px; }
+  .note-box ul li::before { content:"—"; color:#F07A57; font-weight:700; }
+  .check-list { list-style:none; margin-bottom:28px; }
+  .check-list li { font-size:14px; color:rgba(255,255,255,0.8); padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; gap:12px; align-items:flex-start; }
+  .check-list li:last-child { border-bottom:none; }
+  .check-list li::before { content:"✓"; color:#F07A57; font-weight:900; flex-shrink:0; }
+  .price-box { background:#1A1A1A; border-radius:16px; padding:40px 32px; }
+  .price-box .price-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#F07A57; text-transform:uppercase; margin-bottom:20px; }
+  .price-box h3 { font-size:22px; font-weight:900; color:#fff; margin-bottom:8px; }
+  .price-box .price-sub { font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:32px; }
+  .price-cta { display:block; width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:12px; border:none; cursor:pointer; text-align:center; text-decoration:none; }
+  .price-note { font-size:12px; color:rgba(255,255,255,0.3); text-align:center; margin-top:12px; }
+  .faq-item { padding:20px 0; border-bottom:1px solid #f0f0f0; }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-q { font-size:15px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+  .faq-q::after { content:"＋"; color:#ccc; font-weight:300; font-size:20px; flex-shrink:0; }
+  .faq-q.open::after { content:"－"; }
+  .faq-a { font-size:14px; color:#777; line-height:1.8; margin-top:12px; display:none; }
+  .faq-a.open { display:block; }
+  .contact-section { background:#1A1A1A; padding:64px 24px; }
+  .contact-section .container { text-align:center; }
+  .contact-section .section-label { color:rgba(255,255,255,0.3); }
+  .contact-section h2 { font-size:30px; font-weight:900; color:#fff; margin-bottom:10px; line-height:1.3; }
+  .contact-section h2 span { color:#F07A57; }
+  .contact-sub { font-size:14px; color:rgba(255,255,255,0.4); margin-bottom:36px; }
+  .cf-group { margin-bottom:14px; text-align:right; }
+  .cf-group label { display:block; font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:6px; }
+  .cf-group input, .cf-group textarea { width:100%; padding:13px 15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.07); color:#fff; font-family:'Heebo',sans-serif; font-size:14px; outline:none; direction:rtl; }
   .cf-group textarea { height:90px; resize:none; }
-  .cf-group input::placeholder, .cf-group textarea::placeholder { color:rgba(255,255,255,0.25); }
+  .cf-group input::placeholder, .cf-group textarea::placeholder { color:rgba(255,255,255,0.2); }
   .cf-group input:focus, .cf-group textarea:focus { border-color:#F07A57; }
-  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:17px; font-weight:700; padding:16px; border-radius:50px; border:none; cursor:pointer; margin-top:8px; }
-  .cf-submit:hover { opacity:0.9; }
-  .cf-note { font-size:12px; color:rgba(255,255,255,0.25); margin-top:12px; text-align:center; }
-
-  footer { background:#1A1A1A; padding:24px; text-align:center; font-size:12px; color:rgba(255,255,255,0.3); border-top:1px solid rgba(255,255,255,0.07); }
-
-  @media(max-width:680px) {
-    .hero h1 { font-size:36px; }
-    .meetings-grid, .fw-grid, .outcomes-grid { grid-template-columns:1fr; }
-    header { padding:20px 24px; }
-  }
+  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:12px; border:none; cursor:pointer; margin-top:8px; }
+  .cf-note { font-size:11px; color:rgba(255,255,255,0.2); text-align:center; margin-top:12px; }
+  footer { text-align:center; font-size:11px; color:#bbb; padding:28px 24px; background:#1A1A1A; border-top:1px solid rgba(255,255,255,0.06); }
+  @media(max-width:480px) { .hero h1 { font-size:32px; } }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-wrap">
-    <div class="logo-em">EM</div>
-    <div class="logo-sub">Elisheva Meyer</div>
-  </div>
+  <a href="index.html" class="back-link">← חזרה</a>
 </header>
 
-<section class="hero">
-  <div class="tag">ליווי חודשי והטמעה</div>
+<div class="hero">
+  <div class="hero-label">ליווי חודשי</div>
   <h1>LET'S GROW —<br><span>עכשיו מתחילות לעבוד</span></h1>
-  <p class="hero-sub">יש לך כבר כיוון — אבל לבד, קשה להתמיד. הליווי הזה כאן כדי שתמשיכי קדימה: גאנט מסודר, פידבק לפני העלאה, וכיוון שבועי שמפנה פניות אמיתיות.</p>
-  <p class="hero-note">זה לא "בסיסי". זה השלב שבו הכל קורה.</p>
-</section>
-
-<div class="section">
-  <div class="stag">למי זה מתאים</div>
-  <p class="for-who-text">
-    לעסק שיש לו כבר כיוון — אסטרטגיה, מסר, ידע — אבל לבד קשה להתמיד ולראות תוצאות בפועל.<br><br>
-    את יודעת מה לפרסם. אבל כל שבוע מחדש יש ספקות: "האם זה מספיק טוב?" "האם זה הכיוון הנכון?" "למה עוד לא מגיעות פניות?"<br><br>
-    LET'S GROW הוא ליווי חודשי שנותן לך גב — גאנט מסודר, פידבק לפני שמעלים, ואני לצידך כל השבוע לדייק ולכוון.
-  </p>
+  <p class="hero-sub">יש לך כבר כיוון — אבל לבד, קשה להתמיד. הליווי הזה כאן כדי שתמשיכי קדימה: גאנט מסודר, פידבק לפני העלאה, וכיוון שבועי שמביא פניות.</p>
+  <a href="#contact" class="hero-btn">אני רוצה לשמוע פרטים</a>
 </div>
 
-<div class="section-alt">
-  <div class="si">
-    <div class="stag">מה כלול</div>
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">למי זה מתאים</div>
+    <h2>לעסק שיש לו כיוון —<br>אבל קשה להתמיד לבד</h2>
+    <p class="lead-text">
+      את יודעת מה לפרסם. אבל כל שבוע מחדש יש ספקות: "האם זה מספיק טוב?" "האם זה הכיוון הנכון?" "למה עוד לא מגיעות פניות?"
+      <br><br>
+      LET'S GROW הוא ליווי חודשי שנותן לך גב — גאנט מסודר, פידבק לפני שמעלים, ואני לצידך לאורך כל החודש לדייק ולכוון.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">מה כלול</div>
     <h2>מה את מקבלת בחודש</h2>
-    <ul class="get-list">
-      <li>תכנית תוכן חודשית — גאנט מסודר שאת יודעת בדיוק מה מעלים ומתי, בלי להמציא כל שבוע מחדש</li>
+    <ul class="clean-list">
+      <li>תכנית תוכן חודשית — גאנט מסודר, יודעת בדיוק מה מעלים ומתי</li>
       <li>כיוון שבועי לסטוריז — לא "מה לכתוב", אלא מה יגרום לה לכתוב לך</li>
-      <li>פידבק על תכנים לפני העלאה — עוברים יחד, מדייקים ומשפרים לפני שזה יוצא לאוויר</li>
-      <li>דיוק מסרים תוך כדי תנועה — מה שעובד מחזקים, מה שלא — מבינות למה ומשנות</li>
-      <li>הכוונה מעשית איך להפוך תוכן לפניות — כי יש הבדל בין תוכן שמקבל לייקים לתוכן שמביא לקוחות</li>
+      <li>פידבק על תכנים לפני העלאה — מדייקות ומשפרות לפני שזה יוצא לאוויר</li>
+      <li>דיוק מסרים תוך כדי תנועה — מה שעובד מחזקים, מה שלא — מבינות למה</li>
+      <li>הכוונה איך להפוך תוכן לפניות — כי יש הבדל בין לייקים ללקוחות</li>
     </ul>
   </div>
-</div>
 
-<div class="section">
-  <div class="stag">2 פגישות בחודש</div>
-  <h2>מבנה הליווי</h2>
-  <div class="meetings-grid">
-    <div class="meeting-card">
-      <div class="meeting-num">פגישה 1 — תחילת חודש</div>
-      <div class="meeting-title">תכנון ואסטרטגיה</div>
-      <div class="meeting-desc">בונות יחד את תכנית התוכן לחודש, מגדירות יעדים ועובדות על המסרים</div>
-    </div>
-    <div class="meeting-card">
-      <div class="meeting-num">פגישה 2 — אמצע חודש</div>
-      <div class="meeting-title">בדיקה ודיוק</div>
-      <div class="meeting-desc">בודקות מה עובד, מה פחות — ומדייקות את הכיוון להמשך החודש</div>
-    </div>
+  <div class="section">
+    <div class="section-label">2 פגישות בחודש</div>
+    <h2>מבנה הליווי</h2>
+    <ul class="num-list">
+      <li>
+        <span class="num">01</span>
+        <div class="num-body">
+          <strong>פגישה ראשונה — תחילת חודש</strong>
+          <p>בונות יחד את תכנית התוכן לחודש, מגדירות יעדים ועובדות על המסרים.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div class="num-body">
+          <strong>פגישה שנייה — אמצע חודש</strong>
+          <p>בודקות מה עובד, מה פחות — ומדייקות את הכיוון להמשך החודש.</p>
+        </div>
+      </li>
+    </ul>
+    <br>
+    <ul class="clean-list">
+      <li>שעה כל פגישה — זום או פרונטלי</li>
+      <li>זמינות וואטסאפ א׳–ה׳ | 16:00–18:00</li>
+    </ul>
   </div>
-  <div class="fw-grid">
-    <div class="fw-item"><div class="fw-icon">⏱️</div><div><div class="fw-title">שעה כל פגישה</div><div class="fw-desc">זום או פרונטלי</div></div></div>
-    <div class="fw-item"><div class="fw-icon">💬</div><div><div class="fw-title">וואטסאפ א׳–ה׳</div><div class="fw-desc">16:00–18:00</div></div></div>
-  </div>
-</div>
 
-<div class="section-alt">
-  <div class="si">
-    <div class="stag">חשוב לדעת</div>
+  <div class="section">
+    <div class="section-label">חשוב לדעת</div>
     <h2>מה כלול ומה לא</h2>
     <div class="note-box">
-      <div class="note-title">הליווי הזה הוא ליווי — לא ניהול:</div>
-      <ul class="note-list">
+      <strong>הליווי הזה הוא ליווי — לא ניהול:</strong>
+      <ul>
         <li>את כותבת ומעלה את התוכן בעצמך</li>
         <li>אני מכוונת, נותנת פידבק ועוזרת לדייק</li>
-        <li>אין ניהול עמוד בפועל (לזה יש DONE FOR YOU)</li>
+        <li>לניהול מלא של העמוד — יש DONE FOR YOU</li>
       </ul>
     </div>
   </div>
-</div>
 
-<div class="section">
-  <div class="stag">מה יוצא מזה</div>
-  <h2>מה את יוצאת עם</h2>
-  <div class="outcomes-grid">
-    <div class="outcome"><div class="outcome-icon">📅</div><div class="outcome-text">עקביות אמיתית — כל חודש, גאנט ברור, בלי להיתקע מול מסך ריק</div></div>
-    <div class="outcome"><div class="outcome-icon">📈</div><div class="outcome-text">שיפור מתמיד — כל חודש מדייקות, מבינות מה עובד ומה מביא יותר</div></div>
-    <div class="outcome"><div class="outcome-icon">💪</div><div class="outcome-text">ביטחון בפרסום — לא לבד עם ההחלטות, יש מי שנותנת לך גב</div></div>
-    <div class="outcome"><div class="outcome-icon">📩</div><div class="outcome-text">פניות שמגיעות — כי תוכן שמיושם נכון ועקבי מתחיל להביא לקוחות</div></div>
+  <div class="section" id="pricing">
+    <div class="section-label">ההשקעה</div>
+    <h2>LET'S GROW</h2>
+    <div class="price-box">
+      <div class="price-label">מה כלול בחודש</div>
+      <h3>ליווי חודשי צמוד</h3>
+      <div class="price-sub">2 פגישות + תמיכה שבועית שוטפת</div>
+      <ul class="check-list">
+        <li>2 פגישות בחודש — שעה כל אחת</li>
+        <li>גאנט תוכן חודשי מסודר</li>
+        <li>כיוון שבועי לסטוריז שמביאות פניות</li>
+        <li>פידבק על תכנים לפני העלאה</li>
+        <li>דיוק מסרים תוך כדי תנועה</li>
+        <li>זמינות וואטסאפ א׳–ה׳ 16:00–18:00</li>
+      </ul>
+      <a href="#contact" class="price-cta">אני רוצה לשמוע פרטים</a>
+      <p class="price-note">מקומות מוגבלים בחודש — אחזור אלייך תוך 24 שעות</p>
+    </div>
   </div>
+
+  <div class="section">
+    <div class="section-label">שאלות נפוצות</div>
+    <h2>שאלות ותשובות</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">האם צריך לעבור BUILD UP קודם?</div>
+      <div class="faq-a">לא חובה — אבל מי שמגיעה עם כיוון ברור מקבלת הרבה יותר מהליווי. אם עוד אין לך תשתית, BUILD UP הוא הצעד הראשון.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">כמה זמן לוקח לראות תוצאות?</div>
+      <div class="faq-a">בדרך כלל לאחר 4–6 שבועות של עקביות מתחילים לראות פניות. זה תלוי בקהל, בתחום ובעקביות.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">מה ההתחייבות?</div>
+      <div class="faq-a">חודש לחודש — אין נעילה ארוכת טווח. אנחנו מחליטות יחד בסוף כל חודש אם ממשיכות.</div>
+    </div>
+  </div>
+
 </div>
 
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-tag">מקומות מוגבלים בחודש</div>
+<div class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label">השאירי פרטים</div>
     <h2>מוכנה<br><span>להתחיל לגדול?</span></h2>
-    <p class="contact-sub">מלאי פרטים ואחזור אלייך תוך 24 שעות</p>
-    <form class="cf-form" onsubmit="handleForm(event)">
-      <div class="cf-group"><label>שירות מבוקש</label><input type="text" value="LET'S GROW — ליווי חודשי" readonly style="background:rgba(240,122,87,0.12);color:#F07A57;font-weight:700;cursor:default;"></div>
-      <div class="cf-group"><label>שם</label><input type="text" id="cfName" placeholder="השם שלך" required></div>
-      <div class="cf-group"><label>טלפון</label><input type="tel" placeholder="05X-XXXXXXX"></div>
-      <div class="cf-group"><label>מייל</label><input type="email" id="cfEmail" placeholder="youremail@gmail.com" required></div>
-      <div class="cf-group"><label>ספרי לי — איפה את נמצאת עכשיו ומה תרצי להשיג?</label><textarea placeholder="למשל: מפרסמת כבר שלושה חודשים, יש מעורבות אבל אין פניות..."></textarea></div>
-      <button type="submit" class="cf-submit">שלחי — ואחזור אלייך 👉</button>
+    <p class="contact-sub">מלאי את הפרטים ואחזור אלייך תוך 24 שעות</p>
+    <form onsubmit="handleForm(event)" style="text-align:right">
+      <div class="cf-group">
+        <label>השם שלך</label>
+        <input type="text" id="cfName" placeholder="שם מלא" required>
+      </div>
+      <div class="cf-group">
+        <label>טלפון / וואטסאפ</label>
+        <input type="tel" placeholder="05X-XXXXXXX" required>
+      </div>
+      <div class="cf-group">
+        <label>מייל</label>
+        <input type="email" id="cfEmail" placeholder="youremail@gmail.com" required>
+      </div>
+      <div class="cf-group">
+        <label>ספרי לי — איפה את נמצאת ומה תרצי להשיג? (לא חובה)</label>
+        <textarea placeholder="למשל: מפרסמת כבר שלושה חודשים, יש מעורבות אבל אין פניות..."></textarea>
+      </div>
+      <button type="submit" class="cf-submit">שלחי פרטים</button>
     </form>
-    <p class="cf-note">המידע שלך מאובטח</p>
+    <p class="cf-note">המידע שלך מאובטח ולא יועבר לאף גורם</p>
   </div>
-</section>
+</div>
 
 <footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
+
 <script>
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
 function handleForm(e) {
   e.preventDefault();
   const name = document.getElementById('cfName').value.trim();
