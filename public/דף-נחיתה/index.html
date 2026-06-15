@@ -390,7 +390,7 @@
       </div>
 
       <form class="email-form" onsubmit="handleFree(event)">
-        <input class="email-input" type="email" placeholder="המייל שלך — ואשלח לך עכשיו" required>
+        <input class="email-input" type="email" id="freeEmail" placeholder="המייל שלך — ואשלח לך עכשיו" required>
         <button type="submit" class="email-submit">שלחי לי את הצ'קליסט 📩</button>
       </form>
       <p class="email-note">ללא ספאם. רק תוכן שעובד.</p>
@@ -410,10 +410,10 @@
     <div class="product-card">
       <div class="product-icon">📘</div>
       <div class="product-info">
-        <div class="product-tag">חוברת הדרכה</div>
+        <div class="product-tag">מדריך דיגיטלי</div>
         <div class="product-name">אינסטגרם מושלם</div>
-        <div class="product-desc">המדריך המלא לבניית אינסטגרם שמוכר — אסטרטגיה, תוכן, פרופיל וכל מה שבניהם</div>
-        <a href="#" class="product-btn">לרכישה →</a>
+        <div class="product-desc">המדריך המלא לבניית אינסטגרם שמוכר — אסטרטגיה, תוכן, פרופיל וכל מה שבניהם. <strong style="color:#F07A57;">59 ₪</strong></div>
+        <a href="instagram-mushlam.html" class="product-btn">לרכישה →</a>
       </div>
     </div>
 
@@ -487,11 +487,15 @@
 <script>
 function handleFree(e) {
   e.preventDefault();
+  const email = document.getElementById('freeEmail').value;
   const btn = e.target.querySelector('.email-submit');
-  btn.textContent = '✓ שלחתי! בדקי את המייל שלך';
-  btn.style.background = '#2ecc71';
+  btn.textContent = '...שולחת';
   btn.disabled = true;
-  // TODO: חבר לרב-מסר / mailchimp / שלח מסר
+  // TODO: חברי לרב-מסר — שנה את ה-API KEY וה-LIST ID
+  // fetch('https://api.rabbitmessenger.com/...', { method:'POST', body: JSON.stringify({email}) })
+  setTimeout(() => {
+    window.location.href = 'thank-you.html';
+  }, 600);
 }
 </script>
 </body>

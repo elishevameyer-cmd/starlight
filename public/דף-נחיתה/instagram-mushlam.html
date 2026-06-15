@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אינסטגרם מושלם | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#fff; color:#1A1A1A; }
+
+  header {
+    padding: 20px 32px; display:flex; justify-content:center;
+    border-bottom: 1px solid #f0f0f0; position:sticky; top:0; background:#fff; z-index:100;
+  }
+  .logo-em { font-size:24px; font-weight:900; color:#1A1A1A; text-align:center; }
+  .logo-sub { font-size:9px; font-weight:500; letter-spacing:3px; color:#aaa; text-transform:uppercase; text-align:center; }
+
+  /* HERO */
+  .hero {
+    background: #1A1A1A;
+    padding: 72px 24px 64px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content:""; position:absolute; width:340px; height:340px; border-radius:50%;
+    background:rgba(240,122,87,0.06); top:-100px; left:-100px;
+  }
+  .hero::after {
+    content:""; position:absolute; width:220px; height:220px; border-radius:50%;
+    background:rgba(240,122,87,0.05); bottom:-60px; right:-40px;
+  }
+  .hero-tag {
+    display:inline-block;
+    background:rgba(240,122,87,0.18); color:#F07A57;
+    font-size:13px; font-weight:700;
+    padding:6px 20px; border-radius:20px;
+    margin-bottom:28px; position:relative; z-index:1;
+  }
+  .hero h1 {
+    font-size: 48px; font-weight:900; color:#fff;
+    line-height:1.15; margin-bottom:16px;
+    position:relative; z-index:1;
+  }
+  .hero h1 span { color:#F07A57; }
+  .hero-sub {
+    font-size:17px; color:rgba(255,255,255,0.6);
+    max-width:520px; margin:0 auto 40px;
+    line-height:1.8; font-weight:300; position:relative; z-index:1;
+  }
+  .hero-price-row {
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    margin-bottom:32px; position:relative; z-index:1;
+  }
+  .hero-price-old {
+    font-size:22px; color:rgba(255,255,255,0.3);
+    text-decoration:line-through; font-weight:400;
+  }
+  .hero-price {
+    font-size:56px; font-weight:900; color:#F07A57; line-height:1;
+  }
+  .hero-price-currency { font-size:28px; font-weight:700; }
+  .hero-cta {
+    display:inline-block;
+    background:#F07A57; color:#fff;
+    font-family:'Heebo',sans-serif;
+    font-size:18px; font-weight:700;
+    padding:18px 52px; border-radius:50px;
+    text-decoration:none; border:none; cursor:pointer;
+    transition:opacity 0.2s, transform 0.15s;
+    position:relative; z-index:1;
+  }
+  .hero-cta:hover { opacity:0.9; transform:translateY(-2px); }
+  .hero-note { font-size:12px; color:rgba(255,255,255,0.3); margin-top:14px; position:relative; z-index:1; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background:#FAFAFA; border-bottom:1px solid #f0f0f0;
+    padding:18px 24px;
+    display:flex; justify-content:center; gap:40px; flex-wrap:wrap;
+  }
+  .trust-item {
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:#555;
+  }
+  .trust-icon { font-size:18px; }
+
+  /* SECTIONS */
+  .section { max-width:720px; margin:0 auto; padding:64px 24px; }
+  .section-alt { background:#FAFAFA; }
+  .section-alt .inner { max-width:720px; margin:0 auto; padding:64px 24px; }
+
+  .s-tag {
+    display:inline-block;
+    background:#FDF0EC; color:#F07A57;
+    font-size:12px; font-weight:700;
+    padding:5px 16px; border-radius:20px; margin-bottom:12px;
+  }
+  .section h2, .inner h2 {
+    font-size:30px; font-weight:900; color:#1A1A1A;
+    margin-bottom:8px; line-height:1.3;
+  }
+  .section .sub, .inner .sub {
+    font-size:15px; color:#888; margin-bottom:36px; line-height:1.6;
+  }
+
+  /* FOR WHO */
+  .forwho-list {
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .forwho-item {
+    display:flex; gap:14px; align-items:flex-start;
+    background:#fff; border:1px solid #f0f0f0; border-radius:14px;
+    padding:18px 20px;
+  }
+  .forwho-icon { font-size:24px; flex-shrink:0; }
+  .forwho-text { font-size:15px; color:#333; line-height:1.6; }
+  .forwho-text strong { color:#1A1A1A; font-weight:700; }
+
+  /* MODULES */
+  .modules-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  }
+  .module-card {
+    background:#fff; border:1px solid #f0f0f0; border-radius:16px;
+    padding:22px 20px;
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  .module-card:hover { border-color:#F07A57; box-shadow:0 4px 20px rgba(240,122,87,0.1); }
+  .module-num {
+    display:inline-block;
+    background:#FDF0EC; color:#F07A57;
+    font-size:13px; font-weight:900;
+    width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:12px;
+  }
+  .module-title { font-size:16px; font-weight:700; color:#1A1A1A; margin-bottom:6px; }
+  .module-desc { font-size:13px; color:#888; line-height:1.6; }
+
+  .bonus-card {
+    background:#1A1A1A; border-radius:16px; padding:24px 22px;
+    margin-top:16px; display:flex; gap:16px; align-items:flex-start;
+  }
+  .bonus-tag {
+    display:inline-block;
+    background:#F07A57; color:#fff;
+    font-size:11px; font-weight:700;
+    padding:4px 12px; border-radius:20px; margin-bottom:8px;
+  }
+  .bonus-card h4 { font-size:17px; font-weight:700; color:#fff; margin-bottom:4px; }
+  .bonus-card p { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6; }
+  .bonus-icon { font-size:32px; flex-shrink:0; }
+
+  /* FOR NOT */
+  .fornot-item {
+    display:flex; gap:12px; align-items:flex-start;
+    font-size:14px; color:#777; line-height:1.6;
+    margin-bottom:12px;
+  }
+  .fornot-item::before { content:"✗"; color:#ddd; font-weight:700; flex-shrink:0; font-size:16px; }
+
+  /* TESTIMONIALS */
+  .testi-grid { display:flex; flex-direction:column; gap:16px; }
+  .testi-card {
+    background:#fff; border:1px solid #f0f0f0; border-radius:16px;
+    padding:22px 20px;
+  }
+  .testi-text {
+    font-size:15px; color:#333; line-height:1.8;
+    margin-bottom:16px; font-style:italic;
+  }
+  .testi-text::before { content:'"'; color:#F07A57; font-size:24px; font-weight:900; line-height:0; vertical-align:-6px; margin-left:4px; }
+  .testi-name { font-size:13px; font-weight:700; color:#1A1A1A; }
+  .testi-role { font-size:12px; color:#aaa; }
+
+  /* PRICING */
+  .pricing-box {
+    background:#1A1A1A; border-radius:24px; padding:48px 36px;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .pricing-box::before {
+    content:""; position:absolute; width:280px; height:280px; border-radius:50%;
+    background:rgba(240,122,87,0.06); bottom:-80px; left:-80px;
+  }
+  .pricing-tag {
+    display:inline-block;
+    background:rgba(240,122,87,0.2); color:#F07A57;
+    font-size:13px; font-weight:700;
+    padding:6px 20px; border-radius:20px; margin-bottom:24px;
+  }
+  .pricing-box h3 { font-size:28px; font-weight:900; color:#fff; margin-bottom:8px; }
+  .pricing-box .pricing-desc {
+    font-size:15px; color:rgba(255,255,255,0.5); margin-bottom:32px;
+    font-weight:300; line-height:1.7;
+  }
+  .pricing-includes {
+    text-align:right; margin-bottom:36px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .pricing-include {
+    display:flex; gap:10px; align-items:flex-start;
+    font-size:14px; color:rgba(255,255,255,0.8); line-height:1.5;
+  }
+  .pricing-include::before { content:"✓"; color:#F07A57; font-weight:900; flex-shrink:0; }
+  .pricing-price-row {
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin-bottom:8px;
+  }
+  .p-old { font-size:20px; color:rgba(255,255,255,0.25); text-decoration:line-through; }
+  .p-new { font-size:56px; font-weight:900; color:#F07A57; line-height:1; }
+  .p-label { font-size:12px; color:rgba(255,255,255,0.3); margin-bottom:28px; }
+  .p-btn {
+    display:block;
+    background:#F07A57; color:#fff;
+    font-family:'Heebo',sans-serif;
+    font-size:18px; font-weight:700;
+    padding:18px 32px; border-radius:50px;
+    text-decoration:none;
+    transition:opacity 0.2s;
+    position:relative; z-index:1;
+  }
+  .p-btn:hover { opacity:0.9; }
+  .p-secure { font-size:12px; color:rgba(255,255,255,0.25); margin-top:14px; }
+
+  /* FAQ */
+  .faq-list { display:flex; flex-direction:column; gap:2px; }
+  .faq-item { border:1px solid #f0f0f0; border-radius:12px; overflow:hidden; }
+  .faq-q {
+    padding:18px 20px; font-size:15px; font-weight:700; color:#1A1A1A;
+    cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+    user-select:none;
+  }
+  .faq-q::after { content:"＋"; color:#F07A57; font-size:20px; font-weight:300; flex-shrink:0; }
+  .faq-item.open .faq-q::after { content:"－"; }
+  .faq-a {
+    display:none; padding:0 20px 18px;
+    font-size:14px; color:#666; line-height:1.75;
+  }
+  .faq-item.open .faq-a { display:block; }
+
+  /* STICKY CTA */
+  .sticky-cta {
+    position:fixed; bottom:0; left:0; right:0;
+    background:#1A1A1A; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    z-index:200;
+    box-shadow:0 -4px 20px rgba(0,0,0,0.3);
+  }
+  .sticky-text { font-size:14px; font-weight:700; color:#fff; }
+  .sticky-price { font-size:14px; color:rgba(255,255,255,0.4); text-decoration:line-through; }
+  .sticky-btn {
+    background:#F07A57; color:#fff;
+    font-family:'Heebo',sans-serif;
+    font-size:15px; font-weight:700;
+    padding:12px 28px; border-radius:50px;
+    text-decoration:none; flex-shrink:0;
+    border:none; cursor:pointer;
+  }
+
+  footer {
+    background:#1A1A1A; padding:28px 24px;
+    text-align:center; font-size:12px; color:rgba(255,255,255,0.3);
+    padding-bottom:90px;
+  }
+
+  @media (max-width:520px) {
+    .hero h1 { font-size:36px; }
+    .hero-price { font-size:44px; }
+    .modules-grid { grid-template-columns:1fr; }
+    .trust-bar { gap:20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo-em">EM</div>
+    <div class="logo-sub">Elisheva Meyer</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">מדריך דיגיטלי</div>
+  <h1>אינסטגרם<br><span>מושלם</span></h1>
+  <p class="hero-sub">
+    המדריך המלא לאינסטגרם שמביא לקוחות —<br>
+    אסטרטגיה, תוכן, פרופיל וכל מה שבניהם.<br>
+    פעם אחת. לוקחת ומשתמשת תמיד.
+  </p>
+  <div class="hero-price-row">
+    <span class="hero-price-old">79 ₪</span>
+    <span class="hero-price"><span class="hero-price-currency">₪</span>59</span>
+  </div>
+  <a href="#pricing" class="hero-cta">אני רוצה את המדריך 👉</a>
+  <p class="hero-note">גישה מיידית | תשלום מאובטח</p>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">📲</span>גישה מיידית</div>
+  <div class="trust-item"><span class="trust-icon">♾️</span>שלך לתמיד</div>
+  <div class="trust-item"><span class="trust-icon">🇮🇱</span>בעברית מלאה</div>
+  <div class="trust-item"><span class="trust-icon">⭐</span>מאות לקוחות מרוצות</div>
+</div>
+
+<!-- FOR WHO -->
+<div class="section">
+  <div class="s-tag">למי זה מתאים</div>
+  <h2>את בדיוק המקום הנכון אם…</h2>
+  <p class="sub">לא צריך ניסיון, לא צריך ידע. צריך רק להיות מוכנה לעבוד לפי שיטה.</p>
+  <div class="forwho-list">
+    <div class="forwho-item">
+      <span class="forwho-icon">😤</span>
+      <div class="forwho-text"><strong>מפרסמת ולא מקבלת פניות</strong> — ומתחילה לחשוב שאולי האינסטגרם לא עובד בשבילך</div>
+    </div>
+    <div class="forwho-item">
+      <span class="forwho-icon">🤷</span>
+      <div class="forwho-text"><strong>לא יודעת מה לפרסם</strong> — כל פוסט הופך לדרמה וכל שבוע מתחילה מאפס</div>
+    </div>
+    <div class="forwho-item">
+      <span class="forwho-icon">📉</span>
+      <div class="forwho-text"><strong>יש לך תוכן טוב</strong> — אבל הוא לא ממיר ללקוחות, ולא יודעת למה</div>
+    </div>
+    <div class="forwho-item">
+      <span class="forwho-icon">⏰</span>
+      <div class="forwho-text"><strong>עסוקה מדי</strong> ורוצה מדריך ברור שאפשר ליישם בלי לבזבז שעות על מחקר</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<div class="section-alt">
+  <div class="inner">
+    <div class="s-tag">מה בפנים</div>
+    <h2>6 מודולים + בונוסים</h2>
+    <p class="sub">כל מה שצריך לדעת — כתוב ברור, מסודר, ניתן לישום מיד</p>
+
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-num">1</div>
+        <div class="module-title">הפרופיל המנצח</div>
+        <div class="module-desc">ביו, תמונת פרופיל, הייליטס — כל מה שגורם לה להישאר ולעקוב</div>
+      </div>
+      <div class="module-card">
+        <div class="module-num">2</div>
+        <div class="module-title">אסטרטגיית תוכן</div>
+        <div class="module-desc">5 עמודי תוכן שיוצרים אמון, סמכות ורצון לקנות ממך</div>
+      </div>
+      <div class="module-card">
+        <div class="module-num">3</div>
+        <div class="module-title">כיתובים שמוכרים</div>
+        <div class="module-desc">הנוסחה לכיתוב שגורם לאנשים לקרוא, לשמור ולכתוב לך</div>
+      </div>
+      <div class="module-card">
+        <div class="module-num">4</div>
+        <div class="module-title">סטוריז שמניעות לפעולה</div>
+        <div class="module-desc">מה לפרסם בסטוריז כדי שיפנו אלייך — לא רק יצפו</div>
+      </div>
+      <div class="module-card">
+        <div class="module-num">5</div>
+        <div class="module-title">לוח תוכן חודשי</div>
+        <div class="module-desc">גאנט מסודר שיגיד לך בדיוק מה לפרסם כל יום — בלי לנחש</div>
+      </div>
+      <div class="module-card">
+        <div class="module-num">6</div>
+        <div class="module-title">האשטגים + תזמון</div>
+        <div class="module-desc">מתי לפרסם, איך לבחור האשטגים ואיך לשמור על עקביות</div>
+      </div>
+    </div>
+
+    <div class="bonus-card">
+      <span class="bonus-icon">🎁</span>
+      <div>
+        <div class="bonus-tag">בונוס</div>
+        <h4>50 רעיונות לתוכן — לפי תחום עיסוק</h4>
+        <p>רשימה מוכנה לשימוש — מאמנות, מטפלות, יועצות, מעצבות, ועוד. פתחי ותתחילי לפרסם.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOT FOR -->
+<div class="section">
+  <div class="s-tag">שקיפות מלאה</div>
+  <h2>מה זה לא</h2>
+  <p class="sub">אני מעדיפה שתדעי מראש — כדי שאם זה בשבילך, תיכנסי בביטחון מלא</p>
+  <div class="fornot-item">לא קורס וידאו ארוך שמסתיים בלי יישום</div>
+  <div class="fornot-item">לא תיאוריה גנרית שכולם כותבים</div>
+  <div class="fornot-item">לא מתאים אם מחפשת קיצורי דרך בלי לעבוד</div>
+  <div class="fornot-item">לא ניהול מלא — הכתיבה וההעלאה הן שלך</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section-alt">
+  <div class="inner">
+    <div class="s-tag">מה אומרות</div>
+    <h2>לקוחות שכבר שינו את האינסטגרם</h2>
+    <p class="sub">בדיוק כמוך — ידע היה, כיוון חסר</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-text">תוך שבוע מיישום המדריך קיבלתי 3 פניות מאינסטגרם. לא האמנתי שזה יכול לעבוד כל כך מהר.</p>
+        <div class="testi-name">מיכל כ.</div>
+        <div class="testi-role">מאמנת לחיים</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">הייתי מפרסמת שבועות בלי תוצאות. המדריך שינה את הדרך שבה אני חושבת על תוכן — ואז הגיעו הלקוחות.</p>
+        <div class="testi-name">שיר א.</div>
+        <div class="testi-role">יועצת עסקית</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">פשוט, מעשי, ברור. אין בסביבה מדריך כזה בעברית. שילמתי פי 10 על קורסים שנתנו לי פחות.</p>
+        <div class="testi-name">דנה מ.</div>
+        <div class="testi-role">מטפלת רגשית</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+  <div class="pricing-box">
+    <div class="pricing-tag">המדריך המלא</div>
+    <h3>אינסטגרם מושלם</h3>
+    <p class="pricing-desc">
+      פעם אחת לקנות — ולהשתמש לתמיד.<br>
+      גישה מיידית לכל התכנים, עדכונים ללא עלות נוספת.
+    </p>
+    <div class="pricing-includes">
+      <div class="pricing-include">6 מודולים מלאים</div>
+      <div class="pricing-include">50 רעיונות תוכן מוכנים</div>
+      <div class="pricing-include">תבניות לכיתובים וסטוריז</div>
+      <div class="pricing-include">לוח תוכן חודשי</div>
+      <div class="pricing-include">עדכונים עתידיים ללא תוספת</div>
+    </div>
+    <div class="pricing-price-row">
+      <span class="p-old">79 ₪</span>
+      <span class="p-new">59 ₪</span>
+    </div>
+    <p class="p-label">מחיר השקה — לזמן מוגבל</p>
+    <a href="#" class="p-btn">אני רוצה את המדריך עכשיו 👉</a>
+    <p class="p-secure">🔒 תשלום מאובטח | גישה מיידית לאחר רכישה</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-alt">
+  <div class="inner">
+    <div class="s-tag">שאלות נפוצות</div>
+    <h2>שאלת? תשובתי כאן.</h2>
+    <p class="sub"></p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">באיזה פורמט מקבלים את המדריך?</div>
+        <div class="faq-a">המדריך דיגיטלי — PDF מעוצב שפועל על כל מכשיר. תוכלי לפתוח אותו בטלפון, טאבלט או מחשב.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">כמה זמן לוקח ליישם?</div>
+        <div class="faq-a">את יכולה לקרוא את המדריך בכמה שעות ולהתחיל ליישם מיד. רוב הלקוחות רואות שינוי בתוך שבועיים-שלושה של יישום עקבי.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">האם זה מתאים גם אם יש לי מעט עוקבים?</div>
+        <div class="faq-a">בהחלט! האסטרטגיה מתאימה לכל שלב. פחות עוקבים = יותר קל לבנות נכון מההתחלה.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">יש אחריות?</div>
+        <div class="faq-a">אני מאמינה במוצר שלי. אם קראת את המדריך ויישמת — ולא ראית שינוי — שלחי לי ונדבר. רוצה שתהיי מרוצה.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">מה ההבדל בין זה לבין הליווי האישי?</div>
+        <div class="faq-a">המדריך הוא כלי עצמאי — עושה לבד, לפי הקצב שלך. הליווי האישי (פגישת RESET / BUILD UP) הוא עבודה ישירה איתי, מותאמת לעסק שלך ספציפית.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 אלישבע מייער | אדריכלית סושייאל
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <div>
+    <div class="sticky-text">אינסטגרם מושלם</div>
+    <div class="sticky-price">79 ₪ → רק 59 ₪</div>
+  </div>
+  <a href="#pricing" class="sticky-btn">לרכישה 👉</a>
+</div>
+
+<script>
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
