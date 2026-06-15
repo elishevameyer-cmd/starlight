@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LET'S GROW | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#fff; color:#1A1A1A; }
+  header { padding:24px 40px; display:flex; justify-content:center; border-bottom:1px solid #f0f0f0; }
+  .logo-wrap { text-align:center; }
+  .logo-em { font-size:28px; font-weight:900; color:#1A1A1A; }
+  .logo-sub { font-size:10px; font-weight:500; letter-spacing:3px; color:#aaa; text-transform:uppercase; }
+
+  .hero { background:#1A1A1A; padding:72px 32px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before { content:""; position:absolute; width:300px; height:300px; border-radius:50%; background:rgba(240,122,87,0.07); bottom:-100px; right:-80px; }
+  .tag { display:inline-block; background:rgba(240,122,87,0.15); color:#F07A57; font-size:13px; font-weight:700; padding:6px 20px; border-radius:20px; margin-bottom:24px; }
+  .hero h1 { font-size:52px; font-weight:900; color:#fff; line-height:1.15; margin-bottom:20px; }
+  .hero h1 span { color:#F07A57; }
+  .hero-sub { font-size:17px; color:rgba(255,255,255,0.6); max-width:540px; margin:0 auto; line-height:1.8; font-weight:300; }
+  .hero-note { font-size:13px; color:#F07A57; margin-top:24px; font-weight:600; }
+
+  .section { max-width:860px; margin:0 auto; padding:64px 32px; }
+  .section-alt { background:#FAFAFA; }
+  .section-alt .si { max-width:860px; margin:0 auto; padding:64px 32px; }
+  .stag { display:inline-block; background:#FDF0EC; color:#F07A57; font-size:13px; font-weight:700; padding:6px 18px; border-radius:20px; margin-bottom:14px; }
+  .section h2, .si h2 { font-size:32px; font-weight:900; color:#1A1A1A; margin-bottom:32px; }
+
+  .for-who-text { font-size:18px; color:#333; line-height:1.8; background:#FDF0EC; border-right:4px solid #F07A57; padding:22px 26px; border-radius:4px; }
+
+  .get-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .get-list li { display:flex; align-items:flex-start; gap:12px; font-size:16px; color:#333; line-height:1.6; padding:14px 18px; background:#fff; border-radius:10px; border:1px solid #f0f0f0; }
+  .get-list li::before { content:"✓"; color:#F07A57; font-weight:900; font-size:18px; flex-shrink:0; margin-top:1px; }
+
+  .meetings-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:32px; }
+  .meeting-card { background:#1A1A1A; border-radius:14px; padding:24px; }
+  .meeting-num { font-size:12px; color:#F07A57; font-weight:700; letter-spacing:1px; margin-bottom:10px; text-transform:uppercase; }
+  .meeting-title { font-size:17px; font-weight:700; color:#fff; margin-bottom:8px; }
+  .meeting-desc { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6; }
+
+  .fw-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .fw-item { background:#fff; border-radius:12px; padding:18px; border:1px solid #f0f0f0; display:flex; gap:12px; }
+  .fw-icon { font-size:22px; flex-shrink:0; }
+  .fw-title { font-size:14px; font-weight:700; color:#1A1A1A; margin-bottom:3px; }
+  .fw-desc { font-size:13px; color:#888; line-height:1.5; }
+
+  .note-box { background:#FDF0EC; border-radius:12px; padding:22px 26px; border-right:4px solid #F07A57; }
+  .note-title { font-size:15px; font-weight:700; color:#1A1A1A; margin-bottom:10px; }
+  .note-list { list-style:none; }
+  .note-list li { font-size:14px; color:#555; padding:4px 0; display:flex; gap:8px; }
+  .note-list li::before { content:"•"; color:#F07A57; font-weight:900; }
+
+  .outcomes-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .outcome { background:#1A1A1A; border-radius:12px; padding:20px; }
+  .outcome-icon { font-size:24px; margin-bottom:10px; }
+  .outcome-text { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.6; }
+
+  .contact { background:#1A1A1A; padding:72px 32px; }
+  .contact-inner { max-width:540px; margin:0 auto; text-align:center; }
+  .contact-tag { display:inline-block; background:rgba(240,122,87,0.15); color:#F07A57; font-size:13px; font-weight:700; padding:6px 20px; border-radius:20px; margin-bottom:20px; }
+  .contact-inner h2 { font-size:32px; font-weight:900; color:#fff; margin-bottom:12px; line-height:1.3; }
+  .contact-inner h2 span { color:#F07A57; }
+  .contact-sub { font-size:16px; color:rgba(255,255,255,0.5); margin-bottom:36px; font-weight:300; line-height:1.7; }
+  .cf-form { text-align:right; }
+  .cf-group { margin-bottom:14px; }
+  .cf-group label { display:block; font-size:13px; color:rgba(255,255,255,0.6); font-weight:500; margin-bottom:5px; }
+  .cf-group input, .cf-group textarea { width:100%; padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.07); color:#fff; font-family:'Heebo',sans-serif; font-size:15px; outline:none; direction:rtl; transition:border 0.2s; }
+  .cf-group textarea { height:90px; resize:none; }
+  .cf-group input::placeholder, .cf-group textarea::placeholder { color:rgba(255,255,255,0.25); }
+  .cf-group input:focus, .cf-group textarea:focus { border-color:#F07A57; }
+  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:17px; font-weight:700; padding:16px; border-radius:50px; border:none; cursor:pointer; margin-top:8px; }
+  .cf-submit:hover { opacity:0.9; }
+  .cf-note { font-size:12px; color:rgba(255,255,255,0.25); margin-top:12px; text-align:center; }
+
+  footer { background:#1A1A1A; padding:24px; text-align:center; font-size:12px; color:rgba(255,255,255,0.3); border-top:1px solid rgba(255,255,255,0.07); }
+
+  @media(max-width:680px) {
+    .hero h1 { font-size:36px; }
+    .meetings-grid, .fw-grid, .outcomes-grid { grid-template-columns:1fr; }
+    header { padding:20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-em">EM</div>
+    <div class="logo-sub">Elisheva Meyer</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="tag">ליווי חודשי והטמעה</div>
+  <h1>LET'S GROW —<br><span>עכשיו מתחילות לעבוד</span></h1>
+  <p class="hero-sub">יש לך כבר כיוון — אבל לבד, קשה להתמיד. הליווי הזה כאן כדי שתמשיכי קדימה: גאנט מסודר, פידבק לפני העלאה, וכיוון שבועי שמפנה פניות אמיתיות.</p>
+  <p class="hero-note">זה לא "בסיסי". זה השלב שבו הכל קורה.</p>
+</section>
+
+<div class="section">
+  <div class="stag">למי זה מתאים</div>
+  <p class="for-who-text">
+    לעסק שיש לו כבר כיוון — אסטרטגיה, מסר, ידע — אבל לבד קשה להתמיד ולראות תוצאות בפועל.<br><br>
+    את יודעת מה לפרסם. אבל כל שבוע מחדש יש ספקות: "האם זה מספיק טוב?" "האם זה הכיוון הנכון?" "למה עוד לא מגיעות פניות?"<br><br>
+    LET'S GROW הוא ליווי חודשי שנותן לך גב — גאנט מסודר, פידבק לפני שמעלים, ואני לצידך כל השבוע לדייק ולכוון.
+  </p>
+</div>
+
+<div class="section-alt">
+  <div class="si">
+    <div class="stag">מה כלול</div>
+    <h2>מה את מקבלת בחודש</h2>
+    <ul class="get-list">
+      <li>תכנית תוכן חודשית — גאנט מסודר שאת יודעת בדיוק מה מעלים ומתי, בלי להמציא כל שבוע מחדש</li>
+      <li>כיוון שבועי לסטוריז — לא "מה לכתוב", אלא מה יגרום לה לכתוב לך</li>
+      <li>פידבק על תכנים לפני העלאה — עוברים יחד, מדייקים ומשפרים לפני שזה יוצא לאוויר</li>
+      <li>דיוק מסרים תוך כדי תנועה — מה שעובד מחזקים, מה שלא — מבינות למה ומשנות</li>
+      <li>הכוונה מעשית איך להפוך תוכן לפניות — כי יש הבדל בין תוכן שמקבל לייקים לתוכן שמביא לקוחות</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="stag">2 פגישות בחודש</div>
+  <h2>מבנה הליווי</h2>
+  <div class="meetings-grid">
+    <div class="meeting-card">
+      <div class="meeting-num">פגישה 1 — תחילת חודש</div>
+      <div class="meeting-title">תכנון ואסטרטגיה</div>
+      <div class="meeting-desc">בונות יחד את תכנית התוכן לחודש, מגדירות יעדים ועובדות על המסרים</div>
+    </div>
+    <div class="meeting-card">
+      <div class="meeting-num">פגישה 2 — אמצע חודש</div>
+      <div class="meeting-title">בדיקה ודיוק</div>
+      <div class="meeting-desc">בודקות מה עובד, מה פחות — ומדייקות את הכיוון להמשך החודש</div>
+    </div>
+  </div>
+  <div class="fw-grid">
+    <div class="fw-item"><div class="fw-icon">⏱️</div><div><div class="fw-title">שעה כל פגישה</div><div class="fw-desc">זום או פרונטלי</div></div></div>
+    <div class="fw-item"><div class="fw-icon">💬</div><div><div class="fw-title">וואטסאפ א׳–ה׳</div><div class="fw-desc">16:00–18:00</div></div></div>
+  </div>
+</div>
+
+<div class="section-alt">
+  <div class="si">
+    <div class="stag">חשוב לדעת</div>
+    <h2>מה כלול ומה לא</h2>
+    <div class="note-box">
+      <div class="note-title">הליווי הזה הוא ליווי — לא ניהול:</div>
+      <ul class="note-list">
+        <li>את כותבת ומעלה את התוכן בעצמך</li>
+        <li>אני מכוונת, נותנת פידבק ועוזרת לדייק</li>
+        <li>אין ניהול עמוד בפועל (לזה יש DONE FOR YOU)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="stag">מה יוצא מזה</div>
+  <h2>מה את יוצאת עם</h2>
+  <div class="outcomes-grid">
+    <div class="outcome"><div class="outcome-icon">📅</div><div class="outcome-text">עקביות אמיתית — כל חודש, גאנט ברור, בלי להיתקע מול מסך ריק</div></div>
+    <div class="outcome"><div class="outcome-icon">📈</div><div class="outcome-text">שיפור מתמיד — כל חודש מדייקות, מבינות מה עובד ומה מביא יותר</div></div>
+    <div class="outcome"><div class="outcome-icon">💪</div><div class="outcome-text">ביטחון בפרסום — לא לבד עם ההחלטות, יש מי שנותנת לך גב</div></div>
+    <div class="outcome"><div class="outcome-icon">📩</div><div class="outcome-text">פניות שמגיעות — כי תוכן שמיושם נכון ועקבי מתחיל להביא לקוחות</div></div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-tag">מקומות מוגבלים בחודש</div>
+    <h2>מוכנה<br><span>להתחיל לגדול?</span></h2>
+    <p class="contact-sub">מלאי פרטים ואחזור אלייך תוך 24 שעות</p>
+    <form class="cf-form" onsubmit="handleForm(event)">
+      <div class="cf-group"><label>שירות מבוקש</label><input type="text" value="LET'S GROW — ליווי חודשי" readonly style="background:rgba(240,122,87,0.12);color:#F07A57;font-weight:700;cursor:default;"></div>
+      <div class="cf-group"><label>שם</label><input type="text" id="cfName" placeholder="השם שלך" required></div>
+      <div class="cf-group"><label>טלפון</label><input type="tel" placeholder="05X-XXXXXXX"></div>
+      <div class="cf-group"><label>מייל</label><input type="email" id="cfEmail" placeholder="youremail@gmail.com" required></div>
+      <div class="cf-group"><label>ספרי לי — איפה את נמצאת עכשיו ומה תרצי להשיג?</label><textarea placeholder="למשל: מפרסמת כבר שלושה חודשים, יש מעורבות אבל אין פניות..."></textarea></div>
+      <button type="submit" class="cf-submit">שלחי — ואחזור אלייך 👉</button>
+    </form>
+    <p class="cf-note">המידע שלך מאובטח</p>
+  </div>
+</section>
+
+<footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
+<script>
+function handleForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('cfName').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
+  const btn = e.target.querySelector('.cf-submit');
+  btn.textContent = '...שולחת';
+  btn.disabled = true;
+  fetch('https://cp.responder.live/api/v1.0/subscribers', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer c1dab6b146235ba7031e15f61e6de2f06053' },
+    body: JSON.stringify({ list_id: 105039, email: email, name: name + " | LET'S GROW" })
+  }).catch(() => {}).finally(() => { window.location.href = 'contact-thanks.html'; });
+}
+</script>
+</body>
+</html>

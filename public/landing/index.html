@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אלישבע מייער | אדריכלית סושייאל</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+    background: #f7f7f7;
+    color: #1A1A1A;
+  }
+
+  .page-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ── PROFILE ── */
+  .profile { text-align: center; margin-bottom: 32px; }
+  .profile-photo {
+    width: 96px; height: 96px;
+    border-radius: 50%; object-fit: cover;
+    border: 3px solid #F07A57;
+    margin-bottom: 14px;
+    display: block; margin-left: auto; margin-right: auto;
+  }
+  .profile-name { font-size: 22px; font-weight: 900; color: #1A1A1A; margin-bottom: 4px; }
+  .profile-title { font-size: 12px; color: #F07A57; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
+  .profile-about { font-size: 14px; color: #666; line-height: 1.7; max-width: 320px; margin: 0 auto; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    color: #c0c0c0; text-transform: uppercase;
+    text-align: center; margin: 28px 0 10px;
+  }
+
+  /* ── FREE OPT-IN ── */
+  .optin-card {
+    background: #1A1A1A; border-radius: 16px;
+    padding: 18px 16px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .optin-img {
+    width: 70px; height: 70px; object-fit: cover;
+    border-radius: 10px; flex-shrink: 0; order: 2;
+  }
+  .optin-body { flex: 1; order: 1; }
+  .optin-free-tag {
+    display: inline-block;
+    background: #F07A57; color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px; margin-bottom: 5px;
+  }
+  .optin-title { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 3px; }
+  .optin-desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 10px; line-height: 1.5; }
+  .optin-form { display: flex; gap: 6px; }
+  .optin-input {
+    flex: 1; padding: 9px 11px;
+    border: none; border-radius: 8px;
+    font-family: 'Heebo', sans-serif; font-size: 13px;
+    direction: rtl; background: rgba(255,255,255,0.1); color: #fff;
+    min-width: 0;
+  }
+  .optin-input::placeholder { color: rgba(255,255,255,0.3); }
+  .optin-input:focus { outline: none; background: rgba(255,255,255,0.15); }
+  .optin-btn {
+    background: #F07A57; color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 13px; font-weight: 700;
+    padding: 9px 14px; border-radius: 8px;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* ── LINK CARD ── */
+  .link-card {
+    background: #fff; border-radius: 14px;
+    padding: 14px 16px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: #1A1A1A;
+    border: 1.5px solid #f0f0f0;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .link-card:hover {
+    border-color: #F07A57;
+    box-shadow: 0 4px 16px rgba(240,122,87,0.1);
+    transform: translateY(-1px);
+  }
+  .link-thumb {
+    width: 64px; height: 64px;
+    border-radius: 10px; object-fit: cover;
+    flex-shrink: 0; order: 2;
+  }
+  .link-info { flex: 1; order: 1; }
+  .link-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    color: #F07A57; text-transform: uppercase; margin-bottom: 3px;
+  }
+  .link-title { font-size: 16px; font-weight: 900; margin-bottom: 2px; }
+  .link-desc { font-size: 12px; color: #999; line-height: 1.5; }
+  .link-price {
+    font-size: 16px; font-weight: 900; color: #F07A57;
+    flex-shrink: 0; order: 3;
+  }
+  .link-arrow { font-size: 20px; color: #ddd; flex-shrink: 0; order: 3; }
+
+  footer { text-align: center; font-size: 11px; color: #ccc; margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <img src="elisheva.jpeg" alt="אלישבע מייער" class="profile-photo">
+    <div class="profile-name">אלישבע מייער</div>
+    <div class="profile-title">אדריכלית סושייאל</div>
+    <p class="profile-about">
+      עוזרת לבעלות עסקים להפוך את האינסטגרם לכלי שמביא פניות ולקוחות — עם אסטרטגיה ברורה, מסר חד ותוכן שמוכר.
+    </p>
+  </div>
+
+  <!-- FREE PRODUCT -->
+  <div class="section-label">מתנה חינמית</div>
+
+  <div class="optin-card">
+    <img src="img-checklist.jpg" class="optin-img" alt="הביו המושלם">
+    <div class="optin-body">
+      <div class="optin-free-tag">חינמי</div>
+      <div class="optin-title">הביו המושלם</div>
+      <div class="optin-desc">5 דברים שכל ביו חזק חייב לכלול</div>
+      <form class="optin-form" onsubmit="handleFree(event)">
+        <input class="optin-input" type="email" id="freeEmail" placeholder="המייל שלך" required>
+        <button type="submit" class="optin-btn" id="freeBtn">שלחי →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PAID PRODUCTS -->
+  <div class="section-label">מוצרים דיגיטליים</div>
+
+  <a href="instagram-mushlam.html" class="link-card">
+    <img src="img-instagram.jpg" class="link-thumb" alt="אינסטגרם מושלם">
+    <div class="link-info">
+      <div class="link-tag">מדריך דיגיטלי</div>
+      <div class="link-title">אינסטגרם מושלם</div>
+      <div class="link-desc">המדריך המלא שמביא לקוחות מהאינסטגרם</div>
+    </div>
+    <div class="link-price">39 ₪</div>
+  </a>
+
+  <a href="gantt-questionnaire.html" class="link-card">
+    <img src="img-gantt.jpg" class="link-thumb" alt="גאנט תוכן">
+    <div class="link-info">
+      <div class="link-tag">שירות מותאם אישית</div>
+      <div class="link-title">גאנט תוכן חודשי</div>
+      <div class="link-desc">תוכנית תוכן אישית — יודעת מה לפרסם כל יום</div>
+    </div>
+    <div class="link-price">200 ₪</div>
+  </a>
+
+  <!-- SERVICES -->
+  <div class="section-label">שירותים</div>
+
+  <a href="reset.html" class="link-card">
+    <img src="img-reset.jpg" class="link-thumb" alt="RESET">
+    <div class="link-info">
+      <div class="link-tag">פגישת 1:1</div>
+      <div class="link-title">פגישת RESET</div>
+      <div class="link-desc">שיחה ממוקדת שעה — מסר, אסטרטגיה, תוכן</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="buildup.html" class="link-card">
+    <img src="img-buildup.jpg" class="link-thumb" alt="BUILD UP">
+    <div class="link-info">
+      <div class="link-tag">תהליך עומק</div>
+      <div class="link-title">BUILD UP</div>
+      <div class="link-desc">5 פגישות — תשתית שיווקית מלאה</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="letsgrow.html" class="link-card">
+    <img src="img-letsgrow.jpg" class="link-thumb" alt="LET'S GROW">
+    <div class="link-info">
+      <div class="link-tag">ליווי חודשי</div>
+      <div class="link-title">LET'S GROW</div>
+      <div class="link-desc">2 פגישות + תוכן שבועי + פידבק</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="doneforyou.html" class="link-card">
+    <img src="img-doneforyou.jpg" class="link-thumb" alt="DONE FOR YOU">
+    <div class="link-info">
+      <div class="link-tag">ניהול מלא</div>
+      <div class="link-title">DONE FOR YOU</div>
+      <div class="link-desc">ניהול מקצועי מלא של האינסטגרם שלך</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
+
+</div>
+
+<script>
+function handleFree(e) {
+  e.preventDefault();
+  const email = document.getElementById('freeEmail').value;
+  const btn = document.getElementById('freeBtn');
+  btn.textContent = '...';
+  btn.disabled = true;
+
+  fetch('https://cp.responder.live/api/v1.0/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer c1dab6b146235ba7031e15f61e6de2f06053'
+    },
+    body: JSON.stringify({ list_id: 105039, email: email })
+  }).catch(() => {}).finally(() => {
+    window.location.href = 'thank-you.html';
+  });
+}
+</script>
+
+</body>
+</html>

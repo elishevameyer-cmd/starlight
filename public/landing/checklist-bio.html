@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הביו המושלם | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: #e8e8e8;
+    direction: rtl;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; margin: 0; }
+    .no-print { display: none; }
+  }
+
+  .page {
+    width: 600px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  .top-bar {
+    background: #1A1A1A;
+    padding: 32px 40px 28px;
+    text-align: center;
+  }
+  .top-bar .from {
+    font-size: 12px; font-weight: 500; letter-spacing: 2px;
+    color: #F07A57; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .top-bar h1 {
+    font-size: 42px; font-weight: 900; color: #fff;
+    line-height: 1.1; margin-bottom: 6px;
+  }
+  .top-bar h1 span { color: #F07A57; }
+  .top-bar .subtitle {
+    font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 300;
+  }
+
+  .intro {
+    background: #FDF0EC;
+    padding: 16px 40px;
+    text-align: center;
+    font-size: 14px; color: #555; line-height: 1.6;
+    border-bottom: 1px solid #f0e8e4;
+  }
+  .intro strong { color: #F07A57; }
+
+  .checklist {
+    padding: 28px 40px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px;
+    background: #FAFAFA;
+    border: 1.5px solid #f0f0f0;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .check-item:hover { border-color: #F07A57; }
+  .check-item.checked { border-color: #F07A57; background: #FDF0EC; }
+
+  .check-num {
+    width: 28px; height: 28px;
+    background: #F07A57; color: #fff;
+    font-size: 14px; font-weight: 900;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+
+  .check-text { flex: 1; }
+  .check-title { font-size: 15px; font-weight: 700; color: #1A1A1A; margin-bottom: 3px; }
+  .check-desc { font-size: 13px; color: #888; line-height: 1.5; }
+  .check-example { font-size: 12px; color: #F07A57; font-weight: 600; margin-top: 4px; }
+
+  .checkbox {
+    width: 26px; height: 26px;
+    border: 2px solid #ddd; border-radius: 7px;
+    flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; color: transparent;
+    transition: all 0.2s;
+  }
+  .check-item.checked .checkbox { background: #F07A57; border-color: #F07A57; color: #fff; }
+
+  .result-box {
+    margin: 0 40px 28px;
+    background: #1A1A1A; border-radius: 14px;
+    padding: 20px 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .result-icon { font-size: 28px; flex-shrink: 0; }
+  .result-text p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; font-weight: 300; }
+  .result-text strong { color: #F07A57; }
+
+  .footer-strip {
+    background: #F07A57; padding: 14px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-strip span { font-size: 13px; font-weight: 700; color: #fff; }
+  .footer-strip .site { font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 400; }
+
+  .no-print { text-align: center; margin-top: 20px; }
+  .print-btn {
+    background: #1A1A1A; color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px; font-weight: 700;
+    padding: 12px 28px; border-radius: 50px;
+    border: none; cursor: pointer; transition: opacity 0.2s;
+  }
+  .print-btn:hover { opacity: 0.8; }
+
+  @media (max-width: 640px) {
+    .page { width: 100%; border-radius: 16px; }
+    .top-bar, .checklist, .intro, .footer-strip { padding-right: 24px; padding-left: 24px; }
+    .result-box { margin-right: 24px; margin-left: 24px; }
+    .top-bar h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div>
+  <div class="page">
+
+    <div class="top-bar">
+      <div class="from">מתנה מאלישבע מייער</div>
+      <h1>הביו<br><span>המושלם</span></h1>
+      <div class="subtitle">5 שורות שהופכות ביקור לפנייה</div>
+    </div>
+
+    <div class="intro">
+      סמני ✓ ליד כל מה שיש לך בביו — ותראי מה חסר.<br>
+      <strong>3 שניות</strong> זה כל מה שיש לך לגרום לה להישאר.
+    </div>
+
+    <div class="checklist">
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-num">1</div>
+        <div class="check-text">
+          <div class="check-title">מי את ולמי את עוזרת</div>
+          <div class="check-desc">קהל יעד ספציפי — שהלקוחה הנכונה תרגיש "זו אני"</div>
+          <div class="check-example">לדוגמה: "עוזרת לנותנות שירות ל..."</div>
+        </div>
+        <div class="checkbox">✓</div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-num">2</div>
+        <div class="check-text">
+          <div class="check-title">התוצאה שהיא מקבלת</div>
+          <div class="check-desc">לא תהליך — מה היא תרגיש ותשיג בסוף</div>
+          <div class="check-example">לדוגמה: "למלא יומן בלי לרדוף אחרי לקוחות"</div>
+        </div>
+        <div class="checkbox">✓</div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-num">3</div>
+        <div class="check-text">
+          <div class="check-title">מה מייחד אותך</div>
+          <div class="check-desc">ניסיון, גישה, שיטה — משהו שרק את</div>
+          <div class="check-example">לדוגמה: "עם שיטה שפיתחתי ב-8 שנות ניסיון"</div>
+        </div>
+        <div class="checkbox">✓</div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-num">4</div>
+        <div class="check-text">
+          <div class="check-title">CTA — קריאה לפעולה אחת</div>
+          <div class="check-desc">פעולה אחת בלבד, ברורה. היא לא תחליט — תחליטי בשבילה</div>
+          <div class="check-example">לדוגמה: "👉 לפגישת היכרות — לחצי על הקישור"</div>
+        </div>
+        <div class="checkbox">✓</div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-num">5</div>
+        <div class="check-text">
+          <div class="check-title">קישור שמוביל לפעולה</div>
+          <div class="check-desc">הקישור מוביל בדיוק לפעולה שביקשת</div>
+          <div class="check-example">וואטסאפ / דף נחיתה / הזמנת פגישה / לינקטרי</div>
+        </div>
+        <div class="checkbox">✓</div>
+      </div>
+
+    </div>
+
+    <div class="result-box">
+      <div class="result-icon">💡</div>
+      <div class="result-text">
+        <p><strong>5 מתוך 5?</strong> הביו שלך עובד בשבילך.<br>
+        חסרים פריטים? שם בדיוק המקום לשנות.</p>
+      </div>
+    </div>
+
+    <div class="footer-strip">
+      <span>הביו המושלם ✓</span>
+      <span class="site">אלישבע מייער | אדריכלית סושייאל</span>
+    </div>
+
+  </div>
+
+  <div class="no-print">
+    <button class="print-btn" onclick="window.print()">🖨️ שמרי / הדפיסי</button>
+  </div>
+</div>
+
+<script>
+function toggle(el) { el.classList.toggle('checked'); }
+</script>
+
+</body>
+</html>
