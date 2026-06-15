@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUILD UP | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Heebo', sans-serif; direction: rtl; background: #fff; color: #1A1A1A; }
+  header { padding: 24px 40px; display: flex; justify-content: center; border-bottom: 1px solid #f0f0f0; }
+  .logo-wrap { text-align: center; }
+  .logo-em { font-size: 28px; font-weight: 900; color: #1A1A1A; }
+  .logo-sub { font-size: 10px; font-weight: 500; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
+
+  .hero { background: #1A1A1A; padding: 72px 32px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:""; position:absolute; width:300px; height:300px; border-radius:50%; background:rgba(240,122,87,0.07); bottom:-100px; left:-80px; }
+  .tag { display:inline-block; background:rgba(240,122,87,0.15); color:#F07A57; font-size:13px; font-weight:700; padding:6px 20px; border-radius:20px; margin-bottom:24px; }
+  .hero h1 { font-size:52px; font-weight:900; color:#fff; line-height:1.15; margin-bottom:20px; }
+  .hero h1 span { color:#F07A57; }
+  .hero-sub { font-size:17px; color:rgba(255,255,255,0.6); max-width:540px; margin:0 auto; line-height:1.8; font-weight:300; }
+
+  .section { max-width: 860px; margin: 0 auto; padding: 64px 32px; }
+  .section-alt { background: #FAFAFA; }
+  .section-alt .section-inner { max-width: 860px; margin: 0 auto; padding: 64px 32px; }
+  .stag { display:inline-block; background:#FDF0EC; color:#F07A57; font-size:13px; font-weight:700; padding:6px 18px; border-radius:20px; margin-bottom:14px; }
+  .section h2 { font-size:32px; font-weight:900; color:#1A1A1A; margin-bottom:36px; }
+  .section-alt .section-inner h2 { font-size:32px; font-weight:900; color:#1A1A1A; margin-bottom:36px; }
+
+  /* FOR WHO */
+  .for-who-text { font-size:18px; color:#333; line-height:1.8; background:#FDF0EC; border-right:4px solid #F07A57; padding:22px 26px; border-radius:4px; }
+
+  /* WHAT YOU GET */
+  .get-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .get-list li { display:flex; align-items:flex-start; gap:12px; font-size:16px; color:#333; line-height:1.6; padding:14px 18px; background:#fff; border-radius:10px; border:1px solid #f0f0f0; }
+  .get-list li::before { content:"✓"; color:#F07A57; font-weight:900; font-size:18px; flex-shrink:0; margin-top:1px; }
+
+  /* SESSIONS */
+  .sessions { display:flex; flex-direction:column; gap:16px; }
+  .session { display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:flex-start; }
+  .session-num { width:48px; height:48px; background:#F07A57; color:#fff; font-size:20px; font-weight:900; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:4px; }
+  .session-content {}
+  .session-title { font-size:17px; font-weight:700; color:#1A1A1A; margin-bottom:6px; }
+  .session-desc { font-size:14px; color:#666; line-height:1.7; }
+
+  /* FRAMEWORK */
+  .framework-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .fw-item { background:#fff; border-radius:12px; padding:20px; border:1px solid #f0f0f0; display:flex; gap:12px; align-items:flex-start; }
+  .fw-icon { font-size:24px; flex-shrink:0; }
+  .fw-title { font-size:14px; font-weight:700; color:#1A1A1A; margin-bottom:4px; }
+  .fw-desc { font-size:13px; color:#888; line-height:1.5; }
+
+  /* OUTCOMES */
+  .outcomes-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .outcome { background:#1A1A1A; border-radius:12px; padding:20px; }
+  .outcome-icon { font-size:24px; margin-bottom:10px; }
+  .outcome-text { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.6; }
+
+  /* CONTACT */
+  .contact { background:#1A1A1A; padding:72px 32px; }
+  .contact-inner { max-width:540px; margin:0 auto; text-align:center; }
+  .contact-tag { display:inline-block; background:rgba(240,122,87,0.15); color:#F07A57; font-size:13px; font-weight:700; padding:6px 20px; border-radius:20px; margin-bottom:20px; }
+  .contact-inner h2 { font-size:32px; font-weight:900; color:#fff; margin-bottom:12px; line-height:1.3; }
+  .contact-inner h2 span { color:#F07A57; }
+  .contact-sub { font-size:16px; color:rgba(255,255,255,0.5); margin-bottom:36px; font-weight:300; line-height:1.7; }
+  .cf-form { text-align:right; }
+  .cf-group { margin-bottom:14px; }
+  .cf-group label { display:block; font-size:13px; color:rgba(255,255,255,0.6); font-weight:500; margin-bottom:5px; }
+  .cf-group input, .cf-group textarea { width:100%; padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.07); color:#fff; font-family:'Heebo',sans-serif; font-size:15px; outline:none; transition:border 0.2s; direction:rtl; }
+  .cf-group textarea { height:90px; resize:none; }
+  .cf-group input::placeholder, .cf-group textarea::placeholder { color:rgba(255,255,255,0.25); }
+  .cf-group input:focus, .cf-group textarea:focus { border-color:#F07A57; }
+  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:17px; font-weight:700; padding:16px; border-radius:50px; border:none; cursor:pointer; margin-top:8px; transition:opacity 0.2s; }
+  .cf-submit:hover { opacity:0.9; }
+  .cf-note { font-size:12px; color:rgba(255,255,255,0.25); margin-top:12px; text-align:center; }
+
+  footer { background:#1A1A1A; padding:24px; text-align:center; font-size:12px; color:rgba(255,255,255,0.3); border-top:1px solid rgba(255,255,255,0.07); }
+
+  @media(max-width:680px) {
+    .hero h1 { font-size:36px; }
+    .framework-grid, .outcomes-grid { grid-template-columns:1fr; }
+    header { padding:20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-em">EM</div>
+    <div class="logo-sub">Elisheva Meyer</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="tag">תהליך עומק | 4 פגישות</div>
+  <h1>BUILD UP —<br><span>תפסיקי לנחש</span></h1>
+  <p class="hero-sub">תהליך לבניית תשתית שיווקית שמביאה לקוחות — עם שיטה ברורה שאפשר לעמוד בה</p>
+</section>
+
+<div class="section">
+  <div class="stag">למי זה מתאים</div>
+  <p class="for-who-text">
+    לעסק שרוצה להפסיק לנחש ולהתחיל לעבוד עם שיטה שמביאה לקוחות.<br><br>
+    אם את מפרסמת ולא קורה כלום — כנראה שחסרה לך תשתית. לא תוכן יותר. תשתית.
+  </p>
+</div>
+
+<div class="section-alt">
+  <div class="section-inner">
+    <div class="stag">מה את מקבלת</div>
+    <h2>התוצרים שיוצאים מהתהליך</h2>
+    <ul class="get-list">
+      <li>אסטרטגיה שיווקית מלאה ומדויקת לעסק שלך</li>
+      <li>3 מסרים מרכזיים שמנחים את כל התוכן שלך</li>
+      <li>הגדרת קהל יעד עמוקה — מי היא ומה גורם לה לקנות</li>
+      <li>מיצוב ברור מול מתחרים — למה דווקא את</li>
+      <li>תכנית פעולה ישימה לכל שבוע</li>
+      <li>רעיונות לתוכן + כיוון לסטוריז שמייצרים פניות</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="stag">מבנה התהליך</div>
+  <h2>4 פגישות שבונות את הכל</h2>
+  <div class="sessions">
+    <div class="session">
+      <div class="session-num">1</div>
+      <div class="session-content">
+        <div class="session-title">עומק עסק וקהל יעד</div>
+        <div class="session-desc">מבינות מי הלקוחה שלך באמת, מה הכאב שלה ומה גורם לה לקנות. יוצאות עם 3 מסרים שמנחים את כל התוכן שלך.</div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-num">2</div>
+      <div class="session-content">
+        <div class="session-title">חזון, מיצוב ובידול</div>
+        <div class="session-desc">מבינות איפה את עומדת בשוק, מה מייחד אותך. בונות מיצוב ברור שגורם ללקוחה לבחור דווקא בך.</div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-num">3</div>
+      <div class="session-content">
+        <div class="session-title">אסטרטגיה שיווקית</div>
+        <div class="session-desc">בונות תכנית מסודרת: איפה לפרסם, מה לפרסם ואיך זה מתחבר למכירות בפועל.</div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-num">4</div>
+      <div class="session-content">
+        <div class="session-title">תכנית פעולה — היוצאים לדרך</div>
+        <div class="session-desc">יוצאות עם תכנית ברורה: מה עושים כל שבוע כדי להביא פניות בפועל. לא עוד ניחושים.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-alt">
+  <div class="section-inner">
+    <div class="stag">מסגרת</div>
+    <h2>איך זה עובד</h2>
+    <div class="framework-grid">
+      <div class="fw-item"><div class="fw-icon">📅</div><div><div class="fw-title">4 פגישות | שעה כל פגישה</div><div class="fw-desc">זום או פרונטלי, לפי נוחותך</div></div></div>
+      <div class="fw-item"><div class="fw-icon">💬</div><div><div class="fw-title">זמינות וואטסאפ</div><div class="fw-desc">א׳–ה׳ | 16:00–18:00</div></div></div>
+      <div class="fw-item"><div class="fw-icon">📋</div><div><div class="fw-title">סיכום כתוב</div><div class="fw-desc">אחרי כל פגישה — הכל מסודר בכתב</div></div></div>
+      <div class="fw-item"><div class="fw-icon">🎯</div><div><div class="fw-title">תכנית פעולה</div><div class="fw-desc">יוצאת עם מה לעשות כל שבוע</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="stag">מה יוצא מזה</div>
+  <h2>מה את יוצאת עם</h2>
+  <div class="outcomes-grid">
+    <div class="outcome"><div class="outcome-icon">💡</div><div class="outcome-text">בהירות מלאה — מה עובד ומה לא</div></div>
+    <div class="outcome"><div class="outcome-icon">🎯</div><div class="outcome-text">כיוון מדויק — מה לפרסם ומתי</div></div>
+    <div class="outcome"><div class="outcome-icon">📈</div><div class="outcome-text">שיטה שמתחילה להביא פניות</div></div>
+    <div class="outcome"><div class="outcome-icon">💪</div><div class="outcome-text">ביטחון — להפסיק לנחש ולהתחיל לפעול</div></div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-tag">מקומות מוגבלים</div>
+    <h2>מוכנה להתחיל<br><span>לעבוד בשיטה?</span></h2>
+    <p class="contact-sub">מלאי פרטים ואחזור אלייך תוך 24 שעות</p>
+    <form class="cf-form" onsubmit="handleForm(event)">
+      <div class="cf-group"><label>שם</label><input type="text" placeholder="השם שלך" required></div>
+      <div class="cf-group"><label>טלפון</label><input type="tel" placeholder="05X-XXXXXXX" required></div>
+      <div class="cf-group"><label>מייל</label><input type="email" placeholder="youremail@gmail.com" required></div>
+      <div class="cf-group"><label>ספרי לי בקצרה איפה את נמצאת עכשיו עם העסק</label><textarea placeholder="למשל: יש לי עסק שנה, מפרסמת אבל לא מגיעות פניות..."></textarea></div>
+      <button type="submit" class="cf-submit">שלחי — ואחזור אלייך 👉</button>
+    </form>
+    <p class="cf-note">המידע שלך מאובטח</p>
+  </div>
+</section>
+
+<footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
+
+<script>
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.cf-submit');
+  btn.textContent = '✓ קיבלתי! אחזור אלייך בהקדם';
+  btn.style.background = '#2ecc71';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>

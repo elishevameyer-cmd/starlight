@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פגישת RESET לעסק | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+    background: #fff;
+    color: #1A1A1A;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 24px 40px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-area { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .logo-em { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: #1A1A1A; }
+  .logo-name { font-size: 11px; font-weight: 500; letter-spacing: 2px; color: #888; text-transform: uppercase; }
+
+  /* ── HERO ── */
+  .hero {
+    background: #1A1A1A;
+    padding: 80px 32px 72px;
+    text-align: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(240,122,87,0.2);
+    color: #F07A57;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 span { color: #F07A57; }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    max-width: 560px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-cta-btn {
+    display: inline-block;
+    background: #F07A57;
+    color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 20px 56px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .hero-cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  .hero-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 16px;
+  }
+
+  /* ── FOR WHO ── */
+  .for-who {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 72px 32px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: #FDF0EC;
+    color: #F07A57;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .for-who h2 {
+    font-size: 34px;
+    font-weight: 900;
+    color: #1A1A1A;
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+
+  .signs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .sign-item {
+    background: #FAFAFA;
+    border-radius: 12px;
+    padding: 20px 22px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .sign-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .what-get {
+    background: #FAFAFA;
+    padding: 72px 32px;
+  }
+
+  .what-get-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .what-get-inner h2 {
+    font-size: 34px;
+    font-weight: 900;
+    color: #1A1A1A;
+    margin-bottom: 40px;
+  }
+
+  .get-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .get-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 22px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .get-num {
+    width: 36px;
+    height: 36px;
+    background: #F07A57;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 14px;
+  }
+
+  .get-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+  }
+
+  .get-item p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 72px 32px;
+    text-align: center;
+  }
+
+  .pricing h2 {
+    font-size: 34px;
+    font-weight: 900;
+    color: #1A1A1A;
+    margin-bottom: 40px;
+  }
+
+  .price-card {
+    background: #1A1A1A;
+    border-radius: 20px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-card::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(240,122,87,0.08);
+    bottom: -60px;
+    left: -60px;
+  }
+
+  .price-badge {
+    display: inline-block;
+    background: #F07A57;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .price-name {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .price-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .price-amount {
+    font-size: 64px;
+    font-weight: 900;
+    color: #F07A57;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-currency {
+    font-size: 28px;
+    font-weight: 700;
+    vertical-align: top;
+    margin-top: 12px;
+    display: inline-block;
+  }
+
+  .price-period {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 32px;
+  }
+
+  .price-includes {
+    text-align: right;
+    margin-bottom: 36px;
+  }
+
+  .price-include-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 10px;
+  }
+
+  .price-include-item::before {
+    content: "✓";
+    color: #F07A57;
+    font-weight: 900;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .pay-btn {
+    display: block;
+    width: 100%;
+    background: #F07A57;
+    color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .pay-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .pay-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .about-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #FDF0EC;
+    border: 3px solid #F07A57;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #F07A57;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .about-name { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .about-title { font-size: 14px; color: #F07A57; font-weight: 600; margin-bottom: 16px; }
+  .about-text p { font-size: 15px; color: #555; line-height: 1.8; }
+
+  /* ── FAQ ── */
+  .faq {
+    background: #FAFAFA;
+    padding: 64px 32px;
+  }
+
+  .faq-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .faq-inner h2 {
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 32px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    border: 1px solid #f0f0f0;
+  }
+
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT FORM ── */
+  .contact {
+    background: #1A1A1A;
+    padding: 72px 32px;
+  }
+
+  .contact-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-tag {
+    display: inline-block;
+    background: rgba(240,122,87,0.15);
+    color: #F07A57;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact-inner h2 {
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .contact-inner h2 span { color: #F07A57; }
+
+  .contact-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 40px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .contact-form {
+    text-align: right;
+  }
+
+  .cf-group {
+    margin-bottom: 16px;
+  }
+
+  .cf-group label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .cf-group input,
+  .cf-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.2s;
+    direction: rtl;
+  }
+
+  .cf-group textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  .cf-group input::placeholder,
+  .cf-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+  .cf-group input:focus,
+  .cf-group textarea:focus { border-color: #F07A57; }
+
+  .cf-submit {
+    width: 100%;
+    background: #F07A57;
+    color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .cf-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .cf-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #bbb;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background: #1A1A1A;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 680px) {
+    .hero h1 { font-size: 36px; }
+    .signs-grid { grid-template-columns: 1fr; }
+    .get-items { grid-template-columns: 1fr; }
+    .about-section { grid-template-columns: 1fr; text-align: center; }
+    .about-avatar { margin: 0 auto; }
+    header { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <div class="logo-em">EM</div>
+    <div class="logo-name">Elisheva Meyer</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">פגישת עבודה אחת על אחת</div>
+  <h1>פגישת <span>RESET</span> —<br>סדר אחד ולתנועה</h1>
+  <p class="hero-sub">
+    פגישה אחת ממוקדת שמסדרת לך את המסר, האסטרטגיה והתוכן —
+    כדי שתדעי בדיוק מה לעשות אחרי שנגמרת
+  </p>
+  <a href="#pricing" class="hero-cta-btn">אני רוצה לקבוע פגישת RESET 👉</a>
+  <p class="hero-note">מספר מקומות מוגבל בחודש</p>
+</section>
+
+<!-- FOR WHO -->
+<section class="for-who">
+  <div class="section-tag">זה בשבילך אם...</div>
+  <h2>מרגישה שמשהו לא עובד<br>אבל לא בטוחה מה?</h2>
+  <div class="signs-grid">
+    <div class="sign-item">
+      <div class="sign-icon">😓</div>
+      <div>מפרסמת תוכן באינסטגרם אבל לקוחות לא מגיעות</div>
+    </div>
+    <div class="sign-item">
+      <div class="sign-icon">🤷</div>
+      <div>לא ברור לך מה להעלות ומתי — "ניחשת" כל פוסט</div>
+    </div>
+    <div class="sign-item">
+      <div class="sign-icon">😶</div>
+      <div>יש לך עסק טוב אבל הפרופיל לא מספר את זה</div>
+    </div>
+    <div class="sign-item">
+      <div class="sign-icon">🔄</div>
+      <div>מתחילה ומפסיקה שוב ושוב — חסר לך תוכנית ברורה</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what-get">
+  <div class="what-get-inner">
+    <div class="section-tag">מה קורה בפגישה</div>
+    <h2>שעה שמסדרות את הכל</h2>
+    <div class="get-items">
+      <div class="get-item">
+        <div class="get-num">1</div>
+        <h4>מסר + מיצוב</h4>
+        <p>מגדירות בדיוק מה את מוכרת, למי ולמה דווקא את — כדי שהתוכן ידבר לאנשים הנכונים</p>
+      </div>
+      <div class="get-item">
+        <div class="get-num">2</div>
+        <h4>אסטרטגיית תוכן</h4>
+        <p>בונות יחד תוכנית תוכן שאפשר לעמוד בה — ריאלית, ממוקדת, כזו שמביאה תוצאות</p>
+      </div>
+      <div class="get-item">
+        <div class="get-num">3</div>
+        <h4>שדרוג הפרופיל</h4>
+        <p>ביו, תמונת פרופיל, הייליטס — מוודאות שמי שנוחתת על הפרופיל שלך יודעת בדיוק מה לעשות</p>
+      </div>
+      <div class="get-item">
+        <div class="get-num">4</div>
+        <h4>תוכנית לשבועיים הבאים</h4>
+        <p>יוצאת עם רשימה ברורה: מה לפרסם, מתי, ואיך — בלי לנחש יותר</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-tag">ההשקעה</div>
+  <h2>פגישת RESET</h2>
+  <div class="price-card">
+    <div class="price-badge">מחיר השקה</div>
+    <div class="price-name">פגישת RESET לעסק</div>
+    <div class="price-desc">שעה 1:1 עם אלישבע —<br>זום או טלפון, לפי נוחותך</div>
+    <div class="price-amount" style="font-size:36px; margin-bottom: 12px;">מספר מקומות<br>מוגבל בחודש</div>
+    <div class="price-includes">
+      <div class="price-include-item">פגישת זום שעה 1:1</div>
+      <div class="price-include-item">סיכום כתוב עם כל מה שהחלטנו</div>
+      <div class="price-include-item">תוכנית תוכן לשבועיים קדימה</div>
+      <div class="price-include-item">המלצות לשדרוג הפרופיל</div>
+      <div class="price-include-item">מענה בוואטסאפ 48 שעות אחרי</div>
+    </div>
+    <a href="#contact" class="pay-btn">אני רוצה לקבוע פגישת RESET 👉</a>
+    <p class="pay-note">אחזור אלייך תוך 24 שעות לתיאום ופרטים</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-avatar"><img src="תמונה.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+  <div class="about-text">
+    <div class="about-name">אלישבע מייער</div>
+    <div class="about-title">אדריכלית סושייאל | שיווק ואינסטגרם לעסקים</div>
+    <p>
+      עוזרת לנותנות שירות להפוך תוכן ללקוחות משלמים — עם סדר, אסטרטגיה ומסר ברור.
+      עושה את זה עם תוכן, בתוך ובאסטרטגיה — ומשתפת כאן רק מה שעובד בפועל.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <h2>שאלות נפוצות</h2>
+    <div class="faq-item">
+      <div class="faq-q">איך מתבצעת הפגישה?</div>
+      <div class="faq-a">זום או טלפון, לפי מה שנוח לך. לאחר התשלום תקבלי קישור לתיאום פגישה ביומן.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">כמה זמן לוקחת הפגישה?</div>
+      <div class="faq-a">שעה ממוקדת. אני מגיעה מוכנה — כדי שנשתמש בכל דקה.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">מה צריך להכין לפני הפגישה?</div>
+      <div class="faq-a">אחרי הרשמה תקבלי שאלון קצר — כדי שנגיע לפגישה ממוקדות ולא נבזבז זמן על הקדמות.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">האם זה מתאים לי אם אני רק מתחילה?</div>
+      <div class="faq-a">בהחלט. דווקא בהתחלה חשוב לבנות נכון — זה חוסך חודשים של ניחושים.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-tag">השאירי פרטים</div>
+    <h2>בואי נדבר על<br><span>הפגישה שלך</span></h2>
+    <p class="contact-sub">מלאי את הפרטים ואחזור אלייך תוך 24 שעות</p>
+
+    <!-- ✏️ חברי את הטופס לרב מסר / שלח מסר בהמשך -->
+    <form class="contact-form" onsubmit="handleContact(event)">
+      <div class="cf-group">
+        <label>השם שלך</label>
+        <input type="text" name="name" placeholder="למשל: מיכל כהן" required />
+      </div>
+      <div class="cf-group">
+        <label>טלפון / וואטסאפ</label>
+        <input type="tel" name="phone" placeholder="05X-XXXXXXX" required />
+      </div>
+      <div class="cf-group">
+        <label>מייל</label>
+        <input type="email" name="email" placeholder="youremail@gmail.com" required />
+      </div>
+      <div class="cf-group">
+        <label>ספרי לי בקצרה — מה הכי לוחץ אצלך עכשיו? (לא חובה)</label>
+        <textarea name="message" placeholder="למשל: אני מפרסמת כבר חצי שנה ולא מגיעות לקוחות..."></textarea>
+      </div>
+      <button type="submit" class="cf-submit">שלחי — ואחזור אלייך בהקדם 👉</button>
+    </form>
+    <p class="cf-note">המידע שלך מאובטח ולא יועבר לאף גורם</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 אלישבע מייער | אדריכלית סושייאל
+</footer>
+
+<script>
+  function handleContact(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.cf-submit');
+    btn.textContent = '✓ קיבלתי! אחזור אלייך בהקדם';
+    btn.style.background = '#2ecc71';
+    btn.disabled = true;
+    // ✏️ כאן מחברים לרב מסר / שלח מסר
+  }
+</script>
+</body>
+</html>
