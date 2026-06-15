@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שאלון גאנט תוכן | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+    background: #f5f5f5;
+    min-height: 100vh;
+    color: #1A1A1A;
+  }
+
+  header {
+    background: #fff;
+    padding: 18px 24px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-em { font-size: 22px; font-weight: 900; color: #1A1A1A; }
+  .logo-sub { font-size: 9px; font-weight: 500; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
+
+  /* HERO */
+  .hero {
+    background: #1A1A1A;
+    padding: 40px 24px 36px;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(240,122,87,0.2); color: #F07A57;
+    font-size: 13px; font-weight: 700;
+    padding: 5px 18px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 30px; font-weight: 900; color: #fff;
+    line-height: 1.3; margin-bottom: 10px;
+  }
+  .hero h1 span { color: #F07A57; }
+  .hero p {
+    font-size: 15px; color: rgba(255,255,255,0.55);
+    font-weight: 300; line-height: 1.7; max-width: 400px; margin: 0 auto;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    max-width: 560px; margin: 28px auto 0;
+    padding: 0 24px;
+  }
+  .progress-header {
+    display: flex; justify-content: space-between;
+    font-size: 13px; color: #888; margin-bottom: 8px; font-weight: 500;
+  }
+  .progress-bar {
+    height: 6px; background: #e8e8e8; border-radius: 10px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: #F07A57; border-radius: 10px;
+    transition: width 0.4s ease;
+  }
+  .steps-dots {
+    display: flex; justify-content: center; gap: 8px; margin-top: 12px;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #e0e0e0; transition: background 0.3s;
+  }
+  .dot.active { background: #F07A57; }
+  .dot.done { background: rgba(240,122,87,0.4); }
+
+  /* FORM */
+  .form-wrap {
+    max-width: 560px; margin: 24px auto 40px;
+    padding: 0 24px;
+  }
+
+  .step { display: none; }
+  .step.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+
+  .step-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+
+  .step-label {
+    display: inline-block;
+    background: #FDF0EC; color: #F07A57;
+    font-size: 12px; font-weight: 700;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 14px;
+  }
+  .step-title {
+    font-size: 22px; font-weight: 900; color: #1A1A1A;
+    margin-bottom: 6px; line-height: 1.3;
+  }
+  .step-sub {
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.6;
+  }
+
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block; font-size: 14px; font-weight: 700;
+    color: #1A1A1A; margin-bottom: 7px;
+  }
+  .field label span { color: #F07A57; }
+  .field input, .field textarea, .field select {
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid #e8e8e8; border-radius: 12px;
+    font-family: 'Heebo', sans-serif; font-size: 15px;
+    color: #1A1A1A; background: #FAFAFA;
+    transition: border-color 0.2s;
+    direction: rtl;
+    -webkit-appearance: none;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: #F07A57; background: #fff;
+  }
+  .field textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  .field select { cursor: pointer; }
+
+  /* CHECKBOX GROUP */
+  .check-group { display: flex; flex-direction: column; gap: 10px; }
+  .check-opt {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid #e8e8e8; border-radius: 12px;
+    cursor: pointer; transition: all 0.2s; background: #FAFAFA;
+  }
+  .check-opt:hover { border-color: #F07A57; }
+  .check-opt.selected { border-color: #F07A57; background: #FDF0EC; }
+  .check-opt input[type="checkbox"] { display:none; }
+  .check-box {
+    width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: transparent; flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .check-opt.selected .check-box { background: #F07A57; border-color: #F07A57; color: #fff; }
+  .check-opt-label { font-size: 14px; font-weight: 500; }
+
+  /* RADIO GROUP */
+  .radio-group { display: flex; flex-direction: column; gap: 10px; }
+  .radio-opt {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid #e8e8e8; border-radius: 12px;
+    cursor: pointer; transition: all 0.2s; background: #FAFAFA;
+  }
+  .radio-opt:hover { border-color: #F07A57; }
+  .radio-opt.selected { border-color: #F07A57; background: #FDF0EC; }
+  .radio-dot {
+    width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s;
+  }
+  .radio-opt.selected .radio-dot {
+    border-color: #F07A57;
+    background: radial-gradient(circle, #F07A57 50%, transparent 50%);
+  }
+  .radio-opt-label { font-size: 14px; font-weight: 500; }
+
+  /* NAV BUTTONS */
+  .nav-buttons {
+    display: flex; gap: 12px; margin-top: 28px; flex-direction: column;
+  }
+  .btn-next {
+    background: #F07A57; color: #fff;
+    font-family: 'Heebo', sans-serif;
+    font-size: 17px; font-weight: 700;
+    padding: 16px 32px; border-radius: 50px;
+    border: none; cursor: pointer; width: 100%;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-next:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-back {
+    background: none; color: #aaa;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px; font-weight: 500;
+    padding: 10px; border: none; cursor: pointer;
+    text-align: center; transition: color 0.2s;
+  }
+  .btn-back:hover { color: #555; }
+
+  /* VALIDATION */
+  .field-error { font-size: 12px; color: #e05252; margin-top: 5px; display: none; }
+  .field.error input, .field.error textarea, .field.error select { border-color: #e05252; }
+  .field.error .field-error { display: block; }
+
+  /* SUMMARY STEP */
+  .summary-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .summary-item {
+    background: #FAFAFA; border: 1.5px solid #f0f0f0;
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .summary-key { font-size: 12px; color: #aaa; font-weight: 500; margin-bottom: 3px; }
+  .summary-val { font-size: 14px; color: #1A1A1A; font-weight: 600; line-height: 1.5; }
+
+  /* PAYMENT STEP */
+  .payment-card {
+    background: #1A1A1A; border-radius: 20px;
+    padding: 28px 24px; text-align: center; margin-bottom: 16px;
+  }
+  .payment-badge {
+    display: inline-block;
+    background: #F07A57; color: #fff;
+    font-size: 12px; font-weight: 700;
+    padding: 5px 16px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .payment-card h3 { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .payment-card p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 20px; }
+  .price-big { font-size: 58px; font-weight: 900; color: #F07A57; line-height: 1; }
+  .price-big span { font-size: 28px; }
+  .price-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 24px; }
+  .includes { text-align: right; margin-bottom: 24px; }
+  .inc-item {
+    font-size: 14px; color: rgba(255,255,255,0.75);
+    padding: 6px 0; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .inc-item::before { content: "✓"; color: #F07A57; font-weight: 900; flex-shrink: 0; }
+  .pay-btn {
+    display: block; background: #F07A57; color: #fff;
+    font-family: 'Heebo', sans-serif; font-size: 18px; font-weight: 700;
+    padding: 18px 32px; border-radius: 50px;
+    text-decoration: none; text-align: center;
+    transition: opacity 0.2s; margin-bottom: 10px;
+  }
+  .pay-btn:hover { opacity: 0.9; }
+  .pay-secure { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  footer {
+    background: #1A1A1A; padding: 24px;
+    text-align: center; font-size: 12px; color: rgba(255,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-em">EM</div>
+  <div class="logo-sub">Elisheva Meyer</div>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">גאנט תוכן חודשי</div>
+  <h1>בואי נבנה לך את<br><span>תוכנית התוכן</span> שלך</h1>
+  <p>שאלון קצר ותקבלי גאנט מסודר עם תוכן מותאם אישית לעסק שלך</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-header">
+    <span id="stepLabel">שלב 1 מתוך 4</span>
+    <span id="stepPct">25%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:25%"></div>
+  </div>
+  <div class="steps-dots">
+    <div class="dot active" id="dot0"></div>
+    <div class="dot" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+  </div>
+</div>
+
+<div class="form-wrap">
+
+  <!-- STEP 1: פרטי העסק -->
+  <div class="step active" id="step-0">
+    <div class="step-card">
+      <div class="step-label">שלב 1 — פרטי העסק</div>
+      <div class="step-title">ספרי לי על העסק שלך</div>
+      <div class="step-sub">כמה שאלות קצרות כדי שהגאנט יהיה בדיוק בשבילך</div>
+
+      <div class="field" id="f-name">
+        <label>שם העסק <span>*</span></label>
+        <input type="text" id="businessName" placeholder="לדוגמה: Studio Rivka">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-field">
+        <label>תחום הפעילות <span>*</span></label>
+        <input type="text" id="businessField" placeholder="לדוגמה: קופה בוטיק, ליווי עסקי, טיפול בתינוקות...">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-service">
+        <label>מה את מוכרת? <span>*</span></label>
+        <input type="text" id="serviceType" placeholder="לדוגמה: קורסים, ייעוץ, טיפולים, מוצרים...">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-desc">
+        <label>תיאור קצר של העסק <span>*</span></label>
+        <textarea id="businessDesc" placeholder="2-3 משפטים — מה את עושה, למי ואיך"></textarea>
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-unique">
+        <label>מה מייחד אותך מול מתחרות?</label>
+        <input type="text" id="uniqueness" placeholder="הגישה, הניסיון, השיטה שלך...">
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-next" onclick="goNext(0)">הבאה ←</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: קהל יעד -->
+  <div class="step" id="step-1">
+    <div class="step-card">
+      <div class="step-label">שלב 2 — קהל יעד</div>
+      <div class="step-title">מי הלקוחה שלך?</div>
+      <div class="step-sub">ככל שנבין את הקהל שלך — התוכן יהיה מדויק יותר</div>
+
+      <div class="field" id="f-audience">
+        <label>מי הלקוחה האידיאלית שלך? <span>*</span></label>
+        <input type="text" id="targetAudience" placeholder="לדוגמה: אמהות טריות, נשים עצמאיות, בעלות קפה...">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-pain">
+        <label>מה הכאב / הבעיה שהיא מגיעה איתה? <span>*</span></label>
+        <textarea id="clientPain" placeholder="מה הלקוחה מרגישה לפני שהיא פונה אליך?"></textarea>
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-result">
+        <label>מה היא מקבלת ממך בסוף? (תוצאה) <span>*</span></label>
+        <input type="text" id="clientResult" placeholder="לא תהליך — מה היא מרגישה/משיגה בסוף?">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field">
+        <label>כמה שנים את עובדת בתחום?</label>
+        <select id="yearsExp">
+          <option value="">בחרי</option>
+          <option>פחות משנה</option>
+          <option>1-3 שנים</option>
+          <option>3-5 שנים</option>
+          <option>5-10 שנים</option>
+          <option>10+ שנים</option>
+        </select>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-next" onclick="goNext(1)">הבאה ←</button>
+        <button class="btn-back" onclick="goBack(1)">← חזרה</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: תוכן ואינסטגרם -->
+  <div class="step" id="step-2">
+    <div class="step-card">
+      <div class="step-label">שלב 3 — תוכן ואינסטגרם</div>
+      <div class="step-title">איך נראה האינסטגרם שלך?</div>
+      <div class="step-sub">בואי נבין מה יש, מה עובד ומה צריך לשפר</div>
+
+      <div class="field">
+        <label>כמה פעמים בשבוע את מפרסמת (בממוצע)?</label>
+        <div class="radio-group" id="postFreq">
+          <div class="radio-opt" onclick="selectRadio('postFreq', this, 'כמעט לא')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">כמעט לא מפרסמת</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('postFreq', this, '1-2 בשבוע')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">1-2 פעמים בשבוע</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('postFreq', this, '3-4 בשבוע')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">3-4 פעמים בשבוע</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('postFreq', this, 'יומי')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">כל יום</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>איזה סוגי תוכן את מעלה? (ניתן לבחור כמה)</label>
+        <div class="check-group" id="contentTypes">
+          <label class="check-opt" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <div class="check-opt-label">פוסטים / קרוסלות</div>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <div class="check-opt-label">רילסים / סרטונים</div>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <div class="check-opt-label">סטוריז</div>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <div class="check-opt-label">שילוב של הכל</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>מה הכי קשה לך בתוכן?</label>
+        <div class="radio-group" id="biggestChallenge">
+          <div class="radio-opt" onclick="selectRadio('biggestChallenge', this, 'לא יודעת מה לפרסם')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">לא יודעת מה לפרסם</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('biggestChallenge', this, 'לא עקבית')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">לא עקבית — מתחילה ומפסיקה</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('biggestChallenge', this, 'תוכן לא מביא פניות')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">מפרסמת אבל לא מקבלת פניות</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('biggestChallenge', this, 'חוסר זמן')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">אין לי זמן לחשוב על תוכן</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>יש אירוע / מבצע / השקה מיוחדת בחודש?</label>
+        <input type="text" id="specialEvent" placeholder="לדוגמה: מבצע יום הולדת, השקת קורס, חגים...">
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-next" onclick="goNext(2)">הבאה ←</button>
+        <button class="btn-back" onclick="goBack(2)">← חזרה</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: מטרות + פרטים -->
+  <div class="step" id="step-3">
+    <div class="step-card">
+      <div class="step-label">שלב 4 — מטרות</div>
+      <div class="step-title">מה את רוצה להשיג?</div>
+      <div class="step-sub">שאלה אחרונה ואנחנו בדרך לגאנט שלך</div>
+
+      <div class="field">
+        <label>מה המטרה הראשית שלך החודש?</label>
+        <div class="radio-group" id="mainGoal">
+          <div class="radio-opt" onclick="selectRadio('mainGoal', this, 'יותר פניות ולקוחות')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">יותר פניות ולקוחות חדשים</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('mainGoal', this, 'בניית מותג ונוכחות')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">בניית מותג ונוכחות חזקה</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('mainGoal', this, 'השקת מוצר/שירות')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">השקה של מוצר או שירות</div>
+          </div>
+          <div class="radio-opt" onclick="selectRadio('mainGoal', this, 'עקביות בפרסום')">
+            <div class="radio-dot"></div>
+            <div class="radio-opt-label">להיות עקבית וסדורה</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" id="f-contact-name">
+        <label>השם שלך <span>*</span></label>
+        <input type="text" id="contactName" placeholder="שם פרטי">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field" id="f-contact-phone">
+        <label>מספר טלפון / וואטסאפ <span>*</span></label>
+        <input type="tel" id="contactPhone" placeholder="050-0000000">
+        <div class="field-error">שדה חובה</div>
+      </div>
+
+      <div class="field">
+        <label>משהו נוסף שחשוב שנדע?</label>
+        <textarea id="extraInfo" placeholder="כל מה שחשוב לך שנדע לפני שמתחילים..."></textarea>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-next" onclick="goNext(3)">לתשלום ←</button>
+        <button class="btn-back" onclick="goBack(3)">← חזרה</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: תשלום -->
+  <div class="step" id="step-4">
+    <div class="step-card">
+      <div class="step-label">כמעט שם! 🎉</div>
+      <div class="step-title">השאלון מוכן —<br>עכשיו רק לשלם ולהתחיל</div>
+      <div class="step-sub" style="margin-bottom:20px;">תוך 48 שעות תקבלי גאנט תוכן חודשי מותאם אישית</div>
+
+      <div class="payment-card">
+        <div class="payment-badge">גאנט תוכן חודשי</div>
+        <h3>תוכנית תוכן מלאה לחודש</h3>
+        <p>מותאמת לעסק שלך, לקהל שלך, למטרות שלך</p>
+
+        <div class="includes">
+          <div class="inc-item">גאנט 30 יום עם נושאי תוכן מסודרים</div>
+          <div class="inc-item">רעיונות ספציפיים לפוסטים, רילסים וסטוריז</div>
+          <div class="inc-item">כיוון לכיתובים שמביאים פניות</div>
+          <div class="inc-item">התאמה לאירועים ומבצעים שציינת</div>
+        </div>
+
+        <div class="price-big"><span>₪</span>197</div>
+        <p class="price-note">תשלום חד-פעמי · גישה מיידית לאחר התשלום</p>
+
+        <!-- TODO: החליפי את href="#" בקישור GROW שלך -->
+        <a href="#" class="pay-btn" id="payBtn">לתשלום מאובטח 👉</a>
+        <div class="pay-secure">תשלום מאובטח | פרטים נשמרים מוצפנים</div>
+      </div>
+
+      <div style="text-align:center; font-size:13px; color:#aaa; line-height:1.7;">
+        יש שאלות? שלחי וואטסאפ<br>
+        <strong style="color:#F07A57;">אלישבע מייער — אדריכלית סושייאל</strong>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 אלישבע מייער | אדריכלית סושייאל
+</footer>
+
+<script>
+let currentStep = 0;
+const totalSteps = 4;
+
+// Track radio selections
+const radioValues = {};
+
+function updateProgress(step) {
+  const pct = Math.round(((step + 1) / (totalSteps + 1)) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('stepPct').textContent = pct + '%';
+
+  if (step < totalSteps) {
+    document.getElementById('stepLabel').textContent = `שלב ${step + 1} מתוך ${totalSteps}`;
+  } else {
+    document.getElementById('stepLabel').textContent = 'השאלון הושלם!';
+  }
+
+  for (let i = 0; i <= totalSteps; i++) {
+    const dot = document.getElementById('dot' + i);
+    if (!dot) continue;
+    dot.className = 'dot' + (i === step ? ' active' : i < step ? ' done' : '');
+  }
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateProgress(n);
+}
+
+function validateStep(step) {
+  let valid = true;
+
+  if (step === 0) {
+    valid = requireField('f-name', 'businessName') & valid;
+    valid = requireField('f-field', 'businessField') & valid;
+    valid = requireField('f-service', 'serviceType') & valid;
+    valid = requireTextarea('f-desc', 'businessDesc') & valid;
+  }
+  if (step === 1) {
+    valid = requireField('f-audience', 'targetAudience') & valid;
+    valid = requireTextarea('f-pain', 'clientPain') & valid;
+    valid = requireField('f-result', 'clientResult') & valid;
+  }
+  if (step === 3) {
+    valid = requireField('f-contact-name', 'contactName') & valid;
+    valid = requireField('f-contact-phone', 'contactPhone') & valid;
+  }
+
+  return valid;
+}
+
+function requireField(fieldId, inputId) {
+  const wrap = document.getElementById(fieldId);
+  const val = document.getElementById(inputId).value.trim();
+  if (!val) { wrap.classList.add('error'); return false; }
+  wrap.classList.remove('error'); return true;
+}
+function requireTextarea(fieldId, inputId) {
+  return requireField(fieldId, inputId);
+}
+
+function goNext(step) {
+  if (!validateStep(step)) return;
+
+  // Pass form data to payment step if going to last step
+  if (step === 3) {
+    buildPaymentLink();
+  }
+
+  currentStep = step + 1;
+  showStep(currentStep);
+}
+
+function goBack(step) {
+  currentStep = step - 1;
+  showStep(currentStep);
+}
+
+function selectRadio(groupId, el, value) {
+  document.querySelectorAll('#' + groupId + ' .radio-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  radioValues[groupId] = value;
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('selected');
+}
+
+function buildPaymentLink() {
+  // Collect form data and append to GROW payment link as URL params (optional)
+  const name = document.getElementById('contactName').value.trim();
+  const phone = document.getElementById('contactPhone').value.trim();
+  const business = document.getElementById('businessName').value.trim();
+
+  // TODO: Replace # with your GROW payment link
+  // Example: https://grow.me/your-link?name=NAME&phone=PHONE
+  const base = '#'; // ← החליפי בקישור GROW שלך
+  const url = base + (base.includes('?') ? '&' : '?') +
+    `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&business=${encodeURIComponent(business)}`;
+
+  document.getElementById('payBtn').href = url;
+}
+
+function getContentTypes() {
+  const selected = [];
+  document.querySelectorAll('#contentTypes .check-opt.selected .check-opt-label').forEach(el => {
+    selected.push(el.textContent.trim());
+  });
+  return selected.join(', ') || '—';
+}
+</script>
+
+</body>
+</html>
