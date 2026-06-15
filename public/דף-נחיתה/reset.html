@@ -699,11 +699,16 @@
 <script>
   function handleContact(e) {
     e.preventDefault();
+    const name = e.target.querySelector('[name="name"]').value.trim();
+    const email = e.target.querySelector('[name="email"]').value.trim();
     const btn = e.target.querySelector('.cf-submit');
-    btn.textContent = '✓ קיבלתי! אחזור אלייך בהקדם';
-    btn.style.background = '#2ecc71';
+    btn.textContent = '...שולחת';
     btn.disabled = true;
-    // ✏️ כאן מחברים לרב מסר / שלח מסר
+    fetch('https://cp.responder.live/api/v1.0/subscribers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer c1dab6b146235ba7031e15f61e6de2f06053' },
+      body: JSON.stringify({ list_id: 105039, email: email, name: name + ' | RESET' })
+    }).catch(() => {}).finally(() => { window.location.href = 'contact-thanks.html'; });
   }
 </script>
 </body>

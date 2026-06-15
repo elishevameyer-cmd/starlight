@@ -186,9 +186,9 @@
     <h2>מוכנה להתחיל<br><span>לעבוד בשיטה?</span></h2>
     <p class="contact-sub">מלאי פרטים ואחזור אלייך תוך 24 שעות</p>
     <form class="cf-form" onsubmit="handleForm(event)">
-      <div class="cf-group"><label>שם</label><input type="text" placeholder="השם שלך" required></div>
-      <div class="cf-group"><label>טלפון</label><input type="tel" placeholder="05X-XXXXXXX" required></div>
-      <div class="cf-group"><label>מייל</label><input type="email" placeholder="youremail@gmail.com" required></div>
+      <div class="cf-group"><label>שם</label><input type="text" id="cfName" placeholder="השם שלך" required></div>
+      <div class="cf-group"><label>טלפון</label><input type="tel" placeholder="05X-XXXXXXX"></div>
+      <div class="cf-group"><label>מייל</label><input type="email" id="cfEmail" placeholder="youremail@gmail.com" required></div>
       <div class="cf-group"><label>ספרי לי בקצרה איפה את נמצאת עכשיו עם העסק</label><textarea placeholder="למשל: יש לי עסק שנה, מפרסמת אבל לא מגיעות פניות..."></textarea></div>
       <button type="submit" class="cf-submit">שלחי — ואחזור אלייך 👉</button>
     </form>
@@ -201,10 +201,16 @@
 <script>
 function handleForm(e) {
   e.preventDefault();
+  const name = document.getElementById('cfName').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
   const btn = e.target.querySelector('.cf-submit');
-  btn.textContent = '✓ קיבלתי! אחזור אלייך בהקדם';
-  btn.style.background = '#2ecc71';
+  btn.textContent = '...שולחת';
   btn.disabled = true;
+  fetch('https://cp.responder.live/api/v1.0/subscribers', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer c1dab6b146235ba7031e15f61e6de2f06053' },
+    body: JSON.stringify({ list_id: 105039, email: email, name: name + ' | BUILD UP' })
+  }).catch(() => {}).finally(() => { window.location.href = 'contact-thanks.html'; });
 }
 </script>
 </body>
