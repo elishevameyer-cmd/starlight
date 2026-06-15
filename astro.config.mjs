@@ -2,23 +2,40 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'אלישבע מייער | עוזר עסקי',
+			social: [
+				{ icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/' },
+			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'ראשי',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'דשבורד', slug: 'index' },
+						{ label: 'עליי', slug: 'about' },
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'מותג',
+					items: [
+						{ label: 'הנחיות מותג', slug: 'brand/guidelines' },
+					],
+				},
+				{
+					label: 'תוכן',
+					items: [
+						{ label: 'מסגרות עבודה', slug: 'content/frameworks' },
+						{ label: 'תבניות מוכנות', slug: 'content/templates' },
+					],
+				},
+				{
+					label: 'לקוחות',
+					items: [
+						{ label: 'קליטת לקוחה', slug: 'clients/onboarding' },
+						{ label: 'תבנית אסטרטגיה', slug: 'clients/strategy-template' },
+					],
 				},
 			],
 		}),

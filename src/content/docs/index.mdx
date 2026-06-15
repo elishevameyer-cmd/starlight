@@ -1,40 +1,38 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: דשבורד | אלישבע מייער
+description: העוזר העסקי האישי שלי — תוכן, אסטרטגיה, לקוחות.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: הפכי את האינסטגרם לכלי שמביא פניות ולקוחות
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: תבניות תוכן
+      link: /content/templates/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: קליטת לקוחה
+      link: /clients/onboarding/
+      icon: add-document
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## מה רוצה לעשות היום?
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="כתיבת תוכן" icon="pencil">
+		קרוסלות, רילסים, כיתובים וסטוריז — תבניות מוכנות לשימוש מיידי.
+		[לתבניות תוכן →](/content/templates/)
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="אסטרטגיית תוכן" icon="document">
+		מסגרות עבודה לבניית אסטרטגיה ללקוחות ולעצמי.
+		[למסגרות עבודה →](/content/frameworks/)
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="קליטת לקוחה חדשה" icon="add-document">
+		שאלון, מסמך אסטרטגיה ולוח תוכן — הכל במקום אחד.
+		[לקליטת לקוחה →](/clients/onboarding/)
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="הנחיות מותג" icon="star">
+		צבעים, טון, שפה — הכל מוגדר ומסודר.
+		[להנחיות מותג →](/brand/guidelines/)
 	</Card>
 </CardGrid>
