@@ -15,7 +15,7 @@ export default defineConfig({
 					items: [
 						{ label: 'דשבורד', slug: 'index' },
 						{ label: 'עליי', slug: 'about' },
-						{ label: 'שירותים', slug: 'services/index' },
+						{ label: 'שירותים', slug: 'services' },
 					],
 				},
 				{
