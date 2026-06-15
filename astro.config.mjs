@@ -2,7 +2,10 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+
 export default defineConfig({
+	site: 'https://elishevameyer-cmd.github.io',
+	base: '/starlight',
 	integrations: [
 		starlight({
 			title: 'אלישבע מייער | עוזר עסקי',
