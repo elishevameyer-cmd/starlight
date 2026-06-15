@@ -12,7 +12,6 @@
     direction: rtl;
     background: #f7f7f7;
     color: #1A1A1A;
-    min-height: 100vh;
   }
 
   .page-wrap {
@@ -21,109 +20,57 @@
     padding: 40px 20px 60px;
   }
 
-  /* PROFILE */
-  .profile {
-    text-align: center;
-    margin-bottom: 28px;
-  }
+  /* ── PROFILE ── */
+  .profile { text-align: center; margin-bottom: 32px; }
   .profile-photo {
-    width: 96px; height: 96px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 100px; height: 100px;
+    border-radius: 50%; object-fit: cover;
     border: 3px solid #F07A57;
     margin-bottom: 14px;
+    display: block; margin-left: auto; margin-right: auto;
   }
-  .profile-name {
-    font-size: 22px; font-weight: 900; color: #1A1A1A;
-    margin-bottom: 4px;
-  }
-  .profile-title {
-    font-size: 14px; color: #888; font-weight: 400;
-    margin-bottom: 14px;
-  }
-  .profile-about {
-    font-size: 14px; color: #555; line-height: 1.7;
-    max-width: 340px; margin: 0 auto;
-  }
+  .profile-name { font-size: 24px; font-weight: 900; color: #1A1A1A; margin-bottom: 4px; }
+  .profile-title { font-size: 13px; color: #F07A57; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
+  .profile-about { font-size: 14px; color: #666; line-height: 1.75; max-width: 340px; margin: 0 auto; }
 
-  /* SECTION LABEL */
+  /* ── SECTION ── */
   .section-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 2px;
-    color: #bbb; text-transform: uppercase;
-    text-align: center; margin: 28px 0 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    color: #c0c0c0; text-transform: uppercase;
+    text-align: center; margin: 32px 0 14px;
   }
 
-  /* LINK CARDS */
-  .link-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 16px 20px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    color: #1A1A1A;
-    border: 1.5px solid #f0f0f0;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
-    cursor: pointer;
+  /* ── FREE OPT-IN ── */
+  .optin-card {
+    background: #1A1A1A; border-radius: 20px;
+    overflow: hidden; margin-bottom: 12px;
   }
-  .link-card:hover {
-    border-color: #F07A57;
-    box-shadow: 0 4px 16px rgba(240,122,87,0.12);
-    transform: translateY(-1px);
+  .optin-img {
+    width: 100%; height: 160px; object-fit: cover;
+    display: block;
   }
-  .card-icon {
-    font-size: 26px; flex-shrink: 0;
-    width: 44px; height: 44px;
-    background: #FDF0EC; border-radius: 12px;
+  .optin-img-placeholder {
+    width: 100%; height: 140px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1A1A1A 100%);
     display: flex; align-items: center; justify-content: center;
   }
-  .card-body { flex: 1; }
-  .card-title { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
-  .card-desc { font-size: 12px; color: #999; line-height: 1.5; }
-  .card-price {
-    font-size: 14px; font-weight: 700; color: #F07A57;
-    flex-shrink: 0;
-  }
-  .card-arrow {
-    font-size: 18px; color: #ddd; flex-shrink: 0;
-  }
-  .card-free {
+  .optin-body { padding: 20px; }
+  .optin-free-tag {
+    display: inline-block;
     background: #F07A57; color: #fff;
     font-size: 11px; font-weight: 700;
-    padding: 3px 10px; border-radius: 20px;
-    flex-shrink: 0;
+    padding: 3px 12px; border-radius: 20px; margin-bottom: 8px;
   }
-
-  /* FREE OPT-IN CARD */
-  .optin-card {
-    background: #1A1A1A;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 10px;
-  }
-  .optin-top {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-  }
-  .optin-icon {
-    font-size: 24px;
-    width: 44px; height: 44px;
-    background: rgba(240,122,87,0.15); border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .optin-title { font-size: 16px; font-weight: 700; color: #fff; }
-  .optin-desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top:2px; }
+  .optin-title { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .optin-desc { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 16px; line-height: 1.6; }
   .optin-form { display: flex; gap: 8px; }
   .optin-input {
     flex: 1; padding: 12px 14px;
     border: none; border-radius: 10px;
-    font-family: 'Heebo', sans-serif;
-    font-size: 14px; direction: rtl;
-    background: rgba(255,255,255,0.1); color: #fff;
+    font-family: 'Heebo', sans-serif; font-size: 14px;
+    direction: rtl; background: rgba(255,255,255,0.1); color: #fff;
   }
-  .optin-input::placeholder { color: rgba(255,255,255,0.35); }
+  .optin-input::placeholder { color: rgba(255,255,255,0.3); }
   .optin-input:focus { outline: none; background: rgba(255,255,255,0.15); }
   .optin-btn {
     background: #F07A57; color: #fff;
@@ -131,16 +78,86 @@
     font-size: 14px; font-weight: 700;
     padding: 12px 18px; border-radius: 10px;
     border: none; cursor: pointer; white-space: nowrap;
-    transition: opacity 0.2s;
   }
-  .optin-btn:hover { opacity: 0.9; }
-  .optin-note { font-size: 11px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 8px; }
+  .optin-note { font-size: 11px; color: rgba(255,255,255,0.2); text-align: center; margin-top: 10px; }
 
-  footer {
-    text-align: center;
-    font-size: 12px; color: #ccc;
-    margin-top: 40px;
+  /* ── PRODUCT CARD ── */
+  .product-card {
+    background: #fff; border-radius: 20px;
+    overflow: hidden; margin-bottom: 12px;
+    text-decoration: none; color: #1A1A1A;
+    display: block;
+    border: 1.5px solid #f0f0f0;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   }
+  .product-card:hover {
+    border-color: #F07A57;
+    box-shadow: 0 6px 24px rgba(240,122,87,0.12);
+    transform: translateY(-2px);
+  }
+  .product-img {
+    width: 100%; height: 160px; object-fit: cover; display: block;
+  }
+  .product-img-placeholder {
+    width: 100%; height: 140px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .product-body {
+    padding: 18px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .product-info { flex: 1; }
+  .product-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: #F07A57; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .product-title { font-size: 18px; font-weight: 900; margin-bottom: 3px; }
+  .product-desc { font-size: 12px; color: #999; line-height: 1.5; }
+  .product-price {
+    font-size: 22px; font-weight: 900; color: #F07A57;
+    flex-shrink: 0;
+  }
+  .product-arrow { font-size: 22px; color: #ddd; flex-shrink: 0; }
+
+  /* ── SERVICE CARD ── */
+  .service-card {
+    background: #fff; border-radius: 20px;
+    overflow: hidden; margin-bottom: 12px;
+    text-decoration: none; color: #1A1A1A;
+    display: block;
+    border: 1.5px solid #f0f0f0;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .service-card:hover {
+    border-color: #F07A57;
+    box-shadow: 0 6px 24px rgba(240,122,87,0.12);
+    transform: translateY(-2px);
+  }
+  .service-img {
+    width: 100%; height: 180px; object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+  .service-img-placeholder {
+    width: 100%; height: 140px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-body {
+    padding: 18px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .service-info { flex: 1; }
+  .service-type {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: #bbb; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .service-title { font-size: 20px; font-weight: 900; margin-bottom: 3px; }
+  .service-desc { font-size: 12px; color: #999; line-height: 1.5; }
+  .service-cta {
+    font-size: 13px; font-weight: 700; color: #F07A57; flex-shrink: 0;
+  }
+
+  footer { text-align: center; font-size: 12px; color: #ccc; margin-top: 40px; }
 </style>
 </head>
 <body>
@@ -151,7 +168,7 @@
   <div class="profile">
     <img src="elisheva.jpeg" alt="אלישבע מייער" class="profile-photo">
     <div class="profile-name">אלישבע מייער</div>
-    <div class="profile-title">אדריכלית סושייאל | מודיעין</div>
+    <div class="profile-title">אדריכלית סושייאל</div>
     <p class="profile-about">
       עוזרת לבעלות עסקים להפוך את האינסטגרם לכלי שמביא פניות ולקוחות — עם אסטרטגיה ברורה, מסר חד ותוכן שמוכר.
     </p>
@@ -161,80 +178,97 @@
   <div class="section-label">מתנה חינמית</div>
 
   <div class="optin-card">
-    <div class="optin-top">
-      <div class="optin-icon">📋</div>
-      <div>
-        <div class="optin-title">הביו המושלם</div>
-        <div class="optin-desc">צ'קליסט חינמי — 5 דברים שכל ביו חזק חייב לכלול</div>
-      </div>
+    <img src="img-checklist.jpg" class="optin-img" alt="הביו המושלם">
+    <div class="optin-body">
+      <div class="optin-free-tag">חינמי לגמרי</div>
+      <div class="optin-title">הביו המושלם</div>
+      <div class="optin-desc">5 דברים שכל ביו חזק חייב לכלול — צ'קליסט מיידי</div>
+      <form class="optin-form" onsubmit="handleFree(event)">
+        <input class="optin-input" type="email" id="freeEmail" placeholder="המייל שלך" required>
+        <button type="submit" class="optin-btn" id="freeBtn">שלחי לי →</button>
+      </form>
+      <p class="optin-note">ללא ספאם · גישה מיידית</p>
     </div>
-    <form class="optin-form" onsubmit="handleFree(event)">
-      <input class="optin-input" type="email" id="freeEmail" placeholder="המייל שלך" required>
-      <button type="submit" class="optin-btn" id="freeBtn">שלחי לי 📩</button>
-    </form>
-    <p class="optin-note">ללא ספאם · גישה מיידית</p>
   </div>
 
   <!-- PAID PRODUCTS -->
   <div class="section-label">מוצרים דיגיטליים</div>
 
-  <a href="instagram-mushlam.html" class="link-card">
-    <div class="card-icon">📘</div>
-    <div class="card-body">
-      <div class="card-title">אינסטגרם מושלם</div>
-      <div class="card-desc">המדריך המלא לאינסטגרם שמביא לקוחות</div>
+  <a href="instagram-mushlam.html" class="product-card">
+    <img src="img-instagram.jpg" class="product-img" alt="אינסטגרם מושלם">
+    <div class="product-body">
+      <div class="product-info">
+        <div class="product-tag">מדריך דיגיטלי</div>
+        <div class="product-title">אינסטגרם מושלם</div>
+        <div class="product-desc">המדריך המלא שמביא לקוחות מהאינסטגרם</div>
+      </div>
+      <div class="product-price">59 ₪</div>
+      <div class="product-arrow">›</div>
     </div>
-    <div class="card-price">59 ₪</div>
-    <div class="card-arrow">›</div>
   </a>
 
-  <a href="gantt-questionnaire.html" class="link-card">
-    <div class="card-icon">📅</div>
-    <div class="card-body">
-      <div class="card-title">גאנט תוכן חודשי</div>
-      <div class="card-desc">תוכנית תוכן אישית — מותאמת לעסק שלך</div>
+  <a href="gantt-questionnaire.html" class="product-card">
+    <img src="img-gantt.jpg" class="product-img" alt="גאנט תוכן">
+    <div class="product-body">
+      <div class="product-info">
+        <div class="product-tag">שירות מותאם אישית</div>
+        <div class="product-title">גאנט תוכן חודשי</div>
+        <div class="product-desc">תוכנית תוכן אישית — יודעת מה לפרסם כל יום</div>
+      </div>
+      <div class="product-price">200 ₪</div>
+      <div class="product-arrow">›</div>
     </div>
-    <div class="card-price">200 ₪</div>
-    <div class="card-arrow">›</div>
   </a>
 
   <!-- SERVICES -->
   <div class="section-label">שירותים</div>
 
-  <a href="contact.html?service=פגישת RESET" class="link-card">
-    <div class="card-icon">⚡</div>
-    <div class="card-body">
-      <div class="card-title">פגישת RESET</div>
-      <div class="card-desc">שיחת 1:1 לסדר המסר, האסטרטגיה והתוכן — שעה אחת</div>
+  <a href="contact.html?service=פגישת RESET" class="service-card">
+    <img src="img-reset.jpg" class="service-img" alt="RESET">
+    <div class="service-body">
+      <div class="service-info">
+        <div class="service-type">פגישת 1:1</div>
+        <div class="service-title">פגישת RESET</div>
+        <div class="service-desc">שיחה ממוקדת שעה — מסר, אסטרטגיה, תוכן</div>
+      </div>
+      <div class="service-cta">לפרטים ›</div>
     </div>
-    <div class="card-arrow">›</div>
   </a>
 
-  <a href="contact.html?service=BUILD UP" class="link-card">
-    <div class="card-icon">🏗️</div>
-    <div class="card-body">
-      <div class="card-title">BUILD UP</div>
-      <div class="card-desc">4 פגישות לבניית תשתית שיווקית מלאה</div>
+  <a href="contact.html?service=BUILD UP" class="service-card">
+    <img src="img-buildup.jpg" class="service-img" alt="BUILD UP">
+    <div class="service-body">
+      <div class="service-info">
+        <div class="service-type">תהליך עומק</div>
+        <div class="service-title">BUILD UP</div>
+        <div class="service-desc">4 פגישות — תשתית שיווקית מלאה</div>
+      </div>
+      <div class="service-cta">לפרטים ›</div>
     </div>
-    <div class="card-arrow">›</div>
   </a>
 
-  <a href="contact.html?service=LET'S GROW" class="link-card">
-    <div class="card-icon">🌱</div>
-    <div class="card-body">
-      <div class="card-title">LET'S GROW</div>
-      <div class="card-desc">ליווי חודשי לתוצאות — 2 פגישות + תוכן</div>
+  <a href="contact.html?service=LET'S GROW" class="service-card">
+    <img src="img-letsgrow.jpg" class="service-img" alt="LET'S GROW">
+    <div class="service-body">
+      <div class="service-info">
+        <div class="service-type">ליווי חודשי</div>
+        <div class="service-title">LET'S GROW</div>
+        <div class="service-desc">2 פגישות + תוכן שבועי + פידבק</div>
+      </div>
+      <div class="service-cta">לפרטים ›</div>
     </div>
-    <div class="card-arrow">›</div>
   </a>
 
-  <a href="contact.html?service=DONE FOR YOU" class="link-card">
-    <div class="card-icon">✅</div>
-    <div class="card-body">
-      <div class="card-title">DONE FOR YOU</div>
-      <div class="card-desc">ניהול מקצועי מלא של האינסטגרם שלך</div>
+  <a href="contact.html?service=DONE FOR YOU" class="service-card">
+    <img src="img-doneforyou.jpg" class="service-img" alt="DONE FOR YOU">
+    <div class="service-body">
+      <div class="service-info">
+        <div class="service-type">ניהול מלא</div>
+        <div class="service-title">DONE FOR YOU</div>
+        <div class="service-desc">ניהול מקצועי מלא של האינסטגרם שלך</div>
+      </div>
+      <div class="service-cta">לפרטים ›</div>
     </div>
-    <div class="card-arrow">›</div>
   </a>
 
   <footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
