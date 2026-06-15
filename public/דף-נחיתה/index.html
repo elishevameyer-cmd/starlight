@@ -491,11 +491,17 @@ function handleFree(e) {
   const btn = e.target.querySelector('.email-submit');
   btn.textContent = '...שולחת';
   btn.disabled = true;
-  // TODO: חברי לרב-מסר — שנה את ה-API KEY וה-LIST ID
-  // fetch('https://api.rabbitmessenger.com/...', { method:'POST', body: JSON.stringify({email}) })
-  setTimeout(() => {
+
+  fetch('https://cp.responder.live/api/v1.0/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer c1dab6b146235ba7031e15f61e6de2f06053'
+    },
+    body: JSON.stringify({ list_id: 105039, email: email })
+  }).catch(() => {}).finally(() => {
     window.location.href = 'thank-you.html';
-  }, 600);
+  });
 }
 </script>
 </body>
