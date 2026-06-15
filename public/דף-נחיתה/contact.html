@@ -142,8 +142,7 @@ function handleContact(e) {
     body: JSON.stringify({
       list_id: 105039,
       email: email,
-      name: name,
-      custom_fields: { note: note }
+      name: service ? `${name} | ${service}` : name
     })
   }).catch(() => {}).finally(() => {
     window.location.href = 'contact-thanks.html';
