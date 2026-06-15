@@ -3,716 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>פגישת RESET לעסק | אלישבע מייער</title>
+<title>פגישת RESET | אלישבע מייער</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Heebo', sans-serif;
-    direction: rtl;
-    background: #fff;
-    color: #1A1A1A;
-  }
-
-  /* ── HEADER ── */
-  header {
-    padding: 24px 40px;
-    border-bottom: 1px solid #f0f0f0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .logo-area { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-  .logo-em { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: #1A1A1A; }
-  .logo-name { font-size: 11px; font-weight: 500; letter-spacing: 2px; color: #888; text-transform: uppercase; }
-
-  /* ── HERO ── */
-  .hero {
-    background: #1A1A1A;
-    padding: 80px 32px 72px;
-    text-align: center;
-  }
-
-  .hero-tag {
-    display: inline-block;
-    background: rgba(240,122,87,0.2);
-    color: #F07A57;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 6px 20px;
-    border-radius: 20px;
-    margin-bottom: 28px;
-  }
-
-  .hero h1 {
-    font-size: 52px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.15;
-    margin-bottom: 24px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero h1 span { color: #F07A57; }
-
-  .hero-sub {
-    font-size: 18px;
-    color: rgba(255,255,255,0.65);
-    max-width: 560px;
-    margin: 0 auto 48px;
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  .hero-cta-btn {
-    display: inline-block;
-    background: #F07A57;
-    color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    padding: 20px 56px;
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: opacity 0.2s, transform 0.1s;
-  }
-
-  .hero-cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-  .hero-note {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    margin-top: 16px;
-  }
-
-  /* ── FOR WHO ── */
-  .for-who {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 72px 32px;
-  }
-
-  .section-tag {
-    display: inline-block;
-    background: #FDF0EC;
-    color: #F07A57;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 6px 18px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-  }
-
-  .for-who h2 {
-    font-size: 34px;
-    font-weight: 900;
-    color: #1A1A1A;
-    margin-bottom: 40px;
-    line-height: 1.3;
-  }
-
-  .signs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .sign-item {
-    background: #FAFAFA;
-    border-radius: 12px;
-    padding: 20px 22px;
-    font-size: 15px;
-    color: #333;
-    line-height: 1.6;
-    border: 1px solid #f0f0f0;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .sign-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  /* ── WHAT YOU GET ── */
-  .what-get {
-    background: #FAFAFA;
-    padding: 72px 32px;
-  }
-
-  .what-get-inner {
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .what-get-inner h2 {
-    font-size: 34px;
-    font-weight: 900;
-    color: #1A1A1A;
-    margin-bottom: 40px;
-  }
-
-  .get-items {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .get-item {
-    background: #fff;
-    border-radius: 14px;
-    padding: 24px 22px;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  }
-
-  .get-num {
-    width: 36px;
-    height: 36px;
-    background: #F07A57;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 900;
-    margin-bottom: 14px;
-  }
-
-  .get-item h4 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1A1A1A;
-    margin-bottom: 8px;
-  }
-
-  .get-item p {
-    font-size: 14px;
-    color: #777;
-    line-height: 1.6;
-  }
-
-  /* ── PRICING ── */
-  .pricing {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 72px 32px;
-    text-align: center;
-  }
-
-  .pricing h2 {
-    font-size: 34px;
-    font-weight: 900;
-    color: #1A1A1A;
-    margin-bottom: 40px;
-  }
-
-  .price-card {
-    background: #1A1A1A;
-    border-radius: 20px;
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .price-card::before {
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: rgba(240,122,87,0.08);
-    bottom: -60px;
-    left: -60px;
-  }
-
-  .price-badge {
-    display: inline-block;
-    background: #F07A57;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 5px 16px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-  }
-
-  .price-name {
-    font-size: 26px;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-
-  .price-desc {
-    font-size: 15px;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 32px;
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  .price-amount {
-    font-size: 64px;
-    font-weight: 900;
-    color: #F07A57;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .price-currency {
-    font-size: 28px;
-    font-weight: 700;
-    vertical-align: top;
-    margin-top: 12px;
-    display: inline-block;
-  }
-
-  .price-period {
-    font-size: 14px;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 32px;
-  }
-
-  .price-includes {
-    text-align: right;
-    margin-bottom: 36px;
-  }
-
-  .price-include-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 10px;
-  }
-
-  .price-include-item::before {
-    content: "✓";
-    color: #F07A57;
-    font-weight: 900;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-
-  .pay-btn {
-    display: block;
-    width: 100%;
-    background: #F07A57;
-    color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    padding: 18px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.1s;
-  }
-
-  .pay-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-  .pay-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    margin-top: 14px;
-    text-align: center;
-  }
-
-  /* ── ABOUT ── */
-  .about-section {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 64px 32px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 48px;
-    align-items: center;
-    border-top: 1px solid #f0f0f0;
-  }
-
-  .about-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #FDF0EC;
-    border: 3px solid #F07A57;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: #F07A57;
-    font-weight: 900;
-    flex-shrink: 0;
-  }
-
-  .about-name { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
-  .about-title { font-size: 14px; color: #F07A57; font-weight: 600; margin-bottom: 16px; }
-  .about-text p { font-size: 15px; color: #555; line-height: 1.8; }
-
-  /* ── FAQ ── */
-  .faq {
-    background: #FAFAFA;
-    padding: 64px 32px;
-  }
-
-  .faq-inner {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .faq-inner h2 {
-    font-size: 30px;
-    font-weight: 900;
-    margin-bottom: 32px;
-  }
-
-  .faq-item {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 12px;
-    border: 1px solid #f0f0f0;
-  }
-
-  .faq-q {
-    font-size: 15px;
-    font-weight: 700;
-    color: #1A1A1A;
-    margin-bottom: 8px;
-    cursor: pointer;
-  }
-
-  .faq-a {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.7;
-  }
-
-  /* ── CONTACT FORM ── */
-  .contact {
-    background: #1A1A1A;
-    padding: 72px 32px;
-  }
-
-  .contact-inner {
-    max-width: 560px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .contact-tag {
-    display: inline-block;
-    background: rgba(240,122,87,0.15);
-    color: #F07A57;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 6px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-
-  .contact-inner h2 {
-    font-size: 34px;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-
-  .contact-inner h2 span { color: #F07A57; }
-
-  .contact-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 40px;
-    font-weight: 300;
-    line-height: 1.7;
-  }
-
-  .contact-form {
-    text-align: right;
-  }
-
-  .cf-group {
-    margin-bottom: 16px;
-  }
-
-  .cf-group label {
-    display: block;
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-
-  .cf-group input,
-  .cf-group textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.07);
-    color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border 0.2s;
-    direction: rtl;
-  }
-
-  .cf-group textarea {
-    height: 100px;
-    resize: none;
-  }
-
-  .cf-group input::placeholder,
-  .cf-group textarea::placeholder { color: rgba(255,255,255,0.25); }
-
-  .cf-group input:focus,
-  .cf-group textarea:focus { border-color: #F07A57; }
-
-  .cf-submit {
-    width: 100%;
-    background: #F07A57;
-    color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    padding: 16px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: opacity 0.2s, transform 0.1s;
-  }
-
-  .cf-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-
-  .cf-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.25);
-    margin-top: 14px;
-    text-align: center;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 24px;
-    text-align: center;
-    font-size: 12px;
-    color: #bbb;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    background: #1A1A1A;
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 680px) {
-    .hero h1 { font-size: 36px; }
-    .signs-grid { grid-template-columns: 1fr; }
-    .get-items { grid-template-columns: 1fr; }
-    .about-section { grid-template-columns: 1fr; text-align: center; }
-    .about-avatar { margin: 0 auto; }
-    header { padding: 20px 24px; }
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#fff; color:#1A1A1A; }
+
+  .container { max-width:640px; margin:0 auto; padding:0 24px; }
+
+  /* HEADER */
+  header { padding:20px 24px; text-align:center; border-bottom:1px solid #f0f0f0; }
+  .back-link { font-size:13px; color:#999; text-decoration:none; }
+  .back-link:hover { color:#1A1A1A; }
+
+  /* HERO */
+  .hero { background:#1A1A1A; padding:64px 24px 56px; text-align:center; }
+  .hero-label { font-size:11px; font-weight:700; letter-spacing:3px; color:#F07A57; text-transform:uppercase; margin-bottom:20px; }
+  .hero h1 { font-size:40px; font-weight:900; color:#fff; line-height:1.2; margin-bottom:20px; }
+  .hero h1 span { color:#F07A57; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.5); line-height:1.9; max-width:480px; margin:0 auto 36px; font-weight:300; }
+  .hero-btn { display:inline-block; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px 36px; border-radius:12px; text-decoration:none; }
+
+  /* SECTION */
+  .section { padding:56px 0; border-bottom:1px solid #f3f3f3; }
+  .section:last-of-type { border-bottom:none; }
+  .section-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#ccc; text-transform:uppercase; margin-bottom:14px; }
+  .section h2 { font-size:28px; font-weight:900; line-height:1.3; margin-bottom:32px; }
+
+  /* CLEAN LIST */
+  .clean-list { list-style:none; }
+  .clean-list li { font-size:15px; color:#444; line-height:1.7; padding:14px 0; border-bottom:1px solid #f3f3f3; padding-right:20px; position:relative; }
+  .clean-list li:last-child { border-bottom:none; }
+  .clean-list li::before { content:"—"; position:absolute; right:0; color:#F07A57; font-weight:700; }
+
+  /* NUMBERED LIST */
+  .num-list { list-style:none; }
+  .num-list li { display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #f3f3f3; align-items:flex-start; }
+  .num-list li:last-child { border-bottom:none; }
+  .num { font-size:13px; font-weight:900; color:#F07A57; letter-spacing:1px; flex-shrink:0; padding-top:3px; min-width:28px; }
+  .num-body strong { display:block; font-size:16px; font-weight:700; margin-bottom:6px; }
+  .num-body p { font-size:14px; color:#777; line-height:1.7; }
+
+  /* CHECK LIST */
+  .check-list { list-style:none; margin-bottom:28px; }
+  .check-list li { font-size:14px; color:rgba(255,255,255,0.8); padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; gap:12px; align-items:flex-start; }
+  .check-list li:last-child { border-bottom:none; }
+  .check-list li::before { content:"✓"; color:#F07A57; font-weight:900; flex-shrink:0; }
+
+  /* PRICE BOX */
+  .price-box { background:#1A1A1A; border-radius:16px; padding:40px 32px; }
+  .price-box .price-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#F07A57; text-transform:uppercase; margin-bottom:20px; }
+  .price-box h3 { font-size:22px; font-weight:900; color:#fff; margin-bottom:8px; }
+  .price-box .price-sub { font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:32px; }
+  .price-cta { display:block; width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:12px; border:none; cursor:pointer; text-align:center; text-decoration:none; }
+  .price-note { font-size:12px; color:rgba(255,255,255,0.3); text-align:center; margin-top:12px; }
+
+  /* ABOUT */
+  .about { padding:56px 0; display:flex; gap:24px; align-items:center; border-bottom:1px solid #f3f3f3; }
+  .about-photo { width:72px; height:72px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+  .about-name { font-size:17px; font-weight:900; margin-bottom:4px; }
+  .about-title { font-size:12px; color:#F07A57; font-weight:600; margin-bottom:10px; }
+  .about-text { font-size:14px; color:#666; line-height:1.7; }
+
+  /* FAQ */
+  .faq-item { padding:20px 0; border-bottom:1px solid #f0f0f0; }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-q { font-size:15px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+  .faq-q::after { content:"＋"; color:#ccc; font-weight:300; font-size:20px; flex-shrink:0; }
+  .faq-q.open::after { content:"－"; }
+  .faq-a { font-size:14px; color:#777; line-height:1.8; margin-top:12px; display:none; }
+  .faq-a.open { display:block; }
+
+  /* CONTACT */
+  .contact-section { background:#1A1A1A; padding:64px 24px; }
+  .contact-section .container { text-align:center; }
+  .contact-section .section-label { color:rgba(255,255,255,0.3); }
+  .contact-section h2 { font-size:30px; font-weight:900; color:#fff; margin-bottom:10px; line-height:1.3; }
+  .contact-section h2 span { color:#F07A57; }
+  .contact-sub { font-size:14px; color:rgba(255,255,255,0.4); margin-bottom:36px; }
+
+  .cf-group { margin-bottom:14px; text-align:right; }
+  .cf-group label { display:block; font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:6px; }
+  .cf-group input, .cf-group textarea { width:100%; padding:13px 15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.07); color:#fff; font-family:'Heebo',sans-serif; font-size:14px; outline:none; direction:rtl; }
+  .cf-group textarea { height:90px; resize:none; }
+  .cf-group input::placeholder, .cf-group textarea::placeholder { color:rgba(255,255,255,0.2); }
+  .cf-group input:focus, .cf-group textarea:focus { border-color:#F07A57; }
+  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:12px; border:none; cursor:pointer; margin-top:8px; }
+  .cf-note { font-size:11px; color:rgba(255,255,255,0.2); text-align:center; margin-top:12px; }
+
+  footer { text-align:center; font-size:11px; color:#bbb; padding:28px 24px; background:#1A1A1A; border-top:1px solid rgba(255,255,255,0.06); }
+
+  @media(max-width:480px) { .hero h1 { font-size:32px; } }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo-area">
-    <div class="logo-em">EM</div>
-    <div class="logo-name">Elisheva Meyer</div>
-  </div>
+  <a href="index.html" class="back-link">← חזרה</a>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-tag">פגישת עבודה אחת על אחת</div>
+<div class="hero">
+  <div class="hero-label">פגישת 1:1</div>
   <h1>פגישת <span>RESET</span> —<br>סדר אחד ולתנועה</h1>
-  <p class="hero-sub">
-    שעה אחת. אחת. ויוצאות עם תמונה ברורה לגמרי — מה המסר שלך, למי את מדברת, ומה בדיוק לפרסם.
-    לא עוד "נראה מה יצא". לא עוד ניחושים. תוכנית עם שם.
-  </p>
-  <a href="#pricing" class="hero-cta-btn">אני רוצה לקבוע פגישת RESET 👉</a>
-</section>
+  <p class="hero-sub">שעה אחת. ויוצאות עם תמונה ברורה לגמרי — מה המסר שלך, למי את מדברת, ומה בדיוק לפרסם. לא עוד ניחושים.</p>
+  <a href="#contact" class="hero-btn">אני רוצה לקבוע פגישה</a>
+</div>
 
-<!-- FOR WHO -->
-<section class="for-who">
-  <div class="section-tag">זה בשבילך אם...</div>
-  <h2>מרגישה שמשהו לא עובד<br>אבל לא בטוחה מה?</h2>
-  <div class="signs-grid">
-    <div class="sign-item">
-      <div class="sign-icon">😓</div>
-      <div>מפרסמת תוכן טוב — אבל לקוחות לא מגיעות. לאחת יש אלף עוקבים ואצלך שקט. מרגישה שהאינסטגרם לא עובד בשבילך. הוא עובד — רק צריך לדעת איך.</div>
-    </div>
-    <div class="sign-item">
-      <div class="sign-icon">🤷</div>
-      <div>כל שבוע אותה שאלה: "מה להעלות היום?" יושבת מול הטלפון, חושבת, מוחקת, מפרסמת משהו שלא מרגישה איתו בטוחה. יש דרך יותר טובה מזה.</div>
-    </div>
-    <div class="sign-item">
-      <div class="sign-icon">😶</div>
-      <div>יש לך עסק מצוין ולקוחות מרוצות — אבל מי שנוחת על הפרופיל שלך לא מבין את זה. הביו לא אומר כלום, הפוסטים לא מספרים את הסיפור שלך.</div>
-    </div>
-    <div class="sign-item">
-      <div class="sign-icon">🔄</div>
-      <div>כבר ניסית "להיות עקבית" כמה פעמים. התחלת, הפסקת, התחלת שוב. לא כי חסר לך רצון — כי חסרה לך תוכנית שאפשר באמת לעמוד בה.</div>
-    </div>
+<div class="container">
+
+  <!-- FOR WHO -->
+  <div class="section">
+    <div class="section-label">זה בשבילך אם</div>
+    <h2>מרגישה שמשהו<br>לא עובד?</h2>
+    <ul class="clean-list">
+      <li>מפרסמת תוכן טוב — אבל לקוחות לא מגיעות</li>
+      <li>שואלת את עצמך כל שבוע: "מה להעלות היום?"</li>
+      <li>הפרופיל שלך לא מספר את הסיפור שלך</li>
+      <li>ניסית להיות עקבית — ולא הצלחת כי חסרה תוכנית</li>
+    </ul>
   </div>
-</section>
 
-<!-- WHAT YOU GET -->
-<section class="what-get">
-  <div class="what-get-inner">
-    <div class="section-tag">מה קורה בפגישה</div>
+  <!-- WHAT YOU GET -->
+  <div class="section">
+    <div class="section-label">מה קורה בפגישה</div>
     <h2>מה קורה בשעה הזו?</h2>
-    <div class="get-items">
-      <div class="get-item">
-        <div class="get-num">1</div>
-        <h4>ניתוח הפרופיל</h4>
-        <p>נסתכל על הפרופיל שלך כמו לקוחה חדשה שנחשפת אליך לראשונה. תמונת פרופיל, ביו, הייליטס, הפיד — מה עובד, מה מבלבל, מה גורם לה לעזוב.</p>
-      </div>
-      <div class="get-item">
-        <div class="get-num">2</div>
-        <h4>פירוק התוכן הקיים</h4>
-        <p>נפרק את הפוסטים והסטוריז שלך לגורמים — מה מייצר מעורבות, מה לא ממוקד, איפה חסרה קריאה לפעולה, ולמה התוכן הטוב שלך לא מגיע ללקוחות.</p>
-      </div>
-      <div class="get-item">
-        <div class="get-num">3</div>
-        <h4>זיהוי מה לא עובד ולמה</h4>
-        <p>נאתר בדיוק מה עוצר את הצמיחה — האם זה מסר לא ברור? חוסר עקביות? פחד ממכירה? תוכן שמדבר לכולם ולאף אחד? כל עסק תקוע על משהו אחר.</p>
-      </div>
-      <div class="get-item">
-        <div class="get-num">4</div>
-        <h4>פתרונות מוכנים לשבוע הקרוב</h4>
-        <p>לא יוצאים עם "לחשוב על זה" — יוצאים עם רעיונות לפוסטים, כיוון לסטוריז, דברים לתיקון מיידי בפרופיל, ומפת דרכים שיווקית ראשונית. הכל כתוב ומסודר.</p>
-      </div>
+    <ul class="num-list">
+      <li>
+        <span class="num">01</span>
+        <div class="num-body">
+          <strong>ניתוח הפרופיל</strong>
+          <p>נסתכל על הפרופיל שלך כמו לקוחה חדשה — ביו, הייליטס, הפיד. מה עובד, מה מבלבל, מה גורם לה לעזוב.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div class="num-body">
+          <strong>פירוק התוכן הקיים</strong>
+          <p>נפרק את הפוסטים והסטוריז — מה מייצר מעורבות, מה לא ממוקד, ולמה התוכן הטוב שלך לא מגיע ללקוחות.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <div class="num-body">
+          <strong>זיהוי מה לא עובד ולמה</strong>
+          <p>נאתר בדיוק מה עוצר את הצמיחה — מסר לא ברור, חוסר עקביות, תוכן שמדבר לכולם ולאף אחד.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <div class="num-body">
+          <strong>פתרונות מוכנים לשבוע הקרוב</strong>
+          <p>יוצאות עם רעיונות לפוסטים, כיוון לסטוריז, תיקונים מיידיים בפרופיל ומפת דרכים שיווקית. הכל כתוב.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section" id="pricing">
+    <div class="section-label">ההשקעה</div>
+    <h2>פגישת RESET</h2>
+    <div class="price-box">
+      <div class="price-label">מה כלול</div>
+      <h3>פגישת 1:1 עם אלישבע</h3>
+      <div class="price-sub">זום או פרונטלי, לפי נוחותך</div>
+      <ul class="check-list">
+        <li>שעה ממוקדת אחד על אחד</li>
+        <li>ניתוח הפרופיל והתוכן הקיים</li>
+        <li>זיהוי מה עוצר את הלקוחות מלפנות</li>
+        <li>רעיונות מוכנים לפוסטים וסטוריז</li>
+        <li>המלצות לתיקון מיידי בפרופיל</li>
+        <li>מפת דרכים שיווקית ראשונית</li>
+      </ul>
+      <a href="#contact" class="price-cta">אני רוצה לקבוע פגישה</a>
+      <p class="price-note">אחזור אלייך תוך 24 שעות לתיאום</p>
     </div>
   </div>
-</section>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="section-tag">ההשקעה</div>
-  <h2>פגישת RESET</h2>
-  <div class="price-card">
-    <div class="price-badge">מחיר השקה</div>
-    <div class="price-name">פגישת RESET לעסק</div>
-    <div class="price-desc">שעה 1:1 עם אלישבע —<br>זום או טלפון, לפי נוחותך</div>
-    <div class="price-includes">
-      <div class="price-include-item">שעה 1:1 — זום או פרונטלי, לפי נוחותך</div>
-      <div class="price-include-item">ניתוח הפרופיל והתוכן הקיים</div>
-      <div class="price-include-item">זיהוי מה עוצר את הלקוחות מלפנות</div>
-      <div class="price-include-item">רעיונות מוכנים לפוסטים וסטוריז לשבוע הקרוב</div>
-      <div class="price-include-item">המלצות לתיקון מיידי בפרופיל</div>
-      <div class="price-include-item">מפת דרכים שיווקית ראשונית</div>
+  <!-- ABOUT -->
+  <div class="about">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/elisheva.jpeg" alt="אלישבע מייער" class="about-photo">
+    <div>
+      <div class="about-name">אלישבע מייער</div>
+      <div class="about-title">אדריכלית סושייאל</div>
+      <p class="about-text">עוזרת לנותנות שירות להפוך תוכן ללקוחות משלמים — עם סדר, אסטרטגיה ומסר ברור.</p>
     </div>
-    <a href="#contact" class="pay-btn">אני רוצה לקבוע פגישת RESET 👉</a>
-    <p class="pay-note">אחזור אלייך תוך 24 שעות לתיאום ופרטים</p>
   </div>
-</section>
 
-<!-- ABOUT -->
-<section class="about-section">
-  <div class="about-avatar"><img src="תמונה.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
-  <div class="about-text">
-    <div class="about-name">אלישבע מייער</div>
-    <div class="about-title">אדריכלית סושייאל | שיווק ואינסטגרם לעסקים</div>
-    <p>
-      עוזרת לנותנות שירות להפוך תוכן ללקוחות משלמים — עם סדר, אסטרטגיה ומסר ברור.
-      עושה את זה עם תוכן, בתוך ובאסטרטגיה — ומשתפת כאן רק מה שעובד בפועל.
-    </p>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq">
-  <div class="faq-inner">
-    <h2>שאלות נפוצות</h2>
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-label">שאלות נפוצות</div>
+    <h2>שאלות ותשובות</h2>
     <div class="faq-item">
-      <div class="faq-q">איך מתבצעת הפגישה?</div>
-      <div class="faq-a">זום או טלפון, לפי מה שנוח לך. לאחר התשלום תקבלי קישור לתיאום פגישה ביומן.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">איך מתבצעת הפגישה?</div>
+      <div class="faq-a">זום או טלפון, לפי מה שנוח לך. לאחר תיאום תקבלי קישור ביומן.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">כמה זמן לוקחת הפגישה?</div>
+      <div class="faq-q" onclick="toggleFaq(this)">כמה זמן לוקחת הפגישה?</div>
       <div class="faq-a">שעה ממוקדת. אני מגיעה מוכנה — כדי שנשתמש בכל דקה.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">מה צריך להכין לפני הפגישה?</div>
-      <div class="faq-a">אחרי הרשמה תקבלי שאלון קצר — כדי שנגיע לפגישה ממוקדות ולא נבזבז זמן על הקדמות.</div>
+      <div class="faq-q" onclick="toggleFaq(this)">מה צריך להכין לפני הפגישה?</div>
+      <div class="faq-a">אחרי הרשמה תקבלי שאלון קצר — כדי שנגיע לפגישה ממוקדות.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">האם זה מתאים לי אם אני רק מתחילה?</div>
+      <div class="faq-q" onclick="toggleFaq(this)">האם זה מתאים לי אם אני רק מתחילה?</div>
       <div class="faq-a">בהחלט. דווקא בהתחלה חשוב לבנות נכון — זה חוסך חודשים של ניחושים.</div>
     </div>
   </div>
-</section>
 
-<!-- CONTACT FORM -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-tag">השאירי פרטים</div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label">השאירי פרטים</div>
     <h2>בואי נדבר על<br><span>הפגישה שלך</span></h2>
     <p class="contact-sub">מלאי את הפרטים ואחזור אלייך תוך 24 שעות</p>
-
-    <!-- ✏️ חברי את הטופס לרב מסר / שלח מסר בהמשך -->
-    <form class="contact-form" onsubmit="handleContact(event)">
-      <div class="cf-group">
-        <label>שירות מבוקש</label>
-        <input type="text" value="פגישת RESET" readonly style="background:rgba(240,122,87,0.12);color:#F07A57;font-weight:700;cursor:default;" />
-      </div>
+    <form onsubmit="handleContact(event)" style="text-align:right">
       <div class="cf-group">
         <label>השם שלך</label>
-        <input type="text" name="name" placeholder="למשל: מיכל כהן" required />
+        <input type="text" name="name" placeholder="שם מלא" required>
       </div>
       <div class="cf-group">
         <label>טלפון / וואטסאפ</label>
-        <input type="tel" name="phone" placeholder="05X-XXXXXXX" required />
+        <input type="tel" name="phone" placeholder="05X-XXXXXXX" required>
       </div>
       <div class="cf-group">
         <label>מייל</label>
-        <input type="email" name="email" placeholder="youremail@gmail.com" required />
+        <input type="email" name="email" placeholder="youremail@gmail.com" required>
       </div>
       <div class="cf-group">
-        <label>ספרי לי בקצרה — מה הכי לוחץ אצלך עכשיו? (לא חובה)</label>
-        <textarea name="message" placeholder="למשל: אני מפרסמת כבר חצי שנה ולא מגיעות לקוחות..."></textarea>
+        <label>מה הכי לוחץ אצלך עכשיו? (לא חובה)</label>
+        <textarea name="message" placeholder="ספרי לי בקצרה..."></textarea>
       </div>
-      <button type="submit" class="cf-submit">שלחי — ואחזור אלייך בהקדם 👉</button>
+      <button type="submit" class="cf-submit">שלחי פרטים</button>
     </form>
     <p class="cf-note">המידע שלך מאובטח ולא יועבר לאף גורם</p>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
-<footer>
-  © 2025 אלישבע מייער | אדריכלית סושייאל
-</footer>
+<footer>© 2025 אלישבע מייער | אדריכלית סושייאל</footer>
 
 <script>
-  function handleContact(e) {
-    e.preventDefault();
-    const name = e.target.querySelector('[name="name"]').value.trim();
-    const email = e.target.querySelector('[name="email"]').value.trim();
-    const btn = e.target.querySelector('.cf-submit');
-    btn.textContent = '...שולחת';
-    btn.disabled = true;
-    fetch('https://api.responder.co.il/v1.0/lists/105039/subscribers', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053' },
-      body: JSON.stringify({ subscribers: [{ IDENTIFIER: email, EMAIL: email, NAME: name + ' | RESET' }] })
-    }).catch(() => {}).finally(() => { window.location.href = 'contact-thanks.html'; });
-  }
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+function handleContact(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('[name="name"]').value.trim();
+  const email = e.target.querySelector('[name="email"]').value.trim();
+  const btn = e.target.querySelector('.cf-submit');
+  btn.textContent = '...שולחת';
+  btn.disabled = true;
+  fetch('https://api.responder.co.il/v1.0/lists/105039/subscribers', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053' },
+    body: JSON.stringify({ subscribers: [{ IDENTIFIER: email, EMAIL: email, NAME: name + ' | RESET' }] })
+  }).catch(() => {}).finally(() => { window.location.href = 'contact-thanks.html'; });
+}
 </script>
 </body>
 </html>
