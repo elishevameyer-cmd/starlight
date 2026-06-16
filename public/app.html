@@ -474,6 +474,13 @@
     </div>
 
     <script>
+        // בדוק אם צריך לאפס את הנתונים
+        const dataVersion = localStorage.getItem('appVersion');
+        if (dataVersion !== '2') {
+            localStorage.clear();
+            localStorage.setItem('appVersion', '2');
+        }
+
         let tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
 
         // הוסף משימות לדוגמה בפעם הראשונה
