@@ -104,13 +104,16 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 16px;
             direction: rtl;
             text-align: right;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
         .form-group textarea {
@@ -128,16 +131,20 @@
 
         .btn-add {
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 8px;
+            -webkit-appearance: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
         }
 
         .btn-add:hover {
@@ -147,6 +154,12 @@
 
         .btn-add:active {
             transform: translateY(0);
+            background: linear-gradient(135deg, #5568d3, #653a8a);
+        }
+
+        .btn-add:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
         }
 
         .tasks-list {
@@ -478,32 +491,46 @@
             document.getElementById('taskDate').valueAsDate = new Date();
         }
 
-        function addTask() {
-            const title = document.getElementById('taskTitle').value;
-            const date = document.getElementById('taskDate').value;
-            const type = document.getElementById('taskType').value;
-            const priority = document.getElementById('taskPriority').value;
+        function addTask(e) {
+            if (e) e.preventDefault();
 
-            if (!title || !date) {
-                alert('⚠️ אנא מלאי את המשימה והתאריך!');
-                return;
+            try {
+                const titleElement = document.getElementById('taskTitle');
+                const dateElement = document.getElementById('taskDate');
+                const typeElement = document.getElementById('taskType');
+                const priorityElement = document.getElementById('taskPriority');
+
+                const title = titleElement ? titleElement.value.trim() : '';
+                const date = dateElement ? dateElement.value : '';
+                const type = typeElement ? typeElement.value : 'important';
+                const priority = priorityElement ? priorityElement.value : 'medium';
+
+                if (!title || !date) {
+                    alert('⚠️ אנא מלאי את המשימה והתאריך!');
+                    return;
+                }
+
+                const newTask = {
+                    id: Date.now(),
+                    title,
+                    date,
+                    type,
+                    priority,
+                    done: false,
+                    createdAt: new Date().toISOString()
+                };
+
+                tasks.push(newTask);
+                localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+
+                if (titleElement) titleElement.value = '';
+                setToday();
+                render();
+                alert('✅ המשימה נוספה בהצלחה!');
+            } catch (error) {
+                console.error('Error adding task:', error);
+                alert('❌ משהו השתבש, אנא נסי שוב');
             }
-
-            tasks.push({
-                id: Date.now(),
-                title,
-                date,
-                type,
-                priority,
-                done: false,
-                createdAt: new Date().toISOString()
-            });
-
-            localStorage.setItem('daughterTasks', JSON.stringify(tasks));
-            document.getElementById('taskTitle').value = '';
-            setToday();
-            render();
-            alert('✅ המשימה נוספה בהצלחה!');
         }
 
         function deleteTask(id) {
