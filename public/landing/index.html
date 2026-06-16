@@ -7,136 +7,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'Heebo', sans-serif;
-    direction: rtl;
-    background: #fff;
-    color: #1A1A1A;
-  }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#fff; color:#1A1A1A; }
 
   /* HERO */
-  .hero {
-    background: #1A1A1A;
-    text-align: center;
-    padding: 48px 24px 44px;
-  }
-  .hero-photo {
-    width: 88px; height: 88px;
-    border-radius: 50%; object-fit: cover;
-    margin: 0 auto 18px;
-    display: block;
-    border: 3px solid #F07A57;
-  }
-  .hero-name {
-    font-size: 28px; font-weight: 900;
-    color: #fff; margin-bottom: 6px;
-    letter-spacing: -0.5px;
-  }
-  .hero-title {
-    font-size: 11px; font-weight: 700;
-    color: #F07A57; letter-spacing: 2.5px;
-    text-transform: uppercase; margin-bottom: 18px;
-  }
-  .hero-bio {
-    font-size: 14px; color: rgba(255,255,255,0.5);
-    line-height: 1.9; max-width: 270px; margin: 0 auto;
-  }
+  .hero { background:#1A1A1A; text-align:center; padding:48px 24px 44px; }
+  .hero-photo { width:120px; height:120px; border-radius:50%; object-fit:cover; object-position:top; margin:0 auto 18px; display:block; border:3px solid #F07A57; }
+  .hero-name { font-size:26px; font-weight:900; color:#fff; margin-bottom:5px; }
+  .hero-title { font-size:11px; font-weight:700; color:#F07A57; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:16px; }
+  .hero-bio { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.9; max-width:280px; margin:0 auto; }
 
   /* CONTENT */
-  .content {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 0 22px 64px;
-  }
+  .content { max-width:480px; margin:0 auto; padding:0 22px 64px; }
 
   /* SECTION LABEL */
-  .section-label {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 3px; color: #c8c8c8;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 36px 0 18px;
-  }
+  .section-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#c8c8c8; text-transform:uppercase; text-align:center; padding:36px 0 18px; }
 
   /* OPTIN */
-  .optin-box {
-    background: #faf7f5;
-    border-radius: 16px;
-    padding: 20px 18px 18px;
-  }
-  .optin-header {
-    display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
-  }
-  .optin-img {
-    width: 58px; height: 58px;
-    border-radius: 10px; object-fit: cover;
-    flex-shrink: 0; order: 2;
-  }
-  .optin-info { flex: 1; order: 1; }
-  .optin-tag {
-    display: inline-block;
-    background: #F07A57; color: #fff;
-    font-size: 10px; font-weight: 700;
-    padding: 2px 10px; border-radius: 20px; margin-bottom: 6px;
-  }
-  .optin-title { font-size: 16px; font-weight: 900; color: #1A1A1A; margin-bottom: 3px; }
-  .optin-desc { font-size: 12px; color: #aaa; line-height: 1.5; }
-  .optin-form { display: flex; gap: 8px; }
-  .optin-input {
-    flex: 1; padding: 11px 13px;
-    border: 1.5px solid #e8e2de; border-radius: 10px;
-    font-family: 'Heebo', sans-serif; font-size: 13px;
-    direction: rtl; background: #fff; color: #1A1A1A;
-    min-width: 0;
-  }
-  .optin-input::placeholder { color: #c0c0c0; }
-  .optin-input:focus { outline: none; border-color: #F07A57; }
-  .optin-btn {
-    background: #1A1A1A; color: #fff;
-    font-family: 'Heebo', sans-serif;
-    font-size: 13px; font-weight: 700;
-    padding: 11px 18px; border-radius: 10px;
-    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  }
+  .optin-box { background:#faf7f5; border-radius:16px; padding:20px 18px 18px; }
+  .optin-header { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+  .optin-img { width:64px; height:64px; border-radius:10px; object-fit:cover; flex-shrink:0; order:2; }
+  .optin-info { flex:1; order:1; }
+  .optin-tag { display:inline-block; background:#F07A57; color:#fff; font-size:10px; font-weight:700; padding:2px 10px; border-radius:20px; margin-bottom:6px; }
+  .optin-title { font-size:16px; font-weight:900; color:#1A1A1A; margin-bottom:3px; }
+  .optin-desc { font-size:12px; color:#aaa; line-height:1.5; }
+  .optin-form { display:flex; gap:8px; }
+  .optin-input { flex:1; padding:11px 13px; border:1.5px solid #e8e2de; border-radius:10px; font-family:'Heebo',sans-serif; font-size:13px; direction:rtl; background:#fff; color:#1A1A1A; min-width:0; }
+  .optin-input::placeholder { color:#c0c0c0; }
+  .optin-input:focus { outline:none; border-color:#F07A57; }
+  .optin-btn { background:#1A1A1A; color:#fff; font-family:'Heebo',sans-serif; font-size:13px; font-weight:700; padding:11px 18px; border-radius:10px; border:none; cursor:pointer; white-space:nowrap; flex-shrink:0; }
 
   /* LINK ROWS */
-  .link-row {
-    display: flex; align-items: center; gap: 14px;
-    padding: 18px 0;
-    border-bottom: 1px solid #f0f0f0;
-    text-decoration: none; color: #1A1A1A;
-    transition: opacity 0.15s;
-  }
-  .link-row:last-child { border-bottom: none; }
-  .link-row:active { opacity: 0.6; }
-  .link-thumb {
-    width: 56px; height: 56px;
-    border-radius: 10px; object-fit: cover;
-    flex-shrink: 0; order: 2;
-  }
-  .link-info { flex: 1; order: 1; }
-  .link-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 1px;
-    color: #F07A57; text-transform: uppercase; margin-bottom: 3px;
-  }
-  .link-title { font-size: 16px; font-weight: 900; margin-bottom: 2px; }
-  .link-desc { font-size: 12px; color: #b0b0b0; line-height: 1.5; }
-  .link-price {
-    font-size: 15px; font-weight: 900; color: #1A1A1A;
-    flex-shrink: 0; order: 3;
-  }
-  .link-arrow { font-size: 22px; color: #ccc; flex-shrink: 0; order: 3; line-height: 1; }
+  .link-row { display:flex; align-items:center; gap:14px; padding:18px 0; border-bottom:1px solid #f0f0f0; text-decoration:none; color:#1A1A1A; }
+  .link-row:last-child { border-bottom:none; }
+  .link-row:active { opacity:0.6; }
+  .link-info { flex:1; }
+  .link-thumb { width:70px; height:70px; border-radius:12px; object-fit:cover; flex-shrink:0; }
+  .link-tag { font-size:10px; font-weight:700; letter-spacing:1px; color:#F07A57; text-transform:uppercase; margin-bottom:3px; }
+  .link-title { font-size:16px; font-weight:900; margin-bottom:2px; }
+  .link-desc { font-size:12px; color:#b0b0b0; line-height:1.5; }
+  .link-price-wrap { text-align:left; flex-shrink:0; }
+  .link-price { font-size:16px; font-weight:900; color:#1A1A1A; display:block; }
+  .link-per { font-size:10px; color:#bbb; font-weight:500; }
+  .link-arrow { font-size:22px; color:#ccc; flex-shrink:0; line-height:1; }
 
-  footer {
-    text-align: center; font-size: 11px; color: #ccc;
-    padding: 0 20px 40px;
-    max-width: 480px; margin: 0 auto;
-  }
+  footer { text-align:center; font-size:11px; color:#ccc; padding:0 20px 40px; max-width:480px; margin:0 auto; }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- HERO — תמונה + שם + קצת עלי -->
 <div class="hero">
   <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/elisheva.jpeg" alt="אלישבע מייער" class="hero-photo">
   <div class="hero-name">אלישבע מייער</div>
@@ -147,21 +66,6 @@
 </div>
 
 <div class="content">
-
-  <!-- ABOUT -->
-  <div style="padding:40px 0 36px; border-bottom:1px solid #f0f0f0; margin-bottom:4px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:#ccc;text-transform:uppercase;margin-bottom:20px;">מי אני</div>
-    <div style="display:flex;gap:18px;align-items:center;margin-bottom:20px;">
-      <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/elisheva.jpeg" alt="אלישבע מייער" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;">
-      <div>
-        <div style="font-size:18px;font-weight:900;margin-bottom:3px;">אלישבע מייער</div>
-        <div style="font-size:11px;color:#F07A57;font-weight:700;letter-spacing:1px;text-transform:uppercase;">אדריכלית סושייאל</div>
-      </div>
-    </div>
-    <p style="font-size:14px;color:#555;line-height:1.9;">
-      עוזרת לבעלות עסקים שיודעות מה הן שוות — אבל מתקשות להעביר את זה דרך האינסטגרם. עם אסטרטגיה ברורה, מסר חד ותוכן שמוכר בלי להרגיש כמו מכירה.
-    </p>
-  </div>
 
   <!-- FREE PRODUCT -->
   <div class="section-label">מתנה חינמית</div>
@@ -185,65 +89,70 @@
   <div class="section-label">מוצרים דיגיטליים</div>
 
   <a href="instagram-mushlam.html" class="link-row">
-    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-instagram.jpg" class="link-thumb" alt="אינסטגרם מושלם">
     <div class="link-info">
       <div class="link-tag">מדריך דיגיטלי</div>
       <div class="link-title">אינסטגרם מושלם</div>
       <div class="link-desc">המדריך המלא שמביא לקוחות מהאינסטגרם</div>
     </div>
-    <div class="link-price">39 ₪</div>
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-instagram.jpg" class="link-thumb" alt="אינסטגרם מושלם">
+    <div class="link-price-wrap">
+      <span class="link-price">39 ₪</span>
+    </div>
   </a>
 
   <a href="gantt-questionnaire.html" class="link-row">
-    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-gantt.jpg" class="link-thumb" alt="גאנט תוכן">
     <div class="link-info">
       <div class="link-tag">שירות מותאם אישית</div>
       <div class="link-title">גאנט תוכן חודשי</div>
       <div class="link-desc">תוכנית תוכן אישית — יודעת מה לפרסם כל יום</div>
     </div>
-    <div class="link-price">200 ₪</div>
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-gantt.jpg" class="link-thumb" alt="גאנט תוכן">
+    <div class="link-price-wrap">
+      <span class="link-price">200 ₪</span>
+      <span class="link-per">לחודש</span>
+    </div>
   </a>
 
   <!-- SERVICES -->
   <div class="section-label">שירותים</div>
 
   <a href="reset.html" class="link-row">
-    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-reset.jpg" class="link-thumb" alt="RESET">
     <div class="link-info">
       <div class="link-tag">פגישת 1:1</div>
       <div class="link-title">פגישת RESET</div>
       <div class="link-desc">שיחה ממוקדת שעה — מסר, אסטרטגיה, תוכן</div>
     </div>
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-reset.jpg" class="link-thumb" alt="RESET">
     <div class="link-arrow">›</div>
   </a>
 
   <a href="buildup.html" class="link-row">
-    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-buildup.jpg" class="link-thumb" alt="BUILD UP">
     <div class="link-info">
       <div class="link-tag">תהליך עומק</div>
       <div class="link-title">BUILD UP</div>
       <div class="link-desc">5 פגישות — תשתית שיווקית מלאה</div>
     </div>
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-buildup.jpg" class="link-thumb" alt="BUILD UP">
     <div class="link-arrow">›</div>
   </a>
 
   <a href="letsgrow.html" class="link-row">
-    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-letsgrow.jpg" class="link-thumb" alt="LET'S GROW">
     <div class="link-info">
       <div class="link-tag">ליווי חודשי</div>
       <div class="link-title">LET'S GROW</div>
       <div class="link-desc">2 פגישות + תוכן שבועי + פידבק</div>
     </div>
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-letsgrow.jpg" class="link-thumb" alt="LET'S GROW">
     <div class="link-arrow">›</div>
   </a>
 
   <a href="doneforyou.html" class="link-row">
-    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-doneforyou.jpg" class="link-thumb" alt="DONE FOR YOU">
     <div class="link-info">
       <div class="link-tag">ניהול מלא</div>
       <div class="link-title">DONE FOR YOU</div>
       <div class="link-desc">ניהול מקצועי מלא של האינסטגרם שלך</div>
     </div>
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-doneforyou.jpg" class="link-thumb" alt="DONE FOR YOU">
     <div class="link-arrow">›</div>
   </a>
 
@@ -258,19 +167,12 @@ function handleFree(e) {
   const btn = document.getElementById('freeBtn');
   btn.textContent = '...';
   btn.disabled = true;
-
   fetch('https://api.responder.co.il/v1.0/lists/105039/subscribers', {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053'
-    },
+    headers: { 'Content-Type':'application/json', 'Authorization':'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053' },
     body: JSON.stringify({ subscribers: [{ IDENTIFIER: email, EMAIL: email }] })
-  }).catch(() => {}).finally(() => {
-    window.location.href = 'thank-you.html';
-  });
+  }).catch(() => {}).finally(() => { window.location.href = 'thank-you.html'; });
 }
 </script>
-
 </body>
 </html>
