@@ -517,10 +517,10 @@
         </div>
 
         <div class="price-row-big">
-          <span class="price-old-big">₪350</span>
-          <div class="price-big" id="displayPrice"><span>₪</span>200</div>
+          <span class="price-old-big">₪600</span>
+          <div class="price-big" id="displayPrice"><span>₪</span>350</div>
         </div>
-        <p class="price-note" id="priceNote">מחיר מבצע · תשלום חד-פעמי</p>
+        <p class="price-note" id="priceNote">מחיר מיוחד · תשלום חד-פעמי</p>
 
         <a href="https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ" class="pay-btn" id="payBtn">לתשלום מאובטח 👉</a>
         <div class="pay-secure">תשלום מאובטח | פרטים נשמרים מוצפנים</div>
@@ -536,15 +536,15 @@
 </div>
 
 <footer>
-  © 2025 אלישבע מייער | אדריכלית סושייאל
+  © 2026 אלישבע מייער | אדריכלית סושייאל
 </footer>
 
 <script>
 const isSpecial = new URLSearchParams(window.location.search).get('special') === '1';
 if (isSpecial) {
-  document.getElementById('displayPrice').innerHTML = '<span>₪</span>149';
-  document.getElementById('priceNote').textContent = 'מחיר מיוחד לקוני ביו המושלם · תשלום חד-פעמי';
-  document.getElementById('payBtn').href = 'https://pay.grow.link/cc1eb6b201800942b7e85aa8f8f07521-MzU2MjM1MA';
+  document.getElementById('displayPrice').innerHTML = '<span>₪</span>200';
+  document.getElementById('priceNote').textContent = 'מחיר מיוחד · תשלום חד-פעמי';
+  document.getElementById('payBtn').href = 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ';
 }
 
 let currentStep = 0;
@@ -644,8 +644,8 @@ function buildPaymentLink() {
   const business = document.getElementById('businessName').value.trim();
 
   const base = isSpecial
-    ? 'https://pay.grow.link/cc1eb6b201800942b7e85aa8f8f07521-MzU2MjM1MA'
-    : 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ';
+    ? 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ'
+    : 'LINK_350_ILS';
   const url = base + (base.includes('?') ? '&' : '?') +
     `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&business=${encodeURIComponent(business)}`;
 
