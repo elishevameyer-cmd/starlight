@@ -248,14 +248,11 @@ function handleContact(e) {
   const btn = e.target.querySelector('.cf-submit');
   btn.textContent = '...שולחת';
   btn.disabled = true;
-  fetch('https://api.responder.co.il/v1.0/lists/105039/subscribers', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053' },
-    body: JSON.stringify({ subscribers: [{ IDENTIFIER: email, EMAIL: email, NAME: name + ' | RESET' }] })
-  }).then(r => { console.log('Responder status:', r.status); return r.text(); })
-    .then(t => console.log('Responder response:', t))
-    .catch(err => console.error('Responder error (CORS?):', err))
-    .finally(() => { window.location.href = 'contact-thanks.html'; });
+  fetch('https://hook.eu1.make.com/up6j9fp6akyyitdr6a6tvwpwfs2yb2bi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: name, service: 'RESET' })
+  }).catch(() => {}).finally(() => { window.location.href = 'contact-thanks.html'; });
 }
 </script>
 </body>
