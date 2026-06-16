@@ -445,7 +445,19 @@
         <!-- רשימת משימות -->
         <div class="panel">
             <div class="panel-title">📋 המשימות שלך</div>
+            <div id="filterInfo"></div>
             <div class="tasks-list" id="tasksList"></div>
+        </div>
+
+        <!-- Modal למשימות של יום -->
+        <div id="dayModal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; direction: rtl;">
+            <div style="background: white; border-radius: 16px; padding: 24px; margin: 40px auto; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 id="dayTitle" style="color: #667eea; font-size: 18px;"></h2>
+                    <button onclick="closeDayModal()" style="background: none; border: none; font-size: 24px; cursor: pointer;">✕</button>
+                </div>
+                <div id="dayTasksList" style="max-height: 400px; overflow-y: auto;"></div>
+            </div>
         </div>
     </div>
 
@@ -528,7 +540,7 @@
                 sorted.map(task => {
                     const isOverdue = new Date(task.date) < new Date() && !task.done;
                     return `
-                        <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}">
+                        <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}" draggable="true" ondragstart="dragTask(event, ${task.id})" ondragover="allowDrop(event)" ondrop="dropTask(event, ${task.id})">
                             <div class="task-info">
                                 <div class="task-title">${task.title}</div>
                                 <div class="task-meta">📅 ${task.date} | ${getTypeEmoji(task.type)} | ${getPriorityLabel(task.priority)}</div>
@@ -601,6 +613,90 @@
         function nextMonth() {
             currentDate.setMonth(currentDate.getMonth() + 1);
             render();
+        }
+
+        // לחץ על יום בקלנדר
+        function showDayTasks(dateStr) {
+            const dayTasks = tasks.filter(t => t.date === dateStr);
+            const date = new Date(dateStr);
+            document.getElementById('dayTitle').textContent = date.toLocaleDateString('he-IL', { weekday: 'long', month: 'long', day: 'numeric' });
+
+            const html = dayTasks.length === 0 ?
+                '<p style="text-align: center; color: #999; padding: 20px;">אין משימות ביום הזה</p>' :
+                dayTasks.map(task => `
+                    <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-right: 3px solid #667eea;">
+                        <div style="font-weight: 600; margin-bottom: 4px;">${task.title}</div>
+                        <div style="font-size: 12px; color: #999;">${getTypeEmoji(task.type)} | ${getPriorityLabel(task.priority)}</div>
+                    </div>
+                `).join('');
+
+            document.getElementById('dayTasksList').innerHTML = html;
+            document.getElementById('dayModal').style.display = 'block';
+        }
+
+        function closeDayModal() {
+            document.getElementById('dayModal').style.display = 'none';
+        }
+
+        // Drag and Drop
+        function dragTask(e, taskId) {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('taskId', taskId);
+        }
+
+        function allowDrop(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function dropTask(e, taskId) {
+            e.preventDefault();
+        }
+
+        // Drag to Calendar Day
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.classList.contains('task-card')) {
+                const taskId = e.dataTransfer.getData('taskId') || e.target.getAttribute('data-task-id');
+                if (taskId) {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('taskId', taskId);
+                }
+            }
+        });
+
+        // עדכן את renderCalendar כדי להוסיף onclick
+        const originalRenderCalendar = renderCalendar;
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            document.getElementById('monthYear').textContent =
+                currentDate.toLocaleDateString('he-IL', { month: 'long', year: 'numeric' });
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDayOfWeek = firstDay.getDay();
+
+            let html = '';
+            for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+                const day = new Date(year, month, -i).getDate();
+                html += `<div class="day other-month">${day}</div>`;
+            }
+
+            const today = new Date().toISOString().split('T')[0];
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const hasTasks = tasks.some(t => t.date === dateStr);
+                const isToday = dateStr === today;
+                html += `<div class="day ${isToday ? 'today' : ''} ${hasTasks ? 'has-tasks' : ''}" onclick="showDayTasks('${dateStr}')" style="cursor: pointer;">${day}</div>`;
+            }
+
+            const remainingDays = 42 - (startingDayOfWeek + daysInMonth - 1);
+            for (let i = 1; i <= remainingDays; i++) {
+                html += `<div class="day other-month">${i}</div>`;
+            }
+
+            document.getElementById('calendar').innerHTML = html;
         }
 
         init();
