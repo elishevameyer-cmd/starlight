@@ -518,9 +518,9 @@
 
         <div class="price-row-big">
           <span class="price-old-big">₪350</span>
-          <div class="price-big"><span>₪</span>200</div>
+          <div class="price-big" id="displayPrice"><span>₪</span>200</div>
         </div>
-        <p class="price-note">מחיר מבצע · תשלום חד-פעמי</p>
+        <p class="price-note" id="priceNote">מחיר מבצע · תשלום חד-פעמי</p>
 
         <a href="https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ" class="pay-btn" id="payBtn">לתשלום מאובטח 👉</a>
         <div class="pay-secure">תשלום מאובטח | פרטים נשמרים מוצפנים</div>
@@ -540,6 +540,13 @@
 </footer>
 
 <script>
+const isSpecial = new URLSearchParams(window.location.search).get('special') === '1';
+if (isSpecial) {
+  document.getElementById('displayPrice').innerHTML = '<span>₪</span>149';
+  document.getElementById('priceNote').textContent = 'מחיר מיוחד לקוני ביו המושלם · תשלום חד-פעמי';
+  document.getElementById('payBtn').href = 'https://pay.grow.link/cc1eb6b201800942b7e85aa8f8f07521-MzU2MjM1MA';
+}
+
 let currentStep = 0;
 const totalSteps = 4;
 
