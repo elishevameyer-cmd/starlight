@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESET Ad</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* 1080x1350 Instagram portrait ratio */
+  .ad {
+    width: 1080px;
+    height: 1350px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TOP SECTION — photo + hook overlay */
+  .top {
+    position: relative;
+    height: 560px;
+    flex-shrink: 0;
+    background: #1a1a1a;
+  }
+
+  .top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+  }
+
+  .top-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+  }
+
+  .hook {
+    position: absolute;
+    bottom: 52px;
+    right: 64px;
+    left: 64px;
+    color: #fff;
+  }
+
+  .hook .sub {
+    font-size: 36px;
+    font-weight: 700;
+    color: #E8825A;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hook h1 {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+
+  .hook h1 span {
+    color: #E8825A;
+  }
+
+  /* MIDDLE SECTION */
+  .middle {
+    padding: 52px 64px 44px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .problem-line {
+    font-size: 30px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.5;
+    border-right: 5px solid #E8825A;
+    padding-right: 24px;
+    margin-bottom: 44px;
+  }
+
+  .problem-line strong {
+    font-weight: 800;
+    color: #111;
+    display: block;
+    font-size: 33px;
+    margin-top: 4px;
+  }
+
+  /* Pills */
+  .pills {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+
+  .pill {
+    background: #FFF3EE;
+    border: 2px solid #E8825A;
+    border-radius: 60px;
+    padding: 16px 32px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pill .icon {
+    font-size: 22px;
+  }
+
+  /* Result box */
+  .result-box {
+    background: #111;
+    border-radius: 24px;
+    padding: 40px 48px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 0;
+  }
+
+  .check-big {
+    width: 72px;
+    height: 72px;
+    background: #E8825A;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+
+  .result-text {
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .result-text strong {
+    font-size: 32px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* BOTTOM CTA */
+  .bottom {
+    background: #E8825A;
+    padding: 44px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .cta-text {
+    color: #fff;
+  }
+
+  .cta-text .price-label {
+    font-size: 22px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 6px;
+  }
+
+  .cta-text h2 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .cta-btn {
+    background: #fff;
+    color: #E8825A;
+    border-radius: 60px;
+    padding: 24px 52px;
+    font-size: 30px;
+    font-weight: 900;
+    white-space: nowrap;
+    text-align: center;
+    letter-spacing: -0.5px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+  }
+
+  .cta-btn span {
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 4px;
+  }
+
+  /* Branding tag */
+  .brand-tag {
+    position: absolute;
+    top: 40px;
+    right: 64px;
+    background: #E8825A;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 10px 28px;
+    border-radius: 60px;
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+
+  <!-- TOP: photo + hook -->
+  <div class="top">
+    <!-- Replace src with actual photo -->
+    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1080&q=80" alt="woman at laptop" />
+    <div class="top-overlay"></div>
+    <div class="brand-tag">RESET</div>
+    <div class="hook">
+      <div class="sub">מפרסמת באינסטגרם...</div>
+      <h1>ועדיין<br><span>אין פניות?</span></h1>
+    </div>
+  </div>
+
+  <!-- MIDDLE -->
+  <div class="middle">
+    <div class="problem-line">
+      הבעיה היא לא כמות התוכן.
+      <strong>הבעיה היא שאין לך אסטרטגיה שמביאה לקוחות.</strong>
+    </div>
+
+    <div class="pills">
+      <div class="pill"><span class="icon">🎯</span> קהל יעד חד</div>
+      <div class="pill"><span class="icon">💬</span> מסר שמוכר</div>
+      <div class="pill"><span class="icon">✍️</span> תוכן שמביא פניות</div>
+      <div class="pill"><span class="icon">🗺️</span> תכנית לשבועיים</div>
+    </div>
+
+    <div class="result-box">
+      <div class="check-big">✓</div>
+      <div class="result-text">
+        <strong>יוצאת עם כיוון ברור — בשעה אחת.</strong>
+        סיכום כתוב + מענה בוואטסאפ 48 שעות אחרי
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom">
+    <div class="cta-text">
+      <div class="price-label">פגישת 1:1 — זום / טלפון</div>
+      <h2>פגישת RESET<br>— שעה שמשנה</h2>
+    </div>
+    <div class="cta-btn">
+      שלחי RESET בפרטי
+      <span>@elishevameyer</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
