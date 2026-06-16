@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ניהול משימות</title>
+    <title>משימות ליאורה</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -18,19 +18,21 @@
             text-align: center;
             color: #667eea;
             margin: 15px 0;
-            font-size: 22px;
+            font-size: 24px;
         }
-        .form-box {
+        .box {
             background: white;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .form-box h2 {
+        h2 {
             font-size: 16px;
             margin-bottom: 10px;
             color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
         }
         .field {
             margin-bottom: 10px;
@@ -40,205 +42,174 @@
             font-size: 13px;
             font-weight: bold;
             margin-bottom: 4px;
+            color: #555;
         }
         input, select, textarea {
             width: 100%;
-            padding: 8px;
-            font-size: 14px;
+            padding: 10px;
+            font-size: 15px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 5px;
             font-family: Arial;
         }
         textarea {
-            min-height: 50px;
+            min-height: 60px;
             resize: vertical;
         }
-        button {
+        .btn {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: #667eea;
             color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 15px;
+            border-radius: 5px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 5px;
         }
-        button:active { background: #5568d3; }
-        .tasks-box {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .tasks-box h2 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #667eea;
-        }
+        .btn:active { background: #5568d3; }
         .task {
             background: #f9f9f9;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 8px;
-            border-radius: 4px;
-            border-right: 3px solid #667eea;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 5px;
+            border-right: 4px solid #667eea;
         }
-        .task-info { flex: 1; }
-        .task-name { font-weight: bold; font-size: 14px; }
-        .task-date { font-size: 12px; color: #999; }
-        .task-btns { display: flex; gap: 5px; }
+        .task-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .task-info {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 6px;
+        }
+        .task-btns {
+            display: flex;
+            gap: 8px;
+        }
         .task-btns button {
+            padding: 6px 12px;
+            font-size: 13px;
             width: auto;
-            padding: 5px 10px;
-            font-size: 12px;
             margin: 0;
         }
-        .empty { text-align: center; color: #999; padding: 20px; }
+        .empty {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="app">
         <h1>📋 משימות ליאורה</h1>
 
-        <div class="form-box">
+        <div class="box">
             <h2>➕ הוסף משימה</h2>
-            <form id="taskForm">
-                <div class="field">
-                    <label>משימה:</label>
-                    <textarea id="name" required></textarea>
-                </div>
-                <div class="field">
-                    <label>תאריך:</label>
-                    <input type="date" id="date" required>
-                </div>
-                <div class="field">
-                    <label>סוג:</label>
-                    <select id="type">
-                        <option value="bagrut">בגרות</option>
-                        <option value="matatim">מתכונות</option>
-                        <option value="doctor">רופא</option>
-                        <option value="dentist">שיניים</option>
-                        <option value="event">אירוע</option>
-                        <option value="birthday">יום הולדת</option>
-                        <option value="important" selected>חשוב</option>
-                        <option value="approval">אישור אמא</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label>עדיפות:</label>
-                    <select id="priority">
-                        <option value="low">רגילה</option>
-                        <option value="medium" selected>בינונית</option>
-                        <option value="high">דחוף</option>
-                    </select>
-                </div>
-                <button type="submit">✅ הוסף</button>
-            </form>
+            <div class="field">
+                <label>משימה:</label>
+                <textarea id="taskName" placeholder="מה צריך לעשות?"></textarea>
+            </div>
+            <div class="field">
+                <label>תאריך:</label>
+                <input type="date" id="taskDate">
+            </div>
+            <div class="field">
+                <label>סוג:</label>
+                <select id="taskType">
+                    <option value="📜 בגרות">📜 בגרות</option>
+                    <option value="📝 מתכונות">📝 מתכונות</option>
+                    <option value="🏥 רופא">🏥 רופא</option>
+                    <option value="🦷 שיניים">🦷 שיניים</option>
+                    <option value="🎉 אירוע">🎉 אירוע</option>
+                    <option value="🎂 יום הולדת">🎂 יום הולדת</option>
+                    <option value="💎 חשוב" selected>💎 חשוב</option>
+                    <option value="🛍️ אישור אמא">🛍️ אישור אמא</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>עדיפות:</label>
+                <select id="taskPriority">
+                    <option value="🟢 רגילה">🟢 רגילה</option>
+                    <option value="🟡 בינונית" selected>🟡 בינונית</option>
+                    <option value="🔴 דחוף">🔴 דחוף</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addTask()">✅ הוסף משימה</button>
         </div>
 
-        <div class="tasks-box">
-            <h2>📋 המשימות</h2>
-            <div id="list"></div>
+        <div class="box">
+            <h2>📋 המשימות שלך</h2>
+            <div id="tasksList"></div>
         </div>
     </div>
 
     <script>
-        const form = document.getElementById('taskForm');
-        const nameField = document.getElementById('name');
-        const dateField = document.getElementById('date');
-        const typeField = document.getElementById('type');
-        const priorityField = document.getElementById('priority');
-        const list = document.getElementById('list');
+        let tasks = [];
 
-        // Set today's date
         function setToday() {
             const today = new Date().toISOString().split('T')[0];
-            dateField.value = today;
+            document.getElementById('taskDate').value = today;
         }
 
-        // Load tasks
-        function loadTasks() {
-            try {
-                const saved = localStorage.getItem('mytasks');
-                return saved ? JSON.parse(saved) : [];
-            } catch {
-                return [];
-            }
-        }
-
-        // Save tasks
-        function saveTasks(tasks) {
-            try {
-                localStorage.setItem('mytasks', JSON.stringify(tasks));
-            } catch {
-                alert('לא ניתן לשמור');
-            }
-        }
-
-        // Show tasks
-        function showTasks() {
-            const tasks = loadTasks();
-            if (tasks.length === 0) {
-                list.innerHTML = '<div class="empty">אין משימות</div>';
-                return;
-            }
-
-            const sorted = tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-            let html = '';
-            sorted.forEach(t => {
-                html += `<div class="task">
-                    <div class="task-info">
-                        <div class="task-name">${t.name}</div>
-                        <div class="task-date">📅 ${t.date}</div>
-                    </div>
-                    <div class="task-btns">
-                        <button onclick="removeTask(${t.id})">🗑️</button>
-                    </div>
-                </div>`;
-            });
-            list.innerHTML = html;
-        }
-
-        // Remove task
-        function removeTask(id) {
-            let tasks = loadTasks();
-            tasks = tasks.filter(t => t.id !== id);
-            saveTasks(tasks);
-            showTasks();
-        }
-
-        // Add task
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = nameField.value.trim();
-            const date = dateField.value;
+        function addTask() {
+            const name = document.getElementById('taskName').value.trim();
+            const date = document.getElementById('taskDate').value;
+            const type = document.getElementById('taskType').value;
+            const priority = document.getElementById('taskPriority').value;
 
             if (!name || !date) {
-                alert('מלא משימה ותאריך!');
+                alert('⚠️ מלא משימה ותאריך!');
                 return;
             }
 
-            const tasks = loadTasks();
             tasks.push({
                 id: Date.now(),
-                name,
-                date,
-                type: typeField.value,
-                priority: priorityField.value
+                name: name,
+                date: date,
+                type: type,
+                priority: priority
             });
 
-            saveTasks(tasks);
-            nameField.value = '';
+            document.getElementById('taskName').value = '';
             setToday();
             showTasks();
-            alert('✅ נוסף!');
-        });
+            alert('✅ משימה נוספה!');
+        }
 
-        // Initialize
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            showTasks();
+        }
+
+        function showTasks() {
+            const sorted = [...tasks].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (sorted.length === 0) {
+                document.getElementById('tasksList').innerHTML = '<div class="empty">אין משימות עדיין 🎉</div>';
+                return;
+            }
+
+            let html = '';
+            sorted.forEach(task => {
+                html += `
+                    <div class="task">
+                        <div class="task-title">${task.type} ${task.name}</div>
+                        <div class="task-info">📅 ${task.date} | ${task.priority}</div>
+                        <div class="task-btns">
+                            <button class="btn" onclick="deleteTask(${task.id})">🗑️ מחק</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('tasksList').innerHTML = html;
+        }
+
+        // Start
         setToday();
         showTasks();
     </script>
