@@ -47,9 +47,9 @@
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .stat-box {
@@ -57,11 +57,11 @@
             border-radius: 12px;
             padding: 16px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .stat-number {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: #667eea;
         }
@@ -70,42 +70,45 @@
             font-size: 12px;
             color: #999;
             margin-top: 6px;
+            text-transform: uppercase;
         }
 
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .panel {
             background: white;
             border-radius: 16px;
             padding: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .panel-title {
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 16px;
             color: #667eea;
+            margin-bottom: 16px;
         }
 
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
-        label {
+        .form-group label {
             display: block;
             font-size: 13px;
             font-weight: 600;
+            color: #666;
             margin-bottom: 6px;
-            color: #555;
         }
 
-        input, textarea, select {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -113,17 +116,20 @@
             font-family: inherit;
             font-size: 14px;
             direction: rtl;
+            text-align: right;
         }
 
-        input:focus, textarea:focus, select:focus {
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
-            background: #f0f4ff;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 60px;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .btn-add {
@@ -133,10 +139,11 @@
             color: white;
             border: none;
             border-radius: 8px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 14px;
             transition: all 0.3s;
+            margin-top: 8px;
         }
 
         .btn-add:hover {
@@ -144,9 +151,25 @@
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
+        .btn-add:active {
+            transform: translateY(0);
+        }
+
         .tasks-list {
             max-height: 600px;
             overflow-y: auto;
+        }
+
+        .section-header {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            padding-right: 8px;
+            border-right: 3px solid #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .task-card {
@@ -187,9 +210,10 @@
         }
 
         .task-title {
+            font-size: 15px;
             font-weight: 600;
+            color: #333;
             margin-bottom: 4px;
-            font-size: 14px;
         }
 
         .task-meta {
@@ -201,18 +225,6 @@
             display: flex;
             gap: 8px;
             margin-right: 10px;
-        }
-
-        .section-header {
-            font-size: 16px;
-            font-weight: 700;
-            color: #667eea;
-            margin-top: 20px;
-            margin-bottom: 12px;
-            padding-right: 8px;
-            border-right: 3px solid #667eea;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .btn-small {
@@ -310,17 +322,15 @@
         .day.today {
             background: #667eea;
             color: white;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .day.has-tasks::after {
-            content: '';
+            content: '•';
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #f44336;
-            border-radius: 50%;
             bottom: 2px;
+            font-size: 20px;
+            color: #f44336;
         }
 
         .empty-state {
@@ -330,7 +340,7 @@
         }
 
         .empty-icon {
-            font-size: 44px;
+            font-size: 48px;
             margin-bottom: 12px;
         }
 
@@ -338,23 +348,14 @@
             .main-grid {
                 grid-template-columns: 1fr;
             }
+
+            h1 {
+                font-size: 24px;
+            }
+
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 8px;
         }
     </style>
 </head>
@@ -365,7 +366,6 @@
             <p class="header-sub">ניהול תורים, משימות, ואירועים במקום אחד</p>
         </header>
 
-        <!-- סטטיסטיקה -->
         <div class="stats">
             <div class="stat-box">
                 <div class="stat-number" id="countTotal">0</div>
@@ -385,9 +385,7 @@
             </div>
         </div>
 
-        <!-- גריד ראשי -->
         <div class="main-grid">
-            <!-- טופס -->
             <div class="panel">
                 <div class="panel-title">➕ הוסיפי משימה חדשה</div>
 
@@ -404,8 +402,8 @@
                 <div class="form-group">
                     <label>🏷️ סוג</label>
                     <select id="taskType">
-                        <option value="study">📚 לימודים</option>
                         <option value="home">🏠 בית</option>
+                        <option value="study">📚 לימודים</option>
                         <option value="doctor">🏥 רופא</option>
                         <option value="dentist">🦷 רופא שיניים</option>
                         <option value="event">🎉 אירוע</option>
@@ -427,7 +425,6 @@
                 <button class="btn-add" onclick="addTask()">✅ הוסיפי משימה</button>
             </div>
 
-            <!-- קלנדר -->
             <div class="panel">
                 <div class="panel-title">📅 קלנדר</div>
                 <div class="calendar">
@@ -454,22 +451,9 @@
             </div>
         </div>
 
-        <!-- רשימת משימות -->
         <div class="panel">
             <div class="panel-title">📋 המשימות שלך</div>
-            <div id="filterInfo"></div>
             <div class="tasks-list" id="tasksList"></div>
-        </div>
-
-        <!-- Modal למשימות של יום -->
-        <div id="dayModal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; direction: rtl;">
-            <div style="background: white; border-radius: 16px; padding: 24px; margin: 40px auto; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h2 id="dayTitle" style="color: #667eea; font-size: 18px;"></h2>
-                    <button onclick="closeDayModal()" style="background: none; border: none; font-size: 24px; cursor: pointer;">✕</button>
-                </div>
-                <div id="dayTasksList" style="max-height: 400px; overflow-y: auto;"></div>
-            </div>
         </div>
     </div>
 
@@ -594,10 +578,7 @@
             localStorage.setItem('daughterTasks', JSON.stringify(tasks));
             document.getElementById('taskTitle').value = '';
             setToday();
-            document.getElementById('taskType').value = 'study';
-            document.getElementById('taskPriority').value = 'medium';
             render();
-            alert('✅ משימה נוספה!');
         }
 
         function deleteTask(id) {
@@ -661,7 +642,7 @@
                 typeTasks.forEach(task => {
                     const isOverdue = new Date(task.date) < new Date() && !task.done;
                     html += `
-                        <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}" draggable="true" ondragstart="dragTask(event, ${task.id})" ondragover="allowDrop(event)" ondrop="dropTask(event, ${task.id})">
+                        <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}">
                             <div class="task-info">
                                 <div class="task-title">${task.title}</div>
                                 <div class="task-meta">📅 ${task.date}     ${getPriorityLabel(task.priority)}</div>
@@ -675,14 +656,6 @@
                 });
             });
             document.getElementById('tasksList').innerHTML = html;
-        }
-
-        function getTypeEmoji(type) {
-            const map = {
-                study: '📚', home: '🏠', doctor: '🏥', dentist: '🦷',
-                event: '🎉', birthday: '🎂', important: '💎', approval: '🛍️'
-            };
-            return map[type] || '📝';
         }
 
         function getPriorityLabel(priority) {
@@ -737,92 +710,7 @@
             render();
         }
 
-        // לחץ על יום בקלנדר
-        function showDayTasks(dateStr) {
-            const dayTasks = tasks.filter(t => t.date === dateStr);
-            const date = new Date(dateStr);
-            document.getElementById('dayTitle').textContent = date.toLocaleDateString('he-IL', { weekday: 'long', month: 'long', day: 'numeric' });
-
-            const html = dayTasks.length === 0 ?
-                '<p style="text-align: center; color: #999; padding: 20px;">אין משימות ביום הזה</p>' :
-                dayTasks.map(task => `
-                    <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-right: 3px solid #667eea;">
-                        <div style="font-weight: 600; margin-bottom: 4px;">${task.title}</div>
-                        <div style="font-size: 12px; color: #999;">${getTypeEmoji(task.type)} | ${getPriorityLabel(task.priority)}</div>
-                    </div>
-                `).join('');
-
-            document.getElementById('dayTasksList').innerHTML = html;
-            document.getElementById('dayModal').style.display = 'block';
-        }
-
-        function closeDayModal() {
-            document.getElementById('dayModal').style.display = 'none';
-        }
-
-        // Drag and Drop
-        function dragTask(e, taskId) {
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('taskId', taskId);
-        }
-
-        function allowDrop(e) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-        }
-
-        function dropTask(e, taskId) {
-            e.preventDefault();
-        }
-
-        // Drag to Calendar Day
-        document.addEventListener('dragstart', function(e) {
-            if (e.target.classList.contains('task-card')) {
-                const taskId = e.dataTransfer.getData('taskId') || e.target.getAttribute('data-task-id');
-                if (taskId) {
-                    e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('taskId', taskId);
-                }
-            }
-        });
-
-        // עדכן את renderCalendar כדי להוסיף onclick
-        const originalRenderCalendar = renderCalendar;
-        function renderCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            document.getElementById('monthYear').textContent =
-                currentDate.toLocaleDateString('he-IL', { month: 'long', year: 'numeric' });
-
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            const daysInMonth = lastDay.getDate();
-            const startingDayOfWeek = firstDay.getDay();
-
-            let html = '';
-            for (let i = startingDayOfWeek - 1; i >= 0; i--) {
-                const day = new Date(year, month, -i).getDate();
-                html += `<div class="day other-month">${day}</div>`;
-            }
-
-            const today = new Date().toISOString().split('T')[0];
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const hasTasks = tasks.some(t => t.date === dateStr);
-                const isToday = dateStr === today;
-                html += `<div class="day ${isToday ? 'today' : ''} ${hasTasks ? 'has-tasks' : ''}" onclick="showDayTasks('${dateStr}')" style="cursor: pointer;">${day}</div>`;
-            }
-
-            const remainingDays = 42 - (startingDayOfWeek + daysInMonth - 1);
-            for (let i = 1; i <= remainingDays; i++) {
-                html += `<div class="day other-month">${i}</div>`;
-            }
-
-            document.getElementById('calendar').innerHTML = html;
-        }
-
         init();
     </script>
 </body>
-</html>
 </html>
