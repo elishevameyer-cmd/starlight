@@ -336,7 +336,7 @@
                 </select>
             </div>
 
-            <button class="btn-add" id="addTaskBtn">✅ הוסיפי משימה</button>
+            <button class="btn-add" id="addTaskBtn" type="button" onclick="addTask(); return false;">✅ הוסיפי משימה</button>
         </div>
 
         <div class="panel">
@@ -477,13 +477,26 @@
         }
 
         function init() {
-            setToday();
-            render();
+            try {
+                setToday();
+                render();
 
-            // התחבר הכפתור ללחיצה
-            const addBtn = document.getElementById('addTaskBtn');
-            if (addBtn) {
-                addBtn.addEventListener('click', addTask);
+                // התחבר הכפתור ללחיצה
+                const addBtn = document.getElementById('addTaskBtn');
+                if (addBtn) {
+                    addBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addTask();
+                    });
+                    console.log('✅ Button connected successfully');
+                } else {
+                    console.error('❌ Button not found');
+                    alert('⚠️ בעיה בטעינת הטופס');
+                }
+            } catch (err) {
+                console.error('Init error:', err);
+                alert('❌ שגיאה בטעינת האפליקציה');
             }
         }
 
