@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>משימות הבת שלי</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            direction: rtl;
+            text-align: right;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .app {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .header-sub {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+            margin-top: 6px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            direction: rtl;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .btn-add {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .tasks-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .task-card {
+            background: #f8f9fa;
+            border-right: 4px solid #667eea;
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .task-card:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateX(-4px);
+        }
+
+        .task-card.done {
+            opacity: 0.6;
+            border-right-color: #4caf50;
+        }
+
+        .task-card.done .task-title {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .task-card.urgent {
+            border-right-color: #f44336;
+            background: #fff5f5;
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .task-meta {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 8px;
+            margin-right: 10px;
+        }
+
+        .btn-small {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 4px 8px;
+        }
+
+        .btn-small:hover {
+            transform: scale(1.2);
+        }
+
+        .calendar {
+            width: 100%;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .calendar-nav button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .calendar-nav button:hover {
+            background: #5568d3;
+        }
+
+        .calendar-month {
+            font-weight: 700;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .weekday {
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            color: #999;
+            padding: 8px;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            background: white;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .day:hover {
+            background: #f0f4ff;
+        }
+
+        .day.other-month {
+            color: #ddd;
+        }
+
+        .day.today {
+            background: #667eea;
+            color: white;
+            font-weight: 700;
+        }
+
+        .day.has-tasks::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #f44336;
+            border-radius: 50%;
+            bottom: 2px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-icon {
+            font-size: 44px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>📋 משימות הבת שלי</h1>
+            <p class="header-sub">ניהול תורים, משימות, ואירועים במקום אחד</p>
+        </header>
+
+        <!-- סטטיסטיקה -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="countTotal">0</div>
+                <div class="stat-label">סה"כ משימות</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="countDone">0</div>
+                <div class="stat-label">בוצע</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="countTodo">0</div>
+                <div class="stat-label">לעשות</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="countOverdue">0</div>
+                <div class="stat-label">דחוק</div>
+            </div>
+        </div>
+
+        <!-- גריד ראשי -->
+        <div class="main-grid">
+            <!-- טופס -->
+            <div class="panel">
+                <div class="panel-title">➕ הוסיפי משימה חדשה</div>
+
+                <div class="form-group">
+                    <label>📝 משימה</label>
+                    <textarea id="taskTitle" placeholder="מה צריך לעשות?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>📅 תאריך</label>
+                    <input type="date" id="taskDate" />
+                </div>
+
+                <div class="form-group">
+                    <label>🏷️ סוג</label>
+                    <select id="taskType">
+                        <option value="study">📚 לימודים</option>
+                        <option value="home">🏠 בית</option>
+                        <option value="doctor">🏥 רופא</option>
+                        <option value="dentist">🦷 רופא שיניים</option>
+                        <option value="event">🎉 אירוע</option>
+                        <option value="birthday">🎂 יום הולדת</option>
+                        <option value="important">💎 חשוב</option>
+                        <option value="approval">🛍️ אישור מאמא</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>⭐ עדיפות</label>
+                    <select id="taskPriority">
+                        <option value="low">🟢 נמוכה</option>
+                        <option value="medium" selected>🟡 בינונית</option>
+                        <option value="high">🔴 גבוהה</option>
+                    </select>
+                </div>
+
+                <button class="btn-add" onclick="addTask()">✅ הוסיפי משימה</button>
+            </div>
+
+            <!-- קלנדר -->
+            <div class="panel">
+                <div class="panel-title">📅 קלנדר</div>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button onclick="prevMonth()">◀</button>
+                            <button onclick="nextMonth()">▶</button>
+                        </div>
+                        <div class="calendar-month" id="monthYear"></div>
+                    </div>
+
+                    <div class="weekdays">
+                        <div class="weekday">א</div>
+                        <div class="weekday">ב</div>
+                        <div class="weekday">ג</div>
+                        <div class="weekday">ד</div>
+                        <div class="weekday">ה</div>
+                        <div class="weekday">ו</div>
+                        <div class="weekday">ש</div>
+                    </div>
+
+                    <div class="days" id="calendar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- רשימת משימות -->
+        <div class="panel">
+            <div class="panel-title">📋 המשימות שלך</div>
+            <div class="tasks-list" id="tasksList"></div>
+        </div>
+    </div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
+        let currentDate = new Date();
+
+        function init() {
+            setToday();
+            render();
+        }
+
+        function setToday() {
+            document.getElementById('taskDate').valueAsDate = new Date();
+        }
+
+        function addTask() {
+            const title = document.getElementById('taskTitle').value;
+            const date = document.getElementById('taskDate').value;
+            const type = document.getElementById('taskType').value;
+            const priority = document.getElementById('taskPriority').value;
+
+            if (!title || !date) {
+                alert('מלאי את כל השדות!');
+                return;
+            }
+
+            tasks.push({
+                id: Date.now(),
+                title,
+                date,
+                type,
+                priority,
+                done: false,
+                createdAt: new Date().toISOString()
+            });
+
+            localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+            document.getElementById('taskTitle').value = '';
+            setToday();
+            document.getElementById('taskType').value = 'study';
+            document.getElementById('taskPriority').value = 'medium';
+            render();
+            alert('✅ משימה נוספה!');
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+            render();
+        }
+
+        function toggleTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.done = !task.done;
+                localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+                render();
+            }
+        }
+
+        function render() {
+            renderStats();
+            renderTasks();
+            renderCalendar();
+        }
+
+        function renderStats() {
+            document.getElementById('countTotal').textContent = tasks.length;
+            document.getElementById('countDone').textContent = tasks.filter(t => t.done).length;
+            document.getElementById('countTodo').textContent = tasks.filter(t => !t.done).length;
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('countOverdue').textContent = tasks.filter(t => !t.done && t.date < today).length;
+        }
+
+        function renderTasks() {
+            const sorted = [...tasks].sort((a, b) => new Date(a.date) - new Date(b.date));
+            const html = sorted.length === 0 ?
+                '<div class="empty-state"><div class="empty-icon">✨</div><p>אין משימות - כל הכבוד!</p></div>' :
+                sorted.map(task => {
+                    const isOverdue = new Date(task.date) < new Date() && !task.done;
+                    return `
+                        <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}">
+                            <div class="task-info">
+                                <div class="task-title">${task.title}</div>
+                                <div class="task-meta">📅 ${task.date} | ${getTypeEmoji(task.type)} | ${getPriorityLabel(task.priority)}</div>
+                            </div>
+                            <div class="task-actions">
+                                <button class="btn-small" onclick="toggleTask(${task.id})">${task.done ? '✅' : '⭕'}</button>
+                                <button class="btn-small" onclick="deleteTask(${task.id})">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            document.getElementById('tasksList').innerHTML = html;
+        }
+
+        function getTypeEmoji(type) {
+            const map = {
+                study: '📚', home: '🏠', doctor: '🏥', dentist: '🦷',
+                event: '🎉', birthday: '🎂', important: '💎', approval: '🛍️'
+            };
+            return map[type] || '📝';
+        }
+
+        function getPriorityLabel(priority) {
+            const map = {
+                high: '🔴 גבוהה',
+                medium: '🟡 בינונית',
+                low: '🟢 נמוכה'
+            };
+            return map[priority] || 'בינונית';
+        }
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            document.getElementById('monthYear').textContent =
+                currentDate.toLocaleDateString('he-IL', { month: 'long', year: 'numeric' });
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDayOfWeek = firstDay.getDay();
+
+            let html = '';
+            for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+                const day = new Date(year, month, -i).getDate();
+                html += `<div class="day other-month">${day}</div>`;
+            }
+
+            const today = new Date().toISOString().split('T')[0];
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const hasTasks = tasks.some(t => t.date === dateStr);
+                const isToday = dateStr === today;
+                html += `<div class="day ${isToday ? 'today' : ''} ${hasTasks ? 'has-tasks' : ''}">${day}</div>`;
+            }
+
+            const remainingDays = 42 - (startingDayOfWeek + daysInMonth - 1);
+            for (let i = 1; i <= remainingDays; i++) {
+                html += `<div class="day other-month">${i}</div>`;
+            }
+
+            document.getElementById('calendar').innerHTML = html;
+        }
+
+        function prevMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            render();
+        }
+
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            render();
+        }
+
+        init();
+    </script>
+</body>
+</html>
