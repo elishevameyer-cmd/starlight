@@ -469,28 +469,20 @@
             const today = new Date().toISOString().split('T')[0];
             const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
             const nextWeek = new Date(Date.now() + 604800000).toISOString().split('T')[0];
+            const twoWeeks = new Date(Date.now() + 1209600000).toISOString().split('T')[0];
 
             tasks = [
                 {
                     id: Date.now() + 1,
-                    title: 'יום חופש',
-                    date: tomorrow,
-                    type: 'event',
+                    title: 'שם כביסה',
+                    date: today,
+                    type: 'home',
                     priority: 'high',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 2,
-                    title: 'קניות',
-                    date: today,
-                    type: 'home',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 3,
                     title: 'לסדר את החדר',
                     date: today,
                     type: 'home',
@@ -499,20 +491,47 @@
                     createdAt: new Date().toISOString()
                 },
                 {
-                    id: Date.now() + 4,
-                    title: 'לסדר את הבית',
-                    date: nextWeek,
+                    id: Date.now() + 3,
+                    title: 'לנקות את הבית',
+                    date: tomorrow,
                     type: 'home',
-                    priority: 'low',
+                    priority: 'medium',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 4,
+                    title: 'לקפל כביסה',
+                    date: today,
+                    type: 'home',
+                    priority: 'high',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 5,
-                    title: 'לקפל כביסה',
-                    date: today,
+                    title: 'יציאה עם חברוות',
+                    date: nextWeek,
+                    type: 'event',
+                    priority: 'medium',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 6,
+                    title: 'קניות',
+                    date: tomorrow,
                     type: 'home',
                     priority: 'medium',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 7,
+                    title: 'יום חופש',
+                    date: twoWeeks,
+                    type: 'event',
+                    priority: 'high',
                     done: false,
                     createdAt: new Date().toISOString()
                 }
