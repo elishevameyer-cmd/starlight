@@ -288,7 +288,10 @@ const upcomingEvents = events.filter(e => e.status !== 'בוצע').slice(0, 3);
       <header>
         <h1>📋 משימות שלי</h1>
         <p class="subtitle">יום זה שלך - בואו נסדרים אותו! 💪</p>
-        <a href="/daughter-add" style="display: inline-block; background: #667eea; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 12px; font-weight: 600;">➕ הוסיפי משימה</a>
+        <div style="display: flex; gap: 10px; margin-top: 12px;">
+          <a href="/daughter-quick" style="flex: 1; background: #667eea; color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; text-align: center;">✍️ רשמי משימה</a>
+          <a href="/daughter-add" style="flex: 1; background: #764ba2; color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; text-align: center;">➕ טופס מלא</a>
+        </div>
       </header>
 
       {todayTasks.length > 0 && (
