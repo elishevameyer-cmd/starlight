@@ -17,19 +17,20 @@
   .hero h1 { font-size:40px; font-weight:900; color:#fff; line-height:1.2; margin-bottom:20px; }
   .hero h1 span { color:#F07A57; }
   .hero-sub { font-size:15px; color:rgba(255,255,255,0.5); line-height:1.9; max-width:480px; margin:0 auto 36px; font-weight:300; }
-  .hero-btn { display:inline-block; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px 36px; border-radius:12px; text-decoration:none; }
+  .hero-btn { display:inline-block; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px 36px; border-radius:50px; text-decoration:none; }
   .section { padding:56px 0; border-bottom:1px solid #f3f3f3; }
   .section:last-of-type { border-bottom:none; }
-  .section-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#ccc; text-transform:uppercase; margin-bottom:14px; }
+  .section-label { display:flex; align-items:center; gap:12px; font-size:11px; font-weight:700; letter-spacing:2.5px; color:#bbb; text-transform:uppercase; white-space:nowrap; margin-bottom:14px; }
+  .section-label::before, .section-label::after { content:''; flex:1; height:1px; background:#efefef; }
   .section h2 { font-size:28px; font-weight:900; line-height:1.3; margin-bottom:32px; }
   .lead-text { font-size:15px; color:#444; line-height:1.9; }
   .clean-list { list-style:none; }
-  .clean-list li { font-size:15px; color:#444; line-height:1.7; padding:14px 0; border-bottom:1px solid #f3f3f3; padding-right:20px; position:relative; }
-  .clean-list li:last-child { border-bottom:none; }
+  .clean-list li { font-size:15px; color:#444; line-height:1.7; padding:14px 18px; border-radius:14px; background:#fafafa; border:1.5px solid #f0f0f0; margin-bottom:8px; padding-right:20px; position:relative; }
+  .clean-list li:last-child { margin-bottom:0; }
   .clean-list li::before { content:"—"; position:absolute; right:0; color:#F07A57; font-weight:700; }
   .num-list { list-style:none; }
-  .num-list li { display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #f3f3f3; align-items:flex-start; }
-  .num-list li:last-child { border-bottom:none; }
+  .num-list li { display:flex; gap:20px; padding:20px; border-radius:16px; background:#fafafa; border:1.5px solid #f0f0f0; margin-bottom:10px; align-items:flex-start; }
+  .num-list li:last-child { margin-bottom:0; }
   .num { font-size:13px; font-weight:900; color:#F07A57; letter-spacing:1px; flex-shrink:0; padding-top:3px; min-width:28px; }
   .num-body strong { display:block; font-size:16px; font-weight:700; margin-bottom:6px; }
   .num-body p { font-size:14px; color:#777; line-height:1.7; }
@@ -46,7 +47,7 @@
   .price-box .price-label { font-size:10px; font-weight:700; letter-spacing:3px; color:#F07A57; text-transform:uppercase; margin-bottom:20px; }
   .price-box h3 { font-size:22px; font-weight:900; color:#fff; margin-bottom:8px; }
   .price-box .price-sub { font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:32px; }
-  .price-cta { display:block; width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:12px; border:none; cursor:pointer; text-align:center; text-decoration:none; }
+  .price-cta { display:block; width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:50px; border:none; cursor:pointer; text-align:center; text-decoration:none; }
   .price-note { font-size:12px; color:rgba(255,255,255,0.3); text-align:center; margin-top:12px; }
   .faq-item { padding:20px 0; border-bottom:1px solid #f0f0f0; }
   .faq-item:last-child { border-bottom:none; }
@@ -58,6 +59,7 @@
   .contact-section { background:#1A1A1A; padding:64px 24px; }
   .contact-section .container { text-align:center; }
   .contact-section .section-label { color:rgba(255,255,255,0.3); }
+  .contact-section .section-label::before, .contact-section .section-label::after { background:rgba(255,255,255,0.1); }
   .contact-section h2 { font-size:30px; font-weight:900; color:#fff; margin-bottom:10px; line-height:1.3; }
   .contact-section h2 span { color:#F07A57; }
   .contact-sub { font-size:14px; color:rgba(255,255,255,0.4); margin-bottom:36px; }
@@ -67,7 +69,7 @@
   .cf-group textarea { height:90px; resize:none; }
   .cf-group input::placeholder, .cf-group textarea::placeholder { color:rgba(255,255,255,0.2); }
   .cf-group input:focus, .cf-group textarea:focus { border-color:#F07A57; }
-  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:12px; border:none; cursor:pointer; margin-top:8px; }
+  .cf-submit { width:100%; background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:16px; font-weight:700; padding:16px; border-radius:50px; border:none; cursor:pointer; margin-top:8px; }
   .cf-note { font-size:11px; color:rgba(255,255,255,0.2); text-align:center; margin-top:12px; }
   footer { text-align:center; font-size:11px; color:#bbb; padding:28px 24px; background:#1A1A1A; border-top:1px solid rgba(255,255,255,0.06); }
   @media(max-width:480px) { .hero h1 { font-size:32px; } }
