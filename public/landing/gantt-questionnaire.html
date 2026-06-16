@@ -544,7 +544,7 @@ const isSpecial = new URLSearchParams(window.location.search).get('special') ===
 if (isSpecial) {
   document.getElementById('displayPrice').innerHTML = '<span>₪</span>200';
   document.getElementById('priceNote').textContent = 'מחיר מיוחד · תשלום חד-פעמי';
-  document.getElementById('payBtn').href = 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ';
+  document.getElementById('payBtn').href = 'https://pay.grow.link/146705707e33f023ce63b09f2580529b-MzU2Mjc0Nw';
 }
 
 let currentStep = 0;
@@ -644,7 +644,7 @@ function buildPaymentLink() {
   const business = document.getElementById('businessName').value.trim();
 
   const base = isSpecial
-    ? 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ'
+    ? 'https://pay.grow.link/146705707e33f023ce63b09f2580529b-MzU2Mjc0Nw'
     : 'https://pay.grow.link/3d1dc7846df9117a11e4056d0877a29c-MzU2Mjc0NA';
   const url = base + (base.includes('?') ? '&' : '?') +
     `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&business=${encodeURIComponent(business)}`;
