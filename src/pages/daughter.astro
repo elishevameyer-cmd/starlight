@@ -1,0 +1,395 @@
+---
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+const tasksPath = path.join(process.cwd(), 'DAUGHTER_TASKS.md');
+const tasksContent = await readFile(tasksPath, 'utf-8');
+
+// פארסק טבלאות יומיות
+const getTodayTasks = (content: string) => {
+  const lines = content.split('\n');
+  const tasks = [];
+  let inDaily = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes('## 📅 משימות יומיות')) {
+      inDaily = true;
+      i += 2; // skip header
+      continue;
+    }
+    if (inDaily && lines[i].startsWith('##')) break;
+    if (inDaily && lines[i].startsWith('|')) {
+      const cells = lines[i].split('|').slice(1, -1).map(c => c.trim());
+      if (cells.length >= 7 && !lines[i].includes('---')) {
+        tasks.push({
+          id: cells[0],
+          title: cells[1],
+          category: cells[2],
+          priority: cells[3],
+          status: cells[4],
+          date: cells[5],
+          notes: cells[6]
+        });
+      }
+    }
+  }
+  return tasks;
+};
+
+// גטכר תורים
+const getAppointments = (content: string) => {
+  const lines = content.split('\n');
+  const appointments = [];
+  let inAppointments = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes('## 🏥 תורים ובדיקות')) {
+      inAppointments = true;
+      i += 2;
+      continue;
+    }
+    if (inAppointments && lines[i].startsWith('##')) break;
+    if (inAppointments && lines[i].startsWith('|')) {
+      const cells = lines[i].split('|').slice(1, -1).map(c => c.trim());
+      if (cells.length >= 7 && !lines[i].includes('---')) {
+        appointments.push({
+          id: cells[0],
+          name: cells[1],
+          date: cells[3],
+          time: cells[4],
+          status: cells[6]
+        });
+      }
+    }
+  }
+  return appointments;
+};
+
+// גטכר אירועים
+const getEvents = (content: string) => {
+  const lines = content.split('\n');
+  const events = [];
+  let inEvents = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes('## 🎉 פגישות ואירועים')) {
+      inEvents = true;
+      i += 2;
+      continue;
+    }
+    if (inEvents && lines[i].startsWith('##')) break;
+    if (inEvents && lines[i].startsWith('|')) {
+      const cells = lines[i].split('|').slice(1, -1).map(c => c.trim());
+      if (cells.length >= 7 && !lines[i].includes('---')) {
+        events.push({
+          id: cells[0],
+          title: cells[1],
+          date: cells[3],
+          time: cells[4],
+          status: cells[6]
+        });
+      }
+    }
+  }
+  return events;
+};
+
+const dailyTasks = getTodayTasks(tasksContent);
+const appointments = getAppointments(tasksContent);
+const events = getEvents(tasksContent);
+const todayTasks = dailyTasks.filter(t => t.status === 'לעשות' || t.status === 'בתהליך');
+const upcomingApointments = appointments.filter(a => a.status !== 'בוצע').slice(0, 3);
+const upcomingEvents = events.filter(e => e.status !== 'בוצע').slice(0, 3);
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>המשימות שלי | הבת שלי</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #1a1a1a;
+        direction: rtl;
+        text-align: right;
+        min-height: 100vh;
+        padding: 16px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #999;
+      }
+
+      .section {
+        margin-bottom: 24px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+      }
+
+      .task-card {
+        background: white;
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-right: 4px solid #667eea;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        animation: slideIn 0.3s ease;
+      }
+
+      .task-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .task-card.urgent {
+        border-right-color: #F44336;
+        background: #fff5f5;
+      }
+
+      .task-card.warning {
+        border-right-color: #FF9800;
+        background: #fff9f7;
+      }
+
+      .task-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 8px;
+      }
+
+      .task-title {
+        font-size: 16px;
+        font-weight: 600;
+        flex: 1;
+        line-height: 1.4;
+      }
+
+      .task-category {
+        display: inline-block;
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .task-meta {
+        display: flex;
+        gap: 12px;
+        font-size: 13px;
+        color: #666;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        background: #e0e0e0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .empty-state {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        text-align: center;
+        color: #999;
+      }
+
+      .empty-icon {
+        font-size: 48px;
+        margin-bottom: 12px;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 13px;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📋 משימות שלי</h1>
+        <p class="subtitle">יום זה שלך - בואו נסדרים אותו! 💪</p>
+      </header>
+
+      {todayTasks.length > 0 && (
+        <section class="section">
+          <div class="section-title">🎯 משימות היום</div>
+          {todayTasks.map(task => (
+            <div class={`task-card ${task.priority === '🔴 גבוהה' ? 'urgent' : task.priority === '🟡 בינונית' ? 'warning' : ''}`} key={task.id}>
+              <div class="task-category">{task.category}</div>
+              <div class="task-header">
+                <div class="task-title">{task.title}</div>
+                <span class="badge">{task.priority}</span>
+              </div>
+              <div class="task-meta">
+                <span>📅 {task.date}</span>
+                {task.notes && <span>📝 {task.notes}</span>}
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {upcomingApointments.length > 0 && (
+        <section class="section">
+          <div class="section-title">🏥 התורים שלך</div>
+          {upcomingApointments.map(apt => (
+            <div class="task-card" key={apt.id}>
+              <div class="task-category">🏥 בריאות</div>
+              <div class="task-header">
+                <div class="task-title">{apt.name}</div>
+              </div>
+              <div class="task-meta">
+                <span>📅 {apt.date}</span>
+                <span>🕐 {apt.time}</span>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {upcomingEvents.length > 0 && (
+        <section class="section">
+          <div class="section-title">🎉 הפגישות שלך</div>
+          {upcomingEvents.map(event => (
+            <div class="task-card" key={event.id}>
+              <div class="task-category">👯 חברים</div>
+              <div class="task-header">
+                <div class="task-title">{event.title}</div>
+              </div>
+              <div class="task-meta">
+                <span>📅 {event.date}</span>
+                <span>🕐 {event.time}</span>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {todayTasks.length === 0 && upcomingApointments.length === 0 && upcomingEvents.length === 0 && (
+        <div class="empty-state">
+          <div class="empty-icon">✨</div>
+          <p>אין משימות היום - כל הכבוד! 🎉</p>
+        </div>
+      )}
+
+      <div class="footer">
+        <p>אמא שלך צופה בך - אתה מנהלת את זה בעצמך! 👩</p>
+        <p style="margin-top: 8px; opacity: 0.7;">עדכון אחרון: 2026-06-16</p>
+      </div>
+    </div>
+
+    <script>
+      // אנימציית confetti כשמסיימים משימה
+      document.querySelectorAll('.task-card').forEach(card => {
+        card.addEventListener('click', function() {
+          this.style.opacity = '0.5';
+          this.style.textDecoration = 'line-through';
+
+          // הצג confetti (פשוט - emoji)
+          const emoji = document.createElement('div');
+          emoji.textContent = '🎉';
+          emoji.style.position = 'fixed';
+          emoji.style.left = Math.random() * 100 + '%';
+          emoji.style.top = '0';
+          emoji.style.fontSize = '30px';
+          emoji.style.animation = 'slideDown 2s ease-out forwards';
+          document.body.appendChild(emoji);
+
+          setTimeout(() => emoji.remove(), 2000);
+        });
+      });
+
+      // אנימציית "slideDown"
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes slideDown {
+          to {
+            transform: translateY(100vh);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
