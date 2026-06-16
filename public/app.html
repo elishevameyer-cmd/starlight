@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>ניהול משימות ליאורה</title>
     <style>
         * {
@@ -11,324 +11,243 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
             color: #333;
             direction: rtl;
             text-align: right;
-            min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
 
-        .app {
-            max-width: 1000px;
+        .container {
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        header {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
         h1 {
-            font-size: 32px;
             color: #667eea;
-            margin-bottom: 4px;
+            font-size: 24px;
+            margin: 15px 0 10px 0;
+            text-align: center;
         }
 
-        .header-sub {
+        .form-section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102,126,234,0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:active {
+            background: #5568d3;
+        }
+
+        .tasks-section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #667eea;
+        }
+
+        .task-item {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border-right: 3px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-item.done {
+            opacity: 0.6;
+        }
+
+        .task-item.done .task-name {
+            text-decoration: line-through;
+        }
+
+        .task-name {
+            flex: 1;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .task-date {
+            font-size: 12px;
             color: #999;
+            margin-left: 10px;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .task-btn {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .task-btn:active {
+            background: #eee;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #999;
+            padding: 20px;
             font-size: 14px;
         }
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
-        .stat-box {
+        .stat {
             background: white;
-            border-radius: 12px;
-            padding: 16px;
+            padding: 10px;
+            border-radius: 5px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
+        .stat-num {
+            font-size: 20px;
+            font-weight: bold;
             color: #667eea;
         }
 
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
             color: #999;
-            margin-top: 6px;
-            text-transform: uppercase;
-        }
-
-
-        .panel {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .panel-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 16px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 16px;
-            direction: rtl;
-            text-align: right;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn-add {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 8px;
-            -webkit-appearance: none;
-            -webkit-user-select: none;
-            user-select: none;
-            touch-action: manipulation;
-        }
-
-        .btn-add:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-add:active {
-            transform: translateY(0);
-            background: linear-gradient(135deg, #5568d3, #653a8a);
-        }
-
-        .btn-add:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .tasks-list {
-            max-height: 600px;
-            overflow-y: auto;
-        }
-
-        .section-header {
-            font-size: 16px;
-            font-weight: 700;
-            color: #667eea;
-            margin-top: 20px;
-            margin-bottom: 12px;
-            padding-right: 8px;
-            border-right: 3px solid #667eea;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .task-card {
-            background: #f8f9fa;
-            border-right: 4px solid #667eea;
-            border-radius: 8px;
-            padding: 14px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .task-card:hover {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transform: translateX(-4px);
-        }
-
-        .task-card.done {
-            opacity: 0.6;
-            border-right-color: #4caf50;
-        }
-
-        .task-card.done .task-title {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .task-card.urgent {
-            border-right-color: #f44336;
-            background: #fff5f5;
-        }
-
-        .task-info {
-            flex: 1;
-        }
-
-        .task-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-        }
-
-        .task-meta {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .task-actions {
-            display: flex;
-            gap: 8px;
-            margin-right: 10px;
-        }
-
-        .btn-small {
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 4px 8px;
-        }
-
-        .btn-small:hover {
-            transform: scale(1.2);
-        }
-
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-        }
-
-        .empty-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        @media (max-width: 768px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            margin-top: 3px;
         }
     </style>
 </head>
 <body>
-    <div class="app">
-        <header>
-            <h1>📋 ניהול משימות ליאורה</h1>
-            <p class="header-sub">ניהול תורים, משימות, ואירועים במקום אחד</p>
-        </header>
+    <div class="container">
+        <h1>📋 משימות ליאורה</h1>
 
         <div class="stats">
-            <div class="stat-box">
-                <div class="stat-number" id="countTotal">0</div>
-                <div class="stat-label">סה"כ משימות</div>
+            <div class="stat">
+                <div class="stat-num" id="total">0</div>
+                <div class="stat-label">סה"כ</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-number" id="countDone">0</div>
+            <div class="stat">
+                <div class="stat-num" id="done">0</div>
                 <div class="stat-label">בוצע</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-number" id="countTodo">0</div>
+            <div class="stat">
+                <div class="stat-num" id="todo">0</div>
                 <div class="stat-label">לעשות</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-number" id="countOverdue">0</div>
+            <div class="stat">
+                <div class="stat-num" id="urgent">0</div>
                 <div class="stat-label">דחוף</div>
             </div>
         </div>
 
-        <div class="panel">
-            <div class="panel-title">➕ הוסיפי משימה חדשה</div>
+        <div class="form-section">
+            <div class="section-title">➕ הוסף משימה חדשה</div>
 
             <div class="form-group">
-                <label>📝 משימה</label>
-                <textarea id="taskTitle" placeholder="מה צריך לעשות?"></textarea>
+                <label>משימה:</label>
+                <textarea id="taskName" placeholder="מה צריך לעשות?"></textarea>
             </div>
 
             <div class="form-group">
-                <label>📅 תאריך</label>
-                <input type="date" id="taskDate" />
+                <label>תאריך:</label>
+                <input type="date" id="taskDate">
             </div>
 
             <div class="form-group">
-                <label>🏷️ סוג</label>
+                <label>סוג:</label>
                 <select id="taskType">
                     <option value="bagrut">📜 בגרות</option>
                     <option value="matatim">📝 מתכונות</option>
                     <option value="doctor">🏥 רופא</option>
-                    <option value="dentist">🦷 רופא שיניים</option>
+                    <option value="dentist">🦷 שיניים</option>
                     <option value="event">🎉 אירוע</option>
                     <option value="birthday">🎂 יום הולדת</option>
-                    <option value="important">💎 חשוב</option>
+                    <option value="important" selected>💎 חשוב</option>
                     <option value="approval">🛍️ אישור אמא</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>⭐ עדיפות</label>
+                <label>עדיפות:</label>
                 <select id="taskPriority">
                     <option value="low">🟢 רגילה</option>
                     <option value="medium" selected>🟡 בינונית</option>
@@ -336,303 +255,176 @@
                 </select>
             </div>
 
-            <button class="btn-add" id="addTaskBtn" type="button" onclick="addTask(); return false;">✅ הוסיפי משימה</button>
+            <button id="addBtn">✅ הוסף משימה</button>
         </div>
 
-        <div class="panel">
-            <div class="panel-title">📋 המשימות שלך</div>
-            <div class="tasks-list" id="tasksList"></div>
+        <div class="tasks-section">
+            <div class="section-title">📋 המשימות שלך</div>
+            <div id="tasksList"></div>
         </div>
     </div>
 
     <script>
-        // בדוק אם צריך לאפס את הנתונים
-        const dataVersion = localStorage.getItem('appVersion');
-        if (dataVersion !== '2') {
-            localStorage.clear();
-            localStorage.setItem('appVersion', '2');
-        }
+        let tasks = [];
 
-        let tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
-
-        // הוסף משימות לדוגמה בפעם הראשונה
-        if (tasks.length === 0) {
-            const today = new Date().toISOString().split('T')[0];
-            const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-            const nextWeek = new Date(Date.now() + 604800000).toISOString().split('T')[0];
-            const twoWeeks = new Date(Date.now() + 1209600000).toISOString().split('T')[0];
-
-            tasks = [
-                {
-                    id: Date.now() + 1,
-                    title: 'מתכונת אנגלית',
-                    date: today,
-                    type: 'matatim',
-                    priority: 'high',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 2,
-                    title: 'מתכונת מתמטיקה',
-                    date: today,
-                    type: 'matatim',
-                    priority: 'high',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 3,
-                    title: 'תור אצל רופא',
-                    date: tomorrow,
-                    type: 'doctor',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 4,
-                    title: 'בדיקת שיניים',
-                    date: today,
-                    type: 'dentist',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 5,
-                    title: 'יום הולדת של שיר',
-                    date: nextWeek,
-                    type: 'birthday',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 6,
-                    title: 'בקשה לקניית נעליים ספורט',
-                    date: tomorrow,
-                    type: 'approval',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 7,
-                    title: 'לקפל כביסה',
-                    date: today,
-                    type: 'important',
-                    priority: 'high',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 8,
-                    title: 'לנקות מרפסת',
-                    date: today,
-                    type: 'important',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 9,
-                    title: 'לנקות שירותים',
-                    date: today,
-                    type: 'important',
-                    priority: 'high',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 10,
-                    title: 'לנקות את החדר',
-                    date: today,
-                    type: 'important',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 11,
-                    title: 'לנקות מטבח',
-                    date: today,
-                    type: 'important',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                },
-                {
-                    id: Date.now() + 12,
-                    title: 'יציאה עם חברוות לקולנוע',
-                    date: twoWeeks,
-                    type: 'event',
-                    priority: 'medium',
-                    done: false,
-                    createdAt: new Date().toISOString()
-                }
-            ];
-
-            localStorage.setItem('daughterTasks', JSON.stringify(tasks));
-        }
-
-        function init() {
+        // Load from localStorage
+        function loadTasks() {
             try {
-                setToday();
-                render();
-
-                // התחבר הכפתור ללחיצה
-                const addBtn = document.getElementById('addTaskBtn');
-                if (addBtn) {
-                    addBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        addTask();
-                    });
-                    console.log('✅ Button connected successfully');
+                const saved = localStorage.getItem('tasks_data');
+                if (saved) {
+                    tasks = JSON.parse(saved);
                 } else {
-                    console.error('❌ Button not found');
-                    alert('⚠️ בעיה בטעינת הטופס');
+                    // Create sample tasks
+                    const today = new Date().toISOString().split('T')[0];
+                    const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+
+                    tasks = [
+                        { id: 1, name: 'מתכונת אנגלית', date: today, type: 'matatim', priority: 'high', done: false },
+                        { id: 2, name: 'מתכונת מתמטיקה', date: today, type: 'matatim', priority: 'high', done: false },
+                        { id: 3, name: 'לקפל כביסה', date: today, type: 'important', priority: 'high', done: false },
+                        { id: 4, name: 'לנקות שירותים', date: today, type: 'important', priority: 'high', done: false },
+                        { id: 5, name: 'לנקות את החדר', date: today, type: 'important', priority: 'medium', done: false },
+                        { id: 6, name: 'לנקות מטבח', date: today, type: 'important', priority: 'medium', done: false },
+                        { id: 7, name: 'לנקות מרפסת', date: today, type: 'important', priority: 'medium', done: false }
+                    ];
+                    saveTasks();
                 }
-            } catch (err) {
-                console.error('Init error:', err);
-                alert('❌ שגיאה בטעינת האפליקציה');
+            } catch (e) {
+                console.error('Load error:', e);
+            }
+        }
+
+        function saveTasks() {
+            try {
+                localStorage.setItem('tasks_data', JSON.stringify(tasks));
+            } catch (e) {
+                console.error('Save error:', e);
             }
         }
 
         function setToday() {
-            document.getElementById('taskDate').valueAsDate = new Date();
-        }
-
-        function addTask(e) {
-            if (e) e.preventDefault();
-
-            try {
-                const titleElement = document.getElementById('taskTitle');
-                const dateElement = document.getElementById('taskDate');
-                const typeElement = document.getElementById('taskType');
-                const priorityElement = document.getElementById('taskPriority');
-
-                const title = titleElement ? titleElement.value.trim() : '';
-                const date = dateElement ? dateElement.value : '';
-                const type = typeElement ? typeElement.value : 'important';
-                const priority = priorityElement ? priorityElement.value : 'medium';
-
-                if (!title || !date) {
-                    alert('⚠️ אנא מלאי את המשימה והתאריך!');
-                    return;
-                }
-
-                const newTask = {
-                    id: Date.now(),
-                    title,
-                    date,
-                    type,
-                    priority,
-                    done: false,
-                    createdAt: new Date().toISOString()
-                };
-
-                tasks.push(newTask);
-                localStorage.setItem('daughterTasks', JSON.stringify(tasks));
-
-                if (titleElement) titleElement.value = '';
-                setToday();
-                render();
-                alert('✅ המשימה נוספה בהצלחה!');
-            } catch (error) {
-                console.error('Error adding task:', error);
-                alert('❌ משהו השתבש, אנא נסי שוב');
-            }
-        }
-
-        function deleteTask(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            localStorage.setItem('daughterTasks', JSON.stringify(tasks));
-            render();
-        }
-
-        function toggleTask(id) {
-            const task = tasks.find(t => t.id === id);
-            if (task) {
-                task.done = !task.done;
-                localStorage.setItem('daughterTasks', JSON.stringify(tasks));
-                render();
-            }
-        }
-
-        function render() {
-            renderStats();
-            renderTasks();
-        }
-
-        function renderStats() {
-            document.getElementById('countTotal').textContent = tasks.length;
-            document.getElementById('countDone').textContent = tasks.filter(t => t.done).length;
-            document.getElementById('countTodo').textContent = tasks.filter(t => !t.done).length;
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('countOverdue').textContent = tasks.filter(t => !t.done && t.date < today).length;
+            document.getElementById('taskDate').value = today;
+        }
+
+        function updateStats() {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.done).length;
+            const pending = total - completed;
+            const urgentCount = tasks.filter(t => t.priority === 'high' && !t.done).length;
+
+            document.getElementById('total').textContent = total;
+            document.getElementById('done').textContent = completed;
+            document.getElementById('todo').textContent = pending;
+            document.getElementById('urgent').textContent = urgentCount;
         }
 
         function renderTasks() {
             const sorted = [...tasks].sort((a, b) => new Date(a.date) - new Date(b.date));
 
             if (sorted.length === 0) {
-                document.getElementById('tasksList').innerHTML = '<div class="empty-state"><div class="empty-icon">✨</div><p>אין משימות - כל הכבוד!</p></div>';
+                document.getElementById('tasksList').innerHTML = '<div class="empty-msg">אין משימות 🎉</div>';
                 return;
             }
 
-            const typeNames = {
-                bagrut: '📜 בגרות',
-                matatim: '📝 מתכונות',
-                doctor: '🏥 רופא',
-                dentist: '🦷 רופא שיניים',
-                event: '🎉 אירועים',
-                birthday: '🎂 יום הולדת',
-                important: '💎 חשוב',
-                approval: '🛍️ אישורים'
-            };
-
-            const grouped = {};
-            sorted.forEach(task => {
-                const type = task.type || 'other';
-                if (!grouped[type]) grouped[type] = [];
-                grouped[type].push(task);
-            });
-
             let html = '';
-            Object.entries(grouped).forEach(([type, typeTasks]) => {
-                html += `<div class="section-header">${typeNames[type] || type}</div>`;
-                typeTasks.forEach(task => {
-                    const isOverdue = new Date(task.date) < new Date() && !task.done;
-                    html += `
-                        <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}">
-                            <div class="task-info">
-                                <div class="task-title">${task.title}</div>
-                                <div class="task-meta">📅 ${task.date}     ${getPriorityLabel(task.priority)}</div>
-                            </div>
-                            <div class="task-actions">
-                                <button class="btn-small" onclick="toggleTask(${task.id})">${task.done ? '✅' : '⭕'}</button>
-                                <button class="btn-small" onclick="deleteTask(${task.id})">🗑️</button>
-                            </div>
+            sorted.forEach(task => {
+                const typeEmoji = {
+                    bagrut: '📜',
+                    matatim: '📝',
+                    doctor: '🏥',
+                    dentist: '🦷',
+                    event: '🎉',
+                    birthday: '🎂',
+                    important: '💎',
+                    approval: '🛍️'
+                }[task.type] || '📝';
+
+                html += `
+                    <div class="task-item ${task.done ? 'done' : ''}">
+                        <div>
+                            <div class="task-name">${typeEmoji} ${task.name}</div>
+                            <div class="task-date">📅 ${task.date}</div>
                         </div>
-                    `;
-                });
+                        <div class="task-actions">
+                            <button class="task-btn" onclick="toggleTask(${task.id})">
+                                ${task.done ? '✅' : '⭕'}
+                            </button>
+                            <button class="task-btn" onclick="deleteTask(${task.id})">🗑️</button>
+                        </div>
+                    </div>
+                `;
             });
+
             document.getElementById('tasksList').innerHTML = html;
+            updateStats();
         }
 
-        function getPriorityLabel(priority) {
-            const map = {
-                high: '🔴 דחוף',
-                medium: '🟡 בינונית',
-                low: '🟢 רגילה'
-            };
-            return map[priority] || 'בינונית';
+        function toggleTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.done = !task.done;
+                saveTasks();
+                renderTasks();
+            }
         }
 
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            saveTasks();
+            renderTasks();
+        }
 
-        init();
+        function addTask() {
+            const name = document.getElementById('taskName').value.trim();
+            const date = document.getElementById('taskDate').value;
+            const type = document.getElementById('taskType').value;
+            const priority = document.getElementById('taskPriority').value;
+
+            if (!name || !date) {
+                alert('⚠️ מלא משימה ותאריך!');
+                return;
+            }
+
+            tasks.push({
+                id: Date.now(),
+                name,
+                date,
+                type,
+                priority,
+                done: false
+            });
+
+            saveTasks();
+            document.getElementById('taskName').value = '';
+            setToday();
+            renderTasks();
+            alert('✅ נוסף!');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTasks();
+            setToday();
+            renderTasks();
+
+            const addBtn = document.getElementById('addBtn');
+            if (addBtn) {
+                addBtn.onclick = function() {
+                    addTask();
+                };
+            }
+        });
+
+        // Also try immediate initialization
+        window.addEventListener('load', function() {
+            const addBtn = document.getElementById('addBtn');
+            if (addBtn) {
+                addBtn.onclick = function() {
+                    addTask();
+                };
+            }
+        });
     </script>
 </body>
 </html>
