@@ -203,6 +203,18 @@
             margin-right: 10px;
         }
 
+        .section-header {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            padding-right: 8px;
+            border-right: 3px solid #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .btn-small {
             background: none;
             border: none;
@@ -612,15 +624,40 @@
 
         function renderTasks() {
             const sorted = [...tasks].sort((a, b) => new Date(a.date) - new Date(b.date));
-            const html = sorted.length === 0 ?
-                '<div class="empty-state"><div class="empty-icon">✨</div><p>אין משימות - כל הכבוד!</p></div>' :
-                sorted.map(task => {
+
+            if (sorted.length === 0) {
+                document.getElementById('tasksList').innerHTML = '<div class="empty-state"><div class="empty-icon">✨</div><p>אין משימות - כל הכבוד!</p></div>';
+                return;
+            }
+
+            const typeNames = {
+                study: '📚 לימודים',
+                home: '🏠 בית',
+                doctor: '🏥 רופא',
+                dentist: '🦷 שיניים',
+                event: '🎉 אירועים',
+                birthday: '🎂 יום הולדת',
+                important: '💎 חשוב',
+                approval: '🛍️ אישורים'
+            };
+
+            const grouped = {};
+            sorted.forEach(task => {
+                const type = task.type || 'other';
+                if (!grouped[type]) grouped[type] = [];
+                grouped[type].push(task);
+            });
+
+            let html = '';
+            Object.entries(grouped).forEach(([type, typeTasks]) => {
+                html += `<div class="section-header">${typeNames[type] || type}</div>`;
+                typeTasks.forEach(task => {
                     const isOverdue = new Date(task.date) < new Date() && !task.done;
-                    return `
+                    html += `
                         <div class="task-card ${task.done ? 'done' : ''} ${isOverdue ? 'urgent' : ''}" draggable="true" ondragstart="dragTask(event, ${task.id})" ondragover="allowDrop(event)" ondrop="dropTask(event, ${task.id})">
                             <div class="task-info">
                                 <div class="task-title">${task.title}</div>
-                                <div class="task-meta">📅 ${task.date} | ${getTypeEmoji(task.type)} | ${getPriorityLabel(task.priority)}</div>
+                                <div class="task-meta">📅 ${task.date}     ${getPriorityLabel(task.priority)}</div>
                             </div>
                             <div class="task-actions">
                                 <button class="btn-small" onclick="toggleTask(${task.id})">${task.done ? '✅' : '⭕'}</button>
@@ -628,7 +665,8 @@
                             </div>
                         </div>
                     `;
-                }).join('');
+                });
+            });
             document.getElementById('tasksList').innerHTML = html;
         }
 
