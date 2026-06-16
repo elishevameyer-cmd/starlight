@@ -317,9 +317,9 @@
             <div class="form-group">
                 <label>⭐ עדיפות</label>
                 <select id="taskPriority">
-                    <option value="low">🟢 נמוכה</option>
+                    <option value="low">🟢 רגילה</option>
                     <option value="medium" selected>🟡 בינונית</option>
-                    <option value="high">🔴 גבוהה</option>
+                    <option value="high">🔴 דחוף</option>
                 </select>
             </div>
 
@@ -577,9 +577,9 @@
 
         function getPriorityLabel(priority) {
             const map = {
-                high: '🔴 גבוהה',
+                high: '🔴 דחוף',
                 medium: '🟡 בינונית',
-                low: '🟢 נמוכה'
+                low: '🟢 רגילה'
             };
             return map[priority] || 'בינונית';
         }
