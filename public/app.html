@@ -479,7 +479,7 @@
             const priority = document.getElementById('taskPriority').value;
 
             if (!title || !date) {
-                alert('מלאי את כל השדות!');
+                alert('⚠️ אנא מלאי את המשימה והתאריך!');
                 return;
             }
 
@@ -497,6 +497,7 @@
             document.getElementById('taskTitle').value = '';
             setToday();
             render();
+            alert('✅ המשימה נוספה בהצלחה!');
         }
 
         function deleteTask(id) {
