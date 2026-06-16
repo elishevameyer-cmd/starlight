@@ -42,11 +42,11 @@
   }
   .download-btn {
     display: inline-block;
-    background: #F07A57; color: #fff;
+    background: rgba(240,122,87,0.15); color: #F07A57;
     font-family: 'Heebo', sans-serif;
-    font-size: 18px; font-weight: 700;
-    padding: 18px 48px; border-radius: 50px;
-    text-decoration: none;
+    font-size: 15px; font-weight: 700;
+    padding: 12px 32px; border-radius: 50px;
+    text-decoration: none; border: 1.5px solid rgba(240,122,87,0.4);
     transition: opacity 0.2s, transform 0.15s;
   }
   .download-btn:hover { opacity: 0.9; transform: translateY(-2px); }
@@ -161,11 +161,11 @@
   <div class="heart-circle">🧡</div>
   <h1>תודה שנרשמת,<br><span>שמחה שאת כאן!</span></h1>
   <p class="personal-msg">
-    הצ'קליסט מוכן בשבילך — לחצי להורדה מיידית.<br>
+    הצ'קליסט שלך נפתח אוטומטית בחלון חדש — תבדקי את הטאבים.<br>
     קחי 5 דקות, עברי עליו וראי מה חסר בביו שלך.<br>
     השינוי הקטן הזה יכול להיות גדול.
   </p>
-  <a href="checklist-bio.html" target="_blank" class="download-btn">📥 לצ'קליסט החינמי שלי</a>
+  <a href="checklist-bio.html" target="_blank" class="download-btn">📥 לא ראית את הצ'קליסט? לחצי כאן</a>
   <p class="download-note">נפתח בחלון חדש — שמרי אותו אצלך</p>
 </section>
 
@@ -248,5 +248,10 @@
   © 2025 אלישבע מייער | אדריכלית סושייאל
 </footer>
 
+<script>
+  window.addEventListener('load', function() {
+    window.open('checklist-bio.html', '_blank');
+  });
+</script>
 </body>
 </html>
