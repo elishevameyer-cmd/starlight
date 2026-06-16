@@ -323,7 +323,7 @@
                 </select>
             </div>
 
-            <button class="btn-add" onclick="addTask()">✅ הוסיפי משימה</button>
+            <button class="btn-add" id="addTaskBtn">✅ הוסיפי משימה</button>
         </div>
 
         <div class="panel">
@@ -466,6 +466,12 @@
         function init() {
             setToday();
             render();
+
+            // התחבר הכפתור ללחיצה
+            const addBtn = document.getElementById('addTaskBtn');
+            if (addBtn) {
+                addBtn.addEventListener('click', addTask);
+            }
         }
 
         function setToday() {
