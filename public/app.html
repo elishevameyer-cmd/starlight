@@ -463,6 +463,64 @@
 
     <script>
         let tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
+
+        // הוסף משימות לדוגמה בפעם הראשונה
+        if (tasks.length === 0) {
+            const today = new Date().toISOString().split('T')[0];
+            const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+            const nextWeek = new Date(Date.now() + 604800000).toISOString().split('T')[0];
+
+            tasks = [
+                {
+                    id: Date.now() + 1,
+                    title: 'יום חופש',
+                    date: tomorrow,
+                    type: 'event',
+                    priority: 'high',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 2,
+                    title: 'קניות',
+                    date: today,
+                    type: 'home',
+                    priority: 'medium',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 3,
+                    title: 'לסדר את החדר',
+                    date: today,
+                    type: 'home',
+                    priority: 'medium',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 4,
+                    title: 'לסדר את הבית',
+                    date: nextWeek,
+                    type: 'home',
+                    priority: 'low',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: Date.now() + 5,
+                    title: 'לקפל כביסה',
+                    date: today,
+                    type: 'home',
+                    priority: 'medium',
+                    done: false,
+                    createdAt: new Date().toISOString()
+                }
+            ];
+
+            localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+        }
+
         let currentDate = new Date();
 
         function init() {
