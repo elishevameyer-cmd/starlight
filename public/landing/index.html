@@ -176,7 +176,10 @@ function handleFree(e) {
     method: 'PUT',
     headers: { 'Content-Type':'application/json', 'Authorization':'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053' },
     body: JSON.stringify({ subscribers: [{ IDENTIFIER: email, EMAIL: email }] })
-  }).catch(() => {}).finally(() => { window.location.href = 'thank-you.html'; });
+  }).then(r => { console.log('Responder status:', r.status); return r.text(); })
+    .then(t => console.log('Responder response:', t))
+    .catch(err => console.error('Responder error (CORS?):', err))
+    .finally(() => { window.location.href = 'thank-you.html'; });
 }
 </script>
 </body>
