@@ -643,7 +643,9 @@ function buildPaymentLink() {
   const phone = document.getElementById('contactPhone').value.trim();
   const business = document.getElementById('businessName').value.trim();
 
-  const base = 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ';
+  const base = isSpecial
+    ? 'https://pay.grow.link/cc1eb6b201800942b7e85aa8f8f07521-MzU2MjM1MA'
+    : 'https://pay.grow.link/5e1053ecb47444abb6673df8c58e3e28-MzU1NjExMQ';
   const url = base + (base.includes('?') ? '&' : '?') +
     `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&business=${encodeURIComponent(business)}`;
 
