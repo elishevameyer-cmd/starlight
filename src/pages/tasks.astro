@@ -1,0 +1,521 @@
+---
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { parseTasksMarkdown, getAllTasks } from '../utils/taskParser';
+import { getTaskAlerts, getTaskCountByStatus, formatDeadline, calculateDeadlineStatus } from '../utils/taskAlerts';
+import { sortTasks } from '../utils/taskSort';
+
+const tasksPath = path.join(process.cwd(), 'TASKS.md');
+const tasksContent = await readFile(tasksPath, 'utf-8');
+const tasksSections = parseTasksMarkdown(tasksContent);
+const allTasks = getAllTasks(tasksSections);
+
+const alerts = getTaskAlerts(allTasks);
+const counts = getTaskCountByStatus(allTasks);
+
+const sortedDoing = sortTasks(tasksSections.doing, 'deadline-asc');
+const sortedWaitingMom = sortTasks(tasksSections['waiting-mom'], 'deadline-asc');
+const sortedWaitingClaude = sortTasks(tasksSections['waiting-claude'], 'deadline-asc');
+const sortedBacklog = sortTasks(tasksSections.backlog, 'priority-asc');
+const sortedDone = sortTasks(tasksSections.done, 'created-new').slice(0, 5);
+
+const getPriorityEmoji = (priority: string) => {
+  switch (priority) {
+    case 'high': return '🔴';
+    case 'medium': return '🟡';
+    case 'low': return '🟢';
+    default: return '⚪';
+  }
+};
+
+const getStatusEmoji = (status: string) => {
+  switch (status) {
+    case 'doing': return '🚀';
+    case 'waiting-mom': return '⏳';
+    case 'waiting-claude': return '🤖';
+    case 'backlog': return '📦';
+    case 'done': return '✅';
+    default: return '•';
+  }
+};
+
+const getStatusLabel = (status: string) => {
+  switch (status) {
+    case 'doing': return 'בתהליך';
+    case 'waiting-mom': return 'ממתין לאמא';
+    case 'waiting-claude': return 'ממתין לקלוד';
+    case 'backlog': return 'בקיוביל';
+    case 'done': return 'בוצע';
+    default: return status;
+  }
+};
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>משימות | אלישבע מייער</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #faf7f5 0%, #f5efeb 100%);
+        color: #1a1a1a;
+        direction: rtl;
+        text-align: right;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border-right: 4px solid #f07a57;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, #f07a57, #d96540);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .stat-card {
+        background: #f5f5f5;
+        padding: 16px;
+        border-radius: 12px;
+        border-right: 3px solid #f07a57;
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(240, 122, 87, 0.2);
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+      }
+
+      .stat-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #1a1a1a;
+      }
+
+      .alerts {
+        background: #fff3e0;
+        border-right: 4px solid #ffb700;
+        padding: 16px;
+        border-radius: 12px;
+        margin-top: 16px;
+      }
+
+      .alerts.danger {
+        background: #ffebee;
+        border-right-color: #ff4444;
+      }
+
+      .alert-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .alert-item {
+        font-size: 14px;
+        margin: 4px 0;
+      }
+
+      .section {
+        margin-bottom: 32px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .task-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 16px;
+      }
+
+      .task-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-right: 4px solid #e0e0e0;
+        transition: all 0.3s ease;
+        animation: slideIn 0.3s ease;
+      }
+
+      .task-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        transform: translateY(-4px);
+      }
+
+      .task-card.urgent {
+        border-right-color: #ff4444;
+        background: #fff9f7;
+        animation: pulse-danger 2s infinite;
+      }
+
+      .task-card.warning {
+        border-right-color: #ffb700;
+        background: #fffbf7;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse-danger {
+        0%, 100% {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        50% {
+          box-shadow: 0 2px 16px rgba(255, 68, 68, 0.3);
+        }
+      }
+
+      .task-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+
+      .task-id {
+        font-size: 12px;
+        color: #999;
+        background: #f5f5f5;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+
+      .task-priority {
+        font-size: 18px;
+      }
+
+      .task-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        line-height: 1.4;
+      }
+
+      .status-tag {
+        display: inline-block;
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .task-deadline {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 12px;
+        font-size: 13px;
+      }
+
+      .deadline-badge {
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .deadline-badge.overdue {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .deadline-badge.warning {
+        background: #fff3e0;
+        color: #e65100;
+      }
+
+      .deadline-badge.ok {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .task-notes {
+        font-size: 13px;
+        color: #999;
+        padding-top: 12px;
+        border-top: 1px solid #f0f0f0;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: #999;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 24px;
+        color: #999;
+        font-size: 13px;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: #f07a57;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #d96540;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="back-link">← חזרה לעמוד הבית</a>
+
+      <header>
+        <h1>📋 משימות שלי</h1>
+
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-label">בתהליך</div>
+            <div class="stat-number">{counts.doing}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">ממתין</div>
+            <div class="stat-number">{counts['waiting-mom'] + counts['waiting-claude']}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">בקיוביל</div>
+            <div class="stat-number">{counts.backlog}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">בוצע</div>
+            <div class="stat-number">{counts.done}</div>
+          </div>
+        </div>
+
+        {alerts.overdue.length > 0 && (
+          <div class="alerts danger">
+            <div class="alert-title">🔴 {alerts.overdue.length} משימה דחוקה!</div>
+            {alerts.overdue.map(task => (
+              <div class="alert-item" key={task.id}>
+                • {task.title}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {alerts.withinThreeDays.length > 0 && alerts.overdue.length === 0 && (
+          <div class="alerts">
+            <div class="alert-title">🟡 {alerts.withinThreeDays.length} משימה בתוך 3 ימים</div>
+            {alerts.withinThreeDays.slice(0, 3).map(task => (
+              <div class="alert-item" key={task.id}>
+                • {task.title}
+              </div>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {sortedDoing.length > 0 && (
+        <section class="section">
+          <div class="section-title">
+            <span>🚀 בתהליך ({sortedDoing.length})</span>
+          </div>
+          <div class="task-grid">
+            {sortedDoing.map(task => {
+              const deadline = calculateDeadlineStatus(task.deadline);
+              const cardClass = deadline.urgency === 'urgent' ? 'urgent' : deadline.urgency === 'warning' ? 'warning' : '';
+              return (
+                <div class={`task-card ${cardClass}`} key={task.id}>
+                  <div class="task-header">
+                    <span class="task-id">#{task.id}</span>
+                    <span class="task-priority">{getPriorityEmoji(task.priority)}</span>
+                  </div>
+                  <div class="task-title">{task.title}</div>
+                  <div class="status-tag">{getStatusEmoji(task.status)} {getStatusLabel(task.status)}</div>
+                  <div class="task-deadline">
+                    <span>📅 {formatDeadline(task.deadline)}</span>
+                    <span class={`deadline-badge ${deadline.urgency === 'urgent' ? 'overdue' : deadline.urgency === 'warning' ? 'warning' : 'ok'}`}>
+                      {deadline.message}
+                    </span>
+                  </div>
+                  {task.notes && <div class="task-notes">📝 {task.notes}</div>}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {sortedWaitingMom.length > 0 && (
+        <section class="section">
+          <div class="section-title">
+            <span>⏳ ממתין לאמא ({sortedWaitingMom.length})</span>
+          </div>
+          <div class="task-grid">
+            {sortedWaitingMom.map(task => {
+              const deadline = calculateDeadlineStatus(task.deadline);
+              const cardClass = deadline.urgency === 'urgent' ? 'urgent' : deadline.urgency === 'warning' ? 'warning' : '';
+              return (
+                <div class={`task-card ${cardClass}`} key={task.id}>
+                  <div class="task-header">
+                    <span class="task-id">#{task.id}</span>
+                    <span class="task-priority">{getPriorityEmoji(task.priority)}</span>
+                  </div>
+                  <div class="task-title">{task.title}</div>
+                  <div class="status-tag">{getStatusEmoji(task.status)} {getStatusLabel(task.status)}</div>
+                  <div class="task-deadline">
+                    <span>📅 {formatDeadline(task.deadline)}</span>
+                    <span class={`deadline-badge ${deadline.urgency === 'urgent' ? 'overdue' : deadline.urgency === 'warning' ? 'warning' : 'ok'}`}>
+                      {deadline.message}
+                    </span>
+                  </div>
+                  {task.notes && <div class="task-notes">📝 {task.notes}</div>}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {sortedWaitingClaude.length > 0 && (
+        <section class="section">
+          <div class="section-title">
+            <span>🤖 ממתין לקלוד ({sortedWaitingClaude.length})</span>
+          </div>
+          <div class="task-grid">
+            {sortedWaitingClaude.map(task => {
+              const deadline = calculateDeadlineStatus(task.deadline);
+              const cardClass = deadline.urgency === 'urgent' ? 'urgent' : deadline.urgency === 'warning' ? 'warning' : '';
+              return (
+                <div class={`task-card ${cardClass}`} key={task.id}>
+                  <div class="task-header">
+                    <span class="task-id">#{task.id}</span>
+                    <span class="task-priority">{getPriorityEmoji(task.priority)}</span>
+                  </div>
+                  <div class="task-title">{task.title}</div>
+                  <div class="status-tag">{getStatusEmoji(task.status)} {getStatusLabel(task.status)}</div>
+                  <div class="task-deadline">
+                    <span>📅 {formatDeadline(task.deadline)}</span>
+                    <span class={`deadline-badge ${deadline.urgency === 'urgent' ? 'overdue' : deadline.urgency === 'warning' ? 'warning' : 'ok'}`}>
+                      {deadline.message}
+                    </span>
+                  </div>
+                  {task.notes && <div class="task-notes">📝 {task.notes}</div>}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {sortedBacklog.length > 0 && (
+        <section class="section">
+          <div class="section-title">
+            <span>📦 בקיוביל ({sortedBacklog.length})</span>
+          </div>
+          <div class="task-grid">
+            {sortedBacklog.map(task => (
+              <div class="task-card" key={task.id}>
+                <div class="task-header">
+                  <span class="task-id">#{task.id}</span>
+                  <span class="task-priority">{getPriorityEmoji(task.priority)}</span>
+                </div>
+                <div class="task-title">{task.title}</div>
+                <div class="status-tag">{getStatusEmoji(task.status)} {getStatusLabel(task.status)}</div>
+                <div class="task-deadline">
+                  <span>📅 {formatDeadline(task.deadline)}</span>
+                </div>
+                {task.notes && <div class="task-notes">📝 {task.notes}</div>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {sortedDone.length > 0 && (
+        <section class="section">
+          <div class="section-title">
+            <span>✅ בוצע לאחרונה ({counts.done} סה"כ)</span>
+          </div>
+          <div class="task-grid">
+            {sortedDone.map(task => (
+              <div class="task-card" key={task.id} style="opacity: 0.7;">
+                <div class="task-header">
+                  <span class="task-id">#{task.id}</span>
+                  <span class="task-priority">{getPriorityEmoji(task.priority)}</span>
+                </div>
+                <div class="task-title">{task.title}</div>
+                <div class="status-tag">{getStatusEmoji(task.status)} {getStatusLabel(task.status)}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {allTasks.length === 0 && (
+        <div class="empty-state">
+          <p style="font-size: 48px; margin-bottom: 16px;">📭</p>
+          <p>אין לך משימות כרגע - שקט יפה! 🎉</p>
+        </div>
+      )}
+
+      <div class="footer">
+        <p>📝 עדכון אחרון: 2026-06-16 | חי ומונפש ✨</p>
+        <p style="margin-top: 8px; font-size: 12px;">רמז: עדכן את TASKS.md כדי להוסיף/לשנות משימות</p>
+      </div>
+    </div>
+  </body>
+</html>
