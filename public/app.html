@@ -73,12 +73,6 @@
             text-transform: uppercase;
         }
 
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 24px;
-        }
 
         .panel {
             background: white;
@@ -240,98 +234,6 @@
             transform: scale(1.2);
         }
 
-        .calendar {
-            width: 100%;
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .calendar-nav {
-            display: flex;
-            gap: 8px;
-        }
-
-        .calendar-nav button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .calendar-nav button:hover {
-            background: #5568d3;
-        }
-
-        .calendar-month {
-            font-weight: 700;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            margin-bottom: 8px;
-        }
-
-        .weekday {
-            text-align: center;
-            font-weight: 600;
-            font-size: 12px;
-            color: #999;
-            padding: 8px;
-        }
-
-        .days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-        }
-
-        .day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
-            background: white;
-            border: 1px solid #e0e0e0;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .day:hover {
-            background: #f0f4ff;
-        }
-
-        .day.other-month {
-            color: #ddd;
-        }
-
-        .day.today {
-            background: #667eea;
-            color: white;
-            font-weight: 600;
-        }
-
-        .day.has-tasks::after {
-            content: '•';
-            position: absolute;
-            bottom: 2px;
-            font-size: 20px;
-            color: #f44336;
-        }
 
         .empty-state {
             text-align: center;
@@ -385,70 +287,43 @@
             </div>
         </div>
 
-        <div class="main-grid">
-            <div class="panel">
-                <div class="panel-title">➕ הוסיפי משימה חדשה</div>
+        <div class="panel">
+            <div class="panel-title">➕ הוסיפי משימה חדשה</div>
 
-                <div class="form-group">
-                    <label>📝 משימה</label>
-                    <textarea id="taskTitle" placeholder="מה צריך לעשות?"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>📅 תאריך</label>
-                    <input type="date" id="taskDate" />
-                </div>
-
-                <div class="form-group">
-                    <label>🏷️ סוג</label>
-                    <select id="taskType">
-                        <option value="home">🏠 בית</option>
-                        <option value="study">📚 לימודים</option>
-                        <option value="doctor">🏥 רופא</option>
-                        <option value="dentist">🦷 רופא שיניים</option>
-                        <option value="event">🎉 אירוע</option>
-                        <option value="birthday">🎂 יום הולדת</option>
-                        <option value="important">💎 חשוב</option>
-                        <option value="approval">🛍️ אישור מאמא</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>⭐ עדיפות</label>
-                    <select id="taskPriority">
-                        <option value="low">🟢 נמוכה</option>
-                        <option value="medium" selected>🟡 בינונית</option>
-                        <option value="high">🔴 גבוהה</option>
-                    </select>
-                </div>
-
-                <button class="btn-add" onclick="addTask()">✅ הוסיפי משימה</button>
+            <div class="form-group">
+                <label>📝 משימה</label>
+                <textarea id="taskTitle" placeholder="מה צריך לעשות?"></textarea>
             </div>
 
-            <div class="panel">
-                <div class="panel-title">📅 קלנדר</div>
-                <div class="calendar">
-                    <div class="calendar-header">
-                        <div class="calendar-nav">
-                            <button onclick="prevMonth()">◀</button>
-                            <button onclick="nextMonth()">▶</button>
-                        </div>
-                        <div class="calendar-month" id="monthYear"></div>
-                    </div>
-
-                    <div class="weekdays">
-                        <div class="weekday">א</div>
-                        <div class="weekday">ב</div>
-                        <div class="weekday">ג</div>
-                        <div class="weekday">ד</div>
-                        <div class="weekday">ה</div>
-                        <div class="weekday">ו</div>
-                        <div class="weekday">ש</div>
-                    </div>
-
-                    <div class="days" id="calendar"></div>
-                </div>
+            <div class="form-group">
+                <label>📅 תאריך</label>
+                <input type="date" id="taskDate" />
             </div>
+
+            <div class="form-group">
+                <label>🏷️ סוג</label>
+                <select id="taskType">
+                    <option value="bagrut">📜 בגרות</option>
+                    <option value="matatim">📝 מתכונות</option>
+                    <option value="doctor">🏥 רופא</option>
+                    <option value="dentist">🦷 רופא שיניים</option>
+                    <option value="event">🎉 אירוע</option>
+                    <option value="birthday">🎂 יום הולדת</option>
+                    <option value="important">💎 חשוב</option>
+                    <option value="approval">🛍️ אישור אמא</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>⭐ עדיפות</label>
+                <select id="taskPriority">
+                    <option value="low">🟢 נמוכה</option>
+                    <option value="medium" selected>🟡 בינונית</option>
+                    <option value="high">🔴 גבוהה</option>
+                </select>
+            </div>
+
+            <button class="btn-add" onclick="addTask()">✅ הוסיפי משימה</button>
         </div>
 
         <div class="panel">
@@ -477,64 +352,64 @@
             tasks = [
                 {
                     id: Date.now() + 1,
-                    title: 'שם כביסה',
+                    title: 'מתכונת אנגלית',
                     date: today,
-                    type: 'home',
+                    type: 'matatim',
                     priority: 'high',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 2,
-                    title: 'לסדר את החדר',
+                    title: 'מתכונת מתמטיקה',
                     date: today,
-                    type: 'home',
-                    priority: 'medium',
+                    type: 'matatim',
+                    priority: 'high',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 3,
-                    title: 'לנקות את הבית',
+                    title: 'תור אצל רופא',
                     date: tomorrow,
-                    type: 'home',
+                    type: 'doctor',
                     priority: 'medium',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 4,
-                    title: 'לקפל כביסה',
+                    title: 'בדיקת שיניים',
                     date: today,
-                    type: 'home',
-                    priority: 'high',
+                    type: 'dentist',
+                    priority: 'medium',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 5,
-                    title: 'יציאה עם חברוות',
+                    title: 'יום הולדת של שיר',
                     date: nextWeek,
-                    type: 'event',
+                    type: 'birthday',
                     priority: 'medium',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 6,
-                    title: 'קניות',
+                    title: 'בקשה לקניית נעליים ספורט',
                     date: tomorrow,
-                    type: 'home',
+                    type: 'approval',
                     priority: 'medium',
                     done: false,
                     createdAt: new Date().toISOString()
                 },
                 {
                     id: Date.now() + 7,
-                    title: 'יום חופש',
+                    title: 'יציאה עם חברוות לקולנוע',
                     date: twoWeeks,
                     type: 'event',
-                    priority: 'high',
+                    priority: 'medium',
                     done: false,
                     createdAt: new Date().toISOString()
                 }
@@ -542,8 +417,6 @@
 
             localStorage.setItem('daughterTasks', JSON.stringify(tasks));
         }
-
-        let currentDate = new Date();
 
         function init() {
             setToday();
@@ -599,7 +472,6 @@
         function render() {
             renderStats();
             renderTasks();
-            renderCalendar();
         }
 
         function renderStats() {
@@ -619,10 +491,10 @@
             }
 
             const typeNames = {
-                study: '📚 לימודים',
-                home: '🏠 בית',
+                bagrut: '📜 בגרות',
+                matatim: '📝 מתכונות',
                 doctor: '🏥 רופא',
-                dentist: '🦷 שיניים',
+                dentist: '🦷 רופא שיניים',
                 event: '🎉 אירועים',
                 birthday: '🎂 יום הולדת',
                 important: '💎 חשוב',
@@ -667,48 +539,6 @@
             return map[priority] || 'בינונית';
         }
 
-        function renderCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            document.getElementById('monthYear').textContent =
-                currentDate.toLocaleDateString('he-IL', { month: 'long', year: 'numeric' });
-
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            const daysInMonth = lastDay.getDate();
-            const startingDayOfWeek = firstDay.getDay();
-
-            let html = '';
-            for (let i = startingDayOfWeek - 1; i >= 0; i--) {
-                const day = new Date(year, month, -i).getDate();
-                html += `<div class="day other-month">${day}</div>`;
-            }
-
-            const today = new Date().toISOString().split('T')[0];
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const hasTasks = tasks.some(t => t.date === dateStr);
-                const isToday = dateStr === today;
-                html += `<div class="day ${isToday ? 'today' : ''} ${hasTasks ? 'has-tasks' : ''}">${day}</div>`;
-            }
-
-            const remainingDays = 42 - (startingDayOfWeek + daysInMonth - 1);
-            for (let i = 1; i <= remainingDays; i++) {
-                html += `<div class="day other-month">${i}</div>`;
-            }
-
-            document.getElementById('calendar').innerHTML = html;
-        }
-
-        function prevMonth() {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            render();
-        }
-
-        function nextMonth() {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            render();
-        }
 
         init();
     </script>
