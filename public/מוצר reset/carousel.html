@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<title>RESET Carousel</title>
+<head><meta charset="UTF-8"><title>RESET Carousel</title>
 <style>
   @font-face {
   font-family: 'Heebo';
@@ -38,198 +36,49 @@
     gap: 24px;
     padding: 24px;
   }
-  .slide {
-    width: 1080px;
-    height: 1080px;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .slide-inner {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 72px 80px;
-  }
+  .slide { width: 1080px; height: 1080px; position: relative; overflow: hidden; flex-shrink: 0; }
+  .slide-inner { width: 100%; height: 100%; display: flex; flex-direction: column; padding: 72px 80px; }
   .slide-inner.dark { background: inherit; color: #fff; }
   .slide-inner.light { background: inherit; color: #111; }
-
-  .slide-num {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.4);
-  }
-  .dark-num { color: rgba(0,0,0,0.2) !important; }
-
-  .tag {
-    font-size: 22px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.6);
-    margin-top: 12px;
-  }
-
+  .slide-num { font-size: 22px; font-weight: 900; letter-spacing: 4px; color: rgba(255,255,255,0.35); }
+  .dark-num { color: rgba(0,0,0,0.18) !important; }
+  .tag { font-size: 22px; font-weight: 600; color: rgba(255,255,255,0.55); margin-top: 12px; }
   .spacer { flex: 1; }
-  .spacer-sm { height: 40px; }
-
-  /* Slide 1 */
-  .hook-line {
-    font-size: 56px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.25;
-  }
-  .hook-orange {
-    font-size: 60px;
-    font-weight: 800;
-    color: #E8825A;
-    line-height: 1.2;
-    margin-top: 8px;
-  }
-  .hook-bold {
-    font-size: 64px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.15;
-    margin-top: 20px;
-  }
-  .swipe {
-    font-size: 24px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 1px;
-  }
-
-  /* Slide 2 */
-  .question {
-    font-size: 70px;
-    font-weight: 900;
-    color: #111;
-    line-height: 1.1;
-    letter-spacing: -2px;
-  }
+  .spacer-sm { height: 36px; }
+  .hook-line { font-size: 54px; font-weight: 400; color: rgba(255,255,255,0.82); line-height: 1.25; }
+  .hook-orange { font-size: 58px; font-weight: 800; color: #E8825A; line-height: 1.2; margin-top: 8px; }
+  .hook-bold { font-size: 62px; font-weight: 900; color: #fff; line-height: 1.15; margin-top: 20px; }
+  .swipe { font-size: 24px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 1px; }
+  .question { font-size: 68px; font-weight: 900; color: #111; line-height: 1.1; letter-spacing: -2px; }
   .question span { color: #E8825A; }
-  .author-line {
-    font-size: 30px;
-    font-weight: 400;
-    color: #666;
-    line-height: 1.5;
-    border-right: 4px solid #E8825A;
-    padding-right: 20px;
-  }
-
-  /* Slide 3 */
-  .body-title {
-    font-size: 60px;
-    font-weight: 900;
-    color: #111;
-  }
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .list-item {
-    font-size: 38px;
-    font-weight: 700;
-    color: #333;
-  }
-  .but-text {
-    font-size: 38px;
-    font-weight: 400;
-    color: #444;
-    line-height: 1.5;
-  }
-  .but-text strong {
-    font-weight: 900;
-    color: #111;
-  }
-
-  /* Slides 4 & 5 */
-  .big-label, .reveal-label {
-    font-size: 62px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.15;
-    letter-spacing: -1px;
-  }
-  .placeholder-box {
-    background: rgba(255,255,255,0.15);
-    border: 2px dashed rgba(255,255,255,0.4);
-    border-radius: 16px;
-    padding: 32px;
-    font-size: 26px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.6;
-    text-align: center;
-  }
-  .dark-placeholder {
-    background: rgba(0,0,0,0.06);
-    border: 2px dashed rgba(0,0,0,0.2);
-    color: #888;
-  }
-
-  /* Slide 6 */
-  .story-text {
-    font-size: 44px;
-    font-weight: 400;
-    color: #333;
-    line-height: 1.4;
-    margin-bottom: 8px;
-  }
-  .story-text strong { font-weight: 900; color: #111; }
-
-  /* Slide 7 */
-  .screenshot-box {
-    background: #fff;
-    border: 2px dashed #ccc;
-    border-radius: 20px;
-    padding: 80px 40px;
-    font-size: 28px;
-    color: #aaa;
-    text-align: center;
-    line-height: 1.6;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Slide 8 */
-  .cta-title {
-    font-size: 76px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.1;
-    letter-spacing: -2px;
-  }
-  .cta-sub {
-    font-size: 34px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.5;
-  }
-  .cta-btn {
-    background: #fff;
-    color: #E8825A;
-    font-size: 36px;
-    font-weight: 900;
-    padding: 32px 48px;
-    border-radius: 16px;
-    text-align: center;
-  }
-  .urgency-txt {
-    font-size: 26px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.75);
-    text-align: center;
-  }
+  .author-line { font-size: 30px; font-weight: 400; color: #666; line-height: 1.5; border-right: 4px solid #E8825A; padding-right: 20px; }
+  .body-title { font-size: 60px; font-weight: 900; color: #111; }
+  .list { display: flex; flex-direction: column; gap: 14px; }
+  .list-item { font-size: 38px; font-weight: 700; color: #333; }
+  .but-text { font-size: 38px; font-weight: 400; color: #444; line-height: 1.5; }
+  .but-text strong { font-weight: 900; color: #111; }
+  .big-label { font-size: 60px; font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: -1px; }
+  .think-list { display: flex; flex-direction: column; gap: 20px; }
+  .think-item { font-size: 34px; font-weight: 700; color: rgba(255,255,255,0.92); }
+  .reveal-label { font-size: 60px; font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: -1px; }
+  .real-reason { display: flex; flex-direction: column; gap: 24px; }
+  .reason-item { display: flex; align-items: flex-start; gap: 18px; font-size: 30px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.45; }
+  .reason-dot { width: 10px; height: 10px; background: #E8825A; border-radius: 50%; flex-shrink: 0; margin-top: 10px; }
+  .story-intro { font-size: 68px; font-weight: 900; color: #E8825A; }
+  .story-body { font-size: 36px; font-weight: 400; color: #333; line-height: 1.55; }
+  .story-body strong { font-weight: 800; color: #111; }
+  .orange-text { color: #E8825A !important; font-weight: 700 !important; }
+  .quote-mark { font-size: 140px; font-weight: 900; color: #E8825A; line-height: 0.7; margin-bottom: 24px; }
+  .quote-text { font-size: 44px; font-weight: 400; color: #222; line-height: 1.45; }
+  .quote-text strong { font-weight: 900; color: #111; }
+  .quote-author { font-size: 28px; font-weight: 700; color: #E8825A; }
+  .cta-title { font-size: 76px; font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+  .cta-sub { font-size: 34px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .cta-btn { background: #fff; color: #E8825A; font-size: 36px; font-weight: 900; padding: 32px 48px; border-radius: 16px; text-align: center; }
+  .urgency-txt { font-size: 26px; font-weight: 700; color: rgba(255,255,255,0.75); text-align: center; }
 </style>
 </head>
-<body>
-<div class="slide" style="background:#111;" id="slide-01">
+<body><div class="slide" style="background:#111;" id="slide-01">
         <div class="slide-inner dark">
           <div class="slide-num">01</div>
           <div class="tag">אלישבע מייער · אסטרטגיית סושיאל</div>
@@ -275,8 +124,10 @@
           <div class="spacer"></div>
           <div class="big-label">רוב בעלות<br>העסקים חושבות<br>שזה בגלל...</div>
           <div class="spacer-sm"></div>
-          <div class="placeholder-box">
-            [ כאן תכתבי מה הן חושבות שהבעיה —<br>למשל: "לא מספיק עוקבות" / "תוכן לא מספיק טוב" ]
+          <div class="think-list">
+            <div class="think-item">❌ &nbsp;"אין לי מספיק עוקבות"</div>
+            <div class="think-item">❌ &nbsp;"התוכן שלי לא מספיק טוב"</div>
+            <div class="think-item">❌ &nbsp;"אני צריכה לפרסם יותר"</div>
           </div>
           <div class="spacer"></div>
         </div>
@@ -287,8 +138,19 @@
           <div class="spacer"></div>
           <div class="reveal-label">אבל רוב הפעמים<br>זה קורה בגלל...</div>
           <div class="spacer-sm"></div>
-          <div class="placeholder-box">
-            [ כאן תכתבי את הסיבה האמיתית —<br>למשל: "אין מסר ברור" / "מדברות לכולן ולא לאף אחת" ]
+          <div class="real-reason">
+            <div class="reason-item">
+              <div class="reason-dot"></div>
+              <div>מסר שלא מדבר לאף אחת בפרט — מדבר לכולן בכלל</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-dot"></div>
+              <div>תוכן שמחנך ומשעשע — אבל לא מוביל לפנייה</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-dot"></div>
+              <div>אין אסטרטגיה — רק פרסום</div>
+            </div>
           </div>
           <div class="spacer"></div>
         </div>
@@ -297,12 +159,24 @@
         <div class="slide-inner light">
           <div class="slide-num dark-num">06</div>
           <div class="spacer"></div>
-          <div class="story-text">בחודש האחרון ישבתי<br>לפגישת <strong>RESET</strong> עם<br>4 בעלות עסקים.</div>
+          <div class="story-intro">גם אני הייתי שם.</div>
           <div class="spacer-sm"></div>
-          <div class="story-text">סידרתי ושייפתי להן<br>את האסטרטגיה —</div>
+          <div class="story-body">
+            מפרסמת, מתאמצת,<br>
+            שמה נשמה בכל פוסט —<br>
+            ולא הבנתי למה זה לא עובד.
+          </div>
           <div class="spacer-sm"></div>
-          <div class="placeholder-box dark-placeholder">
-            [ כאן תכתבי מה בדיוק עשית / מה שיפרת ]
+          <div class="story-body">
+            עד שהבנתי שהבעיה לא<br>
+            הייתה בכמות התוכן.<br>
+            <strong>הבעיה הייתה במסר.</strong>
+          </div>
+          <div class="spacer-sm"></div>
+          <div class="story-body orange-text">
+            מאז אני עוזרת לנשים<br>
+            לסדר בדיוק את זה —<br>
+            בשעה אחת.
           </div>
           <div class="spacer"></div>
         </div>
@@ -311,11 +185,15 @@
         <div class="slide-inner light">
           <div class="slide-num dark-num">07</div>
           <div class="spacer"></div>
-          <div class="story-text">ובסוף קיבלתי<br>הודעה כזו... 💬</div>
-          <div class="spacer-sm"></div>
-          <div class="screenshot-box">
-            [ כאן תכניסי צילום מסך<br>של ההודעה מהלקוחה ]
+          <div class="quote-mark">"</div>
+          <div class="quote-text">
+            את לא צריכה יותר תוכן.<br>
+            את צריכה תוכן<br>
+            <strong>שמדבר לאנשים הנכונים<br>
+            בצורה הנכונה.</strong>
           </div>
+          <div class="spacer-sm"></div>
+          <div class="quote-author">— אלישבע מייער</div>
           <div class="spacer"></div>
         </div>
         </div>
@@ -333,6 +211,5 @@
           <div class="spacer"></div>
         </div>
         </div>
-
 </body>
 </html>
