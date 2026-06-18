@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יצירת קשר | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#f7f7f7; color:#1A1A1A; min-height:100vh; }
+
+  .page-wrap { max-width:480px; margin:0 auto; padding:40px 20px 60px; }
+
+  .back-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:14px; color:#888; text-decoration:none; margin-bottom:28px;
+    transition:color 0.2s;
+  }
+  .back-btn:hover { color:#F07A57; }
+
+  .hero { text-align:center; margin-bottom:32px; }
+  .hero-icon {
+    width:64px; height:64px; border-radius:50%;
+    background:#FDF0EC; margin:0 auto 16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px;
+  }
+  .hero h1 { font-size:26px; font-weight:900; margin-bottom:8px; }
+  .hero h1 span { color:#F07A57; }
+  .hero p { font-size:14px; color:#888; line-height:1.7; }
+
+  .service-tag {
+    display:inline-block;
+    background:#FDF0EC; color:#F07A57;
+    font-size:13px; font-weight:700;
+    padding:5px 16px; border-radius:20px;
+    margin-bottom:24px;
+  }
+
+  .form-card {
+    background:#fff; border-radius:20px;
+    padding:28px 24px;
+    box-shadow:0 2px 16px rgba(0,0,0,0.05);
+  }
+
+  .field { margin-bottom:16px; }
+  .field label { display:block; font-size:13px; font-weight:700; margin-bottom:6px; }
+  .field input, .field textarea, .field select {
+    width:100%; padding:13px 16px;
+    border:1.5px solid #e8e8e8; border-radius:12px;
+    font-family:'Heebo',sans-serif; font-size:15px;
+    color:#1A1A1A; background:#FAFAFA; direction:rtl;
+    transition:border-color 0.2s;
+    -webkit-appearance:none;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline:none; border-color:#F07A57; background:#fff;
+  }
+  .field textarea { min-height:90px; resize:vertical; line-height:1.6; }
+
+  .submit-btn {
+    width:100%; background:#F07A57; color:#fff;
+    font-family:'Heebo',sans-serif; font-size:17px; font-weight:700;
+    padding:16px; border-radius:50px; border:none;
+    cursor:pointer; margin-top:8px;
+    transition:opacity 0.2s;
+  }
+  .submit-btn:hover { opacity:0.9; }
+  .submit-note { font-size:12px; color:#bbb; text-align:center; margin-top:10px; }
+
+  footer { text-align:center; font-size:12px; color:#ccc; margin-top:40px; }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <a href="index.html" class="back-btn">← חזרה</a>
+
+  <div class="hero">
+    <div class="hero-icon">✉️</div>
+    <h1>בואי <span>נדבר</span></h1>
+    <p>מלאי את הפרטים ואחזור אליך בהקדם</p>
+  </div>
+
+  <div style="text-align:center;">
+    <div class="service-tag" id="serviceTag">יצירת קשר</div>
+  </div>
+
+  <div class="form-card">
+    <form onsubmit="handleContact(event)">
+
+      <div class="field">
+        <label>שם מלא</label>
+        <input type="text" id="contactName" placeholder="השם שלך" required>
+      </div>
+
+      <div class="field">
+        <label>כתובת מייל</label>
+        <input type="email" id="contactEmail" placeholder="המייל שלך" required>
+      </div>
+
+      <div class="field">
+        <label>מה מביא אותך אלי?</label>
+        <textarea id="contactMsg" placeholder="ספרי לי קצת על העסק שלך ומה את מחפשת..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">שלחי לי 👉</button>
+      <p class="submit-note">אחזור אליך תוך יום-יומיים</p>
+    </form>
+  </div>
+
+  <footer>© 2026 אלישבע מייער | אדריכלית סושייאל</footer>
+</div>
+
+<script>
+// Show service name from URL param
+const params = new URLSearchParams(window.location.search);
+const service = params.get('service');
+if (service) {
+  document.getElementById('serviceTag').textContent = service;
+}
+
+function handleContact(e) {
+  e.preventDefault();
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const msg = document.getElementById('contactMsg').value.trim();
+  const btn = document.getElementById('submitBtn');
+
+  btn.textContent = '...שולחת';
+  btn.disabled = true;
+
+  const note = service ? `שירות: ${service}${msg ? ' | ' + msg : ''}` : msg;
+
+  fetch('https://api.responder.co.il/v1.0/lists/105039/subscribers', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053'
+    },
+    body: JSON.stringify({
+      subscribers: [{ IDENTIFIER: email, EMAIL: email, NAME: service ? `${name} | ${service}` : name }]
+    })
+  }).catch(() => {}).finally(() => {
+    window.location.href = 'contact-thanks.html';
+  });
+}
+</script>
+
+</body>
+</html>

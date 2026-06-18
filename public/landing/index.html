@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אלישבע מייער | אדריכלית סושייאל</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#111; color:#fff; }
+
+  /* HERO */
+  .hero { background:#0d0d0d; text-align:center; padding:56px 24px 52px; }
+  .hero-photo { width:120px; height:120px; border-radius:50%; object-fit:cover; object-position:top; margin:0 auto 20px; display:block; border:3px solid #F07A57; }
+  .hero-name { font-size:28px; font-weight:900; color:#fff; margin-bottom:6px; }
+  .hero-title { font-size:11px; font-weight:700; color:#F07A57; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:18px; }
+  .hero-bio { font-size:15px; color:rgba(255,255,255,0.5); line-height:2; max-width:300px; margin:0 auto; }
+
+  /* ABOUT TEXT */
+  .about-text-section { padding:32px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+  .about-text-section p { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.9; margin-bottom:14px; }
+  .about-text-section p:last-child { margin-bottom:0; }
+
+  /* CONTENT */
+  .content { max-width:480px; margin:0 auto; padding:0 22px 72px; }
+
+  /* SECTION LABEL */
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    padding: 36px 0 18px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.25); text-transform: uppercase; white-space: nowrap;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+  }
+
+  /* OPTIN */
+  .optin-box { background:#1a1a1a; border-radius:16px; padding:22px 18px 20px; border:1.5px solid rgba(255,255,255,0.08); }
+  .optin-header { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+  .optin-img { width:64px; height:64px; border-radius:10px; object-fit:cover; flex-shrink:0; order:2; }
+  .optin-info { flex:1; order:1; }
+  .optin-tag { display:inline-block; background:#F07A57; color:#fff; font-size:10px; font-weight:700; padding:2px 10px; border-radius:20px; margin-bottom:6px; }
+  .optin-title { font-size:16px; font-weight:900; color:#fff; margin-bottom:3px; }
+  .optin-desc { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.5; }
+  .optin-form { display:flex; gap:8px; }
+  .optin-input { flex:1; padding:11px 13px; border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; font-family:'Heebo',sans-serif; font-size:13px; direction:rtl; background:rgba(255,255,255,0.06); color:#fff; min-width:0; }
+  .optin-input::placeholder { color:rgba(255,255,255,0.25); }
+  .optin-input:focus { outline:none; border-color:#F07A57; }
+  .optin-btn { background:#F07A57; color:#fff; font-family:'Heebo',sans-serif; font-size:13px; font-weight:700; padding:11px 18px; border-radius:10px; border:none; cursor:pointer; white-space:nowrap; flex-shrink:0; }
+
+  /* LINK CARDS */
+  .link-thumb { width:56px; height:56px; border-radius:12px; object-fit:cover; flex-shrink:0; }
+  .link-row {
+    display:flex; align-items:center; gap:14px;
+    padding: 16px 18px; border-radius: 16px;
+    background: #1a1a1a; border: 1.5px solid rgba(255,255,255,0.08);
+    text-decoration:none; color:#fff;
+    margin-bottom: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .link-row:last-child { margin-bottom: 0; }
+  .link-row:active { opacity:0.6; }
+  .link-row:hover { border-color: #F07A57; box-shadow: 0 4px 20px rgba(240,122,87,0.12); }
+  .link-info { flex:1; }
+  .link-tag { font-size:10px; font-weight:700; letter-spacing:1px; color:#F07A57; text-transform:uppercase; margin-bottom:4px; }
+  .link-title { font-size:17px; font-weight:900; margin-bottom:3px; }
+  .link-desc { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.5; }
+  .link-arrow { font-size:20px; color:rgba(255,255,255,0.2); flex-shrink:0; line-height:1; }
+
+  footer { text-align:center; font-size:11px; color:rgba(255,255,255,0.25); padding:0 20px 48px; max-width:480px; margin:0 auto; }
+</style>
+</head>
+<body>
+
+<!-- HERO — תמונה + שם + קצת עלי -->
+<div class="hero">
+  <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/elisheva.jpeg" alt="אלישבע מייער" class="hero-photo">
+  <div class="hero-name">אלישבע מייער</div>
+  <div class="hero-title">אדריכלית סושייאל</div>
+  <p class="hero-bio">
+    עוזרת לבעלות עסקים להפוך את האינסטגרם לכלי שמביא פניות ולקוחות — עם אסטרטגיה ברורה, מסר חד ותוכן שמוכר.
+  </p>
+</div>
+
+<div class="content">
+
+  <!-- ABOUT -->
+  <div class="about-text-section">
+    <p>אני מנהלת סושיאל ואסטרטגית תוכן, אבל לפני הכל — אני מאמינה בבני אדם ובחיבור אמיתי.</p>
+    <p>הרבה פעמים שואלים אותי: "אלישבע, למה אי אפשר פשוט להעלות תמונה וזהו?" והתשובה שלי תמיד זהה: כי בלי יסודות, הבית לא יחזיק.</p>
+    <p>אני מאמינה שעסק טוב באמת חייב קודם כל אסטרטגיה חזקה — לשבת ולהגדיר מה החזון, מה המטרות הריאליות, לבצע ניתוח SWOT מעמיק, ורק אז לבנות את הקו השיווקי.</p>
+  </div>
+
+  <!-- FREE PRODUCT -->
+  <div class="section-label">מתנה חינמית</div>
+
+  <div class="optin-box">
+    <div class="optin-header">
+      <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-checklist.jpg" class="optin-img" alt="הביו המושלם">
+      <div class="optin-info">
+        <div class="optin-tag">חינמי</div>
+        <div class="optin-title">הביו המושלם</div>
+        <div class="optin-desc">5 דברים שכל ביו חזק חייב לכלול</div>
+      </div>
+    </div>
+    <form class="optin-form" onsubmit="handleFree(event)">
+      <input class="optin-input" type="email" id="freeEmail" placeholder="המייל שלך" required>
+      <button type="submit" class="optin-btn" id="freeBtn">שלחי</button>
+    </form>
+  </div>
+
+  <!-- PAID PRODUCTS -->
+  <div class="section-label">מוצרים דיגיטליים</div>
+
+  <a href="instagram-mushlam.html" class="link-row">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-instagram.jpg" class="link-thumb" alt="אינסטגרם מושלם">
+    <div class="link-info">
+      <div class="link-tag">מדריך דיגיטלי</div>
+      <div class="link-title">אינסטגרם מושלם</div>
+      <div class="link-desc">המדריך המלא שמביא לקוחות מהאינסטגרם</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="gantt-questionnaire.html" class="link-row">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-gantt.jpg" class="link-thumb" alt="גאנט תוכן חודשי">
+    <div class="link-info">
+      <div class="link-tag">שירות מותאם אישית</div>
+      <div class="link-title">גאנט תוכן חודשי</div>
+      <div class="link-desc">תוכנית תוכן אישית — יודעת מה לפרסם כל יום</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <!-- SERVICES -->
+  <div class="section-label">שירותים</div>
+
+  <a href="reset.html" class="link-row">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-reset.jpg" class="link-thumb" alt="פגישת RESET">
+    <div class="link-info">
+      <div class="link-tag">פגישת 1:1</div>
+      <div class="link-title">פגישת RESET</div>
+      <div class="link-desc">שיחה ממוקדת שעה — מסר, אסטרטגיה, תוכן</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="buildup.html" class="link-row">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-buildup.jpg" class="link-thumb" alt="BUILD UP">
+    <div class="link-info">
+      <div class="link-tag">תהליך עומק</div>
+      <div class="link-title">BUILD UP</div>
+      <div class="link-desc">5 פגישות — תשתית שיווקית מלאה</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="letsgrow.html" class="link-row">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-letsgrow.jpg" class="link-thumb" alt="LET'S GROW">
+    <div class="link-info">
+      <div class="link-tag">ליווי חודשי</div>
+      <div class="link-title">LET'S GROW</div>
+      <div class="link-desc">2 פגישות + תוכן שבועי + פידבק</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="doneforyou.html" class="link-row">
+    <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-doneforyou.jpg" class="link-thumb" alt="DONE FOR YOU">
+    <div class="link-info">
+      <div class="link-tag">ניהול מלא</div>
+      <div class="link-title">DONE FOR YOU</div>
+      <div class="link-desc">ניהול מקצועי מלא של האינסטגרם שלך</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+</div>
+
+<footer>© 2026 אלישבע מייער | אדריכלית סושייאל</footer>
+
+<script>
+function handleFree(e) {
+  e.preventDefault();
+  const email = document.getElementById('freeEmail').value;
+  const btn = document.getElementById('freeBtn');
+  btn.textContent = '...';
+  btn.disabled = true;
+  fetch('https://hook.eu1.make.com/up6j9fp6akyyitdr6a6tvwpwfs2yb2bi', {
+    method: 'POST',
+    headers: { 'Content-Type':'application/json' },
+    body: JSON.stringify({ email: email, name: email, service: 'ביו חינמי' })
+  }).catch(() => {}).finally(() => { window.location.href = 'thank-you.html'; });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חוברת עבודה | אינסטגרם מושלם | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; background:#e0e0e0; direction:rtl; }
+
+  @media print {
+    body { background:#fff; }
+    .page { box-shadow:none; margin:0; page-break-after:always; width:210mm; min-height:297mm; border-radius:0; }
+    .no-print { display:none !important; }
+    .page:last-child { page-break-after:auto; }
+  }
+
+  /* ── PAGE SHELL ── */
+  .page {
+    width: 740px;
+    min-height: 1045px;
+    background: #fff;
+    margin: 32px auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 28px rgba(0,0,0,0.13);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── SHARED ── */
+  .module-tag {
+    display: inline-block;
+    background: #F07A57; color: #fff;
+    font-size: 12px; font-weight: 700;
+    padding: 4px 16px; border-radius: 20px;
+    margin-bottom: 16px; letter-spacing: 0.5px;
+  }
+
+  .page-footer {
+    margin-top: auto;
+    background: #1A1A1A;
+    padding: 10px 40px;
+    display: flex; justify-content:space-between; align-items:center;
+    font-size: 12px;
+  }
+  .page-footer span { color: rgba(255,255,255,0.4); }
+  .page-footer .pf-title { color: #F07A57; font-weight: 700; }
+
+  /* ── COVER ── */
+  .cover {
+    background: #1A1A1A;
+    min-height: 1045px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 60px;
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content:""; position:absolute; width:400px; height:400px; border-radius:50%;
+    background:rgba(240,122,87,0.06); top:-120px; left:-120px;
+  }
+  .cover::after {
+    content:""; position:absolute; width:280px; height:280px; border-radius:50%;
+    background:rgba(240,122,87,0.05); bottom:-80px; right:-60px;
+  }
+  .cover-eyebrow {
+    font-size: 13px; color: #F07A57; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px;
+    position: relative; z-index:1;
+  }
+  .cover h1 {
+    font-size: 64px; font-weight: 900; color: #fff; line-height: 1;
+    margin-bottom: 6px; position: relative; z-index:1;
+  }
+  .cover h1 span { color: #F07A57; }
+  .cover h2 {
+    font-size: 24px; font-weight: 300; color: rgba(255,255,255,0.6);
+    margin-bottom: 48px; position: relative; z-index:1;
+  }
+  .cover-divider {
+    width: 60px; height: 3px; background: #F07A57;
+    margin: 0 auto 40px; position: relative; z-index:1;
+  }
+  .cover-desc {
+    font-size: 17px; color: rgba(255,255,255,0.6);
+    font-weight: 300; line-height: 1.8; max-width: 480px;
+    position: relative; z-index:1;
+  }
+  .cover-author {
+    margin-top: 64px; position: relative; z-index:1;
+  }
+  .cover-author-name { font-size: 16px; font-weight: 700; color: #fff; }
+  .cover-author-title { font-size: 13px; color: #F07A57; }
+
+  /* ── HOW TO USE ── */
+  .how-page { padding: 52px 52px 0; }
+  .how-page h2 { font-size: 30px; font-weight: 900; color: #1A1A1A; margin-bottom: 8px; }
+  .how-page .sub { font-size: 15px; color: #888; margin-bottom: 36px; line-height: 1.6; }
+  .how-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+  .how-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 18px; background: #FAFAFA;
+    border-radius: 12px; border: 1px solid #f0f0f0;
+  }
+  .how-num {
+    width: 32px; height: 32px; background: #F07A57; color: #fff;
+    font-size: 15px; font-weight: 900; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .how-text { font-size: 14px; color: #444; line-height: 1.65; }
+  .how-text strong { color: #1A1A1A; font-weight: 700; }
+  .how-note {
+    background: #FDF0EC; border-right: 4px solid #F07A57;
+    padding: 18px 22px; border-radius: 4px;
+    font-size: 14px; color: #1A1A1A; line-height: 1.7;
+  }
+
+  /* ── MODULE PAGES ── */
+  .module-page { padding: 48px 52px 0; flex: 1; display: flex; flex-direction: column; }
+  .module-header { margin-bottom: 28px; }
+  .module-header h2 { font-size: 28px; font-weight: 900; color: #1A1A1A; margin-bottom: 4px; }
+  .module-header .module-sub { font-size: 14px; color: #888; line-height: 1.6; }
+
+  /* Write lines */
+  .write-block { margin-bottom: 24px; }
+  .write-label {
+    font-size: 13px; font-weight: 700; color: #1A1A1A;
+    margin-bottom: 8px; display: block;
+  }
+  .write-label .hint { font-weight: 400; color: #aaa; font-size: 12px; }
+  .write-lines { display: flex; flex-direction: column; gap: 10px; }
+  .write-line {
+    border-bottom: 1.5px solid #e8e8e8;
+    height: 36px; width: 100%;
+    border-radius: 0;
+  }
+  .write-line.short { width: 60%; }
+  .write-line.long { height: 48px; }
+
+  /* Grid boxes */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .fill-box {
+    background: #FAFAFA; border: 1.5px solid #f0f0f0;
+    border-radius: 12px; padding: 16px 14px;
+  }
+  .fill-box .fb-label {
+    font-size: 11px; font-weight: 700; color: #F07A57;
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px;
+    display: block;
+  }
+  .fill-box .fb-lines { display: flex; flex-direction: column; gap: 8px; }
+  .fill-box .fb-line { border-bottom: 1px solid #e0e0e0; height: 28px; }
+
+  /* Numbered list write */
+  .num-write { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .num-write-item { display: flex; gap: 12px; align-items: center; }
+  .nw-num {
+    width: 28px; height: 28px; background: rgba(240,122,87,0.1);
+    color: #F07A57; font-size: 13px; font-weight: 900;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .nw-line { flex: 1; border-bottom: 1.5px solid #e8e8e8; height: 32px; }
+
+  /* Highlight box */
+  .highlight-box {
+    background: #1A1A1A; border-radius: 12px;
+    padding: 18px 22px; margin-bottom: 24px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .hb-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .hb-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+  .hb-text strong { color: #F07A57; }
+
+  /* Calendar grid */
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 6px; margin-bottom: 24px;
+  }
+  .cal-header {
+    background: #F07A57; color: #fff;
+    font-size: 11px; font-weight: 700;
+    padding: 6px 4px; text-align: center; border-radius: 6px;
+  }
+  .cal-cell {
+    background: #FAFAFA; border: 1px solid #f0f0f0;
+    border-radius: 6px; height: 64px; padding: 6px 6px 4px;
+    font-size: 10px; color: #ccc; font-weight: 700;
+  }
+
+  /* Hashtag table */
+  .hash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .hash-box {
+    background: #FAFAFA; border: 1.5px solid #f0f0f0;
+    border-radius: 10px; padding: 14px;
+  }
+  .hash-box .hbox-label { font-size: 11px; color: #aaa; font-weight: 700; margin-bottom: 8px; display: block; }
+  .hash-item {
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid #eee; padding: 5px 0;
+    font-size: 12px; color: #F07A57; font-weight: 500;
+  }
+  .hash-item::before { content: "#"; font-weight: 900; }
+  .hash-item .hi-line { flex: 1; border-bottom: none; height: 20px; }
+
+  /* Print button */
+  .no-print {
+    text-align: center; padding: 24px;
+    display: flex; gap: 12px; justify-content: center;
+  }
+  .print-btn, .back-btn {
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px; font-weight: 700;
+    padding: 12px 28px; border-radius: 50px;
+    border: none; cursor: pointer; transition: opacity 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .print-btn { background: #1A1A1A; color: #fff; }
+  .back-btn { background: #F07A57; color: #fff; }
+  .print-btn:hover, .back-btn:hover { opacity: 0.85; }
+
+  @media (max-width: 780px) {
+    .page { width: 100%; border-radius: 0; }
+    .module-page, .how-page { padding: 32px 28px 0; }
+    .cover { padding: 40px 28px; }
+    .cover h1 { font-size: 48px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .hash-grid { grid-template-columns: 1fr; }
+    .cal-grid { grid-template-columns: repeat(4, 1fr); }
+    .page-footer { padding: 10px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="page cover">
+  <div class="cover-eyebrow">חוברת עבודה | בונוס למדריך</div>
+  <h1>אינסטגרם<br><span>מושלם</span></h1>
+  <h2>חוברת העבודה</h2>
+  <div class="cover-divider"></div>
+  <p class="cover-desc">
+    6 תרגילים מעשיים שיוציאו אותך מהתיאוריה לפעולה.<br>
+    מלאי, תעשי, תראי תוצאות.
+  </p>
+  <div class="cover-author">
+    <div class="cover-author-name">אלישבע מייער</div>
+    <div class="cover-author-title">אדריכלית סושייאל | שיווק ואינסטגרם לעסקים</div>
+  </div>
+</div>
+
+<!-- ═══ HOW TO USE ═══ -->
+<div class="page">
+  <div class="how-page">
+    <div class="module-tag">לפני שמתחילות</div>
+    <h2>איך עובדים עם החוברת הזו</h2>
+    <p class="sub">זו לא חוברת לקרוא — זו חוברת לעשות. כל תרגיל עוזר לך לבנות חלק אחד מהאינסטגרם שמביא לקוחות.</p>
+
+    <div class="how-items">
+      <div class="how-item">
+        <div class="how-num">1</div>
+        <div class="how-text"><strong>קראי את המודול במדריך</strong> — ואז חזרי לתרגיל המתאים כאן</div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">2</div>
+        <div class="how-text"><strong>מלאי את כל השורות</strong> — גם אם לא בטוחה. הטיוטה הראשונה לא חייבת להיות מושלמת</div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">3</div>
+        <div class="how-text"><strong>חזרי ותחזקי</strong> — החוברת היא כלי חי. תחזרי אליה כשמשהו לא עובד</div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">4</div>
+        <div class="how-text"><strong>הדפיסי או מלאי על המסך</strong> — מה שנוח לך יותר</div>
+      </div>
+    </div>
+
+    <div class="how-note">
+      💡 <strong>טיפ:</strong> אל תנסי לעשות הכל ביום אחד. מודול אחד ביום — שבוע וחצי ויש לך בסיס מוצק לאינסטגרם שעובד.
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">חוברת עבודה | אינסטגרם מושלם</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- ═══ מודול 1 — פרופיל ═══ -->
+<div class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <div class="module-tag">מודול 1 — הפרופיל המנצח</div>
+      <h2>בואי נבנה פרופיל שגורם לה להישאר</h2>
+      <p class="module-sub">מלאי את כל החלקים — ותקבלי בסוף פרופיל שעובד בשבילך</p>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">הביו שלי (עד 150 תווים) <span class="hint">— לכתוב לפי הנוסחה: מי + למי + תוצאה + CTA</span></span>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="fill-box">
+        <span class="fb-label">שם הפרופיל (לחיפוש)</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+      <div class="fill-box">
+        <span class="fb-label">שם המשתמש (@)</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">הקישור שלי יוביל ל: <span class="hint">— רשמי לאן ולמה</span></span>
+      <div class="write-lines">
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">3 הייליטס שאצור (שמות + מה יהיה בכל אחד)</span>
+      <div class="num-write">
+        <div class="num-write-item"><div class="nw-num">1</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">2</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">3</div><div class="nw-line"></div></div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="hb-icon">💡</span>
+      <div class="hb-text">
+        <strong>בדיקה מהירה:</strong> קראי את הביו בקול. אם זה נשמע כמו בן אדם — את בכיוון. אם זה נשמע כמו מודעה — כתבי מחדש.
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">מודול 1 | פרופיל</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- ═══ מודול 2 — אסטרטגיית תוכן ═══ -->
+<div class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <div class="module-tag">מודול 2 — אסטרטגיית תוכן</div>
+      <h2>5 עמודי התוכן שלי</h2>
+      <p class="module-sub">עמודי תוכן = הנושאים שתמיד תפרסמי עליהם. הם יוצרים עקביות ואמון.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="fill-box" style="border-color:#F07A57;">
+        <span class="fb-label" style="color:#F07A57;">קהל היעד שלי</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+      <div class="fill-box">
+        <span class="fb-label">הכאב המרכזי שלה</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">5 עמודי התוכן שלי <span class="hint">— נושא + דוגמה לפוסט</span></span>
+      <div class="num-write">
+        <div class="num-write-item"><div class="nw-num">1</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">2</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">3</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">4</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">5</div><div class="nw-line"></div></div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">ה-CTA שלי (מה אני רוצה שהן יעשו?) <span class="hint">— פנייה בDM / הורדת מדריך / קביעת פגישה</span></span>
+      <div class="write-lines">
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="hb-icon">🎯</span>
+      <div class="hb-text"><strong>כלל אצבע:</strong> 60% תוכן ערך, 20% מאחורי הקלעים, 20% מכירה. לא מפרסמת כל הזמן "קני ממני" — אבל גם לא שוכחת לבקש.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">מודול 2 | אסטרטגיה</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- ═══ מודול 3 — כיתובים ═══ -->
+<div class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <div class="module-tag">מודול 3 — כיתובים שמוכרים</div>
+      <h2>נוסחת הכיתוב שלי</h2>
+      <p class="module-sub">כתבי כיתוב אחד מלא לפי הנוסחה — ותראי כמה קל כשיש מבנה</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 20px;">
+      <div class="fill-box" style="border-color:#F07A57;">
+        <span class="fb-label" style="color:#F07A57;">וו — שורה ראשונה שתופסת</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+      <div class="fill-box">
+        <span class="fb-label">הבעיה — מה הלקוחה מרגישה</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">הגוף — הערך / הפתרון / הסיפור</span>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="fill-box">
+        <span class="fb-label">הוכחה / דוגמה / ציטוט</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+      <div class="fill-box" style="border-color:#F07A57;">
+        <span class="fb-label" style="color:#F07A57;">CTA — מה לעשות עכשיו</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="hb-icon">✍️</span>
+      <div class="hb-text"><strong>שורה ראשונה = הכל.</strong> אם היא לא עוצרת — שאר הכיתוב לא יקרא. כתבי 3 גרסאות של הוו ובחרי את החזק ביותר.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">מודול 3 | כיתובים</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- ═══ מודול 4 — סטוריז ═══ -->
+<div class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <div class="module-tag">מודול 4 — סטוריז שמניעות לפעולה</div>
+      <h2>תכניתי לסטוריז השבוע</h2>
+      <p class="module-sub">סטוריז טובות הן לא "מה היה לי לארוחת צהריים" — הן שיחה עם הקהל שמובילה לפעולה</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="fill-box">
+        <span class="fb-label">ראשון</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+      <div class="fill-box">
+        <span class="fb-label">שלישי</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+      <div class="fill-box">
+        <span class="fb-label">חמישי</span>
+        <div class="fb-lines">
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+          <div class="fb-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">רעיונות לסטוריז שמייצרות פניות <span class="hint">— כתבי לפחות 5</span></span>
+      <div class="num-write">
+        <div class="num-write-item"><div class="nw-num">1</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">2</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">3</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">4</div><div class="nw-line"></div></div>
+        <div class="num-write-item"><div class="nw-num">5</div><div class="nw-line"></div></div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="hb-icon">📲</span>
+      <div class="hb-text"><strong>הסטורי שמביאה הכי הרבה פניות:</strong> שאלה שגורמת להן לכתוב לך בDM. לא "הצביעי" — אלא "כתבי לי מה הכי קשה לך ב___".</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">מודול 4 | סטוריז</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- ═══ מודול 5 — לוח תוכן ═══ -->
+<div class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <div class="module-tag">מודול 5 — לוח תוכן חודשי</div>
+      <h2>התכנון החודשי שלי</h2>
+      <p class="module-sub">מלאי את ימי הפרסום שלך — מה מפרסמים ומה מטרת כל פוסט</p>
+    </div>
+
+    <div class="cal-grid">
+      <div class="cal-header">א׳</div>
+      <div class="cal-header">ב׳</div>
+      <div class="cal-header">ג׳</div>
+      <div class="cal-header">ד׳</div>
+      <div class="cal-header">ה׳</div>
+      <div class="cal-header">ו׳</div>
+      <div class="cal-header">ש׳</div>
+      <!-- week 1 -->
+      <div class="cal-cell">1</div><div class="cal-cell">2</div><div class="cal-cell">3</div>
+      <div class="cal-cell">4</div><div class="cal-cell">5</div><div class="cal-cell">6</div><div class="cal-cell">7</div>
+      <!-- week 2 -->
+      <div class="cal-cell">8</div><div class="cal-cell">9</div><div class="cal-cell">10</div>
+      <div class="cal-cell">11</div><div class="cal-cell">12</div><div class="cal-cell">13</div><div class="cal-cell">14</div>
+      <!-- week 3 -->
+      <div class="cal-cell">15</div><div class="cal-cell">16</div><div class="cal-cell">17</div>
+      <div class="cal-cell">18</div><div class="cal-cell">19</div><div class="cal-cell">20</div><div class="cal-cell">21</div>
+      <!-- week 4 -->
+      <div class="cal-cell">22</div><div class="cal-cell">23</div><div class="cal-cell">24</div>
+      <div class="cal-cell">25</div><div class="cal-cell">26</div><div class="cal-cell">27</div><div class="cal-cell">28</div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">כמה פוסטים אני מתכננת החודש? <span class="hint">— ריאלי, לא מושלם</span></span>
+      <div class="write-lines"><div class="write-line short"></div></div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="hb-icon">📅</span>
+      <div class="hb-text"><strong>עדיפות > שלמות.</strong> 3 פוסטים בשבוע בקביעות עדיפים על 7 פוסטים בשבוע אחד ואז שקט של חודש.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">מודול 5 | לוח תוכן</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- ═══ מודול 6 — האשטגים ═══ -->
+<div class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <div class="module-tag">מודול 6 — האשטגים ותזמון</div>
+      <h2>בנק ההאשטגים שלי</h2>
+      <p class="module-sub">מלאי האשטגים לפי קטגוריות — ותחלפי ביניהם בכל פוסט</p>
+    </div>
+
+    <div class="hash-grid">
+      <div class="hash-box">
+        <span class="hbox-label">האשטגים קטנים (עד 10K)</span>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+      </div>
+      <div class="hash-box">
+        <span class="hbox-label">האשטגים בינוניים (10K–100K)</span>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+      </div>
+      <div class="hash-box">
+        <span class="hbox-label">האשטגים גדולים (100K+)</span>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+      </div>
+      <div class="hash-box">
+        <span class="hbox-label">האשטגים ייחודיים לעסק</span>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+        <div class="hash-item"><div class="hi-line"></div></div>
+      </div>
+    </div>
+
+    <div class="write-block">
+      <span class="write-label">הזמנים הכי טובים לפרסום אצלי <span class="hint">— לבדוק ב-Insights</span></span>
+      <div class="write-lines"><div class="write-line"></div></div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="hb-icon">🏆</span>
+      <div class="hb-text">
+        <strong>סיימת את החוברת?</strong> זה אומר שיש לך עכשיו: פרופיל, אסטרטגיה, כיתובים, סטוריז, לוח תוכן והאשטגים. <strong>את מוכנה.</strong>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-title">מודול 6 | האשטגים</span>
+    <span>אלישבע מייער</span>
+  </div>
+</div>
+
+<!-- PRINT BUTTON -->
+<div class="no-print">
+  <button class="print-btn" onclick="window.print()">🖨️ הדפיסי / שמרי PDF</button>
+  <a href="instagram-mushlam.html" class="back-btn">← חזרה למדריך</a>
+</div>
+
+</body>
+</html>
