@@ -257,9 +257,9 @@ function handleContact(e) {
   const email = e.target.querySelector('[name="email"]').value.trim();
   const btn = e.target.querySelector('.cf-submit');
   btn.textContent = '...שולחת'; btn.disabled = true;
-  fetch('https://api.responder.co.il/v1.0/lists/105039/subscribers', {
-    method:'PUT', headers:{'Content-Type':'application/json','Authorization':'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053'},
-    body: JSON.stringify({ subscribers: [{ IDENTIFIER: email, EMAIL: email, NAME: name + " | LET'S GROW" }] })
+  fetch('https://cp.responder.live/api/v1.0/subscribers', {
+    method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer c69e45eb8db459a726f440cad00dc1dab6b146235ba7031e15f61e6de2f06053'},
+    body: JSON.stringify({ list_id: 105039, email: email, name: name + " | LET'S GROW" })
   }).catch(()=>{}).finally(()=>{ window.location.href='contact-thanks.html'; });
 }
 </script>
