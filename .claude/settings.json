@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ebca9fe4-e903-4ad2-9f4e-fd2e2d6e6849__start-editing-transaction",
+      "mcp__ebca9fe4-e903-4ad2-9f4e-fd2e2d6e6849__perform-editing-operations",
+      "mcp__ebca9fe4-e903-4ad2-9f4e-fd2e2d6e6849__commit-editing-transaction",
+      "mcp__ebca9fe4-e903-4ad2-9f4e-fd2e2d6e6849__cancel-editing-transaction"
+    ]
+  }
+}
