@@ -1,0 +1,443 @@
+---
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>רשמי משימה | המשימות שלי</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #1a1a1a;
+        direction: rtl;
+        text-align: right;
+        min-height: 100vh;
+        padding: 16px;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+        color: #667eea;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 16px;
+      }
+
+      .examples {
+        background: #f0f4ff;
+        border-right: 3px solid #667eea;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .examples strong {
+        color: #667eea;
+      }
+
+      .form-section {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 16px;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 16px;
+        min-height: 150px;
+        resize: vertical;
+        transition: all 0.3s ease;
+        direction: rtl;
+        text-align: right;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      textarea::placeholder {
+        color: #ccc;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 12px;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .preview {
+        background: #f5f5f5;
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 16px;
+        border-right: 3px solid #667eea;
+        display: none;
+      }
+
+      .preview.show {
+        display: block;
+        animation: slideIn 0.3s ease;
+      }
+
+      .preview-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #667eea;
+        font-size: 13px;
+      }
+
+      .preview-item {
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .preview-label {
+        font-weight: 600;
+        color: #666;
+        width: 80px;
+      }
+
+      .preview-value {
+        flex: 1;
+        color: #333;
+        text-align: right;
+      }
+
+      .icon {
+        font-size: 18px;
+        margin-right: 8px;
+      }
+
+      .back-link {
+        display: inline-block;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      .success {
+        display: none;
+        background: #e8f5e9;
+        color: #2e7d32;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        text-align: center;
+        font-weight: 600;
+        animation: slideIn 0.3s ease;
+      }
+
+      .success.show {
+        display: block;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .char-count {
+        font-size: 12px;
+        color: #999;
+        margin-top: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="/daughter" class="back-link">← חזרה לדף הבית</a>
+
+      <header>
+        <h1>✍️ רשמי משימה</h1>
+        <p class="subtitle">כתבי בדיוק מה צריך - המערכת תבין! 🧠</p>
+        <div class="examples">
+          <strong>דוגמאות:</strong><br>
+          📝 "תור אצל רופא שיניים ביום 22 ביוני בשעה 15:00"<br>
+          📝 "יום הולדת של דנה בעוד שבוע"<br>
+          📝 "בקשת אישור - יציאה לקולנוע ביום שישי עם חברות"<br>
+          📝 "מבחן אנגלית ב-25/6 - צריך ללמוד קשה"
+        </div>
+      </header>
+
+      <div class="success" id="successMsg">
+        ✅ המשימה נוספה בהצלחה! 🎉
+      </div>
+
+      <div class="form-section">
+        <div class="input-group">
+          <textarea
+            id="taskInput"
+            placeholder="כתבי את המשימה בדיוק כמו שהיא בראש שלך...
+
+למשל:
+תור אצל רופא ביום שני בשעה 10:00
+או
+יום הולדת של שיר בעוד שבועיים
+או
+בקשת אישור - קניית טניסניקים"
+            onkeyup="updatePreview()"
+          ></textarea>
+          <div class="char-count"><span id="charCount">0</span> תווים</div>
+        </div>
+
+        <div class="preview" id="preview">
+          <div class="preview-title">📊 מה המערכת מבינה:</div>
+          <div id="previewContent"></div>
+        </div>
+
+        <button class="submit-btn" onclick="saveTask()">✅ שמרי משימה</button>
+      </div>
+
+      <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <h3 style="color: #667eea; margin-bottom: 12px; font-size: 16px;">💡 טיפים לכתיבה:</h3>
+        <ul style="font-size: 13px; line-height: 1.8; color: #666;">
+          <li>✅ <strong>תאריכים:</strong> "22 ביוני", "22/6", "עוד שבוע", "ביום שישי"</li>
+          <li>✅ <strong>שעות:</strong> "בשעה 15:00", "בתור 10:30", "בצהריים"</li>
+          <li>✅ <strong>סוגים:</strong> "תור רופא", "יום הולדת", "בקשת אישור", "מבחן"</li>
+          <li>✅ <strong>עדיפות:</strong> "דחוף", "חשוב", "כשיש זמן" (ברירת מחדל: בינונית)</li>
+          <li>✅ <strong>דוגמא חדשנית:</strong> "תור אצל דר כהן - רופא שיניים ב-22/6 בשעה 15:00 - דחוף!"</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // NLP Parser - מפרש טקסט חופשי
+      function parseTask(text) {
+        if (!text.trim()) return null;
+
+        const result = {
+          title: text,
+          type: 'other',
+          date: null,
+          time: null,
+          priority: 'medium',
+          category: '💎',
+          icon: '✏️'
+        };
+
+        // זיהוי סוגים
+        if (text.toLowerCase().includes('רופא שיניים') || text.includes('שיניים')) {
+          result.type = 'dentist';
+          result.category = '🦷 בריאות';
+          result.icon = '🦷';
+        } else if (text.toLowerCase().includes('רופא') && !text.includes('שיניים')) {
+          result.type = 'doctor';
+          result.category = '🏥 בריאות';
+          result.icon = '🏥';
+        } else if (text.includes('יום הולדת') || text.includes('birthday')) {
+          result.type = 'birthday';
+          result.category = '🎂 חגיגה';
+          result.icon = '🎂';
+        } else if (text.includes('בקשת אישור') || text.includes('בקשה מאמא')) {
+          result.type = 'approval';
+          result.category = '🛍️ אישור';
+          result.icon = '🛍️';
+        } else if (text.includes('מבחן') || text.includes('לימוד') || text.includes('שיעורים')) {
+          result.type = 'study';
+          result.category = '📚 לימודים';
+          result.icon = '📚';
+        } else if (text.includes('אירוע') || text.includes('מסיבה') || text.includes('חברות')) {
+          result.type = 'event';
+          result.category = '🎉 אירועים';
+          result.icon = '🎉';
+        }
+
+        // זיהוי תאריכים
+        const datePatterns = [
+          /(\d{1,2})\/(\d{1,2})\/(\d{4})/,  // DD/MM/YYYY
+          /(\d{1,2})\/(\d{1,2})/,            // DD/MM
+          /ביום\s+(\w+)/,                    // ביום שישי
+          /בעוד\s+(\d+)\s+ימים?/,           // בעוד 5 ימים
+          /בעוד\s+שבוע/,                     // בעוד שבוע
+          /(\d{1,2})\s+ב(ינואר|בפברואר|במרץ|באפריל|במאי|ביוני|ביולי|באוגוסט|בספטמבר|באוקטובר|בנובמבר|בדצמבר)/
+        ];
+
+        for (let pattern of datePatterns) {
+          const match = text.match(pattern);
+          if (match) {
+            if (match[0].includes('/')) {
+              result.date = match[0];
+            } else if (match[0].includes('עוד')) {
+              const days = parseInt(match[1]);
+              const d = new Date();
+              d.setDate(d.getDate() + days);
+              result.date = d.toLocaleDateString('he-IL');
+            } else if (match[0].includes('ביום')) {
+              const dayName = match[1];
+              const daysMap = { 'ראשון': 0, 'שני': 1, 'שלישי': 2, 'רביעי': 3, 'חמישי': 4, 'שישי': 5, 'שבת': 6 };
+              const dayNum = daysMap[dayName];
+              if (dayNum !== undefined) {
+                const d = new Date();
+                const current = d.getDay();
+                let diff = dayNum - current;
+                if (diff <= 0) diff += 7;
+                d.setDate(d.getDate() + diff);
+                result.date = d.toLocaleDateString('he-IL');
+              }
+            }
+            break;
+          }
+        }
+
+        // זיהוי שעות
+        const timePattern = /(\d{1,2}):(\d{2})/;
+        const timeMatch = text.match(timePattern);
+        if (timeMatch) {
+          result.time = `${timeMatch[1]}:${timeMatch[2]}`;
+        }
+
+        // זיהוי עדיפות
+        if (text.includes('דחוף') || text.includes('urgent') || text.includes('חשוב מאוד')) {
+          result.priority = 'high';
+        } else if (text.includes('כשיש זמן') || text.includes('בהנחה')) {
+          result.priority = 'low';
+        }
+
+        return result;
+      }
+
+      function updatePreview() {
+        const text = document.getElementById('taskInput').value;
+        const charCount = document.getElementById('charCount');
+        charCount.textContent = text.length;
+
+        if (text.length < 3) {
+          document.getElementById('preview').classList.remove('show');
+          return;
+        }
+
+        const parsed = parseTask(text);
+        if (!parsed) return;
+
+        const preview = document.getElementById('preview');
+        let html = '';
+
+        if (parsed.date) {
+          html += `<div class="preview-item"><span class="preview-label">📅 תאריך:</span><span class="preview-value">${parsed.date}</span></div>`;
+        }
+        if (parsed.time) {
+          html += `<div class="preview-item"><span class="preview-label">🕐 שעה:</span><span class="preview-value">${parsed.time}</span></div>`;
+        }
+        html += `<div class="preview-item"><span class="preview-label">🏷️ סוג:</span><span class="preview-value">${parsed.category}</span></div>`;
+        html += `<div class="preview-item"><span class="preview-label">⭐ עדיפות:</span><span class="preview-value">${parsed.priority === 'high' ? '🔴 גבוהה' : parsed.priority === 'low' ? '🟢 נמוכה' : '🟡 בינונית'}</span></div>`;
+
+        document.getElementById('previewContent').innerHTML = html;
+        preview.classList.add('show');
+      }
+
+      function saveTask() {
+        const text = document.getElementById('taskInput').value;
+        if (text.length < 3) {
+          alert('בואי כתבי משהו! 😊');
+          return;
+        }
+
+        const parsed = parseTask(text);
+
+        // שמור ל-localStorage
+        const tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
+        tasks.push({
+          id: Date.now(),
+          title: text,
+          type: parsed.type,
+          date: parsed.date,
+          time: parsed.time,
+          priority: parsed.priority,
+          category: parsed.category,
+          status: 'לעשות',
+          addedAt: new Date().toISOString()
+        });
+        localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+
+        // הצג הודעה
+        const success = document.getElementById('successMsg');
+        success.classList.add('show');
+
+        // נקה
+        document.getElementById('taskInput').value = '';
+        document.getElementById('preview').classList.remove('show');
+        document.getElementById('charCount').textContent = '0';
+
+        // חזור לדף הבית
+        setTimeout(() => {
+          window.location.href = '/daughter';
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>

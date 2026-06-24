@@ -1,0 +1,510 @@
+---
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>המשימות שלי | הבת</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        background: #f8f9fa;
+        color: #1a1a1a;
+        direction: rtl;
+        text-align: right;
+        min-height: 100vh;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 24px 20px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 32px;
+        margin-bottom: 4px;
+      }
+
+      .header p {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .big-button {
+        background: white;
+        border: none;
+        border-radius: 16px;
+        padding: 32px 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .big-button:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .big-button:active {
+        transform: translateY(-4px);
+      }
+
+      .button-icon {
+        font-size: 48px;
+      }
+
+      .button-text {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .button-sub {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .quick-add {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+
+      .quick-icon-btn {
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .quick-icon-btn:hover {
+        border-color: #667eea;
+        background: #f0f4ff;
+        transform: translateY(-4px);
+      }
+
+      .quick-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .quick-label {
+        font-size: 11px;
+        color: #666;
+        font-weight: 500;
+      }
+
+      .tasks-section {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .task-item {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-right: 4px solid #667eea;
+      }
+
+      .task-item:hover {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .task-item.urgent {
+        border-right-color: #f44336;
+        background: #fff5f5;
+      }
+
+      .task-item.warning {
+        border-right-color: #ff9800;
+        background: #fff9f7;
+      }
+
+      .task-left {
+        flex: 1;
+      }
+
+      .task-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .task-meta {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .task-right {
+        text-align: left;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .task-date {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .task-check {
+        width: 28px;
+        height: 28px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .task-check:hover {
+        border-color: #667eea;
+        background: #f0f4ff;
+      }
+
+      .empty {
+        text-align: center;
+        padding: 40px 20px;
+        color: #999;
+      }
+
+      .empty-icon {
+        font-size: 44px;
+        margin-bottom: 12px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .stat-box {
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-number {
+        font-size: 28px;
+        font-weight: 700;
+        color: #667eea;
+      }
+
+      .stat-label {
+        font-size: 11px;
+        color: #999;
+        text-transform: uppercase;
+        margin-top: 6px;
+      }
+
+      @media (max-width: 600px) {
+        .action-buttons {
+          grid-template-columns: 1fr;
+        }
+
+        .quick-add {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>📋 משימות שלי</h1>
+      <p>נהלי את היום שלך בקלות</p>
+    </div>
+
+    <div class="container">
+      <!-- סטטיסטיקה מהירה -->
+      <div class="stats">
+        <div class="stat-box">
+          <div class="stat-number">3</div>
+          <div class="stat-label">היום</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">5</div>
+          <div class="stat-label">בשבוע</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">2</div>
+          <div class="stat-label">דחוקות</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">12</div>
+          <div class="stat-label">בוצע</div>
+        </div>
+      </div>
+
+      <!-- כפתורים ראשיים -->
+      <div class="action-buttons">
+        <a href="#add-new" onclick="openQuickAdd(); return false;" class="big-button">
+          <div class="button-icon">✍️</div>
+          <div class="button-text">רשמי משימה</div>
+          <div class="button-sub">כתיבה חופשית</div>
+        </a>
+        <a href="#" onclick="openQuickType(); return false;" class="big-button">
+          <div class="button-icon">⚡</div>
+          <div class="button-text">הוסיפי בעלמא</div>
+          <div class="button-sub">תור / יום הולדת</div>
+        </a>
+      </div>
+
+      <!-- כפתורים מהירים -->
+      <h3 style="margin-bottom: 12px; font-size: 14px; color: #999; text-transform: uppercase;">לחצי בעלמא:</h3>
+      <div class="quick-add">
+        <button class="quick-icon-btn" onclick="addQuickTask('תור אצל רופא שיניים', '🦷')">
+          <div class="quick-icon">🦷</div>
+          <div class="quick-label">רופא שיניים</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('תור אצל רופא', '🏥')">
+          <div class="quick-icon">🏥</div>
+          <div class="quick-label">רופא</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('יום הולדת', '🎂')">
+          <div class="quick-icon">🎂</div>
+          <div class="quick-label">יום הולדת</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('אירוע מיוחד', '🎉')">
+          <div class="quick-icon">🎉</div>
+          <div class="quick-label">אירוע</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('משימת לימודים', '📚')">
+          <div class="quick-icon">📚</div>
+          <div class="quick-label">לימודים</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('משימת בית', '🏠')">
+          <div class="quick-icon">🏠</div>
+          <div class="quick-label">בית</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('דבר חשוב לזכור', '💎')">
+          <div class="quick-icon">💎</div>
+          <div class="quick-label">חשוב</div>
+        </button>
+        <button class="quick-icon-btn" onclick="addQuickTask('בקשת אישור מאמא', '🛍️')">
+          <div class="quick-icon">🛍️</div>
+          <div class="quick-label">אישור אמא</div>
+        </button>
+      </div>
+
+      <!-- משימות היום -->
+      <div class="tasks-section">
+        <div class="section-title">
+          🎯 משימות היום
+        </div>
+        <div class="task-item urgent">
+          <div class="task-left">
+            <div class="task-title">שיעורי בית במתמטיקה</div>
+            <div class="task-meta">עד 17:00 | 🔴 דחוף</div>
+          </div>
+          <div class="task-right">
+            <div class="task-date">היום</div>
+            <div class="task-check">✓</div>
+          </div>
+        </div>
+
+        <div class="task-item warning">
+          <div class="task-left">
+            <div class="task-title">ניקוי חדר</div>
+            <div class="task-meta">שבת בבוקר | 🟡 בינונית</div>
+          </div>
+          <div class="task-right">
+            <div class="task-date">היום</div>
+            <div class="task-check">✓</div>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-left">
+            <div class="task-title">קריאה 20 עמודים</div>
+            <div class="task-meta">בשקט | 🟡 בינונית</div>
+          </div>
+          <div class="task-right">
+            <div class="task-date">היום</div>
+            <div class="task-check">✓</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- תורים -->
+      <div class="tasks-section">
+        <div class="section-title">
+          🏥 התורים שלך
+        </div>
+        <div class="task-item">
+          <div class="task-left">
+            <div class="task-title">בדיקת שיניים אצל ד"ר כהן</div>
+            <div class="task-meta">בשעה 15:00</div>
+          </div>
+          <div class="task-right">
+            <div class="task-date">20/06</div>
+            <div class="task-check">✓</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- אירועים -->
+      <div class="tasks-section">
+        <div class="section-title">
+          🎉 הפגישות שלך
+        </div>
+        <div class="task-item">
+          <div class="task-left">
+            <div class="task-title">יום הולדת של שיר</div>
+            <div class="task-meta">בערב בשעה 19:00</div>
+          </div>
+          <div class="task-right">
+            <div class="task-date">22/06</div>
+            <div class="task-check">✓</div>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-left">
+            <div class="task-title">חוג ריקוד</div>
+            <div class="task-meta">בערב בשעה 17:30</div>
+          </div>
+          <div class="task-right">
+            <div class="task-date">17/06</div>
+            <div class="task-check">✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function addQuickTask(taskName, icon) {
+        const prompt = window.prompt(`🎯 ${taskName}\n\nמה הפרטים?\n(לדוגמה: בתאריך X בשעה Y)`);
+        if (prompt) {
+          const tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
+          tasks.push({
+            id: Date.now(),
+            title: `${taskName} - ${prompt}`,
+            status: 'לעשות',
+            icon: icon,
+            addedAt: new Date().toISOString()
+          });
+          localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+          alert('✅ המשימה נוספה!');
+          location.reload();
+        }
+      }
+
+      function openQuickAdd() {
+        const text = window.prompt('✍️ רשמי משימה:\n\n(לדוגמה: תור רופא ביום 22 בשעה 15:00)');
+        if (text) {
+          const tasks = JSON.parse(localStorage.getItem('daughterTasks') || '[]');
+          tasks.push({
+            id: Date.now(),
+            title: text,
+            status: 'לעשות',
+            addedAt: new Date().toISOString()
+          });
+          localStorage.setItem('daughterTasks', JSON.stringify(tasks));
+          alert('✅ המשימה נוספה!');
+          location.reload();
+        }
+      }
+
+      // לחץ על משימה = בדיקה
+      document.querySelectorAll('.task-check').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const item = this.closest('.task-item');
+          item.style.opacity = '0.5';
+          item.style.textDecoration = 'line-through';
+
+          // confetti
+          for (let i = 0; i < 10; i++) {
+            const emoji = document.createElement('div');
+            emoji.textContent = '🎉';
+            emoji.style.position = 'fixed';
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.top = '0';
+            emoji.style.fontSize = '30px';
+            emoji.style.animation = 'fall 2s ease-out forwards';
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 2000);
+          }
+        });
+      });
+
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fall {
+          to {
+            transform: translateY(100vh);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
