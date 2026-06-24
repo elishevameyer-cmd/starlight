@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מרכז ניהול | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d0d;--surf:#1a1a1a;--surf2:#222;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--text:#fff;--dim:rgba(255,255,255,0.5);--faint:rgba(255,255,255,0.22);--accent:#F07A57;--accent-d:rgba(240,122,87,0.15);--accent-h:#e06545;--green:#4CAF7D;--green-d:rgba(76,175,125,0.15);--blue:#5B9BF5;--blue-d:rgba(91,155,245,0.15);--yellow:#F5C842;--yellow-d:rgba(245,200,66,0.15);--red:#E05C5C;--red-d:rgba(224,92,92,0.15);--purple:#9B7FE8;--purple-d:rgba(155,127,232,0.15);--r:12px;--rs:8px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Heebo',sans-serif;direction:rtl;background:var(--bg);color:var(--text);height:100vh;display:flex;overflow:hidden;}
+
+/* SIDEBAR */
+.sidebar{width:220px;background:#121212;border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;}
+.sb-brand{padding:18px 16px 14px;border-bottom:1px solid var(--border);}
+.sb-logo{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:2px;text-transform:uppercase;}
+.sb-sub{font-size:10px;color:var(--faint);margin-top:2px;}
+.sb-nav{padding:10px 8px;flex:1;}
+.sb-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--faint);text-transform:uppercase;padding:10px 8px 5px;margin-top:4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--rs);cursor:pointer;font-size:13px;font-weight:500;color:var(--dim);transition:all .15s;margin-bottom:2px;user-select:none;}
+.nav-item:hover{background:var(--surf);color:var(--text);}
+.nav-item.active{background:var(--accent-d);color:var(--accent);font-weight:700;}
+.nav-icon{font-size:15px;width:20px;text-align:center;}
+.nav-badge{margin-right:auto;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center;}
+.sb-footer{padding:12px 16px;border-top:1px solid var(--border);}
+.sb-date{font-size:11px;color:var(--faint);}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
+.top-bar{padding:14px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;background:#121212;flex-shrink:0;}
+.page-title{font-size:17px;font-weight:900;flex:1;}
+.page-title small{font-size:11px;font-weight:400;color:var(--faint);margin-right:8px;}
+.search-wrap{display:flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--border);border-radius:var(--rs);padding:7px 12px;min-width:160px;}
+.search-wrap input{background:none;border:none;outline:none;font-family:'Heebo',sans-serif;font-size:13px;color:var(--text);direction:rtl;width:100%;}
+.search-wrap input::placeholder{color:var(--faint);}
+.btn{font-family:'Heebo',sans-serif;font-size:13px;font-weight:700;border:none;border-radius:var(--rs);padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:all .15s;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:var(--accent-h);}
+.btn-ghost{background:none;border:1px solid var(--border2);color:var(--dim);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.content{flex:1;overflow-y:auto;padding:24px;}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px;}
+.stat{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;}
+.stat-n{font-size:34px;font-weight:900;color:var(--accent);line-height:1;}
+.stat-l{font-size:11px;color:var(--faint);font-weight:600;letter-spacing:.5px;margin-top:4px;}
+
+/* ── TABLE ── */
+.table-wrap{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+table{width:100%;border-collapse:collapse;}
+thead th{padding:10px 14px;text-align:right;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--faint);text-transform:uppercase;background:#161616;border-bottom:1px solid var(--border);white-space:nowrap;}
+tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(255,255,255,0.025);}
+tbody td{padding:11px 14px;font-size:13px;vertical-align:middle;}
+.client-cell{display:flex;align-items:center;gap:10px;}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent-d);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent);flex-shrink:0;}
+.client-name{font-weight:700;font-size:13px;}
+.client-ig{font-size:11px;color:var(--faint);}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;}
+.chip-active{background:var(--green-d);color:var(--green);}
+.chip-onboarding{background:var(--blue-d);color:var(--blue);}
+.chip-paused{background:var(--yellow-d);color:var(--yellow);}
+.chip-completed{background:var(--surf2);color:var(--faint);}
+.chip-RESET{background:var(--accent-d);color:var(--accent);}
+.chip-BUILDUP{background:var(--blue-d);color:var(--blue);}
+.chip-LETSGROW{background:var(--green-d);color:var(--green);}
+.chip-DONEFORYOU{background:var(--purple-d);color:var(--purple);}
+.td-dim{font-size:12px;color:var(--dim);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.td-date{font-size:12px;color:var(--dim);}
+.td-date.today{color:var(--green);font-weight:700;}
+.td-date.soon{color:var(--accent);font-weight:700;}
+.td-date.overdue{color:var(--red);font-weight:700;}
+.row-actions{display:flex;gap:5px;opacity:0;transition:opacity .15s;}
+tbody tr:hover .row-actions{opacity:1;}
+.icon-btn{background:none;border:1px solid var(--border);color:var(--dim);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;transition:all .15s;font-family:'Heebo',sans-serif;}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent);}
+.icon-btn.del:hover{border-color:var(--red);color:var(--red);}
+.add-row{display:flex;align-items:center;gap:8px;padding:11px 16px;border-top:1px solid var(--border);color:var(--faint);font-size:13px;cursor:pointer;transition:color .15s;}
+.add-row:hover{color:var(--accent);}
+
+/* ── KANBAN ── */
+.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start;}
+.k-col{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.k-head{padding:12px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.k-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.k-title{font-size:13px;font-weight:700;flex:1;}
+.k-count{font-size:10px;color:var(--faint);background:var(--surf2);padding:1px 7px;border-radius:20px;}
+.k-cards{padding:10px;display:flex;flex-direction:column;gap:8px;min-height:80px;}
+.task-card{background:#141414;border:1px solid var(--border);border-radius:var(--rs);padding:11px 13px;cursor:pointer;transition:all .15s;}
+.task-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.3);}
+.task-card.dragging{opacity:.5;}
+.task-card[draggable=true]{cursor:grab;}
+.tc-title{font-size:13px;font-weight:600;line-height:1.4;margin-bottom:8px;}
+.tc-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.p-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.p-high{background:var(--red);}
+.p-medium{background:var(--yellow);}
+.p-low{background:var(--green);}
+.c-tag{font-size:10px;background:var(--accent-d);color:var(--accent);padding:2px 7px;border-radius:20px;font-weight:600;}
+.due-tag{font-size:10px;color:var(--faint);margin-right:auto;}
+.due-tag.overdue{color:var(--red);}
+.due-tag.soon{color:var(--yellow);}
+.k-add{margin:0 10px 10px;padding:8px;border:1px dashed var(--border);border-radius:var(--rs);font-size:12px;color:var(--faint);cursor:pointer;text-align:center;transition:all .15s;}
+.k-add:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── IDEAS ── */
+.ideas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
+.idea-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px;transition:all .15s;}
+.idea-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3);}
+.idea-hd{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.idea-client{font-size:11px;font-weight:700;color:var(--accent);}
+.idea-type{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;margin-right:auto;}
+.type-reel{background:var(--purple-d);color:var(--purple);}
+.type-carousel{background:var(--blue-d);color:var(--blue);}
+.type-post{background:var(--accent-d);color:var(--accent);}
+.type-story{background:var(--green-d);color:var(--green);}
+.idea-text{font-size:13px;line-height:1.6;color:var(--dim);margin-bottom:10px;}
+.idea-ft{display:flex;align-items:center;gap:8px;}
+.idea-status{font-size:10px;font-weight:700;}
+
+/* ── DASHBOARD RECENT ── */
+.dash-grid{display:grid;grid-template-columns:3fr 2fr;gap:16px;margin-top:16px;}
+.section-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.sc-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.sc-title{font-size:13px;font-weight:700;}
+.sc-link{font-size:11px;color:var(--accent);cursor:pointer;}
+.mini-list{padding:6px;}
+.mini-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--rs);cursor:pointer;transition:background .1s;}
+.mini-item:hover{background:rgba(255,255,255,.03);}
+.mini-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.mini-text{font-size:13px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mini-meta{font-size:11px;color:var(--faint);white-space:nowrap;}
+
+/* ── MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .2s;}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{background:#1e1e1e;border:1px solid var(--border2);border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;transform:translateY(16px);transition:transform .2s;}
+.overlay.open .modal{transform:translateY(0);}
+.modal-head{padding:18px 22px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.modal-title{font-size:15px;font-weight:900;}
+.modal-x{background:none;border:none;color:var(--faint);font-size:20px;cursor:pointer;padding:4px;line-height:1;transition:color .15s;}
+.modal-x:hover{color:var(--text);}
+.modal-body{padding:18px 22px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg.full{grid-column:1/-1;}
+.fl{font-size:10px;font-weight:700;letter-spacing:.5px;color:var(--dim);}
+.fi,.fs,.ft{background:var(--surf2);border:1px solid var(--border);border-radius:var(--rs);padding:8px 12px;font-family:'Heebo',sans-serif;font-size:13px;color:var(--text);direction:rtl;outline:none;transition:border-color .15s;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--accent);}
+.fs option{background:#1e1e1e;}
+.ft{resize:vertical;min-height:72px;line-height:1.5;}
+.modal-foot{padding:14px 22px 18px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid var(--border);}
+
+/* ── DRAWER ── */
+.drawer{position:fixed;inset:0;z-index:90;display:flex;pointer-events:none;}
+.drawer-bg{flex:1;background:rgba(0,0,0,.5);opacity:0;transition:opacity .2s;}
+.drawer-panel{width:400px;background:#1a1a1a;border-right:1px solid var(--border);height:100%;overflow-y:auto;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1);pointer-events:all;}
+.drawer.open .drawer-bg{opacity:1;pointer-events:all;cursor:pointer;}
+.drawer.open .drawer-panel{transform:translateX(0);}
+.dr-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.dr-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent-d);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent);}
+.dr-name{font-size:16px;font-weight:900;}
+.dr-svc{font-size:11px;color:var(--faint);margin-top:2px;}
+.dr-close{margin-right:auto;background:none;border:1px solid var(--border);color:var(--dim);border-radius:var(--rs);padding:6px 10px;cursor:pointer;font-size:16px;transition:all .15s;}
+.dr-close:hover{border-color:var(--accent);color:var(--accent);}
+.dr-sec{padding:14px 20px;border-bottom:1px solid var(--border);}
+.dr-sec-title{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--faint);text-transform:uppercase;margin-bottom:10px;}
+.info-row{display:flex;gap:10px;margin-bottom:8px;font-size:13px;}
+.info-row:last-child{margin-bottom:0;}
+.info-key{color:var(--faint);min-width:72px;padding-top:1px;}
+.info-val{color:var(--text);flex:1;line-height:1.5;}
+.idea-item{background:var(--surf2);border-radius:var(--rs);padding:9px 12px;font-size:12px;color:var(--dim);line-height:1.5;display:flex;gap:8px;align-items:flex-start;margin-bottom:7px;}
+.idea-item:last-child{margin-bottom:0;}
+.idea-item-icon{flex-shrink:0;}
+.add-idea-row{display:flex;gap:8px;margin-top:10px;}
+.add-idea-row input{flex:1;background:var(--surf2);border:1px solid var(--border);border-radius:var(--rs);padding:7px 11px;font-family:'Heebo',sans-serif;font-size:13px;color:var(--text);direction:rtl;outline:none;}
+.add-idea-row input:focus{border-color:var(--accent);}
+.add-idea-row select{background:var(--surf2);border:1px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-family:'Heebo',sans-serif;font-size:12px;color:var(--dim);direction:rtl;outline:none;}
+.task-mini{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surf2);border-radius:var(--rs);margin-bottom:7px;font-size:13px;}
+.task-mini:last-child{margin-bottom:0;}
+.tc-check{width:16px;height:16px;border-radius:4px;border:2px solid var(--border2);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .15s;}
+.tc-check.done{background:var(--green);border-color:var(--green);color:#fff;}
+
+/* EMPTY */
+.empty{text-align:center;padding:48px 24px;color:var(--faint);}
+.empty-icon{font-size:38px;margin-bottom:12px;}
+.empty-title{font-size:15px;font-weight:700;color:var(--dim);margin-bottom:6px;}
+.empty-desc{font-size:13px;line-height:1.6;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e1e1e;border:1px solid var(--border2);border-radius:var(--r);padding:11px 20px;font-size:13px;font-weight:600;z-index:200;transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 28px rgba(0,0,0,.5);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast.ok{border-color:var(--green);color:var(--green);}
+.toast.err{border-color:var(--red);color:var(--red);}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.18);}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-logo">Elisheva</div>
+    <div class="sb-sub">מרכז ניהול עסקי</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-label">ראשי</div>
+    <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
+      <span class="nav-icon">🏠</span> דשבורד
+    </div>
+    <div class="sb-label">ניהול</div>
+    <div class="nav-item" data-view="clients" onclick="switchView('clients')">
+      <span class="nav-icon">👥</span> לקוחות
+      <span class="nav-badge" id="badge-clients">0</span>
+    </div>
+    <div class="nav-item" data-view="tasks" onclick="switchView('tasks')">
+      <span class="nav-icon">✅</span> משימות
+      <span class="nav-badge" id="badge-tasks">0</span>
+    </div>
+    <div class="nav-item" data-view="ideas" onclick="switchView('ideas')">
+      <span class="nav-icon">💡</span> רעיונות תוכן
+    </div>
+  </nav>
+  <div class="sb-footer">
+    <div class="sb-date" id="sidebar-date"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="top-bar">
+    <div class="page-title" id="page-title">דשבורד</div>
+    <div class="search-wrap" id="search-wrap" style="display:none">
+      <span style="color:var(--faint);font-size:14px;">🔍</span>
+      <input type="text" placeholder="חפשי לקוחה..." id="search-input" oninput="onSearch(this.value)">
+    </div>
+    <button class="btn btn-ghost" onclick="openImportExport()">⬇ גיבוי</button>
+    <button class="btn btn-primary" id="add-btn" onclick="onAddClick()">+ הוסיפי</button>
+  </div>
+  <div class="content" id="content"></div>
+</div>
+
+<!-- CLIENT MODAL -->
+<div class="overlay" id="client-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="cm-title">לקוחה חדשה</div>
+      <button class="modal-x" onclick="closeModal('client-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg full"><label class="fl">שם מלא *</label><input class="fi" id="cm-name" placeholder="שרה כהן"></div>
+        <div class="fg"><label class="fl">אינסטגרם</label><input class="fi" id="cm-ig" placeholder="@username"></div>
+        <div class="fg"><label class="fl">טלפון</label><input class="fi" id="cm-phone" placeholder="050-0000000"></div>
+        <div class="fg"><label class="fl">שירות</label>
+          <select class="fs" id="cm-service">
+            <option value="RESET">פגישת RESET</option>
+            <option value="BUILD UP">BUILD UP</option>
+            <option value="LET'S GROW">LET'S GROW</option>
+            <option value="DONE FOR YOU">DONE FOR YOU</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">סטטוס</label>
+          <select class="fs" id="cm-status">
+            <option value="onboarding">כניסה לתהליך</option>
+            <option value="active">פעילה</option>
+            <option value="paused">בהפסקה</option>
+            <option value="completed">הסתיים</option>
+          </select>
+        </div>
+        <div class="fg full"><label class="fl">פגישה הבאה</label><input class="fi" id="cm-meeting" type="date"></div>
+        <div class="fg full"><label class="fl">מה נשלח לה</label><textarea class="ft" id="cm-sent" placeholder="שאלון קליטה, סיכום פגישה..."></textarea></div>
+        <div class="fg full"><label class="fl">מה לעשות הבאה</label><textarea class="ft" id="cm-todo" placeholder="להכין גאנט, לשלוח פידבק..."></textarea></div>
+        <div class="fg full"><label class="fl">הערות</label><textarea class="ft" id="cm-notes" placeholder="פרטים נוספים, הנחיות מיוחדות..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('client-modal')">ביטול</button>
+      <button class="btn btn-primary" onclick="saveClient()">שמירה</button>
+    </div>
+  </div>
+</div>
+
+<!-- TASK MODAL -->
+<div class="overlay" id="task-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="tm-title">משימה חדשה</div>
+      <button class="modal-x" onclick="closeModal('task-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg full"><label class="fl">כותרת משימה *</label><input class="fi" id="tm-title-inp" placeholder="להכין גאנט לחודש הבא..."></div>
+        <div class="fg"><label class="fl">לקוחה</label>
+          <select class="fs" id="tm-client">
+            <option value="">ללא לקוחה ספציפית</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">עדיפות</label>
+          <select class="fs" id="tm-priority">
+            <option value="high">גבוהה 🔴</option>
+            <option value="medium" selected>בינונית 🟡</option>
+            <option value="low">נמוכה 🟢</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">סטטוס</label>
+          <select class="fs" id="tm-status">
+            <option value="todo">לביצוע</option>
+            <option value="inprogress">בתהליך</option>
+            <option value="sent">נשלח/ממתין</option>
+            <option value="done">הושלם</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">תאריך יעד</label><input class="fi" id="tm-due" type="date"></div>
+        <div class="fg full"><label class="fl">הערות</label><textarea class="ft" id="tm-notes" placeholder="פרטים נוספים..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('task-modal')">ביטול</button>
+      <button class="btn btn-primary" onclick="saveTask()">שמירה</button>
+    </div>
+  </div>
+</div>
+
+<!-- IDEA MODAL -->
+<div class="overlay" id="idea-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">רעיון תוכן חדש</div>
+      <button class="modal-x" onclick="closeModal('idea-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg"><label class="fl">לקוחה</label>
+          <select class="fs" id="im-client">
+            <option value="">כללי</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">סוג תוכן</label>
+          <select class="fs" id="im-type">
+            <option value="reel">רילס</option>
+            <option value="carousel">קרוסלה</option>
+            <option value="post">פוסט</option>
+            <option value="story">סטורי</option>
+          </select>
+        </div>
+        <div class="fg full"><label class="fl">הרעיון *</label><textarea class="ft" id="im-text" placeholder="תארי את הרעיון לתוכן..."></textarea></div>
+        <div class="fg"><label class="fl">סטטוס</label>
+          <select class="fs" id="im-status">
+            <option value="idea">רעיון</option>
+            <option value="approved">מאושר</option>
+            <option value="ready">מוכן לעלייה</option>
+            <option value="published">עלה</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('idea-modal')">ביטול</button>
+      <button class="btn btn-primary" onclick="saveIdea()">שמירה</button>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT DRAWER -->
+<div class="drawer" id="client-drawer">
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel" id="drawer-panel"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════
+const SEED_CLIENTS = [
+  {id:'c1',name:'שרה כהן',ig:'@sarah.cohen',phone:'050-111-2233',service:'BUILD UP',status:'active',sent:'שאלון קליטה + סיכום פגישה 1',todo:'להכין מסמך מיצוב ובידול',meeting:'2026-07-01',notes:'ייעוץ תזונה. קהל: נשים 25-45',ideas:[{id:'i1',text:'קרוסלה: 5 מיתוסים על תזונה נכונה',type:'carousel',status:'idea'},{id:'i2',text:'רילס: יום אכילה מלא מה אני אוכלת',type:'reel',status:'idea'}],createdAt:Date.now()},
+  {id:'c2',name:'מיה לוי',ig:'@mia.levy',phone:'052-333-4455',service:"LET'S GROW",status:'active',sent:'גאנט תוכן יוני + פידבק שבועי',todo:'פידבק על 3 פוסטים ששלחה',meeting:'2026-06-26',notes:'קוסמטיקאית. מרוצה מהתהליך',ideas:[{id:'i3',text:'סטורי: לפני ואחרי טיפול',type:'story',status:'approved'},{id:'i4',text:'פוסט: 3 דברים שכל עור צריך',type:'post',status:'idea'}],createdAt:Date.now()},
+  {id:'c3',name:'רחל אברהם',ig:'@rachel.a',phone:'054-567-8899',service:'RESET',status:'onboarding',sent:'קישור לתשלום',todo:'לתאם פגישת RESET ראשונה',meeting:'2026-06-28',notes:'מאמנת חיים. הצטרפה השבוע',ideas:[{id:'i5',text:'רילס: 3 שאלות שמשנות חיים',type:'reel',status:'idea'}],createdAt:Date.now()},
+  {id:'c4',name:'דנה רוזן',ig:'@dana.rosen',phone:'053-222-3344',service:'DONE FOR YOU',status:'active',sent:'גאנט + 10 פוסטים לחודש',todo:'סטוריז לשבוע הבא + רילס',meeting:'2026-07-05',notes:'עיצוב פנים. לקוחה ותיקה',ideas:[{id:'i6',text:'קרוסלה: 7 טרנדים בעיצוב 2026',type:'carousel',status:'ready'},{id:'i7',text:'רילס: BEFORE & AFTER חדר שינה',type:'reel',status:'approved'},{id:'i8',text:'סטורי: סקר איזה סגנון אוהבים',type:'story',status:'idea'}],createdAt:Date.now()}
+];
+const SEED_TASKS = [
+  {id:'t1',title:'גאנט יולי למיה לוי',clientId:'c2',clientName:'מיה לוי',status:'inprogress',priority:'high',due:'2026-06-27',notes:'',createdAt:Date.now()},
+  {id:'t2',title:'פידבק על פוסטים של מיה',clientId:'c2',clientName:'מיה לוי',status:'todo',priority:'high',due:'2026-06-25',notes:'',createdAt:Date.now()},
+  {id:'t3',title:'לתאם פגישת RESET עם רחל',clientId:'c3',clientName:'רחל אברהם',status:'todo',priority:'medium',due:'2026-06-27',notes:'',createdAt:Date.now()},
+  {id:'t4',title:'סטוריז שבועיים לדנה',clientId:'c4',clientName:'דנה רוזן',status:'todo',priority:'high',due:'2026-06-29',notes:'',createdAt:Date.now()},
+  {id:'t5',title:'מסמך מיצוב לשרה כהן',clientId:'c1',clientName:'שרה כהן',status:'todo',priority:'medium',due:'2026-06-30',notes:'',createdAt:Date.now()},
+  {id:'t6',title:'קישור תשלום לרחל אברהם',clientId:'c3',clientName:'רחל אברהם',status:'sent',priority:'low',due:'2026-06-24',notes:'',createdAt:Date.now()},
+  {id:'t7',title:'10 פוסטים לחודש — דנה',clientId:'c4',clientName:'דנה רוזן',status:'done',priority:'high',due:'2026-06-20',notes:'',createdAt:Date.now()}
+];
+const SEED_IDEAS = [
+  {id:'gl1',clientId:'',clientName:'כללי',text:'קרוסלה: 5 טיפים להפוך פוסט ל-Lead',type:'carousel',status:'idea',createdAt:Date.now()},
+  {id:'gl2',clientId:'',clientName:'כללי',text:'רילס: יום בחיים של מנהלת סושיאל',type:'reel',status:'idea',createdAt:Date.now()}
+];
+
+function loadDB() {
+  const raw = localStorage.getItem('em_manage_v2');
+  if (raw) return JSON.parse(raw);
+  const d = { clients: SEED_CLIENTS, tasks: SEED_TASKS, ideas: SEED_IDEAS };
+  saveDB(d); return d;
+}
+function saveDB(d) { localStorage.setItem('em_manage_v2', JSON.stringify(d)); }
+function getDB() { return loadDB(); }
+
+function uid() { return '_' + Math.random().toString(36).slice(2,10); }
+
+// ═══════════════════════════════════════
+// ROUTING
+// ═══════════════════════════════════════
+let currentView = 'dashboard';
+let editingId = null;
+let searchQ = '';
+
+function switchView(v) {
+  currentView = v;
+  searchQ = '';
+  document.getElementById('search-input') && (document.getElementById('search-input').value = '');
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.view === v);
+  });
+  const titles = { dashboard:'דשבורד', clients:'לקוחות', tasks:'משימות', ideas:'רעיונות תוכן' };
+  document.getElementById('page-title').textContent = titles[v] || v;
+  document.getElementById('search-wrap').style.display = v === 'clients' ? 'flex' : 'none';
+  const addLabels = { dashboard:'+ הוסיפי', clients:'+ לקוחה חדשה', tasks:'+ משימה חדשה', ideas:'+ רעיון חדש' };
+  document.getElementById('add-btn').textContent = addLabels[v];
+  render();
+}
+
+function onAddClick() {
+  if (currentView === 'clients') openClientModal();
+  else if (currentView === 'tasks') openTaskModal();
+  else if (currentView === 'ideas') openIdeaModal();
+  else openClientModal();
+}
+
+function onSearch(q) { searchQ = q; render(); }
+
+function render() {
+  updateBadges();
+  if (currentView === 'dashboard') renderDashboard();
+  else if (currentView === 'clients') renderClients();
+  else if (currentView === 'tasks') renderTasks();
+  else if (currentView === 'ideas') renderIdeas();
+}
+
+function updateBadges() {
+  const db = getDB();
+  document.getElementById('badge-clients').textContent = db.clients.length;
+  const openTasks = db.tasks.filter(t => t.status !== 'done').length;
+  document.getElementById('badge-tasks').textContent = openTasks;
+}
+
+// ═══════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════
+function renderDashboard() {
+  const db = getDB();
+  const today = todayStr();
+  const active = db.clients.filter(c => c.status === 'active').length;
+  const open = db.tasks.filter(t => t.status !== 'done').length;
+  const overdue = db.tasks.filter(t => t.status !== 'done' && t.due && t.due < today).length;
+  const totalIdeas = db.clients.reduce((s,c) => s + (c.ideas||[]).length, 0) + db.ideas.length;
+
+  const recentClients = [...db.clients].sort((a,b) => b.createdAt - a.createdAt).slice(0,5);
+  const urgentTasks = db.tasks.filter(t => t.status !== 'done').sort((a,b) => {
+    const pa = a.priority === 'high' ? 0 : a.priority === 'medium' ? 1 : 2;
+    const pb = b.priority === 'high' ? 0 : b.priority === 'medium' ? 1 : 2;
+    return pa - pb;
+  }).slice(0,5);
+
+  document.getElementById('content').innerHTML = `
+    <div class="stats">
+      <div class="stat"><div class="stat-n">${db.clients.length}</div><div class="stat-l">לקוחות סה"כ</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--green)">${active}</div><div class="stat-l">לקוחות פעילות</div></div>
+      <div class="stat"><div class="stat-n" style="color:${overdue>0?'var(--red)':'var(--accent)'}">${open}</div><div class="stat-l">משימות פתוחות</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--purple)">${totalIdeas}</div><div class="stat-l">רעיונות תוכן</div></div>
+    </div>
+    <div class="dash-grid">
+      <div class="section-card">
+        <div class="sc-head"><div class="sc-title">לקוחות אחרונות</div><div class="sc-link" onclick="switchView('clients')">הכל ←</div></div>
+        <div class="mini-list">${recentClients.map(c => `
+          <div class="mini-item" onclick="openDrawer('${c.id}')">
+            <div class="mini-dot" style="background:${statusColor(c.status)}"></div>
+            <div class="mini-text">${c.name}</div>
+            <div class="mini-meta">${chipService(c.service)}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="section-card">
+        <div class="sc-head"><div class="sc-title">משימות דחופות</div><div class="sc-link" onclick="switchView('tasks')">הכל ←</div></div>
+        <div class="mini-list">${urgentTasks.map(t => `
+          <div class="mini-item" onclick="openTaskModal('${t.id}')">
+            <div class="mini-dot" style="background:${t.priority==='high'?'var(--red)':t.priority==='medium'?'var(--yellow)':'var(--green)'}"></div>
+            <div class="mini-text">${t.title}</div>
+            <div class="mini-meta ${dueCls(t.due)}">${t.due ? fmtDate(t.due) : ''}</div>
+          </div>`).join('') || '<div style="padding:16px;color:var(--faint);font-size:13px;text-align:center">אין משימות פתוחות 🎉</div>'}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════
+// CLIENTS
+// ═══════════════════════════════════════
+function renderClients() {
+  const db = getDB();
+  const clients = searchQ
+    ? db.clients.filter(c => c.name.includes(searchQ) || (c.ig||'').includes(searchQ) || c.service.includes(searchQ))
+    : db.clients;
+
+  if (!clients.length && !searchQ) {
+    document.getElementById('content').innerHTML = `<div class="empty"><div class="empty-icon">👥</div><div class="empty-title">אין לקוחות עדיין</div><div class="empty-desc">לחצי על "לקוחה חדשה" כדי להתחיל</div></div>`;
+    return;
+  }
+
+  document.getElementById('content').innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>שם לקוחה</th>
+          <th>שירות</th>
+          <th>סטטוס</th>
+          <th>מה נשלח</th>
+          <th>מה לעשות</th>
+          <th>פגישה הבאה</th>
+          <th>פעולות</th>
+        </tr></thead>
+        <tbody>
+          ${clients.map(c => `
+            <tr onclick="openDrawer('${c.id}')">
+              <td><div class="client-cell">
+                <div class="avatar">${c.name.charAt(0)}</div>
+                <div><div class="client-name">${c.name}</div><div class="client-ig">${c.ig||''}</div></div>
+              </div></td>
+              <td>${chipService(c.service)}</td>
+              <td>${chipStatus(c.status)}</td>
+              <td><div class="td-dim" title="${c.sent||''}">${c.sent||'—'}</div></td>
+              <td><div class="td-dim" title="${c.todo||''}">${c.todo||'—'}</div></td>
+              <td><div class="td-date ${dueCls(c.meeting)}">${c.meeting ? fmtDate(c.meeting) : '—'}</div></td>
+              <td><div class="row-actions" onclick="event.stopPropagation()">
+                <button class="icon-btn" onclick="openClientModal('${c.id}')">✏️ ערוך</button>
+                <button class="icon-btn" onclick="openTaskModal(null,'${c.id}')">+ משימה</button>
+                <button class="icon-btn del" onclick="deleteClient('${c.id}')">🗑</button>
+              </div></td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+      <div class="add-row" onclick="openClientModal()">+ הוסיפי לקוחה חדשה</div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════
+// TASKS (KANBAN)
+// ═══════════════════════════════════════
+const COLS = [
+  {id:'todo',label:'לביצוע',color:'var(--blue)'},
+  {id:'inprogress',label:'בתהליך',color:'var(--accent)'},
+  {id:'sent',label:'נשלח / ממתין',color:'var(--yellow)'},
+  {id:'done',label:'הושלם',color:'var(--green)'}
+];
+
+function renderTasks() {
+  const db = getDB();
+  document.getElementById('content').innerHTML = `
+    <div class="kanban">
+      ${COLS.map(col => {
+        const tasks = db.tasks.filter(t => t.status === col.id);
+        return `<div class="k-col" id="col-${col.id}" ondragover="event.preventDefault()" ondrop="dropTask(event,'${col.id}')">
+          <div class="k-head">
+            <div class="k-dot" style="background:${col.color}"></div>
+            <div class="k-title">${col.label}</div>
+            <div class="k-count">${tasks.length}</div>
+          </div>
+          <div class="k-cards" id="cards-${col.id}">
+            ${tasks.map(t => taskCardHTML(t)).join('')}
+          </div>
+          <div class="k-add" onclick="openTaskModal(null,null,'${col.id}')">+ הוסיפי משימה</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+function taskCardHTML(t) {
+  return `<div class="task-card" draggable="true" id="tc-${t.id}"
+    ondragstart="dragStart(event,'${t.id}')"
+    onclick="openTaskModal('${t.id}')">
+    <div class="tc-title">${t.title}</div>
+    <div class="tc-meta">
+      <div class="p-dot p-${t.priority}"></div>
+      ${t.clientName ? `<div class="c-tag">${t.clientName}</div>` : ''}
+      ${t.due ? `<div class="due-tag ${dueCls(t.due)}">${fmtDate(t.due)}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+let draggedTaskId = null;
+function dragStart(e, id) { draggedTaskId = id; e.dataTransfer.effectAllowed = 'move'; }
+function dropTask(e, status) {
+  e.preventDefault();
+  if (!draggedTaskId) return;
+  const db = getDB();
+  const t = db.tasks.find(t => t.id === draggedTaskId);
+  if (t) { t.status = status; saveDB(db); render(); }
+  draggedTaskId = null;
+}
+
+// ═══════════════════════════════════════
+// IDEAS
+// ═══════════════════════════════════════
+function renderIdeas() {
+  const db = getDB();
+  // Combine client ideas + global ideas
+  const all = [];
+  db.clients.forEach(c => (c.ideas||[]).forEach(i => all.push({...i, clientName: c.name, clientId: c.id})));
+  db.ideas.forEach(i => all.push({...i}));
+
+  if (!all.length) {
+    document.getElementById('content').innerHTML = `<div class="empty"><div class="empty-icon">💡</div><div class="empty-title">אין רעיונות עדיין</div><div class="empty-desc">לחצי "+ רעיון חדש" כדי להוסיף</div></div>`;
+    return;
+  }
+
+  const statusColor = { idea:'var(--faint)', approved:'var(--blue)', ready:'var(--accent)', published:'var(--green)' };
+  const statusLabel = { idea:'רעיון', approved:'מאושר', ready:'מוכן לעלייה', published:'עלה ✓' };
+  const typeLabel = { reel:'🎬 רילס', carousel:'📱 קרוסלה', post:'📝 פוסט', story:'💬 סטורי' };
+
+  document.getElementById('content').innerHTML = `
+    <div class="ideas-grid">
+      ${all.map(i => `
+        <div class="idea-card">
+          <div class="idea-hd">
+            <div class="idea-client">${i.clientName || 'כללי'}</div>
+            <div class="idea-type type-${i.type}">${typeLabel[i.type]||i.type}</div>
+          </div>
+          <div class="idea-text">${i.text}</div>
+          <div class="idea-ft">
+            <div class="chip" style="font-size:10px;padding:2px 8px;background:rgba(255,255,255,.06);color:${statusColor[i.status]}">${statusLabel[i.status]||i.status}</div>
+            <button class="icon-btn" style="font-size:10px;margin-right:auto" onclick="cycleIdeaStatus('${i.id}','${i.clientId||''}')">הבאה →</button>
+            <button class="icon-btn del" style="font-size:10px" onclick="deleteIdea('${i.id}','${i.clientId||''}')">🗑</button>
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function cycleIdeaStatus(ideaId, clientId) {
+  const cycle = ['idea','approved','ready','published'];
+  const db = getDB();
+  if (clientId) {
+    const c = db.clients.find(c => c.id === clientId);
+    if (c) {
+      const i = (c.ideas||[]).find(i => i.id === ideaId);
+      if (i) { i.status = cycle[(cycle.indexOf(i.status)+1)%cycle.length]; }
+    }
+  } else {
+    const i = db.ideas.find(i => i.id === ideaId);
+    if (i) i.status = cycle[(cycle.indexOf(i.status)+1)%cycle.length];
+  }
+  saveDB(db); render();
+}
+
+function deleteIdea(ideaId, clientId) {
+  if (!confirm('למחוק את הרעיון?')) return;
+  const db = getDB();
+  if (clientId) {
+    const c = db.clients.find(c => c.id === clientId);
+    if (c) c.ideas = (c.ideas||[]).filter(i => i.id !== ideaId);
+  } else {
+    db.ideas = db.ideas.filter(i => i.id !== ideaId);
+  }
+  saveDB(db); render(); toast('נמחק','ok');
+}
+
+// ═══════════════════════════════════════
+// CLIENT MODAL
+// ═══════════════════════════════════════
+function openClientModal(id) {
+  editingId = id || null;
+  const db = getDB();
+  const c = id ? db.clients.find(c => c.id === id) : null;
+  document.getElementById('cm-title').textContent = c ? `עריכת ${c.name}` : 'לקוחה חדשה';
+  document.getElementById('cm-name').value = c?.name || '';
+  document.getElementById('cm-ig').value = c?.ig || '';
+  document.getElementById('cm-phone').value = c?.phone || '';
+  document.getElementById('cm-service').value = c?.service || 'RESET';
+  document.getElementById('cm-status').value = c?.status || 'onboarding';
+  document.getElementById('cm-meeting').value = c?.meeting || '';
+  document.getElementById('cm-sent').value = c?.sent || '';
+  document.getElementById('cm-todo').value = c?.todo || '';
+  document.getElementById('cm-notes').value = c?.notes || '';
+  openModal('client-modal');
+}
+
+function saveClient() {
+  const name = document.getElementById('cm-name').value.trim();
+  if (!name) { alert('יש להזין שם'); return; }
+  const db = getDB();
+  const data = {
+    name, ig: document.getElementById('cm-ig').value.trim(),
+    phone: document.getElementById('cm-phone').value.trim(),
+    service: document.getElementById('cm-service').value,
+    status: document.getElementById('cm-status').value,
+    meeting: document.getElementById('cm-meeting').value,
+    sent: document.getElementById('cm-sent').value.trim(),
+    todo: document.getElementById('cm-todo').value.trim(),
+    notes: document.getElementById('cm-notes').value.trim()
+  };
+  if (editingId) {
+    const i = db.clients.findIndex(c => c.id === editingId);
+    if (i>=0) { db.clients[i] = {...db.clients[i], ...data}; }
+  } else {
+    db.clients.push({id: uid(), ideas:[], createdAt: Date.now(), ...data});
+  }
+  saveDB(db); closeModal('client-modal'); render(); toast(editingId ? 'עודכן' : 'נוסף ✓','ok');
+  editingId = null;
+}
+
+function deleteClient(id) {
+  if (!confirm('למחוק את הלקוחה?')) return;
+  const db = getDB();
+  db.clients = db.clients.filter(c => c.id !== id);
+  db.tasks = db.tasks.filter(t => t.clientId !== id);
+  saveDB(db); render(); toast('נמחקה','ok');
+}
+
+// ═══════════════════════════════════════
+// TASK MODAL
+// ═══════════════════════════════════════
+function openTaskModal(id, preClientId, preStatus) {
+  editingId = id || null;
+  const db = getDB();
+  const t = id ? db.tasks.find(t => t.id === id) : null;
+  // populate client dropdown
+  const sel = document.getElementById('tm-client');
+  sel.innerHTML = '<option value="">ללא לקוחה ספציפית</option>' +
+    db.clients.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+  document.getElementById('tm-title').textContent = t ? 'עריכת משימה' : 'משימה חדשה';
+  document.getElementById('tm-title-inp').value = t?.title || '';
+  sel.value = t?.clientId || preClientId || '';
+  document.getElementById('tm-priority').value = t?.priority || 'medium';
+  document.getElementById('tm-status').value = t?.status || preStatus || 'todo';
+  document.getElementById('tm-due').value = t?.due || '';
+  document.getElementById('tm-notes').value = t?.notes || '';
+  openModal('task-modal');
+}
+
+function saveTask() {
+  const title = document.getElementById('tm-title-inp').value.trim();
+  if (!title) { alert('יש להזין כותרת'); return; }
+  const db = getDB();
+  const clientId = document.getElementById('tm-client').value;
+  const client = clientId ? db.clients.find(c => c.id === clientId) : null;
+  const data = {
+    title, clientId, clientName: client?.name || '',
+    priority: document.getElementById('tm-priority').value,
+    status: document.getElementById('tm-status').value,
+    due: document.getElementById('tm-due').value,
+    notes: document.getElementById('tm-notes').value.trim()
+  };
+  if (editingId) {
+    const i = db.tasks.findIndex(t => t.id === editingId);
+    if (i>=0) db.tasks[i] = {...db.tasks[i], ...data};
+  } else {
+    db.tasks.push({id: uid(), createdAt: Date.now(), ...data});
+  }
+  saveDB(db); closeModal('task-modal'); render(); toast(editingId ? 'עודכן' : 'נוסף ✓','ok');
+  editingId = null;
+}
+
+// ═══════════════════════════════════════
+// IDEA MODAL
+// ═══════════════════════════════════════
+function openIdeaModal(preClientId) {
+  const db = getDB();
+  const sel = document.getElementById('im-client');
+  sel.innerHTML = '<option value="">כללי</option>' +
+    db.clients.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+  if (preClientId) sel.value = preClientId;
+  document.getElementById('im-text').value = '';
+  document.getElementById('im-type').value = 'reel';
+  document.getElementById('im-status').value = 'idea';
+  openModal('idea-modal');
+}
+
+function saveIdea() {
+  const text = document.getElementById('im-text').value.trim();
+  if (!text) { alert('יש להזין את הרעיון'); return; }
+  const db = getDB();
+  const clientId = document.getElementById('im-client').value;
+  const idea = { id: uid(), text, type: document.getElementById('im-type').value, status: document.getElementById('im-status').value, createdAt: Date.now() };
+  if (clientId) {
+    const c = db.clients.find(c => c.id === clientId);
+    if (c) { if (!c.ideas) c.ideas = []; c.ideas.push(idea); }
+  } else {
+    if (!db.ideas) db.ideas = [];
+    db.ideas.push({...idea, clientId:'', clientName:'כללי'});
+  }
+  saveDB(db); closeModal('idea-modal'); render(); toast('רעיון נוסף ✓','ok');
+}
+
+// ═══════════════════════════════════════
+// DRAWER
+// ═══════════════════════════════════════
+function openDrawer(clientId) {
+  const db = getDB();
+  const c = db.clients.find(c => c.id === clientId);
+  if (!c) return;
+  const tasks = db.tasks.filter(t => t.clientId === clientId);
+  const ideas = c.ideas || [];
+  const typeLabel = { reel:'🎬', carousel:'📱', post:'📝', story:'💬' };
+
+  document.getElementById('drawer-panel').innerHTML = `
+    <div class="dr-head">
+      <div class="dr-avatar">${c.name.charAt(0)}</div>
+      <div><div class="dr-name">${c.name}</div><div class="dr-svc">${c.service}</div></div>
+      <button class="dr-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="dr-sec">
+      <div class="dr-sec-title">פרטי לקוחה</div>
+      <div class="info-row"><div class="info-key">סטטוס</div><div class="info-val">${chipStatus(c.status)}</div></div>
+      ${c.ig ? `<div class="info-row"><div class="info-key">אינסטגרם</div><div class="info-val">${c.ig}</div></div>` : ''}
+      ${c.phone ? `<div class="info-row"><div class="info-key">טלפון</div><div class="info-val">${c.phone}</div></div>` : ''}
+      ${c.meeting ? `<div class="info-row"><div class="info-key">פגישה הבאה</div><div class="info-val ${dueCls(c.meeting)}">${fmtDate(c.meeting)}</div></div>` : ''}
+    </div>
+    <div class="dr-sec">
+      <div class="dr-sec-title">מה נשלח</div>
+      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.sent || '—'}</div>
+    </div>
+    <div class="dr-sec">
+      <div class="dr-sec-title">מה לעשות הבאה</div>
+      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.todo || '—'}</div>
+    </div>
+    ${c.notes ? `<div class="dr-sec">
+      <div class="dr-sec-title">הערות</div>
+      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.notes}</div>
+    </div>` : ''}
+    <div class="dr-sec">
+      <div class="dr-sec-title">משימות (${tasks.length})</div>
+      ${tasks.map(t => `<div class="task-mini">
+        <div class="tc-check ${t.status==='done'?'done':''}" onclick="toggleTask('${t.id}')">${t.status==='done'?'✓':''}</div>
+        <div style="flex:1;font-size:13px;${t.status==='done'?'text-decoration:line-through;color:var(--faint)':''}">${t.title}</div>
+        <div class="p-dot p-${t.priority}"></div>
+      </div>`).join('') || '<div style="font-size:12px;color:var(--faint)">אין משימות</div>'}
+      <div style="margin-top:10px">
+        <button class="btn btn-ghost" style="font-size:11px;padding:6px 12px" onclick="openTaskModal(null,'${clientId}')">+ הוסיפי משימה</button>
+      </div>
+    </div>
+    <div class="dr-sec">
+      <div class="dr-sec-title">רעיונות תוכן (${ideas.length})</div>
+      ${ideas.map(i => `<div class="idea-item">
+        <div class="idea-item-icon">${typeLabel[i.type]||'💡'}</div>
+        <div style="flex:1">${i.text}</div>
+        <button class="icon-btn del" style="font-size:10px;padding:2px 6px" onclick="deleteIdea('${i.id}','${clientId}');openDrawer('${clientId}')">✕</button>
+      </div>`).join('') || '<div style="font-size:12px;color:var(--faint)">אין רעיונות</div>'}
+      <div class="add-idea-row">
+        <input id="new-idea-${clientId}" placeholder="רעיון חדש לתוכן..." onkeydown="if(event.key==='Enter')addIdeaFromDrawer('${clientId}')">
+        <select id="new-idea-type-${clientId}">
+          <option value="reel">🎬</option><option value="carousel">📱</option>
+          <option value="post">📝</option><option value="story">💬</option>
+        </select>
+        <button class="btn btn-primary" style="font-size:12px;padding:7px 12px" onclick="addIdeaFromDrawer('${clientId}')">+</button>
+      </div>
+    </div>
+    <div style="padding:14px 20px;display:flex;gap:8px">
+      <button class="btn btn-ghost" style="font-size:12px" onclick="openClientModal('${clientId}')">✏️ עריכה</button>
+      <button class="btn btn-ghost" style="font-size:12px;color:var(--red);border-color:var(--red)" onclick="deleteClient('${clientId}');closeDrawer()">🗑 מחיקה</button>
+    </div>`;
+  document.getElementById('client-drawer').classList.add('open');
+}
+
+function closeDrawer() { document.getElementById('client-drawer').classList.remove('open'); }
+
+function addIdeaFromDrawer(clientId) {
+  const input = document.getElementById(`new-idea-${clientId}`);
+  const typeEl = document.getElementById(`new-idea-type-${clientId}`);
+  const text = input.value.trim();
+  if (!text) return;
+  const db = getDB();
+  const c = db.clients.find(c => c.id === clientId);
+  if (!c) return;
+  if (!c.ideas) c.ideas = [];
+  c.ideas.push({ id: uid(), text, type: typeEl.value, status: 'idea', createdAt: Date.now() });
+  saveDB(db); render(); openDrawer(clientId); toast('רעיון נוסף ✓','ok');
+}
+
+function toggleTask(taskId) {
+  const db = getDB();
+  const t = db.tasks.find(t => t.id === taskId);
+  if (t) t.status = t.status === 'done' ? 'todo' : 'done';
+  saveDB(db); render();
+  // refresh drawer if open
+  const drawer = document.getElementById('client-drawer');
+  if (drawer.classList.contains('open')) {
+    const t2 = db.tasks.find(t => t.id === taskId);
+    if (t2?.clientId) openDrawer(t2.clientId);
+  }
+}
+
+// ═══════════════════════════════════════
+// MODAL HELPERS
+// ═══════════════════════════════════════
+function openModal(id) {
+  const el = document.getElementById(id);
+  el.classList.add('open');
+  // close on backdrop click
+  el._backdropHandler = (e) => { if (e.target === el) closeModal(id); };
+  el.addEventListener('click', el._backdropHandler);
+}
+function closeModal(id) {
+  const el = document.getElementById(id);
+  el.classList.remove('open');
+  if (el._backdropHandler) { el.removeEventListener('click', el._backdropHandler); delete el._backdropHandler; }
+  editingId = null;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.overlay.open').forEach(o => closeModal(o.id));
+    closeDrawer();
+  }
+}, true);
+
+// ═══════════════════════════════════════
+// IMPORT/EXPORT
+// ═══════════════════════════════════════
+function openImportExport() {
+  const db = getDB();
+  const json = JSON.stringify(db, null, 2);
+  const blob = new Blob([json], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `elisheva-manage-${todayStr()}.json`; a.click();
+  URL.revokeObjectURL(url);
+  toast('גיבוי הורד ✓','ok');
+}
+
+// ═══════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════
+function todayStr() { return new Date().toISOString().split('T')[0]; }
+
+function fmtDate(s) {
+  if (!s) return '';
+  const [y,m,d] = s.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function dueCls(dateStr) {
+  if (!dateStr) return '';
+  const today = todayStr();
+  if (dateStr < today) return 'overdue';
+  const diff = (new Date(dateStr) - new Date(today)) / 86400000;
+  if (diff <= 2) return 'soon';
+  return '';
+}
+
+function statusColor(s) {
+  return {active:'var(--green)',onboarding:'var(--blue)',paused:'var(--yellow)',completed:'var(--faint)'}[s]||'var(--faint)';
+}
+
+function chipStatus(s) {
+  const map = {active:'chip-active',onboarding:'chip-onboarding',paused:'chip-paused',completed:'chip-completed'};
+  const labels = {active:'פעילה',onboarding:'כניסה לתהליך',paused:'בהפסקה',completed:'הסתיים'};
+  return `<span class="chip ${map[s]||''}">${labels[s]||s}</span>`;
+}
+
+function chipService(s) {
+  const key = s.replace(/[\s']+/g,'').toUpperCase();
+  return `<span class="chip chip-${key}" style="font-size:10px">${s}</span>`;
+}
+
+function toast(msg, type='ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast ${type} show`;
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+const DAYS = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+const MONTHS = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+function setDate() {
+  const now = new Date();
+  document.getElementById('sidebar-date').textContent =
+    `יום ${DAYS[now.getDay()]}, ${now.getDate()} ב${MONTHS[now.getMonth()]}`;
+}
+setDate();
+render();
+</script>
+</body>
+</html>
