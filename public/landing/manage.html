@@ -906,15 +906,26 @@ function toggleTask(taskId) {
 // ═══════════════════════════════════════
 // MODAL HELPERS
 // ═══════════════════════════════════════
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); editingId = null; }
+function openModal(id) {
+  const el = document.getElementById(id);
+  el.classList.add('open');
+  // close on backdrop click
+  el._backdropHandler = (e) => { if (e.target === el) closeModal(id); };
+  el.addEventListener('click', el._backdropHandler);
+}
+function closeModal(id) {
+  const el = document.getElementById(id);
+  el.classList.remove('open');
+  if (el._backdropHandler) { el.removeEventListener('click', el._backdropHandler); delete el._backdropHandler; }
+  editingId = null;
+}
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.overlay.open').forEach(o => o.classList.remove('open'));
+    document.querySelectorAll('.overlay.open').forEach(o => closeModal(o.id));
     closeDrawer();
   }
-});
+}, true);
 
 // ═══════════════════════════════════════
 // IMPORT/EXPORT
