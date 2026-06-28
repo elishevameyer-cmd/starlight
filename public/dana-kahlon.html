@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דנה כחלון | ביטחון עצמי לנשים בשינוי</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brown-light: #A0826D;
+            --brown-dark: #6B5A47;
+            --black: #1a1a1a;
+            --cream: #F5F0E8;
+            --accent: #8B6F47;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--black);
+            background-color: var(--cream);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-light) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header-content .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .about-section h2 {
+            color: var(--brown-dark);
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        .about-section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Hook */
+        .hero-hook {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .hero-hook h2 {
+            font-size: 2.2em;
+            color: var(--brown-dark);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .hero-hook p {
+            font-size: 1.15em;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--black);
+            color: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+
+        .problem-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: var(--accent);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .problem-item {
+            background: rgba(160, 130, 109, 0.1);
+            padding: 25px;
+            border-right: 4px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        .problem-item h4 {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .solution-section h3 {
+            font-size: 1.8em;
+            color: var(--brown-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .solution-item {
+            background: var(--cream);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--accent);
+        }
+
+        .solution-item h4 {
+            color: var(--brown-dark);
+            font-size: 1.2em;
+            margin-bottom: 12px;
+        }
+
+        .solution-item p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        /* Meeting Section */
+        .meeting-section {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--brown-light) 100%);
+            color: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+
+        .meeting-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .meeting-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .meeting-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-right: 3px solid white;
+            border-radius: 4px;
+        }
+
+        .meeting-item strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h3 {
+            font-size: 1.8em;
+            color: var(--brown-dark);
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-light) 100%);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(107, 90, 71, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(107, 90, 71, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8em;
+            }
+
+            .header-content .subtitle {
+                font-size: 1em;
+            }
+
+            .hero-hook h2 {
+                font-size: 1.6em;
+            }
+
+            .solution-grid,
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>דנה כחלון</h1>
+            <p class="subtitle">ביטחון עצמי בשלבי חיים קשים</p>
+        </div>
+    </header>
+
+    <!-- About Dana -->
+    <div class="container">
+        <div class="about-section">
+            <h2>מי אני</h2>
+            <p>
+                אני דנה כחלון, מנחה בעבודה עם נשים בתהליכי גרושים ונשים גרושות שרוצות לשחזר את עצמן.
+                עבדתי עם עשרות נשים שעברו שלבים קשים בחיים — בדידות, ספק עצמי, פחד מהעתיד.
+            </p>
+            <p>
+                למדתי שהבעיה לא היא בנסיבות — היא בדרך שבה אנחנו מדברות לעצמנו עליהן. כשנשים מגדילות את הביטחון שלהן בעצמן, הכל משתנה.
+            </p>
+            <p>
+                גם עובדת עם בני נוער — מכי שמאבדים את הכיוון ומרגישים אבודים — ועושה את אותו הדבר: בונה מחדש את הביטחון שלהם בחיים.
+            </p>
+        </div>
+    </div>
+
+    <!-- Hook -->
+    <div class="container">
+        <div class="hero-hook">
+            <h2>גרישה, בני נוער שמתפרקים, אי-יציבות בחיים — הכל מתחיל כשאת מצליחה שוב להאמין בעצמך</h2>
+            <p>
+                זה לא תיאוריה או "עצות חכמות". זה עבודה מעמיקה שמשנה את הדרך שבה אתה חושב, מרגיש, ופועל.
+            </p>
+        </div>
+    </div>
+
+    <!-- Problems -->
+    <div class="container">
+        <section class="problem-section">
+            <h3>מה באמת מפגע</h3>
+            <div class="problems-grid">
+                <div class="problem-item">
+                    <h4>כשאתה גרוש</h4>
+                    <p>מרגישים בודדים, מפוחדים מהעתיד, שואלים "מה היה לי במסלול?" — וכל הזה קורה בשקט, לבד.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>כשבן הנוער שלך מתפרק</h4>
+                    <p>הוא מרגיש לא מבין, אבוד, אפילו כועס. ואתה לא יודע איך להגיע אליו, מה לומר, איך לעזור.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>וזה מאט ממש הכל</h4>
+                    <p>אתה לא משכמת, לא מתרכזת בעבודה, לא יודע לעצמך אם יכולה להיות עוד הצלחה.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Solution -->
+    <div class="container">
+        <section class="solution-section">
+            <h3>איך אני עוזרת</h3>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <h4>עבודה על ביטחון עצמי</h4>
+                    <p>
+                        אנחנו נעבוד על דיווחי עצמי שלך — על הסיפור שאתה מרוויח לעצמך בדעתך — ומשנים אותו מ"אני כשלתי" ל"אני יכולה, אני צועדת."
+                    </p>
+                </div>
+                <div class="solution-item">
+                    <h4>שיניות חיוביות בשינויים</h4>
+                    <p>
+                        כל שינוי בחיים הוא הזדמנות. אנחנו לומדים איך להפוך את הגרישה, את הנושא עם בן הנוער, לשינוי שבונה אותך מחדש.
+                    </p>
+                </div>
+                <div class="solution-item">
+                    <h4>ליווי מעשי</h4>
+                    <p>
+                        זה לא קשה עם זה תיאוריה. אנחנו מתרגלים, אנחנו עושים, ואתה רואה תוצאות — קודם כל בתוך עצמך, אחר כך בכל מקום.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- What You Get -->
+    <div class="container">
+        <section class="meeting-section">
+            <h3>מה אתה מקבל בפגישת 1:1</h3>
+            <div class="meeting-content">
+                <div class="meeting-item">
+                    <strong>✓ הבנה עמוקה של המצב שלך</strong>
+                    <p>אנחנו נדברים בפתיחות על מה קורה — בגרישה, בתוך בן הנוער שלך, בחיים שלך — ללא שיפוט.</p>
+                </div>
+                <div class="meeting-item">
+                    <strong>✓ תכנית כיוונים ראשונית</strong>
+                    <p>בסוף הפגישה תיצאי עם קווי היכל ראשונים למה אתה צריכה לעבוד, ואיך אני יכול לעזור.</p>
+                </div>
+                <div class="meeting-item">
+                    <strong>✓ הרגשה שאתה לא לבדך</strong>
+                    <p>כשאתה מדברה עם מישהי שהוא הבינה את הדרך, זה משנה הכל. פתאום, זה בעצם בהישג יד.</p>
+                </div>
+                <div class="meeting-item">
+                    <strong>✓ תרגילים קונקרטיים</strong>
+                    <p>לא פחות — תרגילים שאתה יכול להתחיל עדיין היום כדי לבנות ביטחון עצמי.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA -->
+    <div class="container">
+        <section class="cta-section">
+            <h3>מוכנה לשנות משהו?</h3>
+            <p>
+                בואי נדברנו. פגישת 1:1 היא המקום להתחיל — לא מחויבות, בדיוק התחלה.
+            </p>
+            <button class="cta-button" onclick="scrollToForm()">הזמני פגישה עכשיו</button>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>דנה כחלון</strong> | ביטחון עצמי ועבודה עם שינויים בחיים</p>
+        <p>עבודה עם נשים גרושות ובני נוער</p>
+        <div class="footer-links">
+            <a href="https://wa.me/972XXXXXXXXX" target="_blank">WhatsApp</a>
+            <a href="mailto:dana@example.com">Email</a>
+            <a href="#">חזור לאתר</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">© 2026 דנה כחלון. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            alert('כאן תוכלי להוסיף טופס הזמנה או לחזור לדף הראשית עם טופס כללי.');
+            // אפשר להוסיף טופס הזמנה כאן או לחזור לדף הראשית
+        }
+    </script>
+</body>
+</html>
