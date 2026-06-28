@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>דנה כחלון | ביטחון עצמי וגדילה אישית</title>
+    <title>דנה כחלון | טיפול וגדילה אישית</title>
     <style>
         * {
             margin: 0;
@@ -14,11 +14,10 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #F5F1E8;
-            color: #1a1a1a;
-            line-height: 1.6;
+            color: #2a2a2a;
+            line-height: 1.8;
         }
 
-        /* Header & Navigation */
         header {
             background: #fff;
             padding: 1.5rem 2rem;
@@ -29,7 +28,7 @@
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -38,18 +37,14 @@
 
         .logo {
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #8B6F47;
         }
 
-        .logo-img {
-            max-height: 50px;
-        }
-
         nav a {
-            color: #1a1a1a;
+            color: #2a2a2a;
             text-decoration: none;
-            margin-left: 2rem;
+            margin-left: 2.5rem;
             font-size: 0.95rem;
             transition: color 0.3s;
         }
@@ -58,27 +53,26 @@
             color: #8B6F47;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #F5F1E8 0%, #E8E0D5 100%);
-            padding: 3rem 2rem;
-            text-align: center;
+            padding: 4rem 2rem;
         }
 
         .hero-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .hero-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #2a2a2a;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .hero-text h1 span {
@@ -86,276 +80,156 @@
         }
 
         .hero-text p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #555;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .hero-image {
-            position: relative;
+            margin-bottom: 2rem;
+            line-height: 1.9;
         }
 
         .hero-image img {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        .badge {
-            display: inline-block;
-            background: #8B6F47;
-            color: #fff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-
-        /* About Dana */
-        .about {
-            background: #fff;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-        }
-
-        .about-content {
-            max-width: 800px;
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .about h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
+        .section-alt {
+            background: #fff;
         }
 
-        .about h2 span {
-            color: #8B6F47;
-        }
-
-        .about p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        /* Audiences Section */
-        .audiences {
-            padding: 3rem 2rem;
+        .section-light {
             background: #F5F1E8;
         }
 
-        .audiences-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .audiences h2 {
-            text-align: center;
-            font-size: 2rem;
+        .section h2 {
+            font-size: 2.2rem;
             margin-bottom: 2rem;
-            color: #1a1a1a;
+            color: #2a2a2a;
+            text-align: center;
         }
 
-        .audiences-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        .section h2 span {
+            color: #8B6F47;
         }
 
-        .audience-card {
+        .story-box {
             background: #fff;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 12px;
+            line-height: 2;
+            color: #555;
+            font-size: 1rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 2rem;
         }
 
-        .audience-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .audience-card h3 {
-            color: #8B6F47;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .audience-card p {
-            color: #555;
-            margin-bottom: 0.8rem;
-        }
-
-        .audience-card ul {
-            list-style: none;
-            margin-top: 1rem;
-            padding-right: 0;
-        }
-
-        .audience-card li {
-            color: #555;
-            padding: 0.5rem 0;
-            padding-right: 1.5rem;
-            position: relative;
-        }
-
-        .audience-card li:before {
-            content: "✓";
-            position: absolute;
-            right: 0;
-            color: #8B6F47;
-            font-weight: bold;
-        }
-
-        /* Pain Points & Solution */
-        .problem-solution {
-            padding: 3rem 2rem;
-            background: #fff;
-        }
-
-        .ps-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
-        .problem, .solution {
+        .problem-box {
+            background: #FFF0ED;
             padding: 2rem;
             border-radius: 12px;
+            border-right: 5px solid #D9534F;
         }
 
-        .problem {
-            background: #FFF0ED;
-            border-right: 4px solid #D9534F;
-        }
-
-        .solution {
+        .solution-box {
             background: #E8F5E9;
-            border-right: 4px solid #8B6F47;
+            padding: 2rem;
+            border-radius: 12px;
+            border-right: 5px solid #8B6F47;
         }
 
-        .problem h3, .solution h3 {
+        .problem-box h3, .solution-box h3 {
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
-        .problem h3 {
+        .problem-box h3 {
             color: #D9534F;
         }
 
-        .solution h3 {
+        .solution-box h3 {
             color: #8B6F47;
         }
 
-        .problem p, .solution p {
+        .problem-box p, .solution-box p {
             color: #555;
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 1rem;
         }
 
-        /* Services/Offerings */
-        .offerings {
-            padding: 3rem 2rem;
-            background: #F5F1E8;
-        }
-
-        .offerings-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .offerings h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #1a1a1a;
-        }
-
-        .offerings-grid {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
-        .offering-card {
+        .service-card {
             background: #fff;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 12px;
-            text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: all 0.3s;
         }
 
-        .offering-card:hover {
-            transform: translateY(-6px);
+        .service-card:hover {
+            transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            border-top: 3px solid #8B6F47;
         }
 
-        .offering-card h3 {
+        .service-card h3 {
             color: #8B6F47;
             font-size: 1.2rem;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .offering-card p {
+        .service-card p {
             color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        .offering-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Social Proof */
-        .testimonial {
-            padding: 3rem 2rem;
-            background: #fff;
-        }
-
-        .testimonial-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonial h2 {
-            font-size: 2rem;
+        .testimonials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
             margin-bottom: 2rem;
-            color: #1a1a1a;
         }
 
         .testimonial-card {
             background: #F5F1E8;
             padding: 2rem;
             border-radius: 12px;
-            margin-bottom: 1.5rem;
             border-right: 4px solid #8B6F47;
         }
 
         .testimonial-card p {
             color: #555;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-style: italic;
         }
 
         .testimonial-author {
             color: #8B6F47;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        /* CTA Section */
         .cta-section {
             padding: 3rem 2rem;
             background: linear-gradient(135deg, #8B6F47 0%, #6B5437 100%);
@@ -363,39 +237,38 @@
             text-align: center;
         }
 
-        .cta-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
         .cta-section h2 {
-            font-size: 2rem;
+            color: #fff;
             margin-bottom: 1rem;
+            font-size: 2rem;
         }
 
         .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-buttons {
+        .btn-group {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 0.9rem 2rem;
+            padding: 1rem 2.5rem;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            font-weight: 600;
         }
 
         .btn-primary {
@@ -419,10 +292,9 @@
             color: #8B6F47;
         }
 
-        /* Form Section */
         .form-section {
             padding: 3rem 2rem;
-            background: #F5F1E8;
+            background: #fff;
         }
 
         .form-content {
@@ -434,18 +306,18 @@
             text-align: center;
             font-size: 1.8rem;
             margin-bottom: 2rem;
-            color: #1a1a1a;
+            color: #2a2a2a;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #1a1a1a;
-            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #2a2a2a;
+            font-weight: 600;
             font-size: 0.95rem;
         }
 
@@ -453,8 +325,8 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
+            padding: 0.9rem;
+            border: 1.5px solid #ddd;
             border-radius: 6px;
             font-family: inherit;
             font-size: 0.95rem;
@@ -471,18 +343,18 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 110px;
         }
 
         .form-submit {
             width: 100%;
             background: #8B6F47;
             color: #fff;
-            padding: 1rem;
+            padding: 1.1rem;
             border: none;
             border-radius: 6px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -493,46 +365,37 @@
             box-shadow: 0 8px 16px rgba(139, 111, 71, 0.3);
         }
 
-        /* Footer */
         footer {
-            background: #1a1a1a;
+            background: #2a2a2a;
             color: #fff;
             text-align: center;
             padding: 2rem;
-        }
-
-        footer p {
             font-size: 0.9rem;
             opacity: 0.8;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-content,
-            .audiences-grid,
-            .ps-content {
+            .two-col,
+            .services-grid,
+            .testimonials {
                 grid-template-columns: 1fr;
             }
 
             .hero-text h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
-            .offerings-grid {
-                grid-template-columns: 1fr;
+            .section {
+                padding: 2.5rem 1.5rem;
             }
 
-            .cta-buttons {
+            .btn-group {
                 flex-direction: column;
             }
 
             .btn {
                 width: 100%;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
             }
 
             nav a {
@@ -543,157 +406,136 @@
 </head>
 <body>
 
-<!-- Header -->
 <header>
     <div class="header-content">
         <div class="logo">דנה כחלון</div>
         <nav>
             <a href="#about">אודות</a>
-            <a href="#audiences">לאילו אני עובדת</a>
-            <a href="#offerings">השירותים שלי</a>
-            <a href="#contact">הזמן פגישה</a>
+            <a href="#work">מה אני עושה</a>
+            <a href="#process">התהליך</a>
+            <a href="#contact">יצור קשר</a>
         </nav>
     </div>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
         <div class="hero-text">
-            <div class="badge">ביטחון עצמי וגדילה אישית</div>
-            <h1>הזמן <span>לשינוי</span> הוא <span>עכשיו</span></h1>
-            <p>אני עוזרת לנשים גרושות והורים לבני נוער לבנות ביטחון עצמי חזק, להתמודד עם שינויים בחיים, והופכת את הקושי לכוח.</p>
+            <h1>אתם לא <span>לבדים</span> בזה</h1>
+            <p>אני דנה, מטפלת ומאמנת גדילה אישית. עבדתי עם מאות אנשים שהרגישו אבודים, חייכו בחוץ אבל רבצו בפנים, או היו בלתי מסוגלים לחזור לעצמם אחרי דברים קשים.</p>
+            <p>אני כאן כדי לעזור לכם לחזור אל עצמכם — עם כלים אמיתיים, תמיכה חמה, והבנה עמוקה של בדיוק מה אתם עוברים.</p>
         </div>
         <div class="hero-image">
-            <img src="https://via.placeholder.com/400x500?text=דנה+כחלון" alt="דנה כחלון">
+            <img src="https://via.placeholder.com/400x500?text=דנה" alt="דנה כחלון">
         </div>
     </div>
 </section>
 
-<!-- About Dana -->
-<section class="about" id="about">
-    <div class="about-content">
-        <h2>מי אני <span>דנה</span></h2>
-        <p>מאמנת ביטחון עצמי ויועצת גדילה אישית עם ניסיון של 8 שנים בעבודה עם נשים וקשקושים בתקופות מעבר קשות.</p>
-        <p>אני מאמינה שכל אחד יכול לעמוד על הרגליים שלו שוב — אבל זה דורש תכנית, חזון ותמיכה. וזה בדיוק מה שאני מציעה.</p>
-        <p>עבדתי עם מאות נשים שעברו גרושין וגבר, ובני נוער שהתקשו עם בטחון עצמי וזהות. היום הן חיות חיים שהן בחרו.</p>
+<section class="section section-alt" id="about">
+    <div class="story-box">
+        <strong>מי אני:</strong><br>
+        אני דנה, מטפלת מחונכת בפסיכולוגיה עם ניסיון של 8 שנים בעבודה עם קבוצות שונות. עבדתי עם נשים שעברו גרושים, בני נוער שמתקשים בזהות וביטחון עצמי, צוותים במשבר, וכל מי שרגש שהוא נתקע.
+        <br><br>
+        <strong>למה עשיתי את זה:</strong><br>
+        כי ראיתי שיותר מדי אנשים משוכנעים שהם בעיה. שאם הם לא מצליחים — זה סימן שהם מה-שגוי. אני בנויה שלא. אני חוזרת כל פעם בחזרה לאמת הזו: אנחנו לא בעיה. אנחנו בתהליך.
     </div>
 </section>
 
-<!-- Audiences -->
-<section class="audiences" id="audiences">
-    <div class="audiences-content">
-        <h2>עם מי אני עובדת</h2>
-        <div class="audiences-grid">
-            <div class="audience-card">
-                <h3>👩‍🦰 נשים גרושות</h3>
-                <p><strong>הקושי שלהן:</strong> גרושין, בניה מחדש, מציאת קול משלהן שוב</p>
-                <ul>
-                    <li>מרגישות אבודות או ללא ערך</li>
-                    <li>קשוקות בתרופתן כהורות</li>
-                    <li>משוקלות בחטאות או בעצמי ידם</li>
-                    <li>רוצות להתחזק אבל לא יודעות איך</li>
-                </ul>
-            </div>
-
-            <div class="audience-card">
-                <h3>👦 בני נוער + הורים שלהם</h3>
-                <p><strong>הקושי שלהם:</strong> בטחון עצמי נמוך, קשיים חברתיים, זהות</p>
-                <ul>
-                    <li>קושי בהפרדה מהוריהם</li>
-                    <li>לחצים חברתיים וממדיה חברתית</li>
-                    <li>קושי בקבלת עצמם</li>
-                    <li>הורים שרוצים לתמוך אבל לא יודעים איך</li>
-                </ul>
-            </div>
+<section class="section section-light" id="work">
+    <h2>עם <span>מי</span> אני עובדת</h2>
+    <div class="two-col">
+        <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <h3 style="color: #8B6F47; font-weight: 700; margin-bottom: 1.5rem;">נשים בשינוי חיים</h3>
+            <p style="color: #555; line-height: 1.9;">נשים שעברו גרושים, הפסדים, או פשוט בחוסר וודאות. נשים שרוצות לחזור לעצמן אבל לא יודעות איך.</p>
+        </div>
+        <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <h3 style="color: #8B6F47; font-weight: 700; margin-bottom: 1.5rem;">בני נוער והורים</h3>
+            <p style="color: #555; line-height: 1.9;">בני נוער שמתקשים בביטחון עצמי, זהות, או חרדות. הורים שרוצים לתמוך אבל לא יודעים איך לדבר איתם.</p>
+        </div>
+    </div>
+    <div class="two-col">
+        <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <h3 style="color: #8B6F47; font-weight: 700; margin-bottom: 1.5rem;">צוותים וארגונים</h3>
+            <p style="color: #555; line-height: 1.9;">קבוצות שרוצות להבין זה את זה ולעבוד יותר טוב כיחידה.</p>
+        </div>
+        <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <h3 style="color: #8B6F47; font-weight: 700; margin-bottom: 1.5rem;">כל מי שרוצה לגדול</h3>
+            <p style="color: #555; line-height: 1.9;">מי שעומד בפיתחן של דברים חדשים ורוצה תמיכה לדרך.</p>
         </div>
     </div>
 </section>
 
-<!-- Problem & Solution -->
-<section class="problem-solution">
-    <div class="ps-content">
-        <div class="problem">
-            <h3>🚨 הבעיה המרכזית</h3>
-            <p>כשנעמדה על ידי או בני נוער שלך מתקשה — אתה רוצה לעזור אבל לא יודעת איך.</p>
-            <p>אתה חייכת מול העולם אבל בפנים מרגישה אבודה, לא מספיקה, או חוששת שזה לא יעבור.</p>
-            <p>אתה צריכה מישהי שתשמע אותך, תבין אותך, ותדליק אותך שוב.</p>
+<section class="section section-alt">
+    <h2>הבעיה ו<span>הפתרון</span></h2>
+    <div class="two-col">
+        <div class="problem-box">
+            <h3>🚨 המצב כמו שהוא עכשיו</h3>
+            <p>אתה מרגיש ללא כוח. אולי חייכת בחוץ אבל בפנים כל כך מדוכדך.</p>
+            <p>אתה לא יודע איך להמשיך. לא יודע אם אתה טוב או רע. לא בטוח מי אתה בעצם.</p>
+            <p>ניסית דברים — דברים קרו, חלקם טובים וחלקם ממש לא — ועכשיו אתה בלתי בטוח בעצמך.</p>
         </div>
 
-        <div class="solution">
-            <h3>✨ מה אני מציעה</h3>
-            <p><strong>עבודה עמוקה, אותנטית, ומקצועית.</strong></p>
-            <p>אני עוזרת לך לבחור בך שוב, להבין את הערכים שלך, ולבנות ביטחון עצמי שלא תסתרי ממישהו.</p>
-            <p>עם כלים קונקריטיים, תכנית ברורה, וישיבות 1:1 אישיות שמתקדמות במהירותך.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Offerings -->
-<section class="offerings" id="offerings">
-    <div class="offerings-content">
-        <h2>השירותים שלי</h2>
-        <div class="offerings-grid">
-            <div class="offering-card">
-                <div class="offering-icon">💬</div>
-                <h3>ישיבות 1:1</h3>
-                <p>שעה של עבודה עמוקה — הבנת המצב שלך, בניית תכנית אישית, וצעדים קונקריטיים קדימה.</p>
-            </div>
-
-            <div class="offering-card">
-                <div class="offering-icon">🎯</div>
-                <h3>תוכנית ביטחון עצמי</h3>
-                <p>4-6 שיבות ממוקדות לבניית חוזק פנימי, הבנת עצמך, ותוכנית פעולה משום שלך.</p>
-            </div>
-
-            <div class="offering-card">
-                <div class="offering-icon">🛠️</div>
-                <h3>קלפים ומשגשים</h3>
-                <p>כלים מעשיים לבני נוער — קלפי חינוך, תרגילי ביטחון, והדרכה ישיבה.</p>
-            </div>
-
-            <div class="offering-card">
-                <div class="offering-icon">👨‍👩‍👧</div>
-                <h3>ליווי הורים</h3>
-                <p>איך לדבר עם בנך על הקשיים שלו, איך לתמוך בלי להחזיק בידו.</p>
-            </div>
+        <div class="solution-box">
+            <h3>✨ מה הוא שם בעבודה איתי</h3>
+            <p>אני עוזרת לך להבין מה בדיוק קרה וגם לבחור בך שוב. בעבודה עם טכניקות מוכחות וטיפול פסיכולוגי חם.</p>
+            <p>תכינו תכנית בהירה לקדימה. כלים שאתה יכול להשתמש בהם כשאתה בודד וגם כשאתה עם אחרים.</p>
+            <p>ולמשהו חשוב עוד יותר — תחזור לאמונה בעצמך. זה תמיד כאן. אני רק עוזרת לך למצוא זה שוב.</p>
         </div>
     </div>
 </section>
 
-<!-- Social Proof -->
-<section class="testimonial">
-    <div class="testimonial-content">
-        <h2>מה האנשים שעבדו איתי אומרים</h2>
+<section class="section section-light" id="process">
+    <h2>איך אני <span>עובדת</span></h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>💬 ישיבות 1:1</h3>
+            <p>שעה של עבודה עמוקה. אחד על אחד, בטוח, וללא שיפוט. אנחנו מדברים על זה שבפנים בך, בונים תוכנית, ואני נותנת לך כלים שאתה יכול להשתמש בהם מיד.</p>
+        </div>
 
+        <div class="service-card">
+            <h3>🎯 סדנאות וקורסים</h3>
+            <p>קבוצה של אנשים עם אתגר דומה. אנחנו למדים ביחד, שומעים זה את זה, ומבינים שאנחנו לא היחידים. זה כוח עצום.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>📈 ליווי בתהליך</h3>
+            <p>עבודה רציפה לאורך זמן. אנחנו בונים תוכנית, אתה עובד בעצמך, ואני פה בדרך לתמוך, להנחות, ולוודא שאתה לא נתקע.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>🛠️ כלים ותוכניות</h3>
+            <p>קלפים, תרגילים, מדריכים. כל מה שאתה צריך לעבוד על עצמך בין הישיבות שלנו.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <h2>מה אנשים אומרים</h2>
+    <div class="testimonials">
         <div class="testimonial-card">
-            <p>"אחרי גירושי חשבתי שלא אוכל להתחזק שוב. בעבודה עם דנה הבנתי שהכוח היה בי כל הזמן — פשוט צריכתי עזרה להוציא אותו החוצה."</p>
+            <p>"אחרי גרושים, חשבתי שאני שבורה. בעבודה עם דנה הבנתי שאני רק צריכה עזרה למצוא אותי שוב. היום אני חיה את החיים שי בחרתי."</p>
             <div class="testimonial-author">— לינור, ירושלים</div>
         </div>
 
         <div class="testimonial-card">
-            <p>"בן שלי היה קטוע בעצמו. אחרי שדנה עבדה איתו ועם אותי, הוא התחיל לדבר שוב, בחר טיול עם חברים, וגם אני מרגישה שאני עושה את זה נכון כהורה."</p>
+            <p>"בתי היה קטוע בעצמה. דנה עבדה איתה וגם איתי, וזה שינה את הכל. היא ממש מבינה מה זה להיות בני נוער היום."</p>
             <div class="testimonial-author">— מיכל, תל אביב</div>
         </div>
     </div>
 </section>
 
-<!-- CTA Section -->
 <section class="cta-section">
-    <div class="cta-content">
-        <h2>מוכנה לשינוי?</h2>
-        <p>הצעד הראשון הוא ישיבה 1:1 שבה אני מבינה מה בדיוק המצב שלך, ומה אנחנו יכולות לעשות גם.</p>
-        <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary">הזמן ישיבה</a>
-            <a href="#contact" class="btn btn-secondary">שיחה עם דנה</a>
-        </div>
+    <h2>מוכנים לתחילה?</h2>
+    <p>אנחנו לא צריכים להתחיל בעומק. פשוט שיחה ראשונה — שעה לסדר את המחשבות, להבין מה קורה, ולתכנן את הצעד הבא.</p>
+    <div class="btn-group">
+        <a href="#contact" class="btn btn-primary">הזמן ישיבה ראשונה</a>
+        <a href="https://wa.me" class="btn btn-secondary">שיחה בוואטסאפ</a>
     </div>
 </section>
 
-<!-- Contact Form -->
 <section class="form-section" id="contact">
     <div class="form-content">
-        <h2>הזמן פגישה 1:1 שלך</h2>
+        <h2>הזמן ישיבה אתי</h2>
         <form id="contactForm">
             <div class="form-group">
                 <label for="name">שם מלא *</label>
@@ -711,18 +553,19 @@
             </div>
 
             <div class="form-group">
-                <label for="audience">מי אתה? *</label>
+                <label for="audience">מה מביא אותך? *</label>
                 <select id="audience" name="audience" required>
-                    <option value="">בחר אפשרות</option>
-                    <option value="woman">אני אישה בעקבות גרושין</option>
-                    <option value="parent">אני הורה לנוער</option>
-                    <option value="teen">אני נוער</option>
+                    <option value="">בחר...</option>
+                    <option value="woman">נשים בשינוי חיים</option>
+                    <option value="teen">בן/בת נוער</option>
+                    <option value="parent">הורה</option>
+                    <option value="team">צוות / ארגון</option>
                     <option value="other">אחר</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="message">בקצרה, מה הקושי שלך עכשיו? *</label>
+                <label for="message">בקצרה - מה הנושא בו אתה רוצה עזרה? *</label>
                 <textarea id="message" name="message" required></textarea>
             </div>
 
@@ -731,13 +574,11 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer>
-    <p>&copy; 2024 דנה כחלון | ביטחון עצמי וגדילה אישית</p>
+    <p>&copy; 2024 דנה כחלון | טיפול וגדילה אישית</p>
 </footer>
 
 <script>
-    // Form handling
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -747,20 +588,16 @@
         const audience = document.getElementById('audience').value;
         const message = document.getElementById('message').value;
 
-        // WhatsApp link
-        const whatsappMessage = `שלום דנה! 👋\n\nאני ${name}\nטלפון: ${phone}\n\nקבוצה: ${audience}\n\nהקושי שלי:\n${message}`;
+        const whatsappMessage = `שלום דנה! 👋\n\nשמי: ${name}\nטלפון: ${phone}\nאימייל: ${email}\n\nקטגוריה: ${audience}\n\nהנושא:\n${message}`;
         const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappLink = `https://wa.me/972XXXXXXXXX?text=${encodedMessage}`; // Replace with actual WhatsApp number
 
-        // Open WhatsApp or email
-        if (confirm('בחר דרך הצפייה:\nOK - WhatsApp\nCancel - Email')) {
-            window.open(whatsappLink, '_blank');
-        } else {
-            window.location.href = `mailto:dana@example.com?subject=בקשה לפגישה 1:1&body=${encodedMessage}`;
-        }
+        // Replace with Dana's actual WhatsApp number
+        const whatsappLink = `https://wa.me/972XXX?text=${encodedMessage}`;
+
+        alert('תודה! אנחנו נחזור אליך בקרוב. בינתיים אתה יכול גם לכתוב לי בוואטסאפ.');
+        window.location.href = whatsappLink;
     });
 
-    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
