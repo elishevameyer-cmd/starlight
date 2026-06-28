@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דנה כחלון | ליווי רגשי וצמיחה אישית</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #F5F1E8;
+            color: #2a2a2a;
+            line-height: 1.8;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 1.2rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            max-height: 45px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #8B6F47;
+        }
+
+        nav a {
+            color: #2a2a2a;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #8B6F47;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #F5F1E8 0%, #E8E0D5 100%);
+            padding: 3rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #2a2a2a;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero-text h1 span {
+            color: #8B6F47;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: #8B6F47;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-primary:hover {
+            background: #6B5437;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 111, 71, 0.3);
+        }
+
+        /* About Dana */
+        .about {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .about-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2a2a2a;
+            text-align: center;
+        }
+
+        .about h2 span {
+            color: #8B6F47;
+        }
+
+        .about-text {
+            background: #F5F1E8;
+            padding: 2.5rem;
+            border-radius: 12px;
+            color: #555;
+            line-height: 2;
+            font-size: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Why Workshops */
+        .why-workshops {
+            padding: 4rem 2rem;
+            background: #F5F1E8;
+        }
+
+        .why-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-workshops h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2a2a2a;
+            text-align: center;
+        }
+
+        .why-workshops h2 span {
+            color: #8B6F47;
+        }
+
+        .why-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-right: 5px solid #8B6F47;
+            line-height: 2;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .why-box p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Workshops Grid */
+        .workshops {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .workshops-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .workshops h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2a2a2a;
+            text-align: center;
+        }
+
+        .workshops h2 span {
+            color: #8B6F47;
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .workshop-card {
+            background: #F5F1E8;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .workshop-card h3 {
+            color: #8B6F47;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .workshop-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Audiences */
+        .audiences {
+            padding: 4rem 2rem;
+            background: #F5F1E8;
+        }
+
+        .audiences-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .audiences h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2a2a2a;
+            text-align: center;
+        }
+
+        .audiences h2 span {
+            color: #8B6F47;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .audience-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .audience-card h3 {
+            color: #8B6F47;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .audience-card p {
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .audience-card ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .audience-card li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .audience-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8B6F47;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-main {
+            padding: 3.5rem 2rem;
+            background: linear-gradient(135deg, #8B6F47 0%, #6B5437 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-main-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-main h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .cta-main p {
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-light {
+            background: #fff;
+            color: #8B6F47;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #8B6F47;
+        }
+
+        /* Form */
+        .form-section {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .form-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-content h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2a2a2a;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: #2a2a2a;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B6F47;
+            box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: #8B6F47;
+            color: #fff;
+            padding: 1.1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #6B5437;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(139, 111, 71, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2a2a2a;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content,
+            .audience-grid,
+            .workshop-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-content">
+        <div class="logo-section">
+            <img src="https://via.placeholder.com/45x45?text=דנה" alt="לוגו דנה" class="logo-img">
+            <div class="logo-text">דנה כחלון</div>
+        </div>
+        <nav>
+            <a href="#about">אודות</a>
+            <a href="#workshops">הסדנאות</a>
+            <a href="#audiences">עם מי אני עובדת</a>
+            <a href="#contact">יצור קשר</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>ליווי רגשי וצמיחה <span>אישית</span></h1>
+            <p>לנשים ובני נוער שרוצים לחזק את הביטחון העצמי, להציב גבולות, ולבנות מערכות יחסים בריאות.</p>
+            <p>אני דנה, ואני כאן כדי לעזור לכן לחזור לעצמכן.</p>
+            <a href="#contact" class="cta-primary">הזמי סדנה או פגישה 1:1</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/400x500?text=דנה+כחלון" alt="דנה כחלון">
+        </div>
+    </div>
+</section>
+
+<!-- About Dana -->
+<section class="about" id="about">
+    <div class="about-content">
+        <h2>מי אני <span>דנה</span></h2>
+        <div class="about-text">
+            <p>אני דנה, מאמנת עם ניסיון רב. אני מספרת על מורכבות החיים כי עברתי ילדות וחיים לא פשוטים בעצמי.</p>
+
+            <p>כיום אני בזוגיות פרק ב' ומגדלת 3 בנות. עבדתי כשכירה עשור, ועבדתי מול עשרות אנשים וארגונים. בשנתיים האחרונות יצאתי לדרך עצמאית ונתתי לעצמי יותר במהלך העבודה.</p>
+
+            <p>כיום אני עובדת בעיקר עם קבוצות של נשים בתהליך גירושים או שעברו תהליך גירושים. אני מעבירה סדנאות והרצאות על מסע החיים שלי, כולל איך לזהות נרקיסטים ואיך לצאת מקשר רעיל. אם אני הצלחתי — גם אתן יכולות.</p>
+
+            <p>כיום אני יוצאת על הסדנה הדגל שלי — <strong>שלושת הקופים</strong>.</p>
+
+            <p>אני גם מלווה נוער על הספקטרום ונוער שאיבדו את עצמם בדרך, בעיקר עם כל השינויים שאנו כמדינה עוברים. הם זקוקים לכלים והכוונה — איך להתמודד עם אובדן, פגיעות, וחוסר וודאות.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Why Workshops -->
+<section class="why-workshops">
+    <div class="why-content">
+        <h2>למה <span>סדנאות</span> ולא טיפול ביחידות</h2>
+        <div class="why-box">
+            <p>כי <strong>הכוח לעבור שינוי בא מחיבור</strong>.</p>
+
+            <p>כשאת מבינה שאת לא לבד, וכשמסביבך יושבות עוד נשים שמבינות אותך ועברו דברים דומים — זה נותן מעטפת וחוזק שלא יכול להיות בישיבה בודדת.</p>
+
+            <p>בסדנה, אתן עובדות על עצמכן, שומעות אחת את השנייה, וחוזרות הביתה עם כלים קונקרטיים — ועם קבוצה שמבינה אתכן.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Workshops -->
+<section class="workshops" id="workshops">
+    <div class="workshops-content">
+        <h2>הסדנאות <span>שלי</span></h2>
+        <div class="workshop-grid">
+            <div class="workshop-card">
+                <h3>🐵 שלושת הקופים</h3>
+                <p>הסדנה הדגל שלי. חוויתית, עמוקה, ופורצת מודעות. אנחנו עובדות על מודעות עצמית, תקשורת אמיתית, ויחסים בריאים שאנחנו רוצות. כל משתתפת חוזרת הביתה עם כלים קונקרטיים.</p>
+            </div>
+
+            <div class="workshop-card">
+                <h3>🎯 סדנאות בהזמנה</h3>
+                <p>אני מעבירה סדנאות שונות לפי הצורך של הקבוצה. חוסן אישי, תקשורת מקרבת, העצמה, התמודדות עם שינויים. כל סדנה מותאמת לדיוק של הקהל.</p>
+            </div>
+
+            <div class="workshop-card">
+                <h3>💬 הרצאות</h3>
+                <p>מספרת את הסיפור שלי, את הלקחים, ואת הדברים שלמדתי בדרך. הרצאות שמחזקות ומעוררות שינוי בקהל.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Audiences -->
+<section class="audiences" id="audiences">
+    <div class="audiences-content">
+        <h2>עם מי אני <span>עובדת</span></h2>
+        <div class="audience-grid">
+            <div class="audience-card">
+                <h3>👩 נשים בשינוי חיים</h3>
+                <p>נשים שעברו גרושים או בתהליך גרושים. נשים שרוצות להבין עצמן טוב יותר, לשפר את היחסים שלהן, ולבנות חיים בעיניים פתוחות.</p>
+                <ul>
+                    <li>נשים בתהליך צאת מקשר לא בריא</li>
+                    <li>נשים שעברו הפסדים וחוסר וודאות</li>
+                    <li>נשים שרוצות להכיר את עצמן מחדש</li>
+                </ul>
+            </div>
+
+            <div class="audience-card">
+                <h3>🧑‍🦱 בני נוער והורים</h3>
+                <p>בני נוער שעברו רחמות, איבדו את הדרך בעקבות השינויים שאנו כמדינה עוברים. גם בני נוער על הספקטרום.</p>
+                <ul>
+                    <li>בני נוער שמתקשים בביטחון עצמי</li>
+                    <li>בני נוער שנסגרים בחדר ולא רוצים לקום</li>
+                    <li>הורים שלא יודעים איך להתמודד עם הילד</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Main -->
+<section class="cta-main">
+    <div class="cta-main-content">
+        <h2>מוכנות לשינוי?</h2>
+        <p>הסדנה הבאה שלנו מתחילה בקרוב. קבוצה קטנה של נשים שרוצות לעבוד על עצמן בצורה אמיתית ועמוקה.</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-light">הזמי סדנה</a>
+            <a href="https://wa.me" class="btn btn-outline">צרי קשר בוואטסאפ</a>
+        </div>
+    </div>
+</section>
+
+<!-- Form -->
+<section class="form-section" id="contact">
+    <div class="form-content">
+        <h2>צרי קשר</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">שם *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">אימייל *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">טלפון *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="interest">מה את מעוניינת? *</label>
+                <select id="interest" name="interest" required>
+                    <option value="">בחרי...</option>
+                    <option value="workshop">סדנת שלושת הקופים</option>
+                    <option value="custom">סדנה בהזמנה</option>
+                    <option value="teen">ליווי נוער</option>
+                    <option value="lecture">הרצאה</option>
+                    <option value="other">משהו אחר</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">בקצרה - מה בדיוק את מחפשת? *</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">שלחי לי הודעה</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 דנה כחלון | ליווי רגשי וצמיחה אישית</p>
+</footer>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const interest = document.getElementById('interest').value;
+        const message = document.getElementById('message').value;
+
+        const whatsappMessage = `שלום דנה! 👋\n\nשמי: ${name}\nטלפון: ${phone}\nאימייל: ${email}\n\nמתעניינת ב: ${interest}\n\nהודעה:\n${message}`;
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+
+        // Replace with Dana's actual WhatsApp number
+        const whatsappLink = `https://wa.me/972XXX?text=${encodedMessage}`;
+
+        alert('תודה! אנחנו נחזור אליך בקרוב.');
+        window.location.href = whatsappLink;
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
