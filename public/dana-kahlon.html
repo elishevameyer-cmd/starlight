@@ -51,6 +51,16 @@
             font-weight: 300;
         }
 
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
         /* About Section */
         .about-section {
             background: white;
@@ -74,6 +84,39 @@
             margin-bottom: 15px;
             line-height: 1.8;
             color: #333;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            text-align: right;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .about-text {
+                text-align: right;
+            }
         }
 
         /* Main Container */
@@ -321,6 +364,9 @@
     <!-- Header -->
     <header>
         <div class="header-content">
+            <div class="logo-container">
+                <img src="./dana-logo.png" alt="דנה כחלון לוגו" class="logo" />
+            </div>
             <h1>דנה כחלון</h1>
             <p class="subtitle">ביטחון עצמי בשלבי חיים קשים</p>
         </div>
@@ -329,17 +375,24 @@
     <!-- About Dana -->
     <div class="container">
         <div class="about-section">
-            <h2>מי אני</h2>
-            <p>
-                אני דנה כחלון, מנחה בעבודה עם נשים בתהליכי גרושים ונשים גרושות שרוצות לשחזר את עצמן.
-                עבדתי עם עשרות נשים שעברו שלבים קשים בחיים — בדידות, ספק עצמי, פחד מהעתיד.
-            </p>
-            <p>
-                למדתי שהבעיה לא היא בנסיבות — היא בדרך שבה אנחנו מדברות לעצמנו עליהן. כשנשים מגדילות את הביטחון שלהן בעצמן, הכל משתנה.
-            </p>
-            <p>
-                גם עובדת עם בני נוער — מכי שמאבדים את הכיוון ומרגישים אבודים — ועושה את אותו הדבר: בונה מחדש את הביטחון שלהם בחיים.
-            </p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>מי אני</h2>
+                    <p>
+                        אני דנה כחלון, מנחה בעבודה עם נשים בתהליכי גרושים ונשים גרושות שרוצות לשחזר את עצמן.
+                        עבדתי עם עשרות נשים שעברו שלבים קשים בחיים — בדידות, ספק עצמי, פחד מהעתיד.
+                    </p>
+                    <p>
+                        למדתי שהבעיה לא היא בנסיבות — היא בדרך שבה אנחנו מדברות לעצמנו עליהן. כשנשים מגדילות את הביטחון שלהן בעצמן, הכל משתנה.
+                    </p>
+                    <p>
+                        גם עובדת עם בני נוער — מכי שמאבדים את הכיוון ומרגישים אבודים — ועושה את אותו הדבר: בונה מחדש את הביטחון שלהם בחיים.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="./dana-photo.jpg" alt="דנה כחלון" />
+                </div>
+            </div>
         </div>
     </div>
 
