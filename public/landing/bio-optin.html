@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הביו המושלם | אלישבע מייער</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo',sans-serif; direction:rtl; background:#111; color:#fff; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 22px; }
+
+  .card {
+    background:#1a1a1a; border-radius:24px;
+    border:1.5px solid rgba(255,255,255,0.08);
+    padding:36px 28px 32px;
+    max-width:420px; width:100%;
+    text-align:center;
+  }
+
+  .badge {
+    display:inline-block; background:#F07A57; color:#fff;
+    font-size:11px; font-weight:700; letter-spacing:1.5px;
+    padding:4px 14px; border-radius:20px; margin-bottom:20px;
+    text-transform:uppercase;
+  }
+
+  .emoji { font-size:48px; margin-bottom:16px; display:block; }
+
+  h1 {
+    font-size:26px; font-weight:900; color:#fff;
+    line-height:1.3; margin-bottom:10px;
+  }
+
+  .sub {
+    font-size:15px; color:rgba(255,255,255,0.5);
+    line-height:1.8; margin-bottom:28px;
+  }
+
+  .bullets {
+    text-align:right; margin-bottom:28px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .bullet {
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:14px; color:rgba(255,255,255,0.7); line-height:1.5;
+  }
+  .bullet-icon { color:#F07A57; font-weight:900; flex-shrink:0; margin-top:1px; }
+
+  .form { display:flex; flex-direction:column; gap:10px; }
+  .input {
+    width:100%; padding:14px 16px;
+    border:1.5px solid rgba(255,255,255,0.1); border-radius:12px;
+    font-family:'Heebo',sans-serif; font-size:15px; direction:rtl;
+    background:rgba(255,255,255,0.06); color:#fff;
+  }
+  .input::placeholder { color:rgba(255,255,255,0.3); }
+  .input:focus { outline:none; border-color:#F07A57; }
+  .btn {
+    width:100%; background:#F07A57; color:#fff;
+    font-family:'Heebo',sans-serif; font-size:16px; font-weight:900;
+    padding:15px; border-radius:12px; border:none; cursor:pointer;
+    letter-spacing:0.5px; transition:opacity 0.2s;
+  }
+  .btn:disabled { opacity:0.6; }
+
+  .privacy {
+    font-size:11px; color:rgba(255,255,255,0.2);
+    margin-top:14px; line-height:1.6;
+  }
+
+  .back {
+    margin-top:24px; font-size:12px;
+    color:rgba(255,255,255,0.25); text-decoration:none;
+  }
+  .back:hover { color:rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="badge">חינמי לגמרי</div>
+  <span class="emoji">✍️</span>
+  <h1>הביו המושלם</h1>
+  <p class="sub">5 הדברים שכל ביו חזק חייב לכלול — תוך 5 דקות תדעי בדיוק מה לשנות</p>
+
+  <div class="bullets">
+    <div class="bullet">
+      <span class="bullet-icon">✓</span>
+      <span>מה לכתוב בשורה הראשונה שתגרום לאנשים לעצור</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-icon">✓</span>
+      <span>איך להגיד מה את עושה בלי להיות משעממת</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-icon">✓</span>
+      <span>ה-CTA שמביא פניות ישירות מהביו</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-icon">✓</span>
+      <span>הטעויות הכי נפוצות שמבריחות עוקבים</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-icon">✓</span>
+      <span>דוגמה מלאה לביו שממיר</span>
+    </div>
+  </div>
+
+  <form class="form" onsubmit="handleSubmit(event)">
+    <input class="input" type="email" id="email" placeholder="המייל שלך" required>
+    <button type="submit" class="btn" id="btn">שלחי לי את הצ'קליסט ←</button>
+  </form>
+
+  <p class="privacy">לא מספאמת. המייל שלך נשאר אצלי בלבד.</p>
+</div>
+
+<a href="index.html" class="back">← חזרה לכל השירותים</a>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const btn = document.getElementById('btn');
+  btn.textContent = '...';
+  btn.disabled = true;
+  fetch('https://hook.eu1.make.com/up6j9fp6akyyitdr6a6tvwpwfs2yb2bi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: email, service: 'ביו חינמי' })
+  }).catch(() => {}).finally(() => { window.location.href = 'thank-you.html'; });
+}
+</script>
+</body>
+</html>
