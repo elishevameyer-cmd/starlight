@@ -97,11 +97,11 @@
 
   <div class="optin-box">
     <div class="optin-header">
-      <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-checklist.jpg" class="optin-img" alt="הביו המושלם">
+      <img src="https://raw.githubusercontent.com/elishevameyer-cmd/starlight/main/public/landing/img-checklist.jpg" class="optin-img" alt="ביו ממגנט">
       <div class="optin-info">
         <div class="optin-tag">חינמי</div>
-        <div class="optin-title">הביו המושלם</div>
-        <div class="optin-desc">5 דברים שכל ביו חזק חייב לכלול</div>
+        <div class="optin-title">ביו ממגנט</div>
+        <div class="optin-desc">הצ'קליסט הסודי לביו שממגנט לקוחות</div>
       </div>
     </div>
     <form class="optin-form" onsubmit="handleFree(event)">
@@ -191,7 +191,7 @@ function handleFree(e) {
     method: 'POST',
     headers: { 'Content-Type':'application/json' },
     body: JSON.stringify({ email: email, name: email, service: 'ביו חינמי' })
-  }).catch(() => {}).finally(() => { window.location.href = 'thank-you.html'; });
+  }).catch(() => {}).finally(() => { window.location.href = 'bio-upsell.html'; });
 }
 </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>הביו המושלם | אלישבע מייער</title>
+<title>ביו ממגנט | אלישבע מייער</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -79,9 +79,10 @@
 
 <div class="card">
   <div class="badge">חינמי לגמרי</div>
-  <span class="emoji">✍️</span>
-  <h1>הביו המושלם</h1>
-  <p class="sub">5 הדברים שכל ביו חזק חייב לכלול — תוך 5 דקות תדעי בדיוק מה לשנות</p>
+  <span class="emoji">🧲</span>
+  <h1>ביו ממגנט</h1>
+  <p class="sub">הצ'קליסט הסודי (חושפת את השיטה שלי לביו ממגנט לקוחות) שיהפוך את הביו שלך מ'נחמד' לכזה שממיר לעוקבים כל מי שנוחת בעמוד שלך!</p>
+  <p class="sub" style="font-size:14px; margin-top:-16px; color:rgba(255,255,255,0.7); font-weight:700;">תוך 5 דקות תדעי איך לשנות אותו לביו ממגנט!</p>
 
   <div class="bullets">
     <div class="bullet">
@@ -106,6 +107,7 @@
     </div>
   </div>
 
+  <p style="font-size:15px; color:#F07A57; font-weight:700; margin-bottom:12px;">מלאי את המייל ואני שולחת לך את הצ'קליסט עכשיו 👇</p>
   <form class="form" onsubmit="handleSubmit(event)">
     <input class="input" type="email" id="email" placeholder="המייל שלך" required>
     <button type="submit" class="btn" id="btn">שלחי לי את הצ'קליסט ←</button>
@@ -127,7 +129,7 @@ function handleSubmit(e) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email: email, name: email, service: 'ביו חינמי' })
-  }).catch(() => {}).finally(() => { window.location.href = 'thank-you.html'; });
+  }).catch(() => {}).finally(() => { window.location.href = 'bio-upsell.html'; });
 }
 </script>
 </body>
