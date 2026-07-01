@@ -276,7 +276,7 @@
   <!-- STEP 1: פרטי העסק -->
   <div class="step active" id="step-0">
     <div class="step-card">
-      <div class="step-label">שלב 1 — פרטי העסק</div>
+      <div class="step-label">שלב 1 פרטי העסק</div>
       <div class="step-title">ספרי לי על העסק שלך</div>
       <div class="step-sub">כמה שאלות קצרות כדי שהגאנט יהיה בדיוק בשבילך</div>
 
@@ -300,7 +300,7 @@
 
       <div class="field" id="f-desc">
         <label>תיאור קצר של העסק <span>*</span></label>
-        <textarea id="businessDesc" placeholder="2-3 משפטים — מה את עושה, למי ואיך"></textarea>
+        <textarea id="businessDesc" placeholder="2-3 משפטים מה את עושה, למי ואיך"></textarea>
         <div class="field-error">שדה חובה</div>
       </div>
 
@@ -318,9 +318,9 @@
   <!-- STEP 2: קהל יעד -->
   <div class="step" id="step-1">
     <div class="step-card">
-      <div class="step-label">שלב 2 — קהל יעד</div>
+      <div class="step-label">שלב 2 קהל יעד</div>
       <div class="step-title">מי הלקוחה שלך?</div>
-      <div class="step-sub">ככל שנבין את הקהל שלך — התוכן יהיה מדויק יותר</div>
+      <div class="step-sub">ככל שנבין את הקהל שלך התוכן יהיה מדויק יותר</div>
 
       <div class="field" id="f-audience">
         <label>מי הלקוחה האידיאלית שלך? <span>*</span></label>
@@ -336,7 +336,7 @@
 
       <div class="field" id="f-result">
         <label>מה היא מקבלת ממך בסוף? (תוצאה) <span>*</span></label>
-        <input type="text" id="clientResult" placeholder="לא תהליך — מה היא מרגישה/משיגה בסוף?">
+        <input type="text" id="clientResult" placeholder="לא תהליך מה היא מרגישה/משיגה בסוף?">
         <div class="field-error">שדה חובה</div>
       </div>
 
@@ -362,7 +362,7 @@
   <!-- STEP 3: תוכן ואינסטגרם -->
   <div class="step" id="step-2">
     <div class="step-card">
-      <div class="step-label">שלב 3 — תוכן ואינסטגרם</div>
+      <div class="step-label">שלב 3 תוכן ואינסטגרם</div>
       <div class="step-title">איך נראה האינסטגרם שלך?</div>
       <div class="step-sub">בואי נבין מה יש, מה עובד ומה צריך לשפר</div>
 
@@ -419,7 +419,7 @@
           </div>
           <div class="radio-opt" onclick="selectRadio('biggestChallenge', this, 'לא עקבית')">
             <div class="radio-dot"></div>
-            <div class="radio-opt-label">לא עקבית — מתחילה ומפסיקה</div>
+            <div class="radio-opt-label">לא עקבית מתחילה ומפסיקה</div>
           </div>
           <div class="radio-opt" onclick="selectRadio('biggestChallenge', this, 'תוכן לא מביא פניות')">
             <div class="radio-dot"></div>
@@ -447,7 +447,7 @@
   <!-- STEP 4: מטרות + פרטים -->
   <div class="step" id="step-3">
     <div class="step-card">
-      <div class="step-label">שלב 4 — מטרות</div>
+      <div class="step-label">שלב 4 מטרות</div>
       <div class="step-title">מה את רוצה להשיג?</div>
       <div class="step-sub">שאלה אחרונה ואנחנו בדרך לגאנט שלך</div>
 
@@ -501,7 +501,7 @@
   <div class="step" id="step-4">
     <div class="step-card">
       <div class="step-label">כמעט שם! 🎉</div>
-      <div class="step-title">השאלון מוכן —<br>עכשיו רק לשלם ולהתחיל</div>
+      <div class="step-title">השאלון מוכן <br>עכשיו רק לשלם ולהתחיל</div>
       <div class="step-sub" style="margin-bottom:20px;">תוך 48 שעות תקבלי גאנט תוכן חודשי מותאם אישית</div>
 
       <div class="payment-card">
@@ -528,7 +528,7 @@
 
       <div style="text-align:center; font-size:13px; color:#aaa; line-height:1.7;">
         יש שאלות? שלחי וואטסאפ<br>
-        <strong style="color:#F07A57;">אלישבע מייער — אדריכלית סושייאל</strong>
+        <strong style="color:#F07A57;">אלישבע מייער אדריכלית סושייאל</strong>
       </div>
     </div>
   </div>
@@ -657,7 +657,7 @@ function getContentTypes() {
   document.querySelectorAll('#contentTypes .check-opt.selected .check-opt-label').forEach(el => {
     selected.push(el.textContent.trim());
   });
-  return selected.join(', ') || '—';
+  return selected.join(', ') || '';
 }
 </script>
 

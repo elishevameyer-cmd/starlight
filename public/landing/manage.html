@@ -395,7 +395,7 @@ const SEED_TASKS = [
   {id:'t4',title:'סטוריז שבועיים לדנה',clientId:'c4',clientName:'דנה רוזן',status:'todo',priority:'high',due:'2026-06-29',notes:'',createdAt:Date.now()},
   {id:'t5',title:'מסמך מיצוב לשרה כהן',clientId:'c1',clientName:'שרה כהן',status:'todo',priority:'medium',due:'2026-06-30',notes:'',createdAt:Date.now()},
   {id:'t6',title:'קישור תשלום לרחל אברהם',clientId:'c3',clientName:'רחל אברהם',status:'sent',priority:'low',due:'2026-06-24',notes:'',createdAt:Date.now()},
-  {id:'t7',title:'10 פוסטים לחודש — דנה',clientId:'c4',clientName:'דנה רוזן',status:'done',priority:'high',due:'2026-06-20',notes:'',createdAt:Date.now()}
+  {id:'t7',title:'10 פוסטים לחודש דנה',clientId:'c4',clientName:'דנה רוזן',status:'done',priority:'high',due:'2026-06-20',notes:'',createdAt:Date.now()}
 ];
 const SEED_IDEAS = [
   {id:'gl1',clientId:'',clientName:'כללי',text:'קרוסלה: 5 טיפים להפוך פוסט ל-Lead',type:'carousel',status:'idea',createdAt:Date.now()},
@@ -543,9 +543,9 @@ function renderClients() {
               </div></td>
               <td>${chipService(c.service)}</td>
               <td>${chipStatus(c.status)}</td>
-              <td><div class="td-dim" title="${c.sent||''}">${c.sent||'—'}</div></td>
-              <td><div class="td-dim" title="${c.todo||''}">${c.todo||'—'}</div></td>
-              <td><div class="td-date ${dueCls(c.meeting)}">${c.meeting ? fmtDate(c.meeting) : '—'}</div></td>
+              <td><div class="td-dim" title="${c.sent||''}">${c.sent||''}</div></td>
+              <td><div class="td-dim" title="${c.todo||''}">${c.todo||''}</div></td>
+              <td><div class="td-date ${dueCls(c.meeting)}">${c.meeting ? fmtDate(c.meeting) : ''}</div></td>
               <td><div class="row-actions" onclick="event.stopPropagation()">
                 <button class="icon-btn" onclick="openClientModal('${c.id}')">✏️ ערוך</button>
                 <button class="icon-btn" onclick="openTaskModal(null,'${c.id}')">+ משימה</button>
@@ -831,11 +831,11 @@ function openDrawer(clientId) {
     </div>
     <div class="dr-sec">
       <div class="dr-sec-title">מה נשלח</div>
-      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.sent || '—'}</div>
+      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.sent || ''}</div>
     </div>
     <div class="dr-sec">
       <div class="dr-sec-title">מה לעשות הבאה</div>
-      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.todo || '—'}</div>
+      <div style="font-size:13px;color:var(--dim);line-height:1.6">${c.todo || ''}</div>
     </div>
     ${c.notes ? `<div class="dr-sec">
       <div class="dr-sec-title">הערות</div>
