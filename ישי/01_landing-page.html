@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בימה לשירה - הזמנת כרטיסים להופעות</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b35 0%, #d64045 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-cta {
+            background: white;
+            color: #d64045;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #d64045 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            background: white;
+            color: #d64045;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Featured Events */
+        .featured-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 2px;
+        }
+
+        .events-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b35 0%, #d64045 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .event-content {
+            padding: 20px;
+        }
+
+        .event-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            color: #d64045;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .event-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .event-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .event-button {
+            width: 100%;
+            padding: 12px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .event-button:hover {
+            background: #d64045;
+        }
+
+        /* About Section */
+        .about-section {
+            background: #f9f9f9;
+            padding: 60px 20px;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #ff6b35 0%, #d64045 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .about-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .highlight {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .highlight-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+
+        .highlight-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b35 0%, #d64045 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: white;
+            color: #d64045;
+            padding: 16px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">🎤 בימה לשירה</a>
+            <a href="#" class="nav-cta">הזמנת כרטיסים</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>התחבורו להופעות הזמר המובילות בדרך הטובה</h1>
+            <p>הופעות בלתי נשכחות עם מוזיקה שנוגעת בלב</p>
+            <button class="hero-cta">הזמן כרטיסים עכשיו</button>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="featured-section">
+        <h2 class="section-title">הופעות קרובות</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-image">📅 תמונה של ההופעה</div>
+                <div class="event-content">
+                    <div class="event-date">🗓️ יום ראשון, 15 בדצמבר</div>
+                    <div class="event-name">הופעה אירוח ראשונה</div>
+                    <div class="event-description">
+                        ערב מיוחד של שירה וחיוך עם האומן ישי לפידות
+                    </div>
+                    <div class="event-price">₪150 - ₪250</div>
+                    <button class="event-button">הזמן כרטיס</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">📅 תמונה של ההופעה</div>
+                <div class="event-content">
+                    <div class="event-date">🗓️ יום שלישי, 24 בדצמבר</div>
+                    <div class="event-name">הופעה מיוחדת בירושלים</div>
+                    <div class="event-description">
+                        ערב מלא בשירים חדשים ויחסיות עמוקות
+                    </div>
+                    <div class="event-price">₪180 - ₪300</div>
+                    <button class="event-button">הזמן כרטיס</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">📅 תמונה של ההופעה</div>
+                <div class="event-content">
+                    <div class="event-date">🗓️ יום חמישי, 2 בינואר</div>
+                    <div class="event-name">קונצרט שנה חדשה</div>
+                    <div class="event-description">
+                        כניסה לשנה חדשה עם מוזיקה שמחזקת הרוח
+                    </div>
+                    <div class="event-price">₪200 - ₪350</div>
+                    <button class="event-button">הזמן כרטיס</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-image">🎤 תמונה אישית של הזמר</div>
+            <div class="about-text">
+                <h2>ישי לפידות - מוזיקאי של הלב</h2>
+                <p>
+                    ישי לפידות הוא זמר דתי מאוהב שמביא שירה חדשה וטרייה לקהל המאמין.
+                    עם שנים של ניסיון בבמות מובילות, ישי יודע איך לגרום לקהל להרגיש כל מילה.
+                </p>
+                <p>
+                    כל הופעה של ישי היא מסע רוחני ומוזיקלי שמשאיר רושם עמוק בלב המאזינים.
+                    שיריו משלבים מסורת עם מודרניות, יהדות עם חדשנות.
+                </p>
+                <div class="about-highlights">
+                    <div class="highlight">
+                        <div class="highlight-number">50+</div>
+                        <div class="highlight-text">הופעות בשנה</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-number">10K+</div>
+                        <div class="highlight-text">עוקבים מרוצים</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-number">15</div>
+                        <div class="highlight-text">שירים חדשים</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>אל תפספסו את ההופעה הבאה</h2>
+            <p>הרשמו לרשימת הדיוור שלנו וקבלו עדיפות בהזמנות</p>
+            <button class="cta-button">הרשמו עכשיו</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>מידע</h3>
+                <ul>
+                    <li><a href="#">אודות</a></li>
+                    <li><a href="#">הופעות</a></li>
+                    <li><a href="#">צרו קשר</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>הזמנות</h3>
+                <ul>
+                    <li><a href="#">תנאי הזמנה</a></li>
+                    <li><a href="#">שינוי/ביטול</a></li>
+                    <li><a href="#">חוקי פרטיות</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>עקבו אחרינו</h3>
+                <ul>
+                    <li><a href="#">אינסטגרם</a></li>
+                    <li><a href="#">פייסבוק</a></li>
+                    <li><a href="#">יוטיוב</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 בימה לשירה - כל הזכויות שמורות</p>
+        </div>
+    </footer>
+</body>
+</html>
